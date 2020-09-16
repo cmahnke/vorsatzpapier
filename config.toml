@@ -1,0 +1,54 @@
+baseURL = "https://vorsatzpapier.projektemacher.org/"
+languageCode = "de"
+title = "Vorsatzpapier"
+theme = "projektemacher-base"
+publishDir = "docs"
+canonifyurls = true
+disableKinds = ["term"]
+languagecode = "de"
+defaultcontentlanguage = "de"
+rssLimit = 25
+
+[params]
+    author = "Christian Mahnke"
+
+[languages]
+    [languages.de]
+        languagename = "Deutsch"
+
+    [languages.de.params]
+
+    [languages.de.menu]
+
+        [[languages.de.menu.main]]
+            name = "Übersicht"
+            weight = 1
+            url = "overview/"
+
+        [[languages.de.menu.main]]
+            name = "Über"
+            weight = 2
+            url = "about/"
+
+    [languages.en]
+        languagename = "English"
+
+        [languages.en.params]
+
+
+        [languages.en.menu]
+
+            [[languages.en.menu.main]]
+                name = "Overview"
+                weight = 1
+                url = "overview/"
+
+            [[languages.de.menu.main]]
+                name = "About"
+                weight = 2
+                url = "about/"
+
+[markup]
+    [markup.goldmark]
+        [markup.goldmark.renderer]
+            unsafe= true

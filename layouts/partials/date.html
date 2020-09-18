@@ -1,0 +1,6 @@
+{{/* See https://pfischbeck.de/en/posts/multilingual-dates-in-hugo/ */}}
+{{ if eq "de" .Language.Lang }}
+    {{- .Date.Day }}. {{ index .Site.Data.months (printf "%d" .Date.Month) }} {{ .Date.Year -}}
+{{ else }}
+    {{- .Date.Format "January 2, 2006" -}}
+{{ end }}

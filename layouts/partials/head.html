@@ -18,16 +18,7 @@
     <link href="{{ . }}" rel="stylesheet">
 {{- end -}}
 
-{{/*
-<!-- Upgraded to Font Awesome 5.3 no need for local files using all.css so all icons are available -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-<!-- Theme stylesheet, if possible do not edit this stylesheet -->
-<link href="{{ "css/style.css" | absURL }}?v={{ now.Unix }}" rel="stylesheet" id="theme-stylesheet" type='text/css' media='all'>
-<!-- Custom stylesheet - for your changes -->
-<link href="{{ "css/custom.css" | absURL }}?v={{ now.Unix }}" rel="stylesheet" type='text/css' media='all'>
-*/}}
-
-{{ $options := (dict "targetPath" "base.css" "outputStyle" "compressed" "includePaths" "static") -}}
+{{ $options := (dict "targetPath" "base.css" "outputStyle" "compressed" "includePaths" "static/css") -}}
 {{- $ourTemplate := resources.Get "scss/base.scss" -}}
 {{- $ourStyle := $ourTemplate | resources.ExecuteAsTemplate "scss/base.scss" . | toCSS $options -}}
 {{- $style := slice $ourStyle | resources.Concat "css/concated.css" | minify | fingerprint -}}

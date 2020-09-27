@@ -1,0 +1,17 @@
+---
+title: "Niedersachsens Sagenborn"
+date: 2020-09-25T16:54:45+02:00
+type: endpaper
+tags:
+- book end paper
+resources:
+- src: "img001.jpg"
+  name: page
+  params:
+    iiif: img001/info.json
+---
+This beautiful pattern is the new background of the [Krähenbeißer](https: //krähenbeisser.de). It has been a recommendation of the [Antiquarian Pretzsch](https://antiquariat-pretzsch.de/). The book detectives there will also find the right endpaper for your internet presence or art projects.
+
+# About the book
+
+This endpaper is taken from the book  "Niedersachsens Sagenborn" by Karl Henniger, published 1907 by August Lax, Hildesheim. <a class="worldcat" href="http://www.worldcat.org/oclc/903072932">&nbsp;</a>

@@ -21,8 +21,9 @@ resources:
   params:
     iiif: img006/info.json
 ---
-Diese Tafeln entstammen einem Konvolut von auseinander geschnittenen Lexika.
 
-# Über das Werk
+These sheets are from a stack of cut out lexicon pages.
 
-Diese Tafeln stammen aus Meyers Konversations-Lexikon, [5. Auflage](https://de.wikipedia.org/wiki/Meyers_Konversations-Lexikon#5._Auflage_(1893%E2%80%931897/1901)) erschienen 1893 - 1901 im Bibliographischen Institut, Leipzig.
+# About the work
+
+These sheets are from Meyers Konversations-Lexikon, [5. edition](https://de.wikipedia.org/wiki/Meyers_Konversations-Lexikon#5._Auflage_(1893%E2%80%931897/1901)) published 1893 - 1901 by Bibliographisches Institut, Leipzig

@@ -25,4 +25,4 @@ resources:
   params:
     iiif: img005/info.json
 ---
-Dies sind handgemalte Tapetenmuster - erstanden beim besten Anbieter von historischen Tapeten in Göttingen - [Zeitzeug](http://zeitzeug.de/). Dort findet ihr eine große Auswahl an Tapeten für eure Renovierungsprojekte.
+These are hand-painted wallpaper samples - purchased from the best supplier of historical wallpapers in Göttingen - [Zeitzeug](http://zeitzeug.de/). There you will find a large selection of old wallpapers for your redecoration projects.

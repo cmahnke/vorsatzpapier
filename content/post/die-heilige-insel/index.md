@@ -19,3 +19,9 @@ resources:
   params:
     iiif: title/info.json
 ---
+
+Ein weiteres günstiges Fundstück vom 75¢ Tisch des [Antiquariat Pretzsch](https://antiquariat-pretzsch.de/) N°1.
+
+# Über das Buch
+
+Dieses Vorsatzpapier ist aus dem Buch "Die Heilige Insel" von Lely Kempin, erschienen 1921 bei Velhagen & Klasing, Bielefeld. <a class="worldcat" href="http://www.worldcat.org/oclc/936421290">&nbsp;</a>

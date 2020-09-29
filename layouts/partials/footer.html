@@ -1,25 +1,24 @@
 <footer id="site-footer" class="site-footer" role="contentinfo">
-	<h1>
-    {{ with .Site.Title }}
-    <a href=""> {{ . }} </a>
-    {{ end }}
-	</h1>
 
-		{{ with .Site.Params.Slogan }}
-		         <p class="site-description">{{ . | default "" | safeHTML }}</p>
-		{{ end }}
+	{{ with .Site.Params.Slogan }}
+	         <p class="site-description">{{ . | default "" | safeHTML }}</p>
+	{{ end }}
 
-		<div id="menu-footer" class="menu-container menu-footer" role="navigation">
-    		<div class="menu">
+	<div id="menu-footer" class="menu-container menu-footer" role="navigation">
+		<div class="menu">
 
-              <ul id="menu-footer-items" class="menu-footer-items">
-                {{ range $name, $taxonomy := .Site.Params.Navlinks }}
-                    <li id="menu-item" class="menu-item menu-item-type-post_type menu-item-object-page menu-item"><a href="/{{ $taxonomy.url | urlize }}">{{ $taxonomy.name }}</a></li>
+          <ul id="menu-footer-items" class="menu-footer-items">
+            {{ with .Site.Menus.main}}
+                {{ range sort . }}
+                    <li class='menu-item {{ if eq ("/") (.URL) }}menu-item-type-custom menu-item-object-custom{{ else }}menu-item-type-post_type menu-item-object-page{{ end }}'>
+                      <a href="{{ .URL | absURL }}">{{ .Name }}</a>
+                    </li>
                 {{ end }}
-              </ul>
+            {{ end }}
+          </ul>
 
-            </div>
         </div>
+    </div>
 
    <div class="design-credit" style="padding: .4em 0;">
 		{{ range .Site.Params.copyright }}

@@ -25,32 +25,30 @@
           <h1 class='entry-title'> {{ .Title }}</h1>
         </div>
         <div class="entry-container">
-          <div class="entry-content">
-            <article>
-              {{ .Content }}
-            </article>
-          </div>
+            <div class="entry-content">
+                <article>
+                    {{ .Content }}
+                </article>
+            </div>
 
-      <div class='entry-meta-bottom'>
-
-
-  <div class="entry-categories"><p><span>Categories</span>
-    {{ range $index, $name := .Params.categories }}
-    <a href="{{ "/categories/" | relLangURL }}{{ $name | urlize }}" title="View all posts in {{ $name }}">{{ $name }}</a>{{ end }}
-  </p>
-</div>
-
-
-
-<div class="entry-tags"><p><span>Tags</span>
-  {{ range $index, $name := .Params.tags }}
-  <a href="{{ "/tags/" | relLangURL }}{{ $name | urlize }}" title="View all posts tagged {{ $name }}">{{ $name }}</a>
-  {{ end }}
-
-</p></div>	</div>
-
-
-</div>
+            <div class='entry-meta-bottom'>
+                <div class="entry-categories">
+                      <p>
+                          <span>Categories</span>
+                          {{ range $index, $name := .Params.categories }}
+                          <a href="{{ "/categories/" | relLangURL }}{{ $name | urlize }}" title="View all posts in {{ $name }}">{{ $name }}</a>{{ end }}
+                      </p>
+                </div>
+                <div class="entry-tags">
+                    <p>
+                        <span>Tags</span>
+                        {{ range $index, $name := .Params.tags }}
+                            <a href="{{ "/tags/" | relLangURL }}{{ $name | urlize }}" title="View all posts tagged {{ $name }}">{{ $name }}</a>
+                        {{ end }}
+                    </p>
+                </div>
+            </div>
+        </div>
 </div>
 
 <section id="comments" class="comments">

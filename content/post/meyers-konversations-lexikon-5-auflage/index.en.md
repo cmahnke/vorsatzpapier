@@ -1,5 +1,5 @@
 ---
-title: "Meyers Konversations Lexikon 5. Auflage"
+title: "Meyers Konversations Lexikon 5. edition"
 date: 2020-10-01T08:03:51+02:00
 tags:
 - book

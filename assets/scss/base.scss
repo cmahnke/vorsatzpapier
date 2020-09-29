@@ -5,7 +5,37 @@ $body-background: #38312f !default;
 
 @import "style";
 @import "custom";
-/*
 @import "icons";
-@import "theme";
-*/
+
+.fa-plus:before {
+    display: inline-block;
+    width: 1em;
+    content: url($plus-light);
+}
+
+@media (min-width: 37.5em) {
+    .menu-secondary-items:before {
+            content: '';
+    }
+}
+@media (min-width: 50em) {
+    .menu-unset>ul>li:after, .menu-primary-items>li:after {
+        content: '|';
+    }
+}
+
+.site-footer {
+    margin-top: unset;
+
+    .design-credit {
+        margin-top: unset;
+    }
+}
+
+.more-link-wrapper {
+    padding-top: .4em;
+}
+
+.excerpt-content {
+    margin-top: .6em;
+}

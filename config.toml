@@ -30,8 +30,13 @@ rssLimit = 25
                 url = "/"
 
             [[languages.de.menu.main]]
-                name = "Über"
+                name = "Weiterverwendungen"
                 weight = 2
+                url = "reuse/"
+
+            [[languages.de.menu.main]]
+                name = "Über"
+                weight = 3
                 url = "about/"
 
     [languages.en]
@@ -47,9 +52,14 @@ rssLimit = 25
                 weight = 1
                 url = "/"
 
-            [[languages.de.menu.main]]
-                name = "About"
+            [[languages.en.menu.main]]
+                name = "Reuse"
                 weight = 2
+                url = "reuse/"
+
+            [[languages.en.menu.main]]
+                name = "About"
+                weight = 3
                 url = "about/"
 
 [module]

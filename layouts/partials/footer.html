@@ -11,7 +11,7 @@
             {{ with .Site.Menus.main}}
                 {{ range sort . }}
                     <li class='menu-item {{ if eq ("/") (.URL) }}menu-item-type-custom menu-item-object-custom{{ else }}menu-item-type-post_type menu-item-object-page{{ end }}'>
-                      <a href="{{ .URL | absURL }}">{{ .Name }}</a>
+                      <a href="{{ .URL | absLangURL }}">{{ .Name }}</a>
                     </li>
                 {{ end }}
             {{ end }}
@@ -24,7 +24,8 @@
 		{{ range .Site.Params.copyright }}
 		<p>{{ . | markdownify }}</p>
 		{{ else }}
-		<p style="font-size: x-small;">
+        <p style="margin-top: 0.4em;">{{ i18n "cc" | safeHTML }}</p>
+		<p style="font-size: xx-small;">
 			Based on Nederburg Hugo Theme by <a target="_blank" href="https://appernetic.io">Appernetic</a> - A port of Tracks by Compete Themes.
 		</p>
 		{{ end }}

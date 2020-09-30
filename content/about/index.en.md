@@ -6,11 +6,7 @@ displayinlist: false
 ---
 
 Even if the title of the blog is "Vorsatzpapier" (book end paper or just end paper), it has been clear since the planning phase that it will not be limited to that. But since that's where the inspiration comes from and "Printed patterns on paper" is clearly too long, the title remains. Therefore, this blog will not only present end papers but also various examples of other printed patterns, these can also be wallpapers or similar.
-Since the idea for this came when it came to a background image for [Krähenbeisser.de], this should also be one of the purposes of this blog: to provide high-quality digital copies for further processing. Therefore, all content is provided under a Creative Commons license (attribution - sharing alike).
-
-The possibilities are endless: from backgrounds for websites to wrapping paper to paper for boxes and drawers, you can do a lot with it.
-
-If someone invests some time to convert one or more of the templates into vector graphics and provide them, I will be happy to include them here.
+Since the idea for this came when it came to a background image for [Krähenbeisser.de](https://krähenbeisser.de), this should also be one of the purposes of this blog: to provide high-quality digital copies for [further processing](/reuse/). Therefore, all content is provided under a Creative Commons license (attribution - sharing alike).
 
 # Colophon
 

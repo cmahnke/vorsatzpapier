@@ -1,7 +1,7 @@
 ---
 title: "Lehr- und Lesebuch für das gastwirtschaftliche Gewerbe"
 date: 2020-09-18T09:48:16+02:00
-type: endpaper
+preview: endpaper
 tags:
 - book end paper
 - book

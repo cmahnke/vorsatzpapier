@@ -1,7 +1,7 @@
 ---
 title: "Der grosse Brand und Wiederaufbau von Hamburg"
 date: 2020-10-08T09:46:20+02:00
-type: endpaper
+preview: endpaper
 tags:
 - book end paper
 - book

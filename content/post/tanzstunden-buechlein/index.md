@@ -1,7 +1,7 @@
 ---
 title: "Tanzstunden Büchlein"
 date: 2020-10-18T17:13:30+02:00
-type: endpaper
+preview: endpaper
 draft: true
 tags:
 - book end paper

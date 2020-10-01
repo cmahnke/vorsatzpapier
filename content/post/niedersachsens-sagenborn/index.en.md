@@ -1,7 +1,7 @@
 ---
 title: "Niedersachsens Sagenborn"
 date: 2020-09-25T16:54:45+02:00
-type: endpaper
+preview: endpaper
 tags:
 - book end paper
 resources:

@@ -1,7 +1,7 @@
 ---
 title: "Glückliche Kinderzeit"
 date: 2020-09-17T07:37:34+02:00
-type: endpaper
+preview: endpaper
 tags:
 - bookEndPaper
 - book

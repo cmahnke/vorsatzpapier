@@ -1,7 +1,7 @@
 ---
 title: "Souvenir d'Anvers."
 date: 2020-09-21T18:08:28+02:00
-type: endpaper
+preview: endpaper
 tags:
 - book end paper
 - book

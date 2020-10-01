@@ -1,7 +1,7 @@
 ---
 title: "Kraehenbeisser"
 date: 2020-08-05T19:36:07+02:00
-type: endpaper
+preview: endpaper
 tags:
 - bookEndPaper
 resources:

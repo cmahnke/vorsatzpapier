@@ -4,7 +4,7 @@ date: 2020-09-26T07:37:53+02:00
 tags:
 - bookEndPaper
 - book
-type: endpaper
+preview: endpaper
 resources:
 - src: "front-verso.jpg"
   name: page

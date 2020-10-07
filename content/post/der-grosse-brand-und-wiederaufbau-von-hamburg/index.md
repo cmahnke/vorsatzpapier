@@ -7,12 +7,15 @@ tags:
 - book
 resources:
 - src: "front.jpg"
+  name: front
   params:
     iiif: front/info.json
 - src: "title.jpg"
+  name: title
   params:
     iiif: title/info.json
 - src: "end-verso.jpg"
+  name: preview
   params:
     iiif: end-verso/info.json
 - src: "end-recto.jpg"

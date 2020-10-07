@@ -80,6 +80,8 @@ rssLimit = 25
         source = "assets/js"
         target = "assets/js"
 
+[imaging]
+    quality = 95
 
 [markup]
     [markup.goldmark]

@@ -4,11 +4,23 @@ date: 2020-09-25T16:54:45+02:00
 preview: endpaper
 tags:
 - book end paper
+- book
 resources:
-- src: "img001.jpg"
-  name: page
+- src: "front.jpg"
+  name: front
   params:
-    iiif: img001/info.json
+    iiif: front/info.json
+- src: "title.jpg"
+  name: title
+  params:
+    iiif: title/info.json
+- src: "end-verso.jpg"
+  name: preview
+  params:
+    iiif: end-verso/info.json
+- src: "end-recto.jpg"
+  params:
+    iiif: end-recto/info.json
 ---
 This beautiful pattern is the new background of the [Krähenbeißer](https: //krähenbeisser.de). It has been a recommendation of the [Antiquarian Pretzsch](https://antiquariat-pretzsch.de/). The book detectives there will also find the right endpaper for your internet presence or art projects.
 

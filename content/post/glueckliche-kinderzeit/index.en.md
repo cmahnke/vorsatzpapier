@@ -6,22 +6,21 @@ tags:
 - bookEndPaper
 - book
 resources:
-- src: "end-verso.jpg"
-  name: page
-  params:
-    iiif: end-verso/info.json
-- src: "end-recto.jpg"
-  name: page
-  params:
-    iiif: end-recto/info.json
-- src: "title.jpg"
-  name: title
-  params:
-    iiif: title/info.json
 - src: "front.jpg"
   name: front
   params:
     iiif: front/info.json
+- src: "title.jpg"
+  name: title
+  params:
+    iiif: title/info.json
+- src: "end-verso.jpg"
+  name: preview
+  params:
+    iiif: end-verso/info.json
+- src: "end-recto.jpg"
+  params:
+    iiif: end-recto/info.json
 ---
 
 An inexpensive gem from the 75¢ table of the [Antiquariat Pretzsch](https://antiquariat-pretzsch.de/) N°1.

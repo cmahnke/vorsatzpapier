@@ -6,18 +6,21 @@ tags:
 - book
 preview: endpaper
 resources:
-- src: "front-verso.jpg"
-  name: page
+- src: "front.jpg"
+  name: front
   params:
-    iiif: front-verso/info.json
-- src: "front-recto.jpg"
-  name: page
-  params:
-    iiif: front-recto/info.json
+    iiif: front/info.json
 - src: "title.jpg"
   name: title
   params:
     iiif: title/info.json
+- src: "front-verso.jpg"
+  name: preview
+  params:
+    iiif: front-verso/info.json
+- src: "front-recto.jpg"
+  params:
+    iiif: front-recto/info.json
 ---
 
 Ein weiteres günstiges Fundstück vom 75¢ Tisch des [Antiquariat Pretzsch](https://antiquariat-pretzsch.de/) N°1.

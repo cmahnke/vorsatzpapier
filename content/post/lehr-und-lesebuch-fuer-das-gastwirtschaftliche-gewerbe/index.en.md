@@ -6,21 +6,21 @@ tags:
 - book end paper
 - book
 resources:
-- src: "end-verso.jpg"
-  name: page
+- src: "front.jpg"
+  name: front
   params:
-    iiif: end-verso/info.json
-- src: "end-recto.jpg"
-  name: page
-  params:
-    iiif: end-recto/info.json
+    iiif: front/info.json
 - src: "title.jpg"
   name: title
   params:
     iiif: title/info.json
-- src: "front.jpg"
+- src: "end-verso.jpg"
+  name: preview
   params:
-    iiif: front/info.json
+    iiif: end-verso/info.json
+- src: "end-recto.jpg"
+  params:
+    iiif: end-recto/info.json
 ---
 
 Another one from my own collection.

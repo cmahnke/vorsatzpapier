@@ -3,24 +3,28 @@ title: "Der grosse Brand und Wiederaufbau von Hamburg"
 date: 2020-10-08T09:46:20+02:00
 preview: endpaper
 tags:
-- book end paper
-- book
+- pageEndPaper
+- Book
 resources:
 - src: "front.jpg"
   name: front
   params:
     iiif: front/info.json
+    class: front
 - src: "title.jpg"
   name: title
   params:
     iiif: title/info.json
+    class: title
 - src: "end-verso.jpg"
   name: preview
   params:
     iiif: end-verso/info.json
+    class: order-1
 - src: "end-recto.jpg"
   params:
     iiif: end-recto/info.json
+    class: order-2
 ---
 
 Ein weiteres Fundstück aus der eigenen Sammlung.

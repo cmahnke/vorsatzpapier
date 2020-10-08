@@ -1,0 +1,17 @@
+{{- define "main" -}}
+    <div id="loop-container" class="loop-container">
+        <div class="post type-post status-publish format-standard has-post-thumbnail hentry tag-design entry full-without-featured excerpt-1">
+            <div class="entry-meta"></div>
+            <div class='entry-header'>
+              <h1 class='entry-title'>404</h1>
+              <h1 class='entry-title'>Nicht gefunden</h1>
+            </div>
+            <div class="entry-container">
+                <div class="entry-content">
+                   <p>Die angeforderte URL konnte auf dem Server nicht gefunden werden.</p>
+                   <p>Du kannst hier zurück zur <a href="{{ .Site.BaseURL | safeHTML }}">Startseite</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{{- end -}}

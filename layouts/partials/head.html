@@ -1,17 +1,30 @@
 <meta charset="utf-8">
-{{ partial "schema" . }}
+{{- partial "schema" . -}}
 
 {{ with .Title }} <title>{{ . }} {{if $.IsHome}}- {{ $.Site.Params.slogan | default "" | safeHTML }}{{ end }}</title>
 {{ end }}
 
-{{ if .Description }}<meta name="description" content="{{ .Description }}" />
-{{ else }}<meta name="description" content="{{ .Site.Params.description }}" />
-{{ end }}
+{{- if .Description -}}
+    <meta name="description" content="{{ .Description }}" />
+{{- else -}}
+    <meta name="description" content="{{ .Site.Params.description }}" />
+{{- end -}}
+
+{{ if hasPrefix .Page.Name "404" }}
+    <meta http-equiv="refresh" content="15; URL={{ .Site.BaseURL }}">
+{{- end -}}
 
 {{ hugo.Generator }}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="all,follow">
 <meta name="googlebot" content="index,follow,snippet,archive">
+
+{{/* JavaScript */}}
+{{- $defines := dict "process.env.NODE_ENV" `"production"` -}}
+{{- $opts := dict "targetPath" "js/main.js" "defines" $defines "minify" true -}}
+{{- $main := resources.Get "js/main.js" | js.Build $opts -}}
+{{- $js := slice $main | resources.Concat "js/main.js" | minify | fingerprint -}}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
 
 {{/* External Styles - Fonts etc */}}
 {{ range .Site.Params.stylesheets -}}

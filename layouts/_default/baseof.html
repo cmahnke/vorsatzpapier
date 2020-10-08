@@ -4,7 +4,14 @@
     {{ partial "head.html" . }}
 </head>
 {{ block "body" . }}
-<body class="home blog ct-body standard">
+    {{- $class := "" -}}
+    {{- if hasPrefix .Page.File.Path "about" -}}
+        {{- $class = "about" -}}
+    {{- end -}}
+    {{- if .Params.metaPage -}}
+        {{- $class = printf "%s %s" $class "meta" -}}
+    {{ end }}
+    <body class="home blog ct-body standard {{ $class }}">
 {{ end }}
   <div id="overflow-container" class="overflow-container">
     <a class="skip-content" href="#main">Skip to content</a>

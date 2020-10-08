@@ -4,10 +4,11 @@ title = "Vorsatzpapier"
 theme = "hugo-nederburg-theme"
 publishDir = "docs"
 canonifyurls = true
-disableKinds = ["term"]
+disableKinds = ["taxonomy"]
+ignoreErrors = ["error-disable-taxonomy"]
 DefaultContentLanguage = "de"
 rssLimit = 25
-    paginate = 5
+paginate = 10
 
 [params]
     author = "Christian Mahnke"
@@ -31,13 +32,18 @@ rssLimit = 25
                 url = "/"
 
             [[languages.de.menu.main]]
-                name = "Weiterverwendungen"
+                name = "Weiterverwendung"
                 weight = 2
                 url = "reuse/"
 
             [[languages.de.menu.main]]
-                name = "Über"
+                name = "Muster"
                 weight = 3
+                url = "patterns/"
+
+            [[languages.de.menu.main]]
+                name = "Über"
+                weight = 4
                 url = "about/"
 
     [languages.en]
@@ -59,8 +65,13 @@ rssLimit = 25
                 url = "reuse/"
 
             [[languages.en.menu.main]]
-                name = "About"
+                name = "Patterns"
                 weight = 3
+                url = "patterns/"
+
+            [[languages.en.menu.main]]
+                name = "About"
+                weight = 4
                 url = "about/"
 
 [module]

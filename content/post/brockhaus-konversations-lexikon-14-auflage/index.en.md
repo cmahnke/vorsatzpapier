@@ -2,14 +2,16 @@
 title: "Brockhaus Konversations Lexikon 14. edition"
 date: 2020-10-11T08:07:42+02:00
 tags:
-- book
+- Book
 resources:
 - src: "img001.jpg"
   params:
     iiif: img001/info.json
+    class: order-1
 - src: "img002.jpg"
   params:
     iiif: img002/info.json
+    class: order-2
 ---
 These sheets are from a stack of cut out lexicon pages.
 

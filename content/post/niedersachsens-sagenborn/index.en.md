@@ -3,24 +3,28 @@ title: "Niedersachsens Sagenborn"
 date: 2020-09-25T16:54:45+02:00
 preview: endpaper
 tags:
-- book end paper
-- book
+- Book
+- pageEndPaper
 resources:
 - src: "front.jpg"
   name: front
   params:
     iiif: front/info.json
+    class: front
 - src: "title.jpg"
   name: title
   params:
     iiif: title/info.json
+    class: title
 - src: "end-verso.jpg"
   name: preview
   params:
     iiif: end-verso/info.json
+    class: order-1
 - src: "end-recto.jpg"
   params:
     iiif: end-recto/info.json
+    class: order-2
 ---
 This beautiful pattern is the new background of the [Krähenbeißer](https: //krähenbeisser.de). It has been a recommendation of the [Antiquarian Pretzsch](https://antiquariat-pretzsch.de/). The book detectives there will also find the right endpaper for your internet presence or art projects.
 

@@ -1,8 +1,8 @@
 <h1 class="screen-reader-text">Posts</h1>
 
 <div id="loop-container" class="loop-container">
-	{{ $paginator := .Paginate (where (where .Site.Pages "Type" "post").ByDate.Reverse "IsPage" true) }}
-	{{ range $index, $element := .Paginator.Pages }}
+	{{- $paginator := .Paginate (where (where .Site.Pages "Type" "post").ByDate.Reverse "IsPage" true) -}}
+	{{- range $index, $element := .Paginator.Pages -}}
 		{{- $context := path.Dir .File.Path -}}
 		{{- $images := newScratch -}}
 
@@ -12,14 +12,25 @@
 				{{- if eq .name "preview" -}}
 					{{- $imgLocation := path.Join $context .src -}}
 					{{- $previewImg := ($element.Resources.ByType "image").GetMatch .name -}}
-					{{- $crop := "500x500" -}}
-					{{ if .Params.crop }}
-						{{ $crop = .Params.crop -}}
+                    {{/* Format: width x height */}}
+
+                    {{- $cropWidth := 900 -}}
+                    {{- $cropHeight := 600 -}}
+                    {{ if .params.cropWidth }}
+						{{ $cropWidth = .params.cropWidth -}}
 					{{- end }}
+					{{ if .params.cropHeight }}
+						{{ $cropHeight = .params.cropHeight -}}
+					{{- end }}
+
+                    {{ $crop := printf "%dx%d" $cropWidth $cropHeight }}
 					{{- if eq $previewImg nil -}}
-						<div class="error">Can't find image {{ $imgLocation }}!</div>
+                        {{ errorf "Can't find image %s" $imgLocation }}
 					{{- else -}}
-						{{- $previewImg = $previewImg.Fill (printf "%s %s" $crop "center") -}}
+                        {{ $crop2x := printf "%dx%d" (div $previewImg.Width 2) $cropHeight }}
+						{{- $previewImg = $previewImg.Fill (printf "%s %s" $crop2x "center") -}}
+                        {{- $previewImg = $previewImg.Fill (printf "%s %s" $crop "center") -}}
+
 					{{- end -}}
 					{{- $images.Set "preview" $previewImg -}}
 				{{- end -}}
@@ -28,20 +39,25 @@
 
 
 		{{- $previewImg := $images.Get "preview" -}}
-		{{ $style := "" }}
+		{{- $style := "" -}}
+        {{- $class := "" -}}
 
 		{{- if $previewImg -}}
 			{{- $style = printf "background-image: url(%s);" $previewImg.RelPermalink -}}
-		{{ end }}
+            {{- $class = "preview" -}}
+		{{- end -}}
 
+        {{/*
 		{{- if and (isset .Params "image") .Params.image -}}
+        */}}
+        {{- if $previewImg -}}
 			{{- if eq (mod $index 2) 0 -}}
-				<div style="{{ $style | safeCSS }}" class="post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-memories tag-normal-post tag-standard-2 excerpt zoom full-without-featured odd excerpt">
+				<div style="{{ $style | safeCSS }}" class="{{ $class | safeCSS }} post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-memories tag-normal-post tag-standard-2 excerpt zoom full-without-featured odd excerpt">
 			{{- else -}}
-				<div style="{{ $style | safeCSS }}" class="post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-memories tag-normal-post tag-standard-2 excerpt zoom full-without-featured even excerpt">
+				<div style="{{ $style | safeCSS }}" class="{{ $class | safeCSS }} post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-memories tag-normal-post tag-standard-2 excerpt zoom full-without-featured even excerpt">
 			{{- end -}}
 		{{- else -}}
-			<div style="{{ $style | safeCSS }}" class="post type-post status-publish format-standard hentry category-standard category-travel excerpt zoom full-without-featured odd excerpt">
+			<div style="{{ $style | safeCSS }}" class="{{ $class | safeCSS }} post type-post status-publish format-standard hentry category-standard category-travel excerpt zoom full-without-featured odd excerpt">
 		{{- end -}}
 		{{- if $previewImg -}}
 			<a class="featured-image-link" href="{{ .Permalink }}">
@@ -50,7 +66,7 @@
 					</div>
 				{{ end }}
 			</a>
-		{{ end }}
+		{{- end -}}
 
 		<div class="excerpt-container">
 			<div class="excerpt-meta">
@@ -77,5 +93,5 @@
 			</div>
 		</div>
 	</div>
-	{{ end }}
+	{{- end -}}
 </div>

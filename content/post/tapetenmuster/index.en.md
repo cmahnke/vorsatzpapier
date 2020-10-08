@@ -1,28 +1,34 @@
 ---
 title: "Tapetenmuster"
 date: 2020-09-15T07:39:09+02:00
+preview: wallpaper
 tags:
-- wallpaper
+- Wallpaper
 resources:
 - src: "img001.jpg"
   name: page
   params:
     iiif: img001/info.json
+    class: order-1
 - src: "img002.jpg"
-  name: page
+  name: preview
   params:
     iiif: img002/info.json
+    class: order-2
 - src: "img003.jpg"
   name: page
   params:
     iiif: img003/info.json
+    class: order-3
 - src: "img004.jpg"
   name: page
   params:
     iiif: img004/info.json
+    class: order-4
 - src: "img005.jpg"
   name: page
   params:
     iiif: img005/info.json
+    class: order-5
 ---
 These are hand-painted wallpaper samples - purchased from the best supplier of historical wallpapers in Göttingen - [Zeitzeug](http://zeitzeug.de/). There you will find a large selection of old wallpapers for your redecoration projects.

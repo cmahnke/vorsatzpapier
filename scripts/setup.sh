@@ -1,6 +1,10 @@
 #!/bin/sh
 
-./scripts/iiif.sh
+echo "Set SKIP_IIIF to something to disable generation of IIIF derivates"
+
+if [[ -z "$SKIP_IIIF" ]] ; then
+    ./scripts/iiif.sh
+fi
 
 # Favicons
 # See https://gist.github.com/pfig/1808188

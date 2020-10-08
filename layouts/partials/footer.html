@@ -21,13 +21,16 @@
     </div>
 
    <div class="design-credit" style="padding: .4em 0;">
+        <p style="margin-top: 0.4em;" class="projektemacher">
+            {{ .Site.Title }} {{ i18n "projektemacher" | safeHTML }}
+        </p>
 		{{ range .Site.Params.copyright }}
-		<p>{{ . | markdownify }}</p>
+		      <p>{{ . | markdownify }}</p>
 		{{ else }}
-        <p style="margin-top: 0.4em;">{{ i18n "cc" | safeHTML }}</p>
-		<p style="font-size: xx-small;">
-			Based on Nederburg Hugo Theme by <a target="_blank" href="https://appernetic.io">Appernetic</a> - A port of Tracks by Compete Themes.
-		</p>
+            <p style="margin-top: 0.4em;">{{ i18n "cc" | safeHTML }}</p>
+    		<p style="font-size: xx-small;">
+    			Based on Nederburg Hugo Theme by <a target="_blank" href="https://appernetic.io">Appernetic</a> - A port of Tracks by Compete Themes.
+    		</p>
 		{{ end }}
 	</div>
 </footer>

@@ -10,7 +10,7 @@
 {{ end }}
 
 {{ define "main" }}
-    {{- if hasPrefix .Page.Dir "patterns" -}}
+    {{- if hasPrefix .File.Dir "patterns" -}}
         {{- partial "patterns.html" . -}}
     {{- else -}}
         {{- partial "post.html" . -}}

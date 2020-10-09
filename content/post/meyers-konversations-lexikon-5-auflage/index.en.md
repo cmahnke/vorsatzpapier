@@ -27,6 +27,7 @@ resources:
 ---
 These sheets are from a stack of cut out lexicon pages.
 
+<!--more-->
 # About the work
 
 These sheets are from Meyers Konversations-Lexikon, [5. edition](https://de.wikipedia.org/wiki/Meyers_Konversations-Lexikon#5._Auflage_(1893%E2%80%931897/1901)) published 1893 - 1901 by Bibliographisches Institut, Leipzig

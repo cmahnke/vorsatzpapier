@@ -1,5 +1,7 @@
 {{ define "body" }}
-    {{- $class := "" -}}
+    {{- $slug := .File.Dir -}}
+    {{- $slug := replace $slug "/" "" -}}
+    {{- $class := $slug -}}
     {{- if hasPrefix .Page.File.Path "about" -}}
         {{- $class = "about" -}}
     {{- end -}}

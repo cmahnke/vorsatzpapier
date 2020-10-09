@@ -225,6 +225,17 @@ $body-background: #38312f !default;
     }
 }
 
+.patterns {
+    .main {
+        width: 88.89%;
+        /* max-width: 1280px; */
+
+        .archive-header h2 {
+            text-transform: none;
+        }
+    }
+
+}
 .share {
     text-align: end;
     font-size: small;
@@ -250,4 +261,8 @@ body.about .loop-container .post {
     a {
         text-decoration: none;
     }
+}
+
+a.worldcat {
+    display: none;
 }

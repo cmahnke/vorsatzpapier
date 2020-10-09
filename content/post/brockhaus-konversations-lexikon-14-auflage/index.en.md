@@ -15,6 +15,7 @@ resources:
 ---
 These sheets are from a stack of cut out lexicon pages.
 
+<!--more-->
 # About the work
 
 These sheets are from Brockhaus' Konversations-Lexikon, 14. edition, published 1892-1895 by Brockhaus Verlag, Leipzig.

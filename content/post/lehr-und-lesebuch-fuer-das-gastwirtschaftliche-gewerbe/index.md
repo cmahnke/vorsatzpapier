@@ -4,7 +4,7 @@ date: 2020-09-18T09:48:16+02:00
 preview: endpaper
 tags:
 - Book
-- pageEndPaper
+- bookEndPaper
 resources:
 - src: "front.jpg"
   name: front
@@ -29,6 +29,7 @@ resources:
 
 Ein weiteres Fundstück aus der eigenen Sammlung.
 
+<!--more-->
 # Über das Buch
 
 Dieses Vorsatzpapier ist aus dem Buch "Lehr- und Lesebuch für das gastwirtschaftliche Gewerbe" von Otto Hartmann, selbstverlegt 1895 in Berlin. <a class="worldcat" href="http://www.worldcat.org/oclc/250697635">&nbsp;</a>

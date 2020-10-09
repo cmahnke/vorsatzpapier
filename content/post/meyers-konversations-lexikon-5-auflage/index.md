@@ -27,6 +27,7 @@ resources:
 ---
 Diese Tafeln entstammen einem Konvolut von auseinander geschnittenen Lexika.
 
+<!--more-->
 # Über das Werk
 
 Diese Tafeln stammen aus Meyers Konversations-Lexikon, [5. Auflage](https://de.wikipedia.org/wiki/Meyers_Konversations-Lexikon#5._Auflage_(1893%E2%80%931897/1901)) erschienen 1893 - 1901 im Bibliographischen Institut, Leipzig.

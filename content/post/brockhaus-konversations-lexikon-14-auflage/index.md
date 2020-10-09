@@ -15,6 +15,7 @@ resources:
 ---
 Diese Tafeln entstammen einem Konvolut von auseinander geschnittenen Lexika.
 
+<!--more-->
 # Über das Werk
 
 Diese Tafeln stammen aus Brockhaus' Konversations-Lexikon, 14. Auflage, erschienen 1892 - 1895 im Brockhaus Verlag, Leipzig.

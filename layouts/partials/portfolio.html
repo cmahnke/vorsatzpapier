@@ -5,6 +5,9 @@
 	{{- range $index, $element := .Paginator.Pages -}}
 		{{- $context := path.Dir .File.Path -}}
 		{{- $images := newScratch -}}
+        {{- $resize := false -}}
+        {{- $defaultWidth := 800 -}}
+        {{- $defaultHeight := 400 -}}
 
 		{{/* Preview */}}
 		{{- if .Params.preview -}}
@@ -14,13 +17,16 @@
 					{{- $previewImg := ($element.Resources.ByType "image").GetMatch .name -}}
                     {{/* Format: width x height */}}
 
-                    {{- $cropWidth := 900 -}}
-                    {{- $cropHeight := 600 -}}
-                    {{ if .params.cropWidth }}
-						{{ $cropWidth = .params.cropWidth -}}
+                    {{- $cropWidth := $defaultWidth -}}
+                    {{- $cropHeight := $defaultHeight -}}
+
+                    {{ if .params.cropwidth }}
+						{{ $cropWidth = .params.cropwidth -}}
+                        {{- $resize = true -}}
 					{{- end }}
-					{{ if .params.cropHeight }}
-						{{ $cropHeight = .params.cropHeight -}}
+					{{ if .params.cropheight }}
+						{{ $cropHeight = .params.cropheight -}}
+                        {{- $resize = true -}}
 					{{- end }}
 
                     {{ $crop := printf "%dx%d" $cropWidth $cropHeight }}
@@ -30,7 +36,9 @@
                         {{ $crop2x := printf "%dx%d" (div $previewImg.Width 2) $cropHeight }}
 						{{- $previewImg = $previewImg.Fill (printf "%s %s" $crop2x "center") -}}
                         {{- $previewImg = $previewImg.Fill (printf "%s %s" $crop "center") -}}
-
+                        {{- if eq $resize true -}}
+                            {{- $previewImg = $previewImg.Fill (printf "%s %s" (printf "%dx%d" $defaultWidth $defaultHeight ) "center") -}}
+                        {{- end -}}
 					{{- end -}}
 					{{- $images.Set "preview" $previewImg -}}
 				{{- end -}}

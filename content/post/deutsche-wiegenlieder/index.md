@@ -4,7 +4,7 @@ date: 2020-08-05T19:36:07+02:00
 preview: endpaper
 tags:
 - Book
-- pageEndPaper
+- bookEndPaper
 resources:
 - src: "front.jpg"
   name: front
@@ -30,6 +30,7 @@ Die Digitalisierung dieses Vorsatzpapiers wurde durch eine freundliche Leihgabe 
 
 Es dient als Hintergrund für den [Krähenbeißer](https://krähenbeisser.de).
 
+<!--more-->
 # Über das Buch
 
 Dieses Vorsatzpapier ist aus dem Buch "Deutsche Wiegenlieder" von Hans Fraungruber, erschienen ca. 1909 im Verlag Gerlach und Wiedling, Wien und Leipzig, entnommen.  <a class="worldcat" href="http://www.worldcat.org/oclc/256761549">&nbsp;</a>

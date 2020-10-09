@@ -1,7 +1,6 @@
 Vorsatzpapier
 =============
 
-
 # Batch conversion
 
 ```

@@ -4,7 +4,7 @@ date: 2020-09-25T16:54:45+02:00
 preview: endpaper
 tags:
 - Book
-- pageEndPaper
+- bookEndPaper
 resources:
 - src: "front.jpg"
   name: front
@@ -28,6 +28,7 @@ resources:
 ---
 Dieses schöne Fundstück ist die Quelle für den neuen Hintergrund des [Krähenbeißers](https://krähenbeisser.de). Es ist eine Empfehlung des [Antiquariats Pretzsch](https://antiquariat-pretzsch.de/). Die Buchdetektivinnen dort finden auch das richtige Vorsatzpapier für eure Internetauftritte.
 
+<!--more-->
 # Über das Buch
 
 Dieses Vorsatzpapier ist aus dem Buch "Niedersachsens Sagenborn" von Karl Henniger, erschienen 1907 im Verlag August Lax, Hildesheim, entnommen. <a class="worldcat" href="http://www.worldcat.org/oclc/903072932">&nbsp;</a>

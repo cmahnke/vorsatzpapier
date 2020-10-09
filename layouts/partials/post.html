@@ -27,10 +27,18 @@
 
                       {{- if .params.iiif -}}
                           {{- $class := "" -}}
+                          {{- $orientation := "" -}}
                           {{- if .params.class -}}
                               {{- $class = .params.class -}}
                           {{- end -}}
-                          <div class="iiif-image {{ $class | safeHTML }}">
+                          {{- $previewImg := (.Resources.ByType "image").GetMatch .name -}}
+                          {{ if lt $previewImg.Width $previewImg.Height }}
+                              {{- $orientation = "portrait" -}}
+                          {{- else -}}
+                              {{- $orientation = "landscape" -}}
+                          {{- end -}}
+
+                          <div class="iiif-image {{ $class | safeHTML }} {{ $orientation | safeHTML }}">
                               {{- $mapName := replace .params.iiif "/" "_" -}}
                               {{- $mapName := replace $mapName "-" "_" -}}
                               {{- $mapName := replace $mapName "." "" -}}

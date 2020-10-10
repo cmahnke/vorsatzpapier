@@ -136,8 +136,8 @@ $link-color: #42a5f5 !default;
 .entry-container {
   padding-right: 0;
 
-  .iiif {
-    /*display: flex;*/
+  .iiif, .book-description-images {
+
     .viewer {
       width: 100%;
       height: 65vh;
@@ -222,6 +222,7 @@ $link-color: #42a5f5 !default;
   text-align: end;
   font-size: small;
   line-height: normal;
+  margin-right: 1em;
   margin-top: 1em;
   margin-bottom: 1.5em;
 
@@ -284,6 +285,10 @@ a.worldcat {
       max-height: 100rem;
     }
   }
+}
+
+.book-description-images {
+  display: flex;
 }
 
 .navigation-list {

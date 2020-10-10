@@ -35,4 +35,3 @@ resources:
 Ein Buch über Tapeten, mit einem eingeklebten Stück echter Tapete.
 
 <!--more-->
-+#

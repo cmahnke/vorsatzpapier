@@ -25,8 +25,11 @@
                   {{- $pageURL := .Permalink -}}
                   {{- range .Params.resources -}}
                   {{/*
-                    {{- if   not (or (eq .name "front") (eq .name "title")) -}}
+or (and (ne .Params.itemType "work") (ne .Params.itemType "book")
+{{ printf "#%v" .}}
                   */}}
+                    {{- if or (and (ne $.Params.itemType "work") (ne $.Params.itemType "book")) (not (or (or (eq .name "front") (eq .name "title")) (eq .name "cover"))) -}}
+
                       {{- if .params.iiif -}}
                           {{- $class := "" -}}
                           {{- $orientation := "" -}}
@@ -41,9 +44,7 @@
                           {{- end -}}
 
                           <div class="iiif-image {{ $class | safeHTML }} {{ $orientation | safeHTML }}">
-                              {{- $mapName := replace .params.iiif "/" "_" -}}
-                              {{- $mapName := replace $mapName "-" "_" -}}
-                              {{- $mapName := replace $mapName "." "" -}}
+                              {{- $mapName := replace (replace (replace .params.iiif "/" "_") "." "") "-" "_" -}}
                               {{- $infoJson := printf "/%s" (path.Join $context .params.iiif) -}}
                               {{- $baseURL := printf "/%s/%s/" $context (path.Dir .params.iiif) -}}
                               <a name="{{ $mapName }}"></a>
@@ -65,9 +66,9 @@
                               </div>
                             </div>
                       {{- end -}}
-                  {{/*
+                  {{/* */}}
                     {{- end -}}
-*/}}
+{{/* */}}
                   {{- end -}}
                 </div>
 
@@ -86,13 +87,49 @@
                         {{- .Params.itemDescription | markdownify -}}
                       </div>
                     {{- end -}}
+
                     {{- if eq .Params.itemType "book" -}}
-                      {{- range .Params.resources -}}
-                        {{- if or (eq .name "front") (eq .name "title") -}}
-                          <div class="iiif-image {{ .name }}">
-                          </div>
+                      <div class="book-description-images">
+                        {{- range .Params.resources -}}
+                          {{- if or (or (eq .name "front") (eq .name "title")) (eq .name "cover") -}}
+                            {{- $class := "" -}}
+                            {{- $orientation := "" -}}
+
+                            {{- if .params.class -}}
+                                {{- $class = .params.class -}}
+                            {{- end -}}
+                            {{- $previewImg := (.Resources.ByType "image").GetMatch .name -}}
+                            {{ if lt $previewImg.Width $previewImg.Height }}
+                                {{- $orientation = "portrait" -}}
+                            {{- else -}}
+                                {{- $orientation = "landscape" -}}
+                            {{- end -}}
+
+                            <div class="iiif-image {{ $class | safeHTML }} {{ $orientation | safeHTML }}">
+                              {{- $mapName := replace (replace (replace .params.iiif "/" "_") "." "") "-" "_" -}}
+                              {{- $infoJson := printf "/%s" (path.Join $context .params.iiif) -}}
+                              {{- $baseURL := printf "/%s/%s/" $context (path.Dir .params.iiif) -}}
+
+                              <a name="{{ $mapName }}"></a>
+                              <div id="{{ $mapName }}" class="viewer {{ $class }}"></div>
+                              {{ $rotation := 0 }}
+                              {{ if .params.rotate }}
+                                  {{ $rotation = .params.rotate }}
+                              {{ end }}
+                              <script type="text/javascript">
+                                  {{ $mapName | safeJS }}_Div = document.getElementById("{{ $mapName }}");
+                                  {{ $mapName | safeJS }} = addMap({{ $mapName | safeJS }}_Div, "{{ $infoJson }}", {{ $rotation }}, {{ $baseURL }});
+                              </script>
+                              <div class="share">
+                                  {{ $downloadURL := printf "%s" .src }}
+                                  <a href="{{ $downloadURL }}" class="image-download">Volle Auflösung herunterladen</a> |
+                                  <a href="{{ $infoJson }}" class="iiif-link">IIIF Manifest</a> |
+                                  <a href="{{ $pageURL }}#{{ $mapName }}" class="image-link">Link zu diesem Bild</a>
+                              </div>
+                            </div>
+                          {{- end -}}
                         {{- end -}}
-                      {{- end -}}
+                      </div>
                     {{- end -}}
 
                 </article>

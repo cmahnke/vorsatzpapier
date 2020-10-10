@@ -2,6 +2,8 @@
 title: "Souvenir d'Anvers"
 date: 2020-09-21T18:08:28+02:00
 preview: endpaper
+itemType: book
+itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Souvenir d''Anvers", erschienen um 1900 in Antwerpen. <a class="worldcat" href="http://www.worldcat.org/oclc/647827191">&nbsp;</a>'
 tags:
 - Book
 - bookEndPaper
@@ -30,6 +32,3 @@ resources:
 Ein schönes altes Fotobuch vom Flohmarkt.
 
 <!--more-->
-# Über das Buch
-
-Dieses Vorsatzpapier stammt aus dem Buch "Souvenir d'Anvers", erschienen um 1900 in Antwerpen. <a class="worldcat" href="http://www.worldcat.org/oclc/647827191">&nbsp;</a>

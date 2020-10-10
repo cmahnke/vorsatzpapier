@@ -12,7 +12,7 @@
 
 {{ if hasPrefix .Page.Name "404" }}
     <meta http-equiv="refresh" content="15; URL={{ .Site.BaseURL }}">
-{{- end -}}
+{{- end }}
 
 {{ hugo.Generator }}
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,9 +29,9 @@
 {{/* External Styles - Fonts etc */}}
 {{ range .Site.Params.stylesheets -}}
     <link href="{{ . }}" rel="stylesheet">
-{{- end -}}
+{{- end }}
 
-{{ $options := (dict "targetPath" "base.css" "outputStyle" "compressed" "includePaths" "static/css") -}}
+{{- $options := (dict "targetPath" "base.css" "outputStyle" "compressed" "includePaths" "static/css") -}}
 {{- $ourTemplate := resources.Get "scss/base.scss" -}}
 {{- $ourStyle := $ourTemplate | resources.ExecuteAsTemplate "scss/base.scss" . | toCSS $options -}}
 {{ $olStyle := resources.Get "css/ol/ol.css" }}

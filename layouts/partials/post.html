@@ -24,7 +24,9 @@
                   {{- $context := path.Dir .File.Path -}}
                   {{- $pageURL := .Permalink -}}
                   {{- range .Params.resources -}}
-
+                  {{/*
+                    {{- if   not (or (eq .name "front") (eq .name "title")) -}}
+                  */}}
                       {{- if .params.iiif -}}
                           {{- $class := "" -}}
                           {{- $orientation := "" -}}
@@ -43,6 +45,7 @@
                               {{- $mapName := replace $mapName "-" "_" -}}
                               {{- $mapName := replace $mapName "." "" -}}
                               {{- $infoJson := printf "/%s" (path.Join $context .params.iiif) -}}
+                              {{- $baseURL := printf "/%s/%s/" $context (path.Dir .params.iiif) -}}
                               <a name="{{ $mapName }}"></a>
                               <div id="{{ $mapName }}" class="viewer {{ $class }}"></div>
 
@@ -52,26 +55,46 @@
                               {{ end }}
                               <script type="text/javascript">
                                   {{ $mapName | safeJS }}_Div = document.getElementById("{{ $mapName }}");
-                                  {{ $mapName | safeJS }} = addMap({{ $mapName | safeJS }}_Div, "{{ $infoJson | safeJS }}", {{ $rotation }});
+                                  {{ $mapName | safeJS }} = addMap({{ $mapName | safeJS }}_Div, "{{ $infoJson }}", {{ $rotation }}, {{ $baseURL }});
                               </script>
                               <div class="share">
                                   {{ $downloadURL := printf "%s" .src }}
-                                  {{/*
-                                  {{ if (fileExists (printf "static%s" $downloadURL)) }}
-                                      <a href="/{{- $downloadURL -}}" class="image-download">Volle Auflösung herunterladen</a> |
-                                  {{ end }}
-                                  */}}
                                   <a href="{{ $downloadURL }}" class="image-download">Volle Auflösung herunterladen</a> |
                                   <a href="{{ $infoJson }}" class="iiif-link">IIIF Manifest</a> |
                                   <a href="{{ $pageURL }}#{{ $mapName }}" class="image-link">Link zu diesem Bild</a>
                               </div>
                             </div>
                       {{- end -}}
+                  {{/*
+                    {{- end -}}
+*/}}
                   {{- end -}}
                 </div>
 
                 <article>
                     {{ .Content }}
+                    {{- if .Params.itemType -}}
+                      <div class="{{ .Params.itemType }}-description">
+                        {{- if eq .Params.itemType "book" -}}
+                            <h1>{{ i18n "aboutTheNeu" }} {{ i18n "book" }}</h1>
+                        {{- else if eq .Params.itemType "work" -}}
+                            <h1>{{ i18n "aboutTheNeu" }} {{ i18n "work" }}</h1>
+                        {{- else if eq .Params.itemType "wallpaper" -}}
+                            <h1>{{ i18n "aboutTheFem" }} {{ i18n "wallpaper" }}</h1>
+                        {{- end -}}
+
+                        {{- .Params.itemDescription | markdownify -}}
+                      </div>
+                    {{- end -}}
+                    {{- if eq .Params.itemType "book" -}}
+                      {{- range .Params.resources -}}
+                        {{- if or (eq .name "front") (eq .name "title") -}}
+                          <div class="iiif-image {{ .name }}">
+                          </div>
+                        {{- end -}}
+                      {{- end -}}
+                    {{- end -}}
+
                 </article>
             </div>
 

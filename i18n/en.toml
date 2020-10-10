@@ -1,3 +1,12 @@
+# Dessriptions
+
+[aboutTheNeu]
+other = "About the"
+
+[aboutTheFem]
+other = "About the"
+
+#Tags
 [bookEndPaper]
 other = "Page end paper"
 
@@ -19,8 +28,16 @@ other = "Wallpaper"
 [wallpaper]
 other = "Wallpaper"
 
+[Work]
+other = "Werk"
+
+[work]
+other = "Werk"
+
 [allTags]
 other = "View all posts tagged"
+
+#Other
 
 [readPost]
 other = "Read the post"

@@ -5,6 +5,8 @@ tags:
 - Book
 - bookEndPaper
 preview: endpaper
+itemType: book
+itemDescription: 'This endpaper is taken from the book "Die Heilige Insel" by Lely Kempin, 8th edition, published 1921 by Velhagen & Klasing, Bielefeld. <a class="worldcat" href="http://www.worldcat.org/oclc/936421290">&nbsp;</a>'
 resources:
 - src: "front.jpg"
   name: front
@@ -30,6 +32,3 @@ resources:
 Another inexpensive gem from the 75¢ table of the [Antiquariat Pretzsch](https://antiquariat-pretzsch.de/) N°1.
 
 <!--more-->
-# About the book
-
-This endpaper is taken from the book "Die Heilige Insel" by Lely Kempin, 8th edition, published 1921 by Velhagen & Klasing, Bielefeld. <a class="worldcat" href="http://www.worldcat.org/oclc/936421290">&nbsp;</a>

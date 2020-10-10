@@ -1,6 +1,8 @@
 ---
 title: "Meyers Konversations Lexikon 5. Auflage"
 date: 2020-10-01T08:03:51+02:00
+itemType: work
+itemDescription: "Diese Tafeln stammen aus Meyers Konversations-Lexikon, [5. Auflage](https://de.wikipedia.org/wiki/Meyers_Konversations-Lexikon#5._Auflage_(1893%E2%80%931897/1901)) erschienen 1893 - 1901 im Bibliographischen Institut, Leipzig."
 tags:
 - Book
 resources:
@@ -28,6 +30,3 @@ resources:
 Diese Tafeln entstammen einem Konvolut von auseinander geschnittenen Lexika.
 
 <!--more-->
-# Über das Werk
-
-Diese Tafeln stammen aus Meyers Konversations-Lexikon, [5. Auflage](https://de.wikipedia.org/wiki/Meyers_Konversations-Lexikon#5._Auflage_(1893%E2%80%931897/1901)) erschienen 1893 - 1901 im Bibliographischen Institut, Leipzig.

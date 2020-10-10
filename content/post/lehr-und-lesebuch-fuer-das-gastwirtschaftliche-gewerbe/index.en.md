@@ -2,6 +2,8 @@
 title: "Lehr- und Lesebuch für das gastwirtschaftliche Gewerbe"
 date: 2020-09-18T09:48:16+02:00
 preview: endpaper
+itemType: book
+itemDescription: 'This endpaper is taken from the book "Lehr- und Lesebuch für das gastwirtschaftliche Gewerbe" by Otto Hartmann, self published 1895 in Berlin. <a class="worldcat" href="http://www.worldcat.org/oclc/250697635">&nbsp;</a>'
 tags:
 - Book
 - bookEndPaper
@@ -30,6 +32,3 @@ resources:
 Another one from my own collection.
 
 <!--more-->
-# Über das Buch
-
-This endpaper is taken from the book "Lehr- und Lesebuch für das gastwirtschaftliche Gewerbe" by Otto Hartmann, self published 1895 in Berlin. <a class="worldcat" href="http://www.worldcat.org/oclc/250697635">&nbsp;</a>

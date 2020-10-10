@@ -35,6 +35,7 @@
                               {{- $mapName := replace $mapName "-" "_" -}}
                               {{- $mapName := replace $mapName "." "" -}}
                               {{- $infoJson := printf "/%s" (path.Join $context .params.iiif) -}}
+                              {{- $baseURL := printf "/%s/%s/" $context (path.Dir .params.iiif) -}}
                               <a name="{{ $mapName }}"></a>
                               <div id="{{ $mapName }}" class="viewer {{ $class }}"></div>
 
@@ -44,7 +45,7 @@
                               {{ end }}
                               <script type="text/javascript">
                                   {{ $mapName | safeJS }}_Div = document.getElementById("{{ $mapName }}");
-                                  {{ $mapName | safeJS }} = addMap({{ $mapName | safeJS }}_Div, "{{ $infoJson | safeJS }}", {{ $rotation }});
+                                  {{ $mapName | safeJS }} = addMap({{ $mapName | safeJS }}_Div, "{{ $infoJson }}", {{ $rotation }}, {{ $baseURL }});
                               </script>
                               <div class="share">
                                   {{ $downloadURL := printf "%s" .src }}

@@ -246,13 +246,12 @@ body.about .loop-container .post {
 }
 
 a.worldcat {
-  display: none;
-}
-
-a.worldcat:before {
-  display: inline-block;
-  width: 1em;
-  content: url($link-light);
+  text-decoration: none;
+  &:after {
+      display: inline-block;
+      width: 1em;
+      content: url($link-light);
+  }
 }
 
 .float-right {

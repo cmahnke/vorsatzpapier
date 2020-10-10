@@ -1,3 +1,12 @@
+# Dessriptions
+
+[aboutTheNeu]
+other = "Über das"
+
+[aboutTheFem]
+other = "Über die"
+
+#Tags
 [bookEndPaper]
 other = "Vorsatzpapier"
 
@@ -19,8 +28,16 @@ other = "Tapete"
 [wallpaper]
 other = "Tapete"
 
+[Work]
+other = "Werk"
+
+[work]
+other = "Werk"
+
 [allTags]
 other = "Alle Beiträge mit dem Tag"
+
+#Other
 
 [readPost]
 other = "Beitrag lesen"

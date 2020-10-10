@@ -2,6 +2,9 @@
 title: "Der grosse Brand und Wiederaufbau von Hamburg"
 date: 2020-10-08T09:46:20+02:00
 preview: endpaper
+itemType: book
+itemDescription: 'This endpaper is taken from the book "Der grosse Brand und Wiederaufbau von Hamburg" by Julius Faulwasser, published 1892 by Otto Meißner, Hamburg. <a class="worldcat" href="http://www.worldcat.org/oclc/1152529039">&nbsp;</a>
+'
 tags:
 - bookEndPaper
 - Book
@@ -30,6 +33,3 @@ resources:
 From my own collection.
 
 <!--more-->
-# Über das Buch
-
-This endpaper is taken from the book "Der grosse Brand und Wiederaufbau von Hamburg" by Julius Faulwasser, published 1892 by Otto Meißner, Hamburg. <a class="worldcat" href="http://www.worldcat.org/oclc/1152529039">&nbsp;</a>

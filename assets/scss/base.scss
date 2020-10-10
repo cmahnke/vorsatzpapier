@@ -249,6 +249,12 @@ a.worldcat {
   display: none;
 }
 
+a.worldcat:before {
+  display: inline-block;
+  width: 1em;
+  content: url($link-light);
+}
+
 .float-right {
   float: right;
 }

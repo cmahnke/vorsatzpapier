@@ -27,5 +27,5 @@ resources:
 ---
 
 Ein eher seltener Fund: Ein gestaltetes Vorsatzpapier aus deinem Buch aus den 50ern.
-
+Eine freundliche Empfehlung des [Antiquariats Pretzsch](https://antiquariat-pretzsch.de/) N°1.
 <!--more-->

@@ -13,4 +13,5 @@ resources:
     cropWidth: 7000
     cropHeight: 5000
 ---
-Da ich im Oktober mein Wohnzimmer renoviert habe, hier eine wieder benutzte Tapete.
+Da ich im Oktober mein Wohnzimmer renoviert habe, hier wieder eine der benutzten Tapeten.
+Auch diese Tapete habe ich vom besten Anbieter historischer Tapeten in Göttingen - [Zeitzeug](http://zeitzeug.de/).

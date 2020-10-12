@@ -29,6 +29,6 @@ resources:
     class: order-2
 ---
 
-Ein günstiges Fundstück vom 75¢ Tisch des [Antiquariat Pretzsch](https://antiquariat-pretzsch.de/) N°1.
+Ein günstiges Fundstück vom 75¢ Tisch des [Antiquariats Pretzsch](https://antiquariat-pretzsch.de/) N°1.
 
 <!--more-->

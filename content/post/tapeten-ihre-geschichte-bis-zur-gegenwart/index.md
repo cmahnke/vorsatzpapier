@@ -33,5 +33,5 @@ resources:
 ---
 
 Ein Buch über Tapeten, mit einem eingeklebten Stück echter Tapete.
-
+Ein Fundstück aus dem [Antiquariat Pretzsch N°2](https://antiquariat-pretzsch.de/).
 <!--more-->

@@ -30,5 +30,6 @@ resources:
 ---
 
 Ein weiteres Fundstück aus der eigenen Sammlung.
+Gekauft im [Antiquariat Pretzsch](https://antiquariat-pretzsch.de/) N°1.
 
 <!--more-->

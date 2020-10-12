@@ -33,5 +33,5 @@ resources:
 ---
 
 A book about wallpaper, with piece of real wallpaper glued in.
-
+Bought at [Antiquariat Pretzsch N°2](https://antiquariat-pretzsch.de/).
 <!--more-->

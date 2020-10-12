@@ -150,15 +150,21 @@ $link-color: #42a5f5 !default;
       padding: 0.3em;
     }
 
-    .iiif-image.front {
+    .iiif-image.cover {
       width: 49%;
       order: 1;
       display: inline-block;
     }
 
-    .iiif-image.title {
+    .iiif-image.front {
       width: 49%;
       order: 2;
+      display: inline-block;
+    }
+
+    .iiif-image.title {
+      width: 49%;
+      order: 3;
       display: inline-block;
     }
 

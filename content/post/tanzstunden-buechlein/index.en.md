@@ -27,5 +27,5 @@ resources:
 ---
 
 A rare find: a designed endpaper from a 50ies book.
-
+A recommendation of the [Antiquariat Pretzsch](https://antiquariat-pretzsch.de/) N°1.
 <!--more-->

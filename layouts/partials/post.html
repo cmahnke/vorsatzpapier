@@ -12,7 +12,7 @@
         {{ end }}
         <div class="entry-meta">
             {{- if not .Params.metaPage -}}
-                <span class="date"><a href="{{ .RelPermalink }}">{{- partial "date.html" (dict "date" .Date "language" $.Page.Language "months" $.Site.Data.months) -}}</a></span>
+        				<span class="date">{{ partial "date.html" . }}</span>
             {{- end -}}
         </div>
         <div class='entry-header'>

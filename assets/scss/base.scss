@@ -365,4 +365,37 @@ a.worldcat {
       }
     }
   }
+
+}
+
+li {
+
+    &.navigation-item.menu-separator:after {
+        content: '' !important;
+    }
+
+    &.navigation-item.menu-separator:before {
+        content: '|' !important;
+        color: $body-color;
+    }
+
+    &.navigation-item.menu-separator {
+        span {
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            font-weight: 700;
+
+            opacity:0.6;
+            color: #fff;
+        }
+
+        &:after {
+            content: '' !important;
+        }
+    }
+
+    &.navigation-item.lang>a {
+            opacity:0.85;
+    }
 }

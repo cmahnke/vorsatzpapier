@@ -1,5 +1,4 @@
-# Dessriptions
-
+# Descriptions
 [aboutTheNeu]
 other = "About the"
 
@@ -37,8 +36,21 @@ other = "Werk"
 [allTags]
 other = "View all posts tagged"
 
-#Other
+# Languages
+[en]
+other = "English"
 
+[de]
+other = "German"
+
+# Pagination
+[next_page]
+other = "Next"
+
+[previous_page]
+other = "Back"
+
+#Other
 [readPost]
 other = "Read the post"
 

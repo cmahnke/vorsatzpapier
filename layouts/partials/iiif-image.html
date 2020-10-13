@@ -1,11 +1,22 @@
-{{- $context := .contextPath -}}
+{{- $contextPath := .contextPath -}}
 {{- $pageURL := .pageURL -}}
+{{- $page := .pageContext }}
+{{- $imgLocation := path.Join $contextPath .context.src -}}
 {{- $class := "" -}}
 {{- $orientation := "" -}}
 {{- if .context.params.class -}}
     {{- $class = .context.params.class -}}
 {{- end -}}
-{{- $previewImg := (.context.Resources.ByType "image").GetMatch .context.name -}}
+
+{{- $previewImg := "" -}}
+{{ if .context.name }}
+    {{- $previewImg = ($page.Resources.GetMatch .context.name) -}}
+{{ else }}
+    {{- $previewImg = ($page.Resources.GetMatch .context.src) -}}
+{{ end }}
+{{- if eq $previewImg nil -}}
+    {{ errorf "Can't find image %s" $imgLocation }}
+{{- end -}}
 {{ if lt $previewImg.Width $previewImg.Height }}
     {{- $orientation = "portrait" -}}
 {{- else -}}
@@ -13,12 +24,15 @@
 {{- end -}}
 
 {{- $mapName := replace (replace (replace .context.params.iiif "/" "_") "." "") "-" "_" -}}
-{{- $infoJson := printf "/%s" (path.Join $context .context.params.iiif) -}}
-{{- $baseURL := printf "/%s/%s/" $context (path.Dir .context.params.iiif) -}}
+{{- $infoJson := printf "/%s" (path.Join $contextPath .context.params.iiif) -}}
+{{- $baseURL := printf "/%s/%s/" $contextPath (path.Dir .context.params.iiif) -}}
 
 <div class="iiif-image {{ $class | safeHTML }} {{ $orientation | safeHTML }}">
     <a name="{{ $mapName }}"></a>
-    <div id="{{ $mapName }}" class="viewer {{ $class }}"></div>
+    {{- if .heading -}}
+        <span class="image-heading">{{ .heading }}</span>
+    {{- end -}}
+    <div id="{{ $mapName }}" class="viewer {{ $class }} {{ $orientation | safeHTML }}"></div>
 
     {{ $rotation := 0 }}
     {{ if .context.params.rotate }}

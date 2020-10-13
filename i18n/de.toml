@@ -36,6 +36,16 @@ other = "Werk"
 [allTags]
 other = "Alle Beiträge mit dem Tag"
 
+#Book parts
+[cover]
+other = "Umschlag"
+
+[front]
+other = "Buchdeckel"
+
+[title]
+other = "Titelseite"
+
 # Languages
 [en]
 other = "Englisch"

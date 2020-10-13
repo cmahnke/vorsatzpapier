@@ -1,4 +1,4 @@
-
+{{- $page := .Page -}}
   <div id="loop-container" class="loop-container">
     {{ if and (isset .Params "image") .Params.image }}
     <div class="post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-design tag-standard-2 tag-tagalicious tag-travel entry full-without-featured odd excerpt-1">
@@ -25,16 +25,17 @@
                   {{- $pageURL := .Permalink -}}
                   {{- range .Params.resources -}}
                     {{- if or (and (ne $.Params.itemType "work") (ne $.Params.itemType "book")) (not (or (or (eq .name "front") (eq .name "title")) (eq .name "cover"))) -}}
-
                       {{- if .params.iiif -}}
-                        {{ partial "iiif-image.html" (dict "context" . "contextPath" $context "pageURL" .Permalink) }}
+                        {{ partial "iiif-image.html" (dict "context" . "contextPath" $context "pageURL" .Permalink "pageContext" $page) }}
                       {{- end -}}
                     {{- end -}}
                   {{- end -}}
                 </div>
 
                 <article>
-                    {{ .Content }}
+                    <div class="content">
+                        {{ .Content }}
+                    </div>
                     {{- if .Params.itemType -}}
                       <div class="{{ .Params.itemType }}-description">
                         {{- if eq .Params.itemType "book" -}}
@@ -53,7 +54,7 @@
                       <div class="book-description-images">
                         {{- range .Params.resources -}}
                           {{- if or (or (eq .name "front") (eq .name "title")) (eq .name "cover") -}}
-                            {{ partial "iiif-image.html" (dict "context" . "contextPath" $context "pageURL" .Permalink) }}
+                            {{ partial "iiif-image.html" (dict "context" . "contextPath" $context "pageURL" .Permalink "heading" (i18n .name) "pageContext" $page) }}
                           {{- end -}}
                         {{- end -}}
                       </div>

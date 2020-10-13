@@ -36,6 +36,16 @@ other = "Werk"
 [allTags]
 other = "View all posts tagged"
 
+#Book parts
+[cover]
+other = "Dust jacket"
+
+[front]
+other = "Front cover"
+
+[title]
+other = "Title page"
+
 # Languages
 [en]
 other = "English"

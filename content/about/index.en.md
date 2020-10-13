@@ -18,16 +18,16 @@ Tags with less then three occurrences aren't shown.
 
 This page was generated with [Hugo] (https://gohugo.io/).
 
-An adapted version of [Nederburg] (https://github.com/appernetic/hugo-nederburg-theme) is used as the theme. [Raleway] (https://github.com/impallari/Raleway/) is used as the font.
+An adapted version of [Nederburg](https://github.com/appernetic/hugo-nederburg-theme) is used as the theme. [Raleway](https://github.com/impallari/Raleway/) is used as the font.
 
-The post-processing of the digitized images was carried out with [ScanTailor Advanced] (https://github.com/4lex4/scantailor-advanced).
+The post-processing of the digitized images was carried out with [ScanTailor Advanced](https://github.com/4lex4/scantailor-advanced).
 
-[OpenLayers] (https://openlayers.org/) is used to display the high resolution images. The tiles were generated with [`iiif_static.py`] (https://github.com/zimeon/iiif).
+[OpenLayers](https://openlayers.org/) is used to display the high resolution images. The tiles were generated with [`iiif_static.py`](https://github.com/zimeon/iiif).
 
-The site is hosted by [GitHub] (https://github.com/).
+The site is hosted by [GitHub](https://github.com/).
 
 # Contact
 
 "Vorsatzpapier" is a project by **Christian Mahnke**.
 
-Contact is possible via [E-Mail](mailto: vorsatzpapier@projektemacher.org).
+Contact is possible via [E-Mail](mailto:vorsatzpapier@projektemacher.org).

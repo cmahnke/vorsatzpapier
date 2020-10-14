@@ -34,7 +34,7 @@
 {{- $options := (dict "targetPath" "base.css" "outputStyle" "compressed" "includePaths" "static/css") -}}
 {{- $ourTemplate := resources.Get "scss/base.scss" -}}
 {{- $ourStyle := $ourTemplate | resources.ExecuteAsTemplate "scss/base.scss" . | toCSS $options -}}
-{{ $olStyle := resources.Get "css/ol/ol.css" }}
+{{- $olStyle := resources.Get "css/ol/ol.css" -}}
 {{- $style := slice $ourStyle $olStyle | resources.Concat "css/concated.css" | minify | fingerprint -}}
 <link href="{{ $style.RelPermalink }}" rel="stylesheet" integrity="{{ $style.Data.Integrity }}">
 

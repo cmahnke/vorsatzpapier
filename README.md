@@ -12,8 +12,10 @@ find . -name '*.tif.jpg' -print -exec bash -c 'mv "{}"  $(dirname "{}")/$(basena
 
 # Remove generated IIIF directories
 
+**Note:** This doens't work anymore since the structure has changed!
+
 ```
-find content/post/ -mindepth 2 -maxdepth 2 -type d -print -exec rm -r {} \;
+#find content/post/ -mindepth 2 -maxdepth 2 -type d -print -exec rm -r {} \;
 ```
 
 # Running hugo

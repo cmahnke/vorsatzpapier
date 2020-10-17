@@ -83,10 +83,6 @@ paginate = 10
         target = "static"
 
     [[module.mounts]]
-        source = "node_modules/ol"
-        target = "assets/css/ol"
-
-    [[module.mounts]]
         source = "assets/js"
         target = "assets/js"
 

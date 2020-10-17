@@ -31,11 +31,10 @@
     <link href="{{ . }}" rel="stylesheet">
 {{- end }}
 
-{{- $options := (dict "targetPath" "base.css" "outputStyle" "compressed" "includePaths" "static/css") -}}
+{{- $options := (dict "targetPath" "base.css" "outputStyle" "compressed" "includePaths" (slice "node_modules/ol" "static/css")) -}}
 {{- $ourTemplate := resources.Get "scss/base.scss" -}}
 {{- $ourStyle := $ourTemplate | resources.ExecuteAsTemplate "scss/base.scss" . | toCSS $options -}}
-{{- $olStyle := resources.Get "css/ol/ol.css" -}}
-{{- $style := slice $ourStyle $olStyle | resources.Concat "css/concated.css" | minify | fingerprint -}}
+{{- $style := slice $ourStyle | resources.Concat "css/concated.css" | minify | fingerprint -}}
 <link href="{{ $style.RelPermalink }}" rel="stylesheet" integrity="{{ $style.Data.Integrity }}">
 
 <link rel="icon" type="image/png" href="{{ .Site.Params.favicon_32 | default "/images/favicon-32.png" | absURL }}" sizes="32x32">

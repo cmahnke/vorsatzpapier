@@ -160,33 +160,38 @@ $link-color: #42a5f5 !default;
 .entry-container {
   padding-right: 0;
 
-  .iiif, .book-description-images {
+  .image-heading {
+      font-size: larger;
+      margin-bottom: .4em;
+      display: inline-block;
+      font-weight: bold;
+  }
 
-      .image-heading {
-          font-size: larger;
-          margin-bottom: .4em;
-          display: inline-block;
-          font-weight: bold;
-      }
+  .iiif, .book-description-images {
 
     .viewer {
       width: 100%;
-
-      order: 3;
       display: block;
 
-
         &.portrait {
-            width: 45%;
-            height: calc(45% * 1.6);
+            width: 60vw;
+            height: calc(60vw * 1.6);
 
-            @media (max-width : 30em) {
-               width: 95%;
+            @media (max-width: 37.5em) {
+               width: 90vw;
+               height: calc(90vw * 1.5);
             }
+
         }
 
         &.landscape {
-            height: 55vh;
+            width: 60vw;
+            height: calc(60vw / 1.5);
+
+            @media (max-width: 37.5em) {
+               width: 90vw;
+               height: calc(90vw / 1.5);
+            }
         }
 
     }
@@ -198,15 +203,6 @@ $link-color: #42a5f5 !default;
 
     .iiif-image.cover {
       display: inline-block;
-    }
-
-    .iiif-image.front.portrait,
-    .iiif-image.title.portrait {
-        width: 49%;
-        display: inline-block;
-        @media (max-width : 30em) {
-           width: 95%;
-        }
     }
 
     .iiif-image.cover {

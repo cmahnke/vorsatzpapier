@@ -177,7 +177,12 @@ $link-color: #42a5f5 !default;
 
 
         &.portrait {
-            height: 99vh;
+            width: 45%;
+            height: calc(45% * 1.6);
+
+            @media (max-width : 30em) {
+               width: 95%;
+            }
         }
 
         &.landscape {
@@ -199,6 +204,9 @@ $link-color: #42a5f5 !default;
     .iiif-image.title.portrait {
         width: 49%;
         display: inline-block;
+        @media (max-width : 30em) {
+           width: 95%;
+        }
     }
 
     .iiif-image.cover {

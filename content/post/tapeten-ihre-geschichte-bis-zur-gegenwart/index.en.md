@@ -28,8 +28,8 @@ resources:
   params:
     iiif: page346/info.json
     class: order-1
-    cropWidth: 2500
-    cropHeight: 2500
+    cropWidth: 2000
+    cropHeight: 2000
 ---
 
 A book about wallpaper, with piece of real wallpaper glued in.

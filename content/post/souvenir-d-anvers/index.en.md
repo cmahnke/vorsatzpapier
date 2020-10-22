@@ -23,6 +23,8 @@ resources:
   params:
     iiif: end-verso/info.json
     class: order-1
+    cropWidth: 2000
+    cropHeight: 2000
 - src: "end-recto.jpg"
   params:
     iiif: end-recto/info.json

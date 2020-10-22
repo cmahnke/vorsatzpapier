@@ -1,5 +1,4 @@
 ---
-date:
 title: "About this blog"
 metaPage: true
 displayinlist: false

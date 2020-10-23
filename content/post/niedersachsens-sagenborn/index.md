@@ -28,6 +28,4 @@ resources:
     iiif: end-recto/info.json
     class: order-2
 ---
-Dieses schöne Fundstück ist die Quelle für den neuen Hintergrund des [Krähenbeißers](https://krähenbeisser.de). Es ist eine Empfehlung des [Antiquariats Pretzsch](https://antiquariat-pretzsch.de/). Die Buchdetektivinnen dort finden auch das richtige Vorsatzpapier für eure Internetauftritte.
-
-<!--more-->
+Dieses schöne Fundstück ist die Quelle für den neuen Hintergrund des [Krähenbeißers](https://krähenbeisser.de).<!--more--> Es ist eine Empfehlung des [Antiquariats Pretzsch](https://antiquariat-pretzsch.de/). Die Buchdetektivinnen dort finden auch das richtige Vorsatzpapier für eure Internetauftritte.

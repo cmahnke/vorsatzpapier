@@ -29,10 +29,9 @@ resources:
     class: order-2
 ---
 Die Digitalisierung dieses Vorsatzpapiers wurde durch eine freundliche Leihgabe des [Antiquariats Pretzsch](https://antiquariat-pretzsch.de/) unterstützt. Wer Interesse an historischen Vorsatzpapieren hat, kann dort eine große Auswahl finden.
-
+<!--more-->
 Es dient als Hintergrund für den [Krähenbeißer](https://krähenbeisser.de).
 
-<!--more-->
 # Update 25.9.2020
 
 Der Hintergrund des [Krähenbeißers](https://krähenbeisser.de) wurde [aktualisiert](/post/niedersachsens-sagenborn).

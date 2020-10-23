@@ -30,10 +30,9 @@ resources:
 ---
 
 The digitization of this endpaper was supported by a friendly loan from the [Antiquariat Pretzsch] (https://antiquariat-pretzsch.de/). Anyone interested in historical end papers can find a large selection there.
-
+<!--more-->
 It serves as a background for the [Krähenbeißer](https://krähenbeisser.de).
 
-<!--more-->
 # Update 9/25/2020
 
 The background of the [Krähenbeißer](https://krähenbeisser.de) has been [updated](/post/niedersachsens-sagenborn).

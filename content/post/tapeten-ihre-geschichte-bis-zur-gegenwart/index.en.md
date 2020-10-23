@@ -32,6 +32,5 @@ resources:
     cropHeight: 2000
 ---
 
-A book about wallpaper, with piece of real wallpaper glued in.
+A book about wallpaper, with piece of real wallpaper glued in.<!--more-->
 Bought at [Antiquariat Pretzsch N°2](https://antiquariat-pretzsch.de/).
-<!--more-->

@@ -32,6 +32,5 @@ resources:
     cropHeight: 2000
 ---
 
-Ein Buch über Tapeten, mit einem eingeklebten Stück echter Tapete.
+Ein Buch über Tapeten, mit einem eingeklebten Stück echter Tapete.<!--more-->
 Ein Fundstück aus dem [Antiquariat Pretzsch N°2](https://antiquariat-pretzsch.de/).
-<!--more-->

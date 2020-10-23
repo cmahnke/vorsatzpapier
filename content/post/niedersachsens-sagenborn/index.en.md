@@ -28,6 +28,4 @@ resources:
     iiif: end-recto/info.json
     class: order-2
 ---
-This beautiful pattern is the new background of the [Krähenbeißer](https: //krähenbeisser.de). It has been a recommendation of the [Antiquariat Pretzsch](https://antiquariat-pretzsch.de/). The book detectives there will also find the right endpaper for your internet presence or art projects.
-
-<!--more-->
+This beautiful pattern is the new background of the [Krähenbeißer](https: //krähenbeisser.de).<!--more--> It has been a recommendation of the [Antiquariat Pretzsch](https://antiquariat-pretzsch.de/). The book detectives there will also find the right endpaper for your internet presence or art projects.

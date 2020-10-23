@@ -29,6 +29,5 @@ resources:
     class: order-2
 ---
 
-Ein weiteres Fundstück aus der eigenen Sammlung.
+Ein weiteres Fundstück aus der eigenen Sammlung.<!--more-->
 Gekauft im [Antiquariat Pretzsch](https://antiquariat-pretzsch.de/) N°1.
-<!--more-->

@@ -31,6 +31,5 @@ resources:
 ---
 
 From my own collection.
-Bought at [Antiquariat Pretzsch](https://antiquariat-pretzsch.de/) N°1.
-
 <!--more-->
+Bought at [Antiquariat Pretzsch](https://antiquariat-pretzsch.de/) N°1.

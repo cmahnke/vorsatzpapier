@@ -29,6 +29,5 @@ resources:
     class: order-2
 ---
 
-Another one from my own collection.
+Another one from my own collection.<!--more-->
 Bought at [Antiquariat Pretzsch](https://antiquariat-pretzsch.de/) N°1.
-<!--more-->

@@ -12,7 +12,7 @@
         {{ end }}
         <div class="entry-meta">
             {{- if not .Params.metaPage -}}
-        				<span class="date">{{ partial "date.html" . }}</span>
+        		<span class="date">{{ partial "date.html" . }}</span>
             {{- end -}}
         </div>
         <div class='entry-header'>
@@ -20,17 +20,21 @@
         </div>
         <div class="entry-container">
             <div class="entry-content">
-                <div class="iiif">
-                  {{- $context := path.Dir .File.Path -}}
-                  {{- $pageURL := .Permalink -}}
-                  {{- range .Params.resources -}}
-                    {{- if or (and (ne $.Params.itemType "work") (ne $.Params.itemType "book")) (not (or (or (eq .name "front") (eq .name "title")) (eq .name "cover"))) -}}
-                      {{- if .params.iiif -}}
-                        {{ partial "iiif-image.html" (dict "context" . "contextPath" $context "pageURL" .Permalink "pageContext" $page) }}
+              {{- $context := path.Dir .File.Path -}}
+              {{- $pageURL := .Permalink -}}
+              <div class="iiif">
+                  {{- if not (hasPrefix .Params.iiifContext "http://iiif.io/api/presentation/") -}}
+                      {{- range .Params.resources -}}
+                        {{- if or (and (ne $.Params.itemType "work") (ne $.Params.itemType "book")) (not (or (or (eq .name "front") (eq .name "title")) (eq .name "cover"))) -}}
+                          {{- if .params.iiif -}}
+                            {{ partial "iiif-image.html" (dict "context" . "contextPath" $context "pageURL" .Permalink "pageContext" $page) }}
+                          {{- end -}}
+                        {{- end -}}
                       {{- end -}}
-                    {{- end -}}
+                  {{- else -}}
+                    {{- partial "mirador.html" . -}}
                   {{- end -}}
-                </div>
+              </div>
 
                 <article>
                     <div class="content">
@@ -50,7 +54,7 @@
                       </div>
                     {{- end -}}
 
-                    {{- if eq .Params.itemType "book" -}}
+                    {{- if and (eq .Params.itemType "book") (not (hasPrefix .Params.iiifContext "http://iiif.io/api/presentation/")) -}}
                       <div class="book-description-images">
                         {{- range .Params.resources -}}
                           {{- if or (or (eq .name "front") (eq .name "title")) (eq .name "cover") -}}

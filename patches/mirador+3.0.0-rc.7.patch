@@ -1,0 +1,13 @@
+diff --git a/node_modules/mirador/dist/es/src/state/sagas/iiif.js b/node_modules/mirador/dist/es/src/state/sagas/iiif.js
+index 435c6a3..a7a09b1 100644
+--- a/node_modules/mirador/dist/es/src/state/sagas/iiif.js
++++ b/node_modules/mirador/dist/es/src/state/sagas/iiif.js
+@@ -18,7 +18,7 @@ var _marked = /*#__PURE__*/_regeneratorRuntime.mark(fetchIiifResource),
+     _marked10 = /*#__PURE__*/_regeneratorRuntime.mark(iiifSaga);
+ 
+ import { all, call, put, select, takeEvery } from 'redux-saga/effects';
+-import fetch from 'isomorphic-unfetch';
++//import fetch from 'isomorphic-unfetch';
+ import { Utils } from 'manifesto.js/dist-esmodule/Utils';
+ import normalizeUrl from 'normalize-url';
+ import ActionTypes from '../actions/action-types';

@@ -28,7 +28,7 @@ $link-color: #42a5f5 !default;
 @import "style";
 @import "custom";
 @import "icons";
-@import "ol";
+
 @import "ol-iiif";
 
 .fa-plus:before {
@@ -192,6 +192,11 @@ $link-color: #42a5f5 !default;
                width: 90vw;
                height: calc(90vw / 1.5);
             }
+        }
+
+        &.presentation-api {
+            height: 95vh;
+            position: relative;
         }
 
     }

@@ -1,6 +1,7 @@
 ---
 title: "Der grosse Brand und Wiederaufbau von Hamburg"
 date: 2020-10-08T09:46:20+02:00
+iiifContext: http://iiif.io/api/image/2/context.json
 preview: endpaper
 itemType: book
 itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Der grosse Brand und Wiederaufbau von Hamburg" von Julius Faulwasser, erschienen 1892 bei Otto Meißner, Hamburg. <a class="worldcat" href="http://www.worldcat.org/oclc/1152529039">&nbsp;</a>'

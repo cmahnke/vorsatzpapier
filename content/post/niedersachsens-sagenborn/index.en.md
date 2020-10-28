@@ -1,6 +1,7 @@
 ---
 title: "Niedersachsens Sagenborn"
 date: 2020-09-25T16:54:45+02:00
+iiifContext: http://iiif.io/api/image/2/context.json
 preview: endpaper
 itemType: book
 itemDescription: 'This endpaper is taken from the book "Niedersachsens Sagenborn" by Karl Henniger, published 1907 by August Lax, Hildesheim. <a class="worldcat" href="http://www.worldcat.org/oclc/903072932">&nbsp;</a>'

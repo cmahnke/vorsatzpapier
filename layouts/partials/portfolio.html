@@ -10,9 +10,10 @@
         {{- $defaultHeight := 400 -}}
 
 		{{/* Preview */}}
-		{{- if .Params.preview -}}
+        {{- if .Params.preview -}}
+            {{- $previewType := .Params.preview  -}}
 			{{- range .Params.resources -}}
-				{{- if eq .name "preview" -}}
+				{{- if or (eq .name "preview") (eq .params.preview true) -}}
 					{{- $imgLocation := path.Join $context .src -}}
 					{{- $previewImg := ($element.Resources.ByType "image").GetMatch .name -}}
                     {{/* Format: width x height */}}
@@ -33,11 +34,13 @@
 					{{- if eq $previewImg nil -}}
                         {{- errorf "Can't find image %s" $imgLocation -}}
 					{{- else -}}
-                        {{- $crop2x := printf "%dx%d" (div $previewImg.Width 2) $cropHeight -}}
-						{{- $previewImg = $previewImg.Fill (printf "%s %s" $crop2x "center") -}}
-                        {{- $previewImg = $previewImg.Fill (printf "%s %s" $crop "center") -}}
-                        {{- if eq $resize true -}}
-                            {{- $previewImg = $previewImg.Fill (printf "%s %s" (printf "%dx%d" $defaultWidth $defaultHeight ) "center") -}}
+                        {{- if ne $previewType "book" -}}
+                            {{- $crop2x := printf "%dx%d" (div $previewImg.Width 2) $cropHeight -}}
+    						{{- $previewImg = $previewImg.Fill (printf "%s %s" $crop2x "center") -}}
+                            {{- $previewImg = $previewImg.Fill (printf "%s %s" $crop "center") -}}
+                            {{- if eq $resize true -}}
+                                {{- $previewImg = $previewImg.Fill (printf "%s %s" (printf "%dx%d" $defaultWidth $defaultHeight ) "center") -}}
+                            {{- end -}}
                         {{- end -}}
 					{{- end -}}
 					{{- $images.Set "preview" $previewImg -}}

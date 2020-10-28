@@ -1,6 +1,7 @@
 ---
 title: "Die Heilige Insel"
 date: 2020-09-26T07:37:53+02:00
+iiifContext: http://iiif.io/api/image/2/context.json
 tags:
 - Book
 - bookEndPaper

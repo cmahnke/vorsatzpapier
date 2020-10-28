@@ -1,6 +1,7 @@
 ---
 title: "Universalbuch der Reden und Toaste"
-date: 2020-11-01T9:52:28+02:00
+date: 2020-11-15T9:52:28+02:00
+iiifContext: http://iiif.io/api/image/2/context.json
 preview: endpaper
 itemType: book
 itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Universalbuch der Reden und Toaste" von Justinus Abel, 9. vermehrte und verbesserte Auflage, erschienen ca. 1902 bei Levy & Müller, Stuttgart. <a class="worldcat" href="http://www.worldcat.org/oclc/729128580">&nbsp;</a>'

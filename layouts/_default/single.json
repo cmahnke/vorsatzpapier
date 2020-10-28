@@ -1,0 +1,87 @@
+{{- if hasPrefix .Params.iiifContext "http://iiif.io/api/presentation/" -}}
+{
+    {{- $contextPath := path.Dir .File.Path -}}
+    {{- $urlBase := substr .Permalink 0 (sub (len .Permalink) 1) -}}
+    "@context":"http://iiif.io/api/presentation/2/context.json",
+    "@type":"sc:Manifest",
+    "@id":"{{ .Permalink }}",
+    "viewingDirection":"left-to-right",
+    "viewingHint":"paged",
+
+    "label":"{{ .Title }}",
+    {{- if isset .Params "iiifMetadata" -}}
+        {{- jsonify .Params.iiifMetadata -}}
+    {{- end -}}
+    {{- if .Description -}}
+        "description": "{{ .Description }}",
+    {{- end -}}
+
+    {{- $firstCanvasId := "" -}}
+    {{- $firstResource := index .Params.resources 0 -}}
+    {{ if $firstResource.name -}}
+        {{- $firstCanvasId = $firstResource.name -}}
+    {{- else -}}
+        {{- $firstCanvasId = path.Dir $firstResource.params.iiif -}}
+    {{- end -}}
+    "sequences":[
+      {
+         "@id":"{{ $urlBase }}/sequence/normal",
+         "@type":"sc:Sequence",
+         "label":"Current Page Order",
+         "viewingDirection":"left-to-right",
+         "viewingHint":"paged",
+         "startCanvas":"{{ .Permalink }}canvas/{{ printf "%s" $firstCanvasId }}",
+         "canvases":[
+             {{- range $i, $res := .Params.resources -}}
+                 {{- $canvas := "" -}}
+                 {{ if .name }}
+                     {{- $canvas = .name -}}
+                 {{- else -}}
+                     {{- $canvas = path.Dir .params.iiif -}}
+                 {{- end -}}
+                 {{- $canvasId := printf "%s/canvas/%s" $urlBase $canvas -}}
+                 {{- $manifestDir := path.Dir .params.iiif -}}
+                 {
+                   "@id":"{{ $canvasId }}",
+                   "@type":"sc:Canvas",
+                   "label":"uncounted",
+                   "height":400,
+                   "width":300,
+                   "images":[
+                    {{- $imageId := printf "%s/%s" $urlBase $manifestDir -}}
+                    {{- $annnotationId := printf "%s/annotation/%s" $urlBase $manifestDir -}}
+                    {
+                         "@context":"http://iiif.io/api/presentation/2/context.json",
+                         "@id":"{{ $annnotationId }}",
+                         "@type":"oa:Annotation",
+                         "motivation":"sc:painting",
+                         "resource":{
+                            "@id":"{{ $imageId }}",
+                            "@type":"dctypes:Image",
+                            "format":"image/jpeg",
+                            "service":{
+                               "@context":"http://iiif.io/api/image/2/context.json",
+                               "@id":"{{ $imageId }}",
+                               "profile":"http://iiif.io/api/image/2/level1.json"
+                            },
+                            "height":400,
+                            "width":300
+                         },
+                         "on":"{{ $canvasId }}"
+                    }]
+               }
+               {{- if ne $i (sub (len $.Params.resources) 1) -}}
+                ,
+               {{- end -}}
+             {{- end -}}
+
+         ]
+     }
+  ]
+
+  {{- if isset .Params "iiifStructure" -}}
+      , {{- jsonify .Params.iiifStructure -}}
+  {{- end -}}
+
+}
+{{- end -}}

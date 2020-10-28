@@ -86,6 +86,9 @@ paginate = 10
         source = "assets/js"
         target = "assets/js"
 
+[outputs]
+    page = ["HTML", "JSON"]
+
 [imaging]
     quality = 95
 

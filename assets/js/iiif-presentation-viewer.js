@@ -1,10 +1,3 @@
-/*
-import fetch from 'unfetch';
-window.fetch = fetch.bind(window);
-import 'isomorphic-unfetch';
-window.fetch = fetch.bind(window);
-//fetch.bind(window);
-*/
 //import Mirador from 'mirador'
 import Mirador from 'mirador/dist/es/src'
 import unfetch from 'unfetch';

@@ -13,5 +13,5 @@
   },
   "scripts": {
     "postinstall": "patch-package"
- }
+  }
 }

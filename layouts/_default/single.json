@@ -1,8 +1,12 @@
+{{/*
+{{ printf "Site: '%s' Page '%s'" .Sites.First.Language .Page.Lang }}
+{{ if eq .Sites.First.Language .Page.Lang }}
+*/}}
 {{- if hasPrefix .Params.iiifContext "http://iiif.io/api/presentation/" -}}
 {
     {{- $contextPath := path.Dir .File.Path -}}
     {{- $urlBase := substr .Permalink 0 (sub (len .Permalink) 1) -}}
-    "@context":"http://iiif.io/api/presentation/2/context.json",
+    "@context":"http://iiif.io/api/presentation/2.1/context.json",
     "@type":"sc:Manifest",
     "@id":"{{ .Permalink }}",
     "viewingDirection":"left-to-right",
@@ -33,8 +37,19 @@
          "startCanvas":"{{ .Permalink }}canvas/{{ printf "%s" $firstCanvasId }}",
          "canvases":[
              {{- range $i, $res := .Params.resources -}}
+
+                 {{- $image := newScratch -}}
+                 {{- if .name -}}
+                    {{- $image.Set "previewImg" ($.Resources.GetMatch .name) -}}
+                 {{ else }}
+                    {{- $image.Set "previewImg" ($.Resources.GetMatch .src) -}}
+                 {{- end -}}
+                 {{- if eq ($image.Get "previewImg") nil -}}
+                    {{- warnf "Can't find image %s" ($image.Get "previewLoc") -}}
+                 {{- end -}}
+
                  {{- $canvas := "" -}}
-                 {{ if .name }}
+                 {{- if .name -}}
                      {{- $canvas = .name -}}
                  {{- else -}}
                      {{- $canvas = path.Dir .params.iiif -}}
@@ -44,10 +59,23 @@
                  {
                    "@id":"{{ $canvasId }}",
                    "@type":"sc:Canvas",
-                   "label":"uncounted",
+                   {{- if .params.label -}}
+                        "label":"{{ .params.label }}",
+                   {{- else -}}
+                        "label":"uncounted",
+                   {{- end -}}
                    "height":400,
                    "width":300,
-                   "images":[
+                   {{- $thumbnail := ($image.Get "previewImg").Resize "100x" -}}
+                   "thumbnail": {
+                       "@id": "{{ $thumbnail.Permalink }}",
+                       "format": "image/jpeg",
+                       "@type":"dctypes:Image",
+                       "height": {{ $thumbnail.Height }},
+                       "width": {{ $thumbnail.Width }}
+
+                    },
+                    "images":[
                     {{- $imageId := printf "%s/%s" $urlBase $manifestDir -}}
                     {{- $annnotationId := printf "%s/annotation/%s" $urlBase $manifestDir -}}
                     {
@@ -64,8 +92,8 @@
                                "@id":"{{ $imageId }}",
                                "profile":"http://iiif.io/api/image/2/level1.json"
                             },
-                            "height":400,
-                            "width":300
+                            "height": {{ ($image.Get "previewImg").Height }},
+                            "width": {{ ($image.Get "previewImg").Width }}
                          },
                          "on":"{{ $canvasId }}"
                     }]
@@ -83,5 +111,24 @@
       , {{- jsonify .Params.iiifStructure -}}
   {{- end -}}
 
+  {{- if isset .Params "iiifAttribution" -}}
+    ,"attribution":"{{ .Params.iiifAttribution }}",
+  {{- end -}}
+
+  {{- if isset .Params "iiifLogo" -}}
+    ,"logo":{
+          "@id":"{{ .Params.iiifLogo.img }}",
+          "service":{
+             "@context":"http://iiif.io/api/image/2/context.json",
+             "@id":"{{ .Params.iiifLogo.url }}",
+             "profile":"http://iiif.io/api/image/2/level0.json"
+          }
+     }
+  {{- end -}}
+
+
 }
 {{- end -}}
+{{/*
+{{- end -}}
+*/}}

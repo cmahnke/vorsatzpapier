@@ -1,7 +1,5 @@
-{{/*
-{{ printf "Site: '%s' Page '%s'" .Sites.First.Language .Page.Lang }}
-{{ if eq .Sites.First.Language .Page.Lang }}
-*/}}
+{{/* Only generate IIIF Manifest for primary page, make sure to use the right path to get the manifest */}}
+{{ if eq .Sites.First.Language.Lang .Page.Lang }}
 {{- if hasPrefix .Params.iiifContext "http://iiif.io/api/presentation/" -}}
 {
     {{- $contextPath := path.Dir .File.Path -}}
@@ -67,8 +65,23 @@
                    {{- else -}}
                         "label":"uncounted",
                    {{- end -}}
-                   "height":400,
-                   "width":300,
+
+                   {{- $canvasHeight := 400 -}}
+                   {{- $canvasWidth := 300 -}}
+                   {{- if .params.canvasheight -}}
+                        {{- $canvasHeight = .params.canvasheight -}}
+                   {{- else if $.Site.Params.iiifcanvasheight -}}
+                         {{- $canvasHeight = $.Site.Params.iiifcanvasheight -}}
+                   {{- end -}}
+                   {{- if .params.canvaswidth -}}
+                        {{- $canvasWidth = .params.canvaswidth -}}
+                   {{- else if $.Site.Params.iiifcanvaswidth -}}
+                         {{- $canvasWidth = $.Site.Params.iiifcanvaswidth -}}
+                   {{- end -}}
+
+                   "height": {{ $canvasHeight }},
+                   "width": {{ $canvasWidth }},
+
                    {{- $thumbnail := ($image.Get "previewImg").Resize "120x80" -}}
                    "thumbnail": {
                        "@id": "{{ $thumbnail.Permalink }}",
@@ -132,6 +145,4 @@
 
 }
 {{- end -}}
-{{/*
 {{- end -}}
-*/}}

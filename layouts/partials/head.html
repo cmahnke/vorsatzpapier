@@ -23,20 +23,20 @@
 {{- $defines := dict "process.env.NODE_ENV" `"production"` -}}
 {{- $mainOpts := dict "targetPath" "js/main.js" "defines" $defines "minify" true -}}
 {{- $main := resources.Get "js/main.js" | js.Build $mainOpts -}}
-{{- $mainJs := slice $main | resources.Concat "js/main.js" | minify | fingerprint -}}
-<script src="{{ $mainJs.RelPermalink }}" integrity="{{ $mainJs.Data.Integrity }}"></script>
 
-{{- $iiifJs := "" -}}
-{{- if not (hasPrefix .Page.Params.iiifcontext "http://iiif.io/api/presentation/") -}}
+{{- $mainJs := "" -}}
+{{- if (hasPrefix .Page.Params.iiifcontext "http://iiif.io/api/image/") -}}
     {{- $iiifOpts := dict "targetPath" "js/iiif-image-viewer.js" "defines" $defines "minify" true -}}
     {{- $iiif := resources.Get "js/iiif-image-viewer.js" | js.Build $iiifOpts -}}
-    {{- $iiifJs = slice $iiif | resources.Concat "js/iiif-image-viewer.js" | minify | fingerprint -}}
-{{- else -}}
-    {{- $iiifOpts := dict "targetPath" "js/iiif-presentation-viewer.js" "defines" $defines "minify" false -}}
+    {{- $mainJs = slice $main $iiif | resources.Concat "js/main-iiif-i.js" | minify | fingerprint -}}
+{{- else if (hasPrefix .Page.Params.iiifcontext "http://iiif.io/api/presentation/") -}}
+    {{- $iiifOpts := dict "targetPath" "js/iiif-presentation-viewer.js" "defines" $defines "minify" true -}}
     {{- $iiif := resources.Get "js/iiif-presentation-viewer.js" | js.Build $iiifOpts -}}
-    {{- $iiifJs = slice $iiif | resources.Concat "js/iiif-presentation-viewer.js" | fingerprint -}}
+    {{- $mainJs = slice $main $iiif | resources.Concat "js/main-iiif-p.js" | minify | fingerprint -}}
+{{- else -}}
+    {{- $mainJs = slice $main | resources.Concat "js/main.js" | minify | fingerprint -}}
 {{- end -}}
-<script src="{{ $iiifJs.RelPermalink }}" integrity="{{ $iiifJs.Data.Integrity }}"></script>
+ <script src="{{ $mainJs.RelPermalink }}" integrity="{{ $mainJs.Data.Integrity }}"></script>
 
 {{/* External Styles - Fonts etc */}}
 {{- range .Site.Params.stylesheets -}}

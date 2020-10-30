@@ -20,30 +20,17 @@ find content/post/ -name info.json -exec dirname {} \; | xargs rm -r
 
 See [https://womanonrails.com/adding-yarn-package-from-github](https://womanonrails.com/adding-yarn-package-from-github) on how to add a specific revision.
 
+## Provided patches
 
-## Upate dependencies
+Mirador 3 is not really feature complete, even though it's tagged as a Release Candidate. The following changes need to be applied to make Mirador usable.
 
-```
-yarn add ProjectMirador/mirador
-```
+* Thumbnails won't be displayed if they're static [#3330](https://github.com/ProjectMirador/mirador/issues/3330)
+* Mirador fails to load Minifests if bundled [#3311](https://github.com/ProjectMirador/mirador/issues/3311)
+* Mirador can't display non-paged viewing hints [3029](https://github.com/ProjectMirador/mirador/pull/3029)
 
-## Add this to `package.json`
+These patches are combined in one file in `patches`.
 
-```
-    "build-mirador": "cd node_modules/mirador && yarn install && yarn run build:es",
-```
-
-## Change the patching machanism
-
-```
-"postinstall": "patch-package"
-```
-
-to:
-
-```
-"patch-mirador": "patch-package"
-```
+Currently yarn will will pull Mirador directly from GitHub, not NPM. It applies the patches and rebuilds the viewer with these patches applied.
 
 ## Update `scripts/setup.sh`
 

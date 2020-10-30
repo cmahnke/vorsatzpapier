@@ -59,6 +59,9 @@
                  {
                    "@id":"{{ $canvasId }}",
                    "@type":"sc:Canvas",
+                   {{- if .params.hint -}}
+                        "viewingHint":"{{ .params.hint }}",
+                   {{- end -}}
                    {{- if .params.label -}}
                         "label":"{{ .params.label }}",
                    {{- else -}}
@@ -66,7 +69,7 @@
                    {{- end -}}
                    "height":400,
                    "width":300,
-                   {{- $thumbnail := ($image.Get "previewImg").Resize "100x" -}}
+                   {{- $thumbnail := ($image.Get "previewImg").Resize "120x80" -}}
                    "thumbnail": {
                        "@id": "{{ $thumbnail.Permalink }}",
                        "format": "image/jpeg",
@@ -90,7 +93,7 @@
                             "service":{
                                "@context":"http://iiif.io/api/image/2/context.json",
                                "@id":"{{ $imageId }}",
-                               "profile":"http://iiif.io/api/image/2/level1.json"
+                               "profile":"http://iiif.io/api/image/2/level0.json"
                             },
                             "height": {{ ($image.Get "previewImg").Height }},
                             "width": {{ ($image.Get "previewImg").Width }}

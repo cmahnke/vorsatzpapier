@@ -21,7 +21,7 @@ Als Theme kommt eine angepasste Version von [Nederburg](https://github.com/apper
 
 Die Nachbearbeitung der Digitalisate wurde mit [ScanTailor Advanced](https://github.com/4lex4/scantailor-advanced) durchgeführt.
 
-Für die Darstellung der Digitalisate wird [OpenLayers](https://openlayers.org/) verwendet. Die jeweils angezeigten Ausschnitte wurden mit [libvips](https://libvips.github.io/libvips/) erzeugt.
+Für die Darstellung der Digitalisate von Einzelbildern wird [OpenLayers](https://openlayers.org/), für ganze Bücher [Mirador](https://projectmirador.org/) verwendet. Die jeweils angezeigten Ausschnitte wurden mit [libvips](https://libvips.github.io/libvips/) erzeugt.
 
 Die Seite wird von [GitHub](https://github.com/) gehosted.
 

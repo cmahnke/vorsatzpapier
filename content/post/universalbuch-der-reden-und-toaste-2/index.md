@@ -1,6 +1,6 @@
 ---
 title: "Universalbuch der Reden und Toaste"
-date: 2020-11-15T9:52:28+02:00
+date: 2020-11-29T9:52:28+02:00
 iiifContext: http://iiif.io/api/image/2/context.json
 preview: endpaper
 itemType: book

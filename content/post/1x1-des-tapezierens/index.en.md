@@ -339,4 +339,4 @@ resources:
     class: back
 ---
 
-To finish the month on the subject of wall papering, here is a complete guide on that matter.
+Shortly before we finish the month on the subject of wall papering, here is a complete guide on that matter.

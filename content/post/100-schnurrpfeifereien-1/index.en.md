@@ -1,6 +1,6 @@
 ---
 title: "Hundert Schnurrpfeifereinen"
-date: 2020-11-22T07:37:53+02:00
+date: 2020-12-14T07:37:53+02:00
 iiifContext: http://iiif.io/api/image/2/context.json
 tags:
 - Book

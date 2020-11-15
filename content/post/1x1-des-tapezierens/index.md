@@ -339,4 +339,4 @@ resources:
     class: back
 ---
 
-Zum Abschluss des Themenmonats über's tapezieren, hier noch eine Anleitung zum Thema.
+Kurz vor dem Abschluss des Themenmonats über's tapezieren, hier noch eine Anleitung zum Thema.

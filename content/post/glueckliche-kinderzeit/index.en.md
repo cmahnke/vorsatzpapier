@@ -33,3 +33,6 @@ resources:
 An inexpensive gem from the 75¢ table of the [Antiquariat Pretzsch](https://antiquariat-pretzsch.de/) N°1.
 
 <!--more-->
+# Update 11/19/2020
+
+The book itself is now available on [Kinderbücher](https://xn--kinderbcher-zhb.projektemacher.org/post/glueckliche-kinderzeit/).

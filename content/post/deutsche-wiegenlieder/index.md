@@ -36,3 +36,7 @@ Es dient als Hintergrund für den [Krähenbeißer](https://krähenbeisser.de).
 # Update 25.9.2020
 
 Der Hintergrund des [Krähenbeißers](https://krähenbeisser.de) wurde [aktualisiert](/post/niedersachsens-sagenborn).
+
+# Update 19.11.2020
+
+Das Buch selbst ist nun auf [Kinderbücher](https://xn--kinderbcher-zhb.projektemacher.org/post/deutsche-wiegenlieder/) komplett einzusehen.

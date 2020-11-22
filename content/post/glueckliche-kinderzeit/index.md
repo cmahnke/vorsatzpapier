@@ -33,3 +33,6 @@ resources:
 Ein günstiges Fundstück vom 75¢ Tisch des [Antiquariats Pretzsch](https://antiquariat-pretzsch.de/) N°1.
 
 <!--more-->
+# Update 19.11.2020
+
+Das Buch selbst ist nun auf [Kinderbücher](https://xn--kinderbcher-zhb.projektemacher.org/post/glueckliche-kinderzeit/) komplett einzusehen.

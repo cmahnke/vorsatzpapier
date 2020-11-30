@@ -1,6 +1,10 @@
 {{- $contextPath := .contextPath -}}
 {{- $pageURL := .pageURL -}}
 {{- $page := .pageContext }}
+{{- $site := .site }}
+{{- if eq $site nil -}}
+    {{- $site = .Site -}}
+{{- end -}}
 {{- $imgLocation := path.Join $contextPath .context.src -}}
 {{- $class := "" -}}
 {{- $orientation := "" -}}
@@ -31,11 +35,11 @@
 {{- $infoJson := "" -}}
 {{- $baseURL := "" -}}
 
-{{- if or .Site.IsServer (not (isset .Site.Params "productioniiifurlprefix")) -}}
+{{- if or $site.IsServer (not (isset $site.Params "productioniiifurlprefix")) -}}
     {{- $infoJson = printf "/%s" (path.Join $contextPath .context.params.iiif) -}}
     {{- $baseURL = printf "/%s/%s/" $contextPath (path.Dir .context.params.iiif) -}}
 {{- else -}}
-    {{- $infoJson = printf "%s%s" .Site.Params.productionIIIFURLPrefix (path.Join $contextPath .context.params.iiif) -}}
+    {{- $infoJson = printf "%s%s" $site.Params.productionIIIFURLPrefix (path.Join $contextPath .context.params.iiif) -}}
     {{- $baseURL = "" -}}
 {{- end -}}
 

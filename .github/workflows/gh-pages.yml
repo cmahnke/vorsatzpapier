@@ -36,7 +36,9 @@ jobs:
           node-version: 10.22.0
 
       - name: Create IIIF derivates
-        run: docker run -e URL_PREFIX="https://vorsatzpapier.projektemacher.org/" -v ${PWD}:${PWD} ghcr.io/cmahnke/iiif-action:latest sh -c "cd ${PWD} && ./scripts/iiif.sh"
+        run: |
+          echo "Running as ${UID}"
+          docker run -e CHOWN_UID=${UID} -e URL_PREFIX="https://vorsatzpapier.projektemacher.org/" -v ${PWD}:${PWD} ghcr.io/cmahnke/iiif-action:latest sh -c "cd ${PWD} && ./scripts/iiif.sh"
 
       - name: IIIF directory upload and cleanup
         env:

@@ -1,9 +1,19 @@
 {{/* Only generate IIIF Manifest for primary page, make sure to use the right path to get the manifest */}}
+{{/*
+{{- $imageIdSuffix := "/full/full/0/default.jpg" -}}
+*/}}
+{{- $imageIdSuffix := "" -}}
 {{ if eq .Sites.First.Language.Lang .Page.Lang }}
 {{- if hasPrefix .Params.iiifContext "http://iiif.io/api/presentation/" -}}
 {
     {{- $contextPath := path.Dir .File.Path -}}
-    {{- $urlBase := substr .Permalink 0 (sub (len .Permalink) 1) -}}
+    {{- $urlBase := "" -}}
+    {{- if or .Site.IsServer (not (isset .Site.Params "productioniiifurlprefix")) -}}
+        {{- $urlBase = printf "%s/" (substr .Permalink 0 (sub (len .Permalink) 1)) -}}
+    {{- else -}}
+        {{- $localPath := (substr .RelPermalink 1 (sub (len .RelPermalink) 1)) -}}
+        {{- $urlBase = printf "%s%s" .Site.Params.productionIIIFURLPrefix $localPath -}}
+    {{- end -}}
     "@context":"http://iiif.io/api/presentation/2.1/context.json",
     "@type":"sc:Manifest",
     "@id":"{{ .Permalink }}",
@@ -27,7 +37,7 @@
     {{- end -}}
     "sequences":[
       {
-         "@id":"{{ $urlBase }}/sequence/normal",
+         "@id":"{{ .Permalink }}sequence/normal",
          "@type":"sc:Sequence",
          "label":"Current Page Order",
          "viewingDirection":"left-to-right",
@@ -52,7 +62,7 @@
                  {{- else -}}
                      {{- $canvas = path.Dir .params.iiif -}}
                  {{- end -}}
-                 {{- $canvasId := printf "%s/canvas/%s" $urlBase $canvas -}}
+                 {{- $canvasId := printf "%scanvas/%s" $.Permalink $canvas -}}
                  {{- $manifestDir := path.Dir .params.iiif -}}
                  {
                    "@id":"{{ $canvasId }}",
@@ -92,8 +102,8 @@
 
                     },
                     "images":[
-                    {{- $imageId := printf "%s/%s" $urlBase $manifestDir -}}
-                    {{- $annnotationId := printf "%s/annotation/%s" $urlBase $manifestDir -}}
+                    {{- $imageId := printf "%s%s%s" $urlBase $manifestDir $imageIdSuffix -}}
+                    {{- $annnotationId := printf "%sannotation/%s" $urlBase $manifestDir -}}
                     {
                          "@context":"http://iiif.io/api/presentation/2/context.json",
                          "@id":"{{ $annnotationId }}",

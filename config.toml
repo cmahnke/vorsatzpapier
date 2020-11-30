@@ -18,6 +18,7 @@ paginate = 10
     stylesheets = []
     iiifCanvasHeight = 400
     iiifCanvasWidth = 300
+    productionIIIFURLPrefix="https://static.projektemacher.org/vorsatzpapier/"
 
 [languages]
     [languages.de]

@@ -24,8 +24,20 @@
 {{- end -}}
 
 {{- $mapName := replace (replace (replace .context.params.iiif "/" "_") "." "") "-" "_" -}}
+{{/*
 {{- $infoJson := printf "/%s" (path.Join $contextPath .context.params.iiif) -}}
 {{- $baseURL := printf "/%s/%s/" $contextPath (path.Dir .context.params.iiif) -}}
+*/}}
+{{- $infoJson := "" -}}
+{{- $baseURL := "" -}}
+
+{{- if or .Site.IsServer (not (isset .Site.Params "productioniiifurlprefix")) -}}
+    {{- $infoJson = printf "/%s" (path.Join $contextPath .context.params.iiif) -}}
+    {{- $baseURL = printf "/%s/%s/" $contextPath (path.Dir .context.params.iiif) -}}
+{{- else -}}
+    {{- $infoJson = printf "%s%s" .Site.Params.productionIIIFURLPrefix (path.Join $contextPath .context.params.iiif) -}}
+    {{- $baseURL = "" -}}
+{{- end -}}
 
 <div class="iiif-image {{ $class | safeHTML }} {{ $orientation | safeHTML }}">
     <a name="{{ $mapName }}"></a>

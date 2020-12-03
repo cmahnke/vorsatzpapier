@@ -13,11 +13,11 @@
 {{- end -}}
 
 {{- $previewImg := "" -}}
-{{ if .context.name }}
+{{- if .context.name -}}
     {{- $previewImg = ($page.Resources.GetMatch .context.name) -}}
-{{ else }}
+{{- else -}}
     {{- $previewImg = ($page.Resources.GetMatch .context.src) -}}
-{{ end }}
+{{- end -}}
 {{- if eq $previewImg nil -}}
     {{ errorf "Can't find image %s" $imgLocation }}
 {{- end -}}

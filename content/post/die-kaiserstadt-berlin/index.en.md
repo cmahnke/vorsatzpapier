@@ -1,6 +1,7 @@
 ---
 title: "Die Kaiserstadt Berlin"
 date: 2020-12-07T07:07:53+02:00
+draft: true
 iiifContext: http://iiif.io/api/image/2/context.json
 tags:
 - Book

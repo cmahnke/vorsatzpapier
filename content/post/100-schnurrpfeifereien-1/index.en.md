@@ -7,7 +7,7 @@ tags:
 - bookEndPaper
 preview: endpaper
 itemType: book
-itemDescription: 'This endpaper is taken from the book "Hundert Schnurrpfeifereinen" by Sophus Tromholt, 14th Auflage, published around 1908 by Reclam, Leipzig. <a class="worldcat" href="http://www.worldcat.org/oclc/255740370">&nbsp;</a>'
+itemDescription: 'This endpaper is taken from the book "Hundert Schnurrpfeifereinen" by Sophus Tromholt, 14th edition, published around 1908 by Reclam, Leipzig. <a class="worldcat" href="http://www.worldcat.org/oclc/255740370">&nbsp;</a>'
 resources:
 - src: "front.jpg"
   name: front

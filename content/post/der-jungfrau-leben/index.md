@@ -31,3 +31,4 @@ resources:
 ---
 
 <!--more-->
+Gekauft im [Antiquariat Pretzsch](https://antiquariat-pretzsch.de/) N°1.

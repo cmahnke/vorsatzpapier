@@ -27,6 +27,7 @@ resources:
     cropWidth: 2000
     cropHeight: 2000
 ---
-
+This is the endpaper for a portfolio with pictures from Kassel around 1900.
 
 <!--more-->
+Found at [Antiquariat Pretzsch](https://antiquariat-pretzsch.de/) N°1.

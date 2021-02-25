@@ -69,6 +69,11 @@ jobs:
       - name: Build Hugo site
         run: hugo
 
+      - name: Cleanup Build
+        run: |
+           find docs -type f -size +5M -name '*.jpg' -exec rm {} \;
+           rm -rf docs/plugins
+
       - name: Deploy site
         uses: peaceiris/actions-gh-pages@v3
         with:

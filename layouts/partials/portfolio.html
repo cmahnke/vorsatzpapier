@@ -68,9 +68,9 @@
 			<div style="{{ $style | safeCSS }}" class="{{ $class | safeCSS }} post type-post status-publish format-standard hentry category-standard category-travel excerpt zoom full-without-featured odd excerpt">
 		{{- end -}}
 		{{- if $previewImg -}}
-			<a class="featured-image-link" href="{{ .Permalink }}">
+			<a class="featured-image-link" href="{{ $previewImg.Permalink }}">
 				{{- with $previewImg -}}
-					<div class="featured-image lazy lazy-bg-image" data-background="{{ .RelPermalink }}">
+					<div class="featured-image lazy lazy-bg-image" data-background="{{ $previewImg.RelPermalink }}">
 					</div>
 				{{ end }}
 			</a>

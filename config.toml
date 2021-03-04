@@ -44,8 +44,13 @@ paginate = 10
                 url = "patterns/"
 
             [[languages.de.menu.main]]
-                name = "Über"
+                name = "Links"
                 weight = 4
+                url = "links/"
+
+            [[languages.de.menu.main]]
+                name = "Über"
+                weight = 5
                 url = "about/"
 
     [languages.en]
@@ -72,8 +77,13 @@ paginate = 10
                 url = "patterns/"
 
             [[languages.en.menu.main]]
-                name = "About"
+                name = "Links"
                 weight = 4
+                url = "links/"
+
+            [[languages.en.menu.main]]
+                name = "About"
+                weight = 5
                 url = "about/"
 
 [module]

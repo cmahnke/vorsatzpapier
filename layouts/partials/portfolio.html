@@ -41,6 +41,8 @@
                             {{- if eq $resize true -}}
                                 {{- $previewImg = $previewImg.Fill (printf "%s %s" (printf "%dx%d" $defaultWidth $defaultHeight ) "center") -}}
                             {{- end -}}
+                        {{- else -}}
+                            {{- $previewImg = $previewImg.Resize (printf "%dx" $defaultWidth) -}}
                         {{- end -}}
 					{{- end -}}
 					{{- $images.Set "preview" $previewImg -}}

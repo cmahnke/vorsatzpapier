@@ -10,6 +10,15 @@ find . -name '*-uc.tif' -print -exec rm "{}" \;
 find . -name '*.tif.jpg' -print -exec bash -c 'mv "{}"  $(dirname "{}")/$(basename -s .tif-uc.tif.jpg "{}").jpg' \;
 ```
 
+# For larger files
+
+Larger files can't be handled by `tiff2rgba`, it will failes with the following message `./front.tif: Raster size 341660508 over memory limit (268435456), try -b option..`. 
+
+```
+find . -name '*.tif' -depth 1 -print -exec convert {} -quality 95 {}.jpg \;
+find . -name '*.tif.jpg' -print -exec bash -c 'mv "{}"  $(dirname "{}")/$(basename -s .tif.jpg "{}").jpg' \;
+```
+
 # Remove generated IIIF directories
 
 ```

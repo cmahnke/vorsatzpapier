@@ -15,4 +15,5 @@ resources:
     cropHeight: 5000
 ---
 Probably the last wall paper for some time.
+
 I've purchased it from the best supplier of historical wallpapers in Göttingen - [Zeitzeug](http://zeitzeug.de/).

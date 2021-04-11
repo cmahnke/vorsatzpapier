@@ -14,6 +14,7 @@ resources:
     cropWidth: 7000
     cropHeight: 5000
 ---
-Die nächste Renovierung steht aus.
-
+Die nächste Renovierung steht aus.<!--more-->
+<div class="source">
 Auch diese Tapete habe ich vom besten Anbieter historischer Tapeten in Göttingen - [Zeitzeug](http://zeitzeug.de/).
+</div>

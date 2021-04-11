@@ -14,6 +14,7 @@ resources:
     cropWidth: 7000
     cropHeight: 5000
 ---
-The next renovation is pending.
-
+The next renovation is pending.<!--more-->
+<div class="source">
 I've purchased it from the best supplier of historical wallpapers in Göttingen - [Zeitzeug](http://zeitzeug.de/).
+</div>

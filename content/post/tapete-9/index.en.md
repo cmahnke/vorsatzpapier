@@ -14,6 +14,7 @@ resources:
     cropWidth: 7000
     cropHeight: 5000
 ---
-The next renovation is pending, this is the third wall paper.
-
+The next renovation is pending, this is the third wall paper.<!--more-->
+<div class="source">
 I've purchased it from the best supplier of historical wallpapers in Göttingen - [Zeitzeug](http://zeitzeug.de/).
+</div>

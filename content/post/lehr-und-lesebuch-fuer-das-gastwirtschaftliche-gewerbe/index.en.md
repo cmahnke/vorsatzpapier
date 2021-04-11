@@ -31,4 +31,6 @@ resources:
 ---
 
 Another one from my own collection.<!--more-->
+<div class="source">
 Bought at [Antiquariat Pretzsch](https://antiquariat-pretzsch.de/) N°1.
+</div>

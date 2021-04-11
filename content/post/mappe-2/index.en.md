@@ -17,3 +17,7 @@ resources:
     class: end
 ---
 This is the endpaper for a portfolio.
+<!--more-->
+<div class="source">
+Bought at [Antiquariat Pretzsch](https://antiquariat-pretzsch.de/) N°1.
+</div>

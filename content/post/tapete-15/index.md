@@ -14,6 +14,7 @@ resources:
     cropWidth: 7000
     cropHeight: 5000
 ---
-Die nächste Renovierung steht an, dies ist neunte Tapete.
-
+Die nächste Renovierung steht an, dies ist neunte Tapete.<!--more-->
+<div class="source">
 Auch diese Tapete habe ich vom besten Anbieter historischer Tapeten in Göttingen - [Zeitzeug](http://zeitzeug.de/).
+</div>

@@ -30,4 +30,6 @@ resources:
 Dies ist das Vorsatzpapier einer Sammelmappe mit Bildern aus Kassel um 1900.
 
 <!--more-->
+<div class="source">
 Gekauft im [Antiquariat Pretzsch](https://antiquariat-pretzsch.de/) N°1.
+</div>

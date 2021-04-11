@@ -1,7 +1,7 @@
 baseURL = "https://vorsatzpapier.projektemacher.org/"
 languageCode = "de"
 title = "Vorsatzpapier"
-theme = "hugo-nederburg-theme"
+theme = ["projektemacher-base", "hugo-nederburg-theme"]
 publishDir = "docs"
 canonifyurls = true
 disableKinds = ["taxonomy"]

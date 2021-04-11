@@ -28,5 +28,6 @@ resources:
 ---
 
 Dies ist zwar kein Vorsatzpapier sondern ein Buchdeckel (also bedruckter Stoff), aber es passt trotzdem in diese Sammlung,<!--more--> das Buch selbst kann man sich bei [Kinderbücher](https://xn--kinderbcher-zhb.projektemacher.org/post/vieilles-chansons-et-rondes) ansehen.
-
+<div class="source">
 Gefunden im [Antiquariat Pretzsch](https://antiquariat-pretzsch.de/) N°2.
+</div>

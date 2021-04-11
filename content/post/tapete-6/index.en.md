@@ -15,6 +15,7 @@ resources:
     cropHeight: 5000
 ---
 
-The renovation is slowly nearing its completion.
-
+The renovation is slowly nearing its completion.<!--more-->
+<div class="source">
 I've purchased it from the best supplier of historical wallpapers in Göttingen - [Zeitzeug](http://zeitzeug.de/).
+</div>

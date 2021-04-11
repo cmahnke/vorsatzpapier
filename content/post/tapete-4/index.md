@@ -14,5 +14,7 @@ resources:
     cropWidth: 5000
     cropHeight: 8000
 ---
-Eine weitere meiner neuen Tapeten.
+Eine weitere meiner neuen Tapeten.<!--more-->
+<div class="source">
 Auch diese Tapete habe ich vom besten Anbieter historischer Tapeten in Göttingen - [Zeitzeug](http://zeitzeug.de/).
+</div>

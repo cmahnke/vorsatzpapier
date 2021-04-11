@@ -28,5 +28,6 @@ resources:
 ---
 
 This is not an endpaper but a book cover (i.e. printed canvas), but it still fits into this collection,<!--more--> the book itself can be viewed at [Kinderbücher](https://xn--kinderbcher-zhb.projektemacher.org/post/vieilles-chansons-et-rondes).
-
+<div class="source">
 Found at [Antiquariat Pretzsch](https://antiquariat-pretzsch.de/) N°2.
+</div>

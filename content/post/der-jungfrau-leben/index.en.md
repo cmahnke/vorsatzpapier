@@ -31,4 +31,6 @@ resources:
 ---
 
 <!--more-->
+<div class="source">
 Found at [Antiquariat Pretzsch](https://antiquariat-pretzsch.de/) N°1.
+</div>

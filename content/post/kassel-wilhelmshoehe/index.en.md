@@ -31,5 +31,5 @@ This is the endpaper for a portfolio with pictures from Kassel around 1900.
 
 <!--more-->
 <div class="source">
-Found at [Antiquariat Pretzsch](https://antiquariat-pretzsch.de/) N°1.
+Found at <a target="_blank" href="https://antiquariat-pretzsch.de/">Antiquariat Pretzsch</a> N°1.
 </div>

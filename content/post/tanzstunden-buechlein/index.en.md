@@ -27,6 +27,7 @@ resources:
     iiif: front/info.json
 ---
 
-A rare find: a designed endpaper from a 50ies book.
-A recommendation of the [Antiquariat Pretzsch](https://antiquariat-pretzsch.de/) N°1.
-<!--more-->
+A rare find: a designed endpaper from a 50ies book.<!--more-->
+<div class="source">
+A recommendation of the <a target="_blank" href="https://antiquariat-pretzsch.de/">Antiquariat Pretzsch</a> N°1.
+</div>

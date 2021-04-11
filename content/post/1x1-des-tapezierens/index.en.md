@@ -339,4 +339,8 @@ resources:
     class: back
 ---
 
-Shortly before we finish the month on the subject of wall papering, here is a complete guide on that matter.
+Shortly before we finish the month on the subject of wall papering, here is a complete guide on that matter.<!--more-->
+
+<div class="source">
+Found at <a target="_blank" href="https://www.neue-arbeit-brockensammlung.de/geschaefte/zweigstelle-kim/">KiM</a>
+</div>

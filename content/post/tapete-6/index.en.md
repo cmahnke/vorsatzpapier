@@ -17,5 +17,5 @@ resources:
 
 The renovation is slowly nearing its completion.<!--more-->
 <div class="source">
-I've purchased it from the best supplier of historical wallpapers in Göttingen - [Zeitzeug](http://zeitzeug.de/).
+I've purchased it from the best supplier of historical wallpapers in Göttingen - <a target="_blank" href="http://zeitzeug.de/">Zeitzeug</a>.
 </div>

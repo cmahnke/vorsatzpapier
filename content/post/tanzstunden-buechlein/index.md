@@ -27,6 +27,7 @@ resources:
     iiif: front/info.json
 ---
 
-Ein eher seltener Fund: Ein gestaltetes Vorsatzpapier aus deinem Buch aus den 50ern.
-Eine freundliche Empfehlung des [Antiquariats Pretzsch](https://antiquariat-pretzsch.de/) N°1.
-<!--more-->
+Ein eher seltener Fund: Ein gestaltetes Vorsatzpapier aus deinem Buch aus den 50ern.<!--more-->
+<div class="source">
+Eine freundliche Empfehlung des <a target="_blank" href="https://antiquariat-pretzsch.de/">Antiquariat Pretzsch</a> N°1.
+</div>

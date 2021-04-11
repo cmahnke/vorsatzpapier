@@ -339,4 +339,8 @@ resources:
     class: back
 ---
 
-Kurz vor dem Abschluss des Themenmonats über's tapezieren, hier noch eine Anleitung zum Thema.
+Kurz vor dem Abschluss des Themenmonats über's tapezieren, hier noch eine Anleitung zum Thema.<!--more-->
+
+<div class="source">
+Gefunden bei <a target="_blank" href="https://www.neue-arbeit-brockensammlung.de/geschaefte/zweigstelle-kim/">KiM</a>
+</div>

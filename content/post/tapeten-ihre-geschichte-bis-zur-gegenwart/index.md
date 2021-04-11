@@ -34,4 +34,6 @@ resources:
 ---
 
 Ein Buch über Tapeten, mit einem eingeklebten Stück echter Tapete.<!--more-->
-Ein Fundstück aus dem [Antiquariat Pretzsch N°2](https://antiquariat-pretzsch.de/).
+<div class="source">
+Gefunden im <a target="_blank" href="https://antiquariat-pretzsch.de/">Antiquariat Pretzsch</a> N°2.
+</div>

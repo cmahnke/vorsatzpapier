@@ -34,4 +34,6 @@ resources:
 ---
 
 A book about wallpaper, with piece of real wallpaper glued in.<!--more-->
-Bought at [Antiquariat Pretzsch N°2](https://antiquariat-pretzsch.de/).
+<div class="source">
+Bought at <a target="_blank" href="https://antiquariat-pretzsch.de/">Antiquariat Pretzsch</a> N°2.
+</div>

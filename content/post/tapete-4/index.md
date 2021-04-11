@@ -16,5 +16,5 @@ resources:
 ---
 Eine weitere meiner neuen Tapeten.<!--more-->
 <div class="source">
-Auch diese Tapete habe ich vom besten Anbieter historischer Tapeten in Göttingen - [Zeitzeug](http://zeitzeug.de/).
+Auch diese Tapete habe ich vom besten Anbieter historischer Tapeten in Göttingen - <a target="_blank" href="http://zeitzeug.de/">Zeitzeug</a>.
 </div>

@@ -21,7 +21,7 @@
 
 {{/* JavaScript */}}
 {{- $defines := dict "process.env.NODE_ENV" `"production"` -}}
-{{- $mainOpts := dict "targetPath" "js/main.js" "defines" $defines "minify" true -}}
+{{- $mainOpts := dict "targetPath" "js/main.js" "defines" $defines "minify" false -}}
 {{- $main := resources.Get "js/main.js" | js.Build $mainOpts -}}
 
 {{- $mainJs := "" -}}

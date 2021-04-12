@@ -36,30 +36,6 @@ other = "Werk"
 [allTags]
 other = "View all posts tagged"
 
-#Book parts
-[cover]
-other = "Dust jacket"
-
-[front]
-other = "Front cover"
-
-[title]
-other = "Title page"
-
-# Languages
-[en]
-other = "English"
-
-[de]
-other = "German"
-
-# Pagination
-[next_page]
-other = "Next"
-
-[previous_page]
-other = "Back"
-
 #Other
 [readPost]
 other = "Read the post"

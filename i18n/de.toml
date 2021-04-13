@@ -25,3 +25,15 @@ other = "Werk"
 
 [work]
 other = "Werk"
+
+[portfolio]
+other = "Mappe"
+
+[Portfolio]
+other = "Mappe"
+
+[postcard]
+other = "Postkarte"
+
+[Postcard]
+other = "Postkarte"

@@ -2,7 +2,6 @@
 title: "Almanach 1899"
 date: 2021-05-24T19:57:53+01:00
 iiifContext: http://iiif.io/api/image/2/context.json
-draft: true
 tags:
 - Book
 - bookEndPaper

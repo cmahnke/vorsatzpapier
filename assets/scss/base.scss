@@ -28,6 +28,8 @@ $link-color: #42a5f5 !default;
 @import "style";
 @import "custom";
 @import "icons";
+@import "share";
+@import "media-info";
 
 @import "ol-iiif";
 
@@ -292,16 +294,7 @@ $link-color: #42a5f5 !default;
 }
 
 .share {
-  text-align: end;
-  font-size: small;
-  line-height: normal;
   margin-right: 1em;
-  margin-top: 1em;
-  margin-bottom: 1.5em;
-
-  a {
-    text-decoration: none;
-  }
 }
 
 body.about .loop-container .post {
@@ -320,15 +313,6 @@ body.about .loop-container .post {
 
   a {
     text-decoration: none;
-  }
-}
-
-a.worldcat {
-  text-decoration: none;
-  &:after {
-      display: inline-block;
-      width: 1em;
-      content: url($link-light);
   }
 }
 

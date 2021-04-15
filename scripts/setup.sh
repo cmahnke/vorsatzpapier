@@ -5,6 +5,8 @@ if [[ -z "$SKIP_IIIF" ]] ; then
     ./scripts/iiif.sh
 fi
 
+rm -f 'themes/projektemacher-base/patches/mirador+3.0.0.patch'
+
 echo "Calling theme scripts"
 for SCRIPT in $PWD/themes/projektemacher-base/scripts/init/*.sh ; do
     echo "Running $SCRIPT"

@@ -2,6 +2,7 @@
 title: "Tapete"
 date: 2021-04-26T18:28:42+01:00
 iiifContext: http://iiif.io/api/image/2/context.json
+draft: true
 preview: wallpaper
 tags:
 - Wallpaper
@@ -11,8 +12,8 @@ resources:
   params:
     iiif: front/info.json
     class: front
-    cropWidth: 7000
-    cropHeight: 5000
+    cropWidth: 4000
+    cropHeight: 3000
 ---
 Die nächste Renovierung steht an, dies ist sechste Tapete.<!--more-->
 <div class="source">

@@ -12,9 +12,5 @@
 {{ end }}
 
 {{ define "main" }}
-    {{- if hasPrefix .File.Dir "patterns" -}}
-        {{- partial "patterns.html" . -}}
-    {{- else -}}
-        {{- partial "post.html" . -}}
-    {{- end -}}
+    {{- partial "post.html" . -}}
 {{ end }}

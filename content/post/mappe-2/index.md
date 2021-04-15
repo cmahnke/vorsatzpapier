@@ -11,9 +11,9 @@ resources:
   params:
     iiif: front-verso/info.json
     class: front
-- src: "end-verso.jpg"
+- src: "end-recto.jpg"
   params:
-    iiif: end-verso/info.json
+    iiif: end-recto/info.json
     class: end
 ---
 Dies ist das Vorsatzpapier einer Mappe.

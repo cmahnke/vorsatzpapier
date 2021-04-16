@@ -30,6 +30,7 @@ $link-color: #42a5f5 !default;
 @import "icons";
 @import "share";
 @import "media-info";
+@import "footer";
 
 @import "ol-iiif";
 
@@ -116,11 +117,6 @@ $link-color: #42a5f5 !default;
     display: unset;
   }
 
-  .site-footer {
-    margin-top: unset;
-    padding-top: unset;
-  }
-
   .patterns-container .pattern {
     width: 80%;
   }
@@ -140,14 +136,6 @@ $link-color: #42a5f5 !default;
 
   .excerpt.preview .excerpt-container {
     width: 70% !important;
-  }
-}
-
-.site-footer {
-  margin-top: unset;
-
-  .design-credit {
-    margin-top: unset;
   }
 }
 
@@ -452,5 +440,34 @@ li {
 
     a {
         color: lighten($link-color, 20%);
+    }
+}
+
+
+.footer-container {
+    background: #110800;
+    color: #8c8c8c;
+    padding: .4em 0;
+    margin-top: unset;
+    font-size: .813em;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    font-weight: 700;
+    line-height: 1.85;
+
+    .projektemacher {
+        margin-top: 0.4em 0 0 0;
+    }
+
+    .copyright {
+        diplay: none;
+    }
+
+    .cc{
+        margin-top: 0.4em 0 0 0;
+    }
+
+    @media (min-width: 37.5em) {
+        margin-top: 72px;
     }
 }

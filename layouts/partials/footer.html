@@ -20,19 +20,7 @@
         </div>
     </div>
 
-   <div class="design-credit" style="padding: .4em 0;">
-        <p style="margin-top: 0.4em;" class="projektemacher">
-            {{ .Site.Title }} {{ i18n "projektemacher" | safeHTML }}
-        </p>
-		{{ range .Site.Params.copyright }}
-		      <p>{{ . | markdownify }}</p>
-		{{ else }}
-            {{- if or (not (isset .Page.Params "cc"))  (ne .Page.Params.cc false) -}}
-                <p style="margin-top: 0.4em;">{{ i18n "cc" | safeHTML }}</p>
-            {{- end -}}
-    		<p style="font-size: xx-small;">
-    			Based on Nederburg Hugo Theme by <a target="_blank" href="https://appernetic.io">Appernetic</a> - A port of Tracks by Compete Themes.
-    		</p>
-		{{ end }}
-	</div>
+   {{- .Scratch.Set "footer" `<p style="font-size: xx-small;">Based on Nederburg Hugo Theme by <a target="_blank" href="https://appernetic.io">Appernetic</a> - A port of Tracks by Compete Themes.</p>` -}}
+   {{- partialCached "footer-content.html" . -}}
+
 </footer>

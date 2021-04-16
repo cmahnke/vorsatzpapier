@@ -9,12 +9,14 @@ ignoreErrors = ["error-disable-taxonomy"]
 DefaultContentLanguage = "de"
 rssLimit = 25
 paginate = 10
+copyright = false
 
 [params]
     author = "Christian Mahnke"
     keywords = "Vorsatzpapiere, Ornamente, Papier, Bücher, Book end paper, paper, books"
     description = ""
-#    copyrightYears = "MMXX"
+    copyrightYears = "MMXXI"
+    cc = true
     stylesheets = []
     iiifCanvasHeight = 400
     iiifCanvasWidth = 300

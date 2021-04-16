@@ -11,7 +11,7 @@ Da die Idee hierfür kam als es um ein Hintergrundbild für [Krähenbeisser.de](
 
 Tags mit weniger als drei Vorkommen werden hier nicht angezeigt.
 
-{{< tags/cloud-i18n >}}
+{{< tags/cloud tag="i18n" >}}
 
 # Kolophon
 

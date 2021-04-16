@@ -11,7 +11,7 @@ Since the idea for this came when it came to a background image for [Krähenbeis
 
 Tags with less then three occurrences aren't shown.
 
-{{< tags/cloud-i18n >}}
+{{< tags/cloud tag="i18n" >}}
 
 # Colophon
 

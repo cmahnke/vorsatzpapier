@@ -101,11 +101,22 @@ copyright = false
         source = "assets/js"
         target = "assets/js"
 
-[outputs]
-    page = ["HTML", "JSON"]
+#[outputs]
+#    page = ["HTML"]
 
 [imaging]
     quality = 95
+
+[mediaTypes]
+  [mediaTypes."application/ld+json"]
+    suffixes = ["json"]
+
+  [outputFormats.iiif]
+    mediaType = "application/ld+json"
+    isPlainText = true
+    isHTML = false
+    baseName = "manifest"
+    notAlternative = true
 
 [markup]
     [markup.goldmark]

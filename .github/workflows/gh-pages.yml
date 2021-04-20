@@ -75,6 +75,8 @@ jobs:
            rm -rf docs/plugins
 
       - name: Validate JSON
+        env:
+          OSTYPE: linux
         run: |
           yarn run validate
 

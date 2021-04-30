@@ -40,30 +40,10 @@
                     <div class="content">
                         {{ .Content }}
                     </div>
+
                     {{- if .Params.itemType -}}
-                      <div class="{{ .Params.itemType }}-description">
-                        {{- if eq .Params.itemType "book" -}}
-                            <h1>{{ i18n "aboutTheNeu" }} {{ i18n "book" }}</h1>
-                        {{- else if eq .Params.itemType "work" -}}
-                            <h1>{{ i18n "aboutTheNeu" }} {{ i18n "work" }}</h1>
-                        {{- else if eq .Params.itemType "wallpaper" -}}
-                            <h1>{{ i18n "aboutTheFem" }} {{ i18n "wallpaper" }}</h1>
-                        {{- end -}}
-
-                        {{- .Params.itemDescription | markdownify -}}
-                      </div>
+                        {{- partial (printf "media/%s.html" .Params.itemType ) . -}}
                     {{- end -}}
-
-                    {{- if and (eq .Params.itemType "book") (not (hasPrefix .Params.iiifContext "http://iiif.io/api/presentation/")) -}}
-                      <div class="book-description-images">
-                        {{- range .Params.resources -}}
-                          {{- if or (or (eq .name "front") (eq .name "title")) (eq .name "cover") -}}
-                            {{ partial "iiif/iiif-image.html" (dict "context" . "contextPath" $context "pageURL" .Permalink "heading" (i18n .name) "pageContext" $page "site" $.Site) }}
-                          {{- end -}}
-                        {{- end -}}
-                      </div>
-                    {{- end -}}
-
                 </article>
             </div>
 

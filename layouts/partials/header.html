@@ -1,73 +1,8 @@
 <div id="title-info" class="title-info">
-  <div id='site-title' class='site-title'>
-    {{ if ( ne .Site.Title "" ) }}
-    <a href="{{ .Site.BaseURL | relLangURL }}"> {{ .Site.Title }} </a>
-    {{ end }}</div>
-  </div>
-  <input type="checkbox" id="menu-toggle" />
-  <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
-
-  <ul class="navigation-list">
-    {{- with .Site.Menus.main -}}
-      {{- range sort . -}}
-        <li class="navigation-item">
-          <a class="navigation-link" href="{{ .URL | absLangURL }}">{{ .Name }}</a>
-        </li>
-      {{- end -}}
-    {{- end -}}
-    {{- if .Site.IsMultiLingual -}}
-      {{- $node := . -}}
-      {{- .Scratch.Set "separator" true -}}
-      {{- range (default .Site.Home.AllTranslations .Translations) -}}
-        {{- if ne $.Site.Language .Language -}}
-          {{- if $node.Scratch.Get "separator" -}}
-            <li class="navigation-item menu-separator">
-              <span>|</span>
-            </li>
-            {{- $node.Scratch.Set "separator" false -}}
-          {{- end -}}
-          <li class="navigation-item">
-            <a href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>
-          </li>
-        {{- end -}}
-      {{- end -}}
-    {{- end -}}
-  </ul>
-
-  <div id="menu-primary-tracks" class="menu-primary-tracks"></div>
-  <div id="menu-primary" class="menu-container menu-primary" role="navigation">
-    {{ with .Site.Params.Slogan }}
-        <p class="site-description">{{ . | default "" | safeHTML }}</p>
-    {{ end }}
-
-    <div class="menu">
-      <ul id="menu-primary-items" class="menu-primary-items">
-        {{ $page := . }}
-        {{ with .Site.Menus.main}}
-            {{ range sort . }}
-                <li class='menu-item {{ if eq ("/") (.URL) }}menu-item-type-custom menu-item-object-custom{{ else }}menu-item-type-post_type menu-item-object-page{{ end }} {{ if $page.IsMenuCurrent "main" . }}current-menu-item current_page_item{{ end }}'>
-                  <a href="{{ .URL | absLangURL }}">{{ .Name }}</a>
-                </li>
-            {{ end }}
-        {{ end }}
-        {{- if .Site.IsMultiLingual -}}
-          {{- $node := . -}}
-          {{- .Scratch.Set "separator" true -}}
-          {{- range (default .Site.Home.AllTranslations .Translations) -}}
-            {{- if ne $.Site.Language .Language -}}
-              {{- if $node.Scratch.Get "separator" -}}
-                <li class="navigation-item menu-separator">
-                  <span>|</span>
-                </li>
-                {{- $node.Scratch.Set "separator" false -}}
-              {{- end -}}
-              <li class="navigation-item lang">
-                <a href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>
-              </li>
-            {{- end -}}
-          {{- end -}}
-        {{- end -}}
-      </ul>
+    <div id='site-title' class='site-title'>
+        {{ if ( ne .Site.Title "" ) }}
+            <a href="{{ .Site.BaseURL | relLangURL }}"> {{ .Site.Title }} </a>
+        {{ end }}</div>
     </div>
-
-  </div>
+    {{- partial "menu.html" . -}}
+</div>

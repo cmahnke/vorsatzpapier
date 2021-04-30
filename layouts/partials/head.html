@@ -6,37 +6,13 @@
 
 {{ partial "html/head/meta.html" . }}
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-{{/* JavaScript */}}
-{{- $defines := dict "process.env.NODE_ENV" `"production"` -}}
-{{- $mainOpts := dict "targetPath" "js/main.js" "defines" $defines "minify" false -}}
-{{- $main := resources.Get "js/main.js" | js.Build $mainOpts -}}
-
-{{- $mainJs := "" -}}
-{{- if (hasPrefix .Page.Params.iiifcontext "http://iiif.io/api/image/") -}}
-    {{- $iiifOpts := dict "targetPath" "js/iiif-image-viewer.js" "defines" $defines "minify" false -}}
-    {{- $iiif := resources.Get "js/iiif-image-viewer.js" | js.Build $iiifOpts -}}
-    {{- $mainJs = slice $main $iiif | resources.Concat "js/main-iiif-i.js" | minify | fingerprint -}}
-{{- else if (hasPrefix .Page.Params.iiifcontext "http://iiif.io/api/presentation/") -}}
-    {{- $iiifOpts := dict "targetPath" "js/iiif-presentation-viewer.js" "defines" $defines "minify" false -}}
-    {{- $iiif := resources.Get "js/iiif-presentation-viewer.js" | js.Build $iiifOpts -}}
-    {{- $mainJs = slice $main $iiif | resources.Concat "js/main-iiif-p.js" | minify | fingerprint -}}
-{{- else -}}
-    {{- $mainJs = slice $main | resources.Concat "js/main.js" | minify | fingerprint -}}
-{{- end -}}
- <script src="{{ $mainJs.RelPermalink }}" integrity="{{ $mainJs.Data.Integrity }}"></script>
+    {{- partial "html/head/style.html" (dict "context" . "css" "css/style.css" "includes" (slice "static/css")) -}}
+    {{- partial "html/head/script.html" (dict "js" (partial "html/head/iiif-js.html" .)) -}}
 
 {{/* External Styles - Fonts etc */}}
 {{- range .Site.Params.stylesheets -}}
     <link href="{{ . }}" rel="stylesheet">
 {{- end }}
-
-{{- $options := (dict "targetPath" "base.css" "outputStyle" "compressed" "includePaths" (slice "node_modules/ol" "static/css")) -}}
-{{- $ourTemplate := resources.Get "scss/base.scss" -}}
-{{- $ourStyle := $ourTemplate | resources.ExecuteAsTemplate "scss/base.scss" . | toCSS $options -}}
-{{- $style := slice $ourStyle | resources.Concat "css/concated.css" | minify | fingerprint -}}
-<link href="{{ $style.RelPermalink }}" rel="stylesheet" integrity="{{ $style.Data.Integrity }}">
 
 <link rel="icon" type="image/png" href="{{ .Site.Params.favicon_32 | default "/images/favicon-32.png" | absURL }}" sizes="32x32">
 <link rel="icon" type="image/png" href="{{ .Site.Params.favicon_16 | default "/images/favicon-16.png" | absURL }}" sizes="16x16">

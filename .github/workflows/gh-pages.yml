@@ -27,7 +27,7 @@ jobs:
         env:
           SKIP_IIIF: yes
         run: |
-          ./themes/projektemacher-base/scripts/github/setup-dependendies.sh
+          ./themes/projektemacher-base/scripts/github/setup-dependencies.sh
           ./themes/projektemacher-base/scripts/github/docker-images.sh
 
       - name: Setup deploy dependencies

@@ -9,6 +9,7 @@ tags:
 - Book
 resources:
 - src: "img001.jpg"
+  name: preview
   params:
     iiif: img001/info.json
     class: order-1

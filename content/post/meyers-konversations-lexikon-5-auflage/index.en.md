@@ -15,6 +15,7 @@ resources:
 - src: "img004.jpg"
   name: page
   params:
+    preview: true
     iiif: img004/info.json
     class: order-2
 - src: "img005.jpg"

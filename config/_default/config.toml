@@ -1,0 +1,22 @@
+[params]
+    author = "Christian Mahnke"
+    keywords = "Vorsatzpapiere, Ornamente, Papier, Bücher, Book end paper, paper, books"
+    description = ""
+    copyrightYears = "MMXXI"
+    cc = true
+    stylesheets = []
+    iiifCanvasHeight = 400
+    iiifCanvasWidth = 300
+    productionIIIFURLPrefix="https://static.projektemacher.org/vorsatzpapier/"
+
+    [params.preview]
+        outputPrefix = "ogPreview"
+        outputSuffix = ".png"
+        format =  "svg"
+        image = "front.jpg"
+        source = "overlay"
+        [params.preview.size]
+            height = 630
+            width = 1200
+        [params.preview.svg]
+            template = "./Source Files/Other/preview-template.svg"

@@ -27,6 +27,6 @@ Die Seite wird von [GitHub](https://github.com/) gehosted.
 
 # Kontakt
 
-"Vorsatzpapier" ist ein Projekt von **Christian Mahnke**.
+"Vorsatzpapier" ist ein Projekt von **[Christian Mahnke](https://christianmahnke.de/)**.
 
 Kontakt ist via [E-Mail](mailto:vorsatzpapier@projektemacher.org) möglich.

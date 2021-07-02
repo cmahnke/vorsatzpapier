@@ -24,6 +24,7 @@ resources:
     iiif: end-verso/info.json
     class: order-1
 - src: "end-recto.jpg"
+  name: preview
   params:
     iiif: end-recto/info.json
     class: order-2

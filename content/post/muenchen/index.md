@@ -24,6 +24,7 @@ resources:
     iiif: front-verso/info.json
     class: order-1
 - src: "front-recto.jpg"
+  name: preview
   params:
     iiif: front-recto/info.json
     class: order-2

@@ -5,6 +5,8 @@ patches
 static/images/favicon*
 static/pdfjs/**
 resources
+.hugo_build.lock
+hugo_stats.json
 content/post/*/front/
 content/post/*/title/
 content/post/*/cover/

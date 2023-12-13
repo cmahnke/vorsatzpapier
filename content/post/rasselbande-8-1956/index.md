@@ -16,12 +16,12 @@ resources:
     class: front
 - src: "page416.jpg"
   params:
-    iiif: title/info.json
+    iiif: page416/info.json
     class: order-1
 - src: "page417.jpg"
   params:
     iiif: page417/info.json
-    class: order-1
+    class: order-2
 ---
 
 Ein Jugendzeitschrift mit einem Artikel über Tapeten, kann man sich heutzutage in der Bravo nicht mehr vorstellen.

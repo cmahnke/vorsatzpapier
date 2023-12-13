@@ -16,3 +16,7 @@ content/post/*/end-*/
 content/post/*/front-*/
 content/post/*/back/
 content/**/ogPreview.*g
+**/vips-properties.xml
+assets/css/
+static/fonts/
+.DS_Store

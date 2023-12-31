@@ -9,6 +9,7 @@
     iiifCanvasWidth = 300
     productionIIIFURLPrefix="https://static.projektemacher.org/vorsatzpapier/"
     disableScale = true
+    description = "Alte Vorsatzpapiere und Tapeten"
 
     [params.preview]
         outputPrefix = "ogPreview"

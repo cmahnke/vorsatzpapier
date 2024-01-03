@@ -8,7 +8,7 @@ tags:
 - bookEndPaper
 preview: endpaper
 itemType: book
-itemDescription: 'Dieses Vorsatzpapier stammt aus einem Jahrgang der Zeitschrift "Kochkunst", vom Internationaler Verband der Köche, erschienen 1906 in Frankfurt am Main. <a class="worldcat" href="http://www.worldcat.org/oclc/277227987">&nbsp;</a>'
+itemDescription: 'Dieses Vorsatzpapier stammt aus dem Jahrgang 1906 der Zeitschrift "Kochkunst", vom Internationaler Verband der Köche, erschienen 1906 in Frankfurt am Main. <a class="worldcat" href="http://www.worldcat.org/oclc/277227987">&nbsp;</a>'
 resources:
 - src: "front.jxl"
   name: front

@@ -2,7 +2,12 @@
 {{- $width := .width -}}
 {{- $height := .height -}}
 
+{{/*
 {{- $previewImg := "" -}}
+*/}}
+
+{{- $previewImg = partial "preview/preview-internal.html" (dict "context" $context "fit" nil "postProcess" false) -}}
+
 {{- $images := newScratch -}}
 {{- if isset .context.Site.Params "preview" -}}
     {{- $previewImgName := $context.Site.Params.preview.outputPrefix -}}
@@ -32,6 +37,10 @@
             {{ $crop := printf "%dx%d" $cropWidth $cropHeight }}
 
             {{/* TODO: Add croping */}}
+            {{- $contextFilePath := "" -}}
+            {{- if and (ne $context.File nil) (ne $context.File.Path nil) -}}
+              {{- $contextFilePath := $context.File.Path -}}
+            {{- end -}}
             {{- if eq $tmpImg nil -}}
                 {{- errorf "Can't find image %s" (printf "%s" (path.Join $context.File.Path .src)) -}}
             {{- else -}}

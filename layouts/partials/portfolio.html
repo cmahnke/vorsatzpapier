@@ -16,34 +16,34 @@
 				{{- if or (eq .name "preview") (eq .params.preview true) -}}
 					{{- $imgLocation := path.Join $context .src -}}
 					{{- $previewImg := ($element.Resources.ByType "image").GetMatch .name -}}
-                    {{/* Format: width x height */}}
+            {{/* Format: width x height */}}
 
-                    {{- $cropWidth := $defaultWidth -}}
-                    {{- $cropHeight := $defaultHeight -}}
+            {{- $cropWidth := $defaultWidth -}}
+            {{- $cropHeight := $defaultHeight -}}
 
-                    {{- if .params.cropwidth -}}
+            {{- if .params.cropwidth -}}
 						{{- $cropWidth = .params.cropwidth -}}
-                        {{- $resize = true -}}
+            {{- $resize = true -}}
 					{{- end -}}
 					{{- if .params.cropheight -}}
 						{{- $cropHeight = .params.cropheight -}}
-                        {{- $resize = true -}}
+            {{- $resize = true -}}
 					{{- end }}
 
-                    {{ $crop := printf "%dx%d" $cropWidth $cropHeight }}
+          {{ $crop := printf "%dx%d" $cropWidth $cropHeight }}
 					{{- if eq $previewImg nil -}}
-                        {{- errorf "Can't find image %s" $imgLocation -}}
+            {{- errorf "[partials/portfolio.html] Can't find image %s" $imgLocation -}}
 					{{- else -}}
-                        {{- if ne $previewType "book" -}}
-                            {{- $crop2x := printf "%dx%d" (div $previewImg.Width 2) $cropHeight -}}
-    						{{- $previewImg = $previewImg.Fill (printf "%s %s" $crop2x "center") -}}
-                            {{- $previewImg = $previewImg.Fill (printf "%s %s" $crop "center") -}}
-                            {{- if eq $resize true -}}
-                                {{- $previewImg = $previewImg.Fill (printf "%s %s" (printf "%dx%d" $defaultWidth $defaultHeight ) "center") -}}
-                            {{- end -}}
-                        {{- else -}}
-                            {{- $previewImg = $previewImg.Resize (printf "%dx" $defaultWidth) -}}
-                        {{- end -}}
+            {{- if ne $previewType "book" -}}
+              {{- $crop2x := printf "%dx%d" (div $previewImg.Width 2) $cropHeight -}}
+							{{- $previewImg = $previewImg.Fill (printf "%s %s" $crop2x "center") -}}
+              {{- $previewImg = $previewImg.Fill (printf "%s %s" $crop "center") -}}
+              {{- if eq $resize true -}}
+                {{- $previewImg = $previewImg.Fill (printf "%s %s" (printf "%dx%d" $defaultWidth $defaultHeight ) "center") -}}
+              {{- end -}}
+            {{- else -}}
+              {{- $previewImg = $previewImg.Resize (printf "%dx" $defaultWidth) -}}
+            {{- end -}}
 					{{- end -}}
 					{{- $images.Set "preview" $previewImg -}}
 				{{- end -}}

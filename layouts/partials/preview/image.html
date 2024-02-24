@@ -40,7 +40,7 @@
               {{- $contextFilePath = $context.File.Path -}}
             {{- end -}}
             {{- if eq $tmpImg nil -}}
-                {{- errorf "Can't find image %s" (printf "%s" (path.Join $context.File.Path .src)) -}}
+                {{- errorf "[partials/preview/image.html] Can't find image %s" (printf "%s" (path.Join $context.File.Path .src)) -}}
             {{- else -}}
                 {{- if ne $context.Params.preview  "book" -}}
                     {{- $crop2x := printf "%dx%d" (div $tmpImg.Width 2) $cropHeight -}}

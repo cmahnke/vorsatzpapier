@@ -43,7 +43,7 @@
 
                     {{ $crop := printf "%dx%d" $cropWidth $cropHeight }}
 					{{- if eq $previewImg nil -}}
-                        {{- errorf "Can't find image %s" $imgLocation -}}
+                        {{- errorf "[partials/tag.html] Can't find image %s" $imgLocation -}}
 					{{- else -}}
                         {{- if ne $previewType "book" -}}
                             {{- $crop2x := printf "%dx%d" (div $previewImg.Width 2) $cropHeight -}}

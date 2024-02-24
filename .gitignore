@@ -20,3 +20,5 @@ content/**/ogPreview.*g
 assets/css/
 static/fonts/
 .DS_Store
+package.json
+yarn.lock

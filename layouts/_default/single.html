@@ -1,16 +1,16 @@
 {{ define "body" }}
-    {{- $slug := .File.Dir -}}
-    {{- $slug := replace $slug "/" "" -}}
-    {{- $class := $slug -}}
-    {{- if hasPrefix .Page.File.Path "about" -}}
-        {{- $class = "about" -}}
-    {{- end -}}
-    {{- if .Params.metaPage -}}
-        {{- $class = printf "%s %s" $class "meta" -}}
-    {{ end }}
-    <body class="post-template-default single single-post single-format-standard ct-body singular singular-post not-front standard {{ $class }}">
+  {{- $slug := .File.Dir -}}
+  {{- $slug := replace $slug "/" "" -}}
+  {{- $class := $slug -}}
+  {{- if hasPrefix .Page.File.Path "about" -}}
+    {{- $class = "about" -}}
+  {{- end -}}
+  {{- if .Params.metaPage -}}
+    {{- $class = printf "%s %s" $class "meta" -}}
+  {{ end }}
+  <body class="post-template-default single single-post single-format-standard ct-body singular singular-post not-front standard {{ $class }}">
 {{ end }}
 
 {{ define "main" }}
-    {{- partial "post.html" . -}}
+  {{- partial "post.html" . -}}
 {{ end }}

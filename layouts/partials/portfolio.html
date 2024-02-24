@@ -5,29 +5,29 @@
 	{{- range $index, $element := .Paginator.Pages -}}
 		{{- $context := path.Dir .File.Path -}}
 		{{- $images := newScratch -}}
-        {{- $resize := false -}}
-        {{- $defaultWidth := 800 -}}
-        {{- $defaultHeight := 400 -}}
+      {{- $resize := false -}}
+      {{- $defaultWidth := 800 -}}
+      {{- $defaultHeight := 400 -}}
 
-		{{/* Preview */}}
-        {{- if .Params.preview -}}
-            {{- $previewType := .Params.preview  -}}
-			{{- range .Params.resources -}}
-				{{- if or (eq .name "preview") (eq .params.preview true) -}}
-					{{- $imgLocation := path.Join $context .src -}}
-					{{- $previewImg := ($element.Resources.ByType "image").GetMatch .name -}}
-            {{/* Format: width x height */}}
+			{{/* Preview */}}
+      {{- if .Params.preview -}}
+        {{- $previewType := .Params.preview  -}}
+				{{- range .Params.resources -}}
+					{{- if or (eq .name "preview") (eq .params.preview true) -}}
+						{{- $imgLocation := path.Join $context .src -}}
+						{{- $previewImg := ($element.Resources.ByType "image").GetMatch .name -}}
+	          {{/* Format: width x height */}}
 
-            {{- $cropWidth := $defaultWidth -}}
-            {{- $cropHeight := $defaultHeight -}}
+	          {{- $cropWidth := $defaultWidth -}}
+	          {{- $cropHeight := $defaultHeight -}}
 
-            {{- if .params.cropwidth -}}
+	          {{- if .params.cropwidth -}}
 						{{- $cropWidth = .params.cropwidth -}}
-            {{- $resize = true -}}
+	          {{- $resize = true -}}
 					{{- end -}}
 					{{- if .params.cropheight -}}
 						{{- $cropHeight = .params.cropheight -}}
-            {{- $resize = true -}}
+	          {{- $resize = true -}}
 					{{- end }}
 
           {{ $crop := printf "%dx%d" $cropWidth $cropHeight }}
@@ -53,14 +53,14 @@
 
 		{{- $previewImg := $images.Get "preview" -}}
 		{{- $style := "" -}}
-        {{- $class := "" -}}
+    {{- $class := "" -}}
 
 		{{- if $previewImg -}}
 			{{- $style = printf "background-image: url(%s);" $previewImg.RelPermalink -}}
-            {{- $class = "preview" -}}
+      {{- $class = "preview" -}}
 		{{- end -}}
 
-        {{- if $previewImg -}}
+    {{- if $previewImg -}}
 			{{- if eq (mod $index 2) 0 -}}
 				<div style="{{ $style | safeCSS }}" class="{{ $class | safeCSS }} post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-memories tag-normal-post tag-standard-2 excerpt zoom full-without-featured odd excerpt">
 			{{- else -}}

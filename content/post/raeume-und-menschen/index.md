@@ -20,19 +20,19 @@ resources:
   params:
     iiif: title/info.json
     class: title
-- src: "page027.jpg"
+- src: "page027.jxl"
   params:
     iiif: page027/info.json
     class: order-1
-- src: "page035.jpg"
+- src: "page035.jxl"
   params:
     iiif: page035/info.json
     class: order-2
-- src: "page050.jpg"
+- src: "page050.jxl"
   params:
     iiif: page050/info.json
     class: order-3
-- src: "page051.jpg"
+- src: "page051.jxl"
   params:
     iiif: page061/info.json
     class: order-3

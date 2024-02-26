@@ -10,7 +10,7 @@ DefaultContentLanguage = "de"
 rssLimit = 25
 paginate = 10
 copyright = false
-timeout = 60
+timeout = 120
 
 [languages]
     [languages.de]

@@ -112,7 +112,9 @@
   {{- if ne $previewLoc "" -}}
     {{- $previewImg = $context.Page.Resources.GetMatch $previewLoc -}}
   {{- end -}}
-  {{- if eq (string $previewImg.MediaType) "image/jxl" -}}
+  {{- if or (eq $previewImg "") (eq $previewImg nil) -}}
+    {{- warnf "[partials/preview/preview-internal.html] Couldn't load JPEG derivate for JXL %s for %s" $previewLoc $context.File.Path -}}
+  {{- else if eq (string $previewImg.MediaType) "image/jxl" -}}
     {{- errorf "[partials/preview/preview-internal.html] JXL Reference (%s) couldn't be resolved to JPEG derivate in %s" $previewLoc $context.File.Path -}}
   {{- end -}}
 {{- end -}}

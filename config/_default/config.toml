@@ -9,6 +9,7 @@
     productionIIIFURLPrefix="https://static.projektemacher.org/vorsatzpapier/"
     disableScale = true
     description = "Old endpapers and wallpapers"
+    debug = true
 
     [params.preview]
         outputPrefix = "ogPreview"

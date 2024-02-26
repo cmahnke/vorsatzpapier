@@ -12,74 +12,45 @@
 {{ end }}
 
 {{ define "main" }}
-    <div class="archive-header">
-    	<h1>
-    		{{ .Title }}
-    	</h1>
-      <h2>{{ .Description }}</h2>
-    </div>
-    <div id="loop-container" class="loop-container">
-      <div class="post type-post status-publish excerpt">
-        <div class="patterns-container">
-          {{- $pages := where .Site.Pages "Params.preview" "in" (slice "endpaper" "wallpaper" "portfolio") -}}
-          {{- $pages := $pages.ByDate.Reverse -}}
+  <div class="archive-header">
+  	<h1>
+  		{{ .Title }}
+  	</h1>
+    <h2>{{ .Description }}</h2>
+  </div>
+  <div id="loop-container" class="loop-container">
+    <div class="post type-post status-publish excerpt">
+      <div class="patterns-container">
+        {{- $pages := where .Site.Pages "Params.preview" "in" (slice "endpaper" "wallpaper" "portfolio") -}}
+        {{- $pages := $pages.ByDate.Reverse -}}
 
-          {{ range $index, $element := $pages }}
-      		{{- $context := path.Dir .File.Path -}}
-      		{{- $images := newScratch -}}
+        {{- range $index, $element := $pages -}}
+          {{- if and (isset .Params "nopreview") (.Param "nopreview") -}}
+            {{- continue -}}
+          {{- end -}}
+
+      		{{- $contextPath := path.Dir .File.Path -}}
           {{- $resize := false -}}
           {{- $defaultWidth := 800 -}}
           {{- $defaultHeight := 500 -}}
 
           {{/* Preview */}}
-      		{{- if .Params.preview -}}
-      			{{- range .Params.resources -}}
-      				{{- if eq .name "preview" -}}
-      					{{- $imgLocation := path.Join $context .src -}}
-      					{{- $previewImg := ($element.Resources.ByType "image").GetMatch .name -}}
-                {{/* Format: width x height */}}
+          {{/* Format: width x height */}}
+          {{- $fit := printf "%dx%d" $defaultWidth $defaultHeight -}}
+          {{- $previewImg := partial "preview/preview-internal.html" (dict "context" . "fit" $fit "postProcess" true) -}}
 
-                {{- $cropWidth := $defaultWidth -}}
-                {{- $cropHeight := $defaultHeight -}}
-
-                {{ if .params.cropwidth }}
-      						{{ $cropWidth = .params.cropwidth -}}
-                  {{- $resize = true -}}
-      					{{- end }}
-      					{{ if .params.cropheight }}
-      						{{ $cropHeight = .params.cropheight -}}
-                  {{- $resize = true -}}
-      					{{- end }}
-
-                {{ $crop := printf "%dx%d" $cropWidth $cropHeight }}
-      					{{- if eq $previewImg nil -}}
-                  {{ errorf "[_default/patterns.html] Can't find image %s" $imgLocation }}
-      					{{- else -}}
-                  {{ $crop2x := printf "%dx%d" (div $previewImg.Width 2) $cropHeight }}
-      						{{- $previewImg = $previewImg.Fill (printf "%s %s" $crop2x "center") -}}
-                  {{- $previewImg = $previewImg.Fill (printf "%s %s" $crop "center") -}}
-                  {{- if eq $resize true -}}
-                    {{- $previewImg = $previewImg.Fill (printf "%s %s" (printf "%dx%d" $defaultWidth $defaultHeight ) "center") -}}
-                  {{- end -}}
-      					{{- end -}}
-      					{{- $images.Set "preview" $previewImg -}}
-      				{{- end -}}
-      			{{- end -}}
-      		{{- end -}}
-
-      		{{- $previewImg := $images.Get "preview" -}}
           {{- if $previewImg -}}
       			{{- $style := printf "background-image: url(%s);" $previewImg.RelPermalink -}}
-              {{- $class := "preview" -}}
-              <a class="pattern-link" href="{{ .Permalink }}">
-                {{- with $previewImg -}}
-                  <div style="{{ $style | safeCSS }}" class="pattern">
-                  </div>
-                {{ end }}
-              </a>
-            {{- end -}}
-          {{ end }}
-        </div>
+            {{- $class := "preview" -}}
+            <a class="pattern-link" href="{{ .Permalink }}">
+              {{- with $previewImg -}}
+                <div style="{{ $style | safeCSS }}" class="pattern">
+                </div>
+              {{ end }}
+            </a>
+          {{- end -}}
+        {{ end }}
       </div>
     </div>
+  </div>
 {{ end }}

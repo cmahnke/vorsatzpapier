@@ -11,9 +11,9 @@
 
         {{ end }}
         <div class="entry-meta">
-            {{- if not .Params.metaPage -}}
+          {{- if not .Params.metaPage -}}
         		<span class="date">{{ partial "date.html" . }}</span>
-            {{- end -}}
+          {{- end -}}
         </div>
         <div class='entry-header'>
           <h1 class='entry-title'>{{ .Title }}</h1>
@@ -23,28 +23,28 @@
               {{- $context := path.Dir .File.Path -}}
               {{- $pageURL := .Permalink -}}
               <div class="iiif">
-                  {{- if not (hasPrefix .Params.iiifContext "http://iiif.io/api/presentation/") -}}
-                      {{- range .Params.resources -}}
-                        {{- if or (and (ne $.Params.itemType "work") (ne $.Params.itemType "book")) (not (or (or (eq .name "front") (eq .name "title")) (eq .name "cover"))) -}}
-                          {{- if .params.iiif -}}
-                            {{ partial "iiif/iiif-image.html" (dict "context" . "contextPath" $context "pageURL" .Permalink "pageContext" $page "site" $.Site) }}
-                          {{- end -}}
-                        {{- end -}}
+                {{- if not (hasPrefix .Params.iiifContext "http://iiif.io/api/presentation/") -}}
+                  {{- range .Params.resources -}}
+                    {{- if or (and (ne $.Params.itemType "work") (ne $.Params.itemType "book")) (not (or (or (eq .name "front") (eq .name "title")) (eq .name "cover"))) -}}
+                      {{- if .params.iiif -}}
+                        {{ partial "iiif/iiif-image.html" (dict "context" . "contextPath" $context "pageURL" .Permalink "pageContext" $page "site" $.Site) }}
                       {{- end -}}
-                  {{- else -}}
-                    {{- partial "iiif/iiif-presentation.html" . -}}
+                    {{- end -}}
                   {{- end -}}
+                {{- else -}}
+                  {{- partial "iiif/iiif-presentation.html" . -}}
+                {{- end -}}
               </div>
 
-                <article>
-                    <div class="content">
-                        {{ .Content }}
-                    </div>
+              <article>
+                <div class="content">
+                  {{ .Content }}
+                </div>
 
-                    {{- if .Params.itemType -}}
-                        {{- partial (printf "media/%s.html" .Params.itemType ) . -}}
-                    {{- end -}}
-                </article>
+                {{- if .Params.itemType -}}
+                  {{- partial (printf "media/%s.html" .Params.itemType ) . -}}
+                {{- end -}}
+              </article>
             </div>
 
             <div class='entry-meta-bottom'>

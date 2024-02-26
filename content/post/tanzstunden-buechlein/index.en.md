@@ -10,7 +10,7 @@ tags:
 - Book
 resources:
 - src: "end-verso.jpg"
-  name: page
+  name: preview
   params:
     iiif: end-verso/info.json
 - src: "end-recto.jpg"
@@ -22,6 +22,7 @@ resources:
   params:
     iiif: title/info.json
 - src: "front.jpg"
+  name: front
   params:
     iiif: front/info.json
 ---

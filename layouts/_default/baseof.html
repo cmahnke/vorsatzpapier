@@ -7,7 +7,7 @@
     {{- $class := "" -}}
     {{- with .Page.File -}}
       {{- if or (hasPrefix .Path "about") (hasPrefix .Path "/about") -}}
-          {{- $class = "about" -}}
+        {{- $class = "about" -}}
       {{- end -}}
     {{- end -}}
     {{- if .Params.metaPage -}}

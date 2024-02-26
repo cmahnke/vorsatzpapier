@@ -14,64 +14,24 @@
 <div id="loop-container" class="loop-container">
 	{{- $paginator := .Paginate (where (where .Site.Pages "Type" "post").ByDate.Reverse "IsPage" true) -}}
 	{{- range $index, $element := .Paginator.Pages -}}
-		{{- $context := path.Dir .File.Path -}}
-		{{- $images := newScratch -}}
+		{{- $contextPath := path.Dir .File.Path -}}
     {{- $resize := false -}}
     {{- $defaultWidth := 800 -}}
     {{- $defaultHeight := 400 -}}
 
 		{{/* Preview */}}
-    {{- if .Params.preview -}}
-      {{- $previewType := .Params.preview  -}}
-			{{- range .Params.resources -}}
-				{{- if or (eq .name "preview") (eq .params.preview true) -}}
-					{{- $imgLocation := path.Join $context .src -}}
-					{{- $previewImg := ($element.Resources.ByType "image").GetMatch .name -}}
-          {{/* Format: width x height */}}
+		{{- $fit := printf "%dx%d" $defaultWidth $defaultHeight -}}
+		{{- $previewImg := partial "preview/preview-internal.html" (dict "context" . "fit" $fit "postProcess" true) -}}
 
-          {{- $cropWidth := $defaultWidth -}}
-          {{- $cropHeight := $defaultHeight -}}
-
-          {{- if .params.cropwidth -}}
-						{{- $cropWidth = .params.cropwidth -}}
-            {{- $resize = true -}}
-					{{- end -}}
-					{{- if .params.cropheight -}}
-						{{- $cropHeight = .params.cropheight -}}
-            {{- $resize = true -}}
-					{{- end }}
-
-          {{ $crop := printf "%dx%d" $cropWidth $cropHeight }}
-					{{- if eq $previewImg nil -}}
-            {{- errorf "[partials/tag.html] Can't find image %s" $imgLocation -}}
-					{{- else -}}
-            {{- if ne $previewType "book" -}}
-              {{- $crop2x := printf "%dx%d" (div $previewImg.Width 2) $cropHeight -}}
-							{{- $previewImg = $previewImg.Fill (printf "%s %s" $crop2x "center") -}}
-              {{- $previewImg = $previewImg.Fill (printf "%s %s" $crop "center") -}}
-              {{- if eq $resize true -}}
-                {{- $previewImg = $previewImg.Fill (printf "%s %s" (printf "%dx%d" $defaultWidth $defaultHeight ) "center") -}}
-              {{- end -}}
-            {{- else -}}
-              {{- $previewImg = $previewImg.Resize (printf "%dx" $defaultWidth) -}}
-            {{- end -}}
-					{{- end -}}
-					{{- $images.Set "preview" $previewImg -}}
-				{{- end -}}
-			{{- end -}}
-		{{- end -}}
-
-
-		{{- $previewImg := $images.Get "preview" -}}
 		{{- $style := "" -}}
     {{- $class := "" -}}
 
-		{{- if $previewImg -}}
+		{{- if and $previewImg (or (not (isset .Params "nopreview")) (not (.Param "nopreview"))) -}}
 			{{- $style = printf "background-image: url(%s);" $previewImg.RelPermalink -}}
       {{- $class = "preview" -}}
 		{{- end -}}
 
-    {{- if $previewImg -}}
+    {{- if and $previewImg (or (not (isset .Params "nopreview")) (not (.Param "nopreview"))) -}}
 			{{- if eq (mod $index 2) 0 -}}
 				<div style="{{ $style | safeCSS }}" class="{{ $class | safeCSS }} post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-memories tag-normal-post tag-standard-2 excerpt zoom full-without-featured odd excerpt">
 			{{- else -}}
@@ -107,7 +67,6 @@
 			<div class='excerpt-content'>
 				<article>
 					{{ .Summary }}
-
 					<div class="more-link-wrapper"><a class="more-link" href="{{ .Permalink }}">{{ i18n "readPost" }}<span class="screen-reader-text">This is a Standard Post</span></a></div>
 				</article>
 			</div>

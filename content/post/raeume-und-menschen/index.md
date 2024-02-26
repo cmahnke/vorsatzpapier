@@ -34,8 +34,8 @@ resources:
     class: order-3
 - src: "page051.jxl"
   params:
-    iiif: page061/info.json
-    class: order-3
+    iiif: page051/info.json
+    class: order-4
 ---
 
 In keinem Buch über Inneneinrichtung dürfen Tapeten fehlen!

@@ -5,6 +5,7 @@ iiifContext: http://iiif.io/api/presentation/2/context.json
 preview: book
 itemType: book
 cc: false
+noPreview: true
 iiifManifest: ./manifest.json
 outputs:
 - html

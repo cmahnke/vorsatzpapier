@@ -4,6 +4,8 @@ date: 2020-10-01T08:03:51+02:00
 iiifContext: http://iiif.io/api/image/2/context.json
 itemType: work
 itemDescription: "Diese Tafeln stammen aus Meyers Konversations-Lexikon, [5. Auflage](https://de.wikipedia.org/wiki/Meyers_Konversations-Lexikon#5._Auflage_(1893%E2%80%931897/1901)) erschienen 1893 - 1901 im Bibliographischen Institut, Leipzig."
+preview: leafs
+noPreview: true
 tags:
 - Book
 resources:
@@ -18,13 +20,15 @@ resources:
     preview: true
     iiif: img004/info.json
     class: order-2
+    cropWidth: 6000
+    cropHeight: 4000
 - src: "img005.jpg"
   name: page
   params:
     iiif: img005/info.json
     class: order-3
 - src: "img006.jpg"
-  name: page
+  name: preview
   params:
     iiif: img006/info.json
     class: order-4

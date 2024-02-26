@@ -4,6 +4,8 @@ date: 2020-10-01T08:03:51+02:00
 iiifContext: http://iiif.io/api/image/2/context.json
 itemType: work
 itemDescription: "These sheets are from Meyers Konversations-Lexikon, [5. edition](https://de.wikipedia.org/wiki/Meyers_Konversations-Lexikon#5._Auflage_(1893%E2%80%931897/1901)) published 1893 - 1901 by Bibliographisches Institut, Leipzig"
+preview: leafs
+noPreview: true
 tags:
 - Book
 resources:

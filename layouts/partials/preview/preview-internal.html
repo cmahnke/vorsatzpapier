@@ -1,0 +1,179 @@
+{{/* TODO: Merge with iiif/preview.html or at least change location. */}}
+{{- $context := .context -}}
+{{- $debug := partialCached "partials/functions/debug/enabled.html" $context -}}
+{{- $fit := .fit -}}
+{{- $postProcess := false -}}
+{{- if and (ne .postProcess nil) (eq .postProcess true) -}}
+  {{- $postProcess = true -}}
+{{- end -}}
+{{- $fail := true -}}
+{{- if and (ne .fail nil) (eq .fail true) -}}
+  {{- $fail = true -}}
+{{- end -}}
+
+{{- if ne (printf "%T" $context) "*hugolib.pageState" -}}
+  {{- errorf "[partials/preview/preview-internal.html] Passed context if of wrong type: '%T' %#v" $context $context -}}
+{{- end -}}
+
+{{- $fullResImgSuffix := "/full/full/0/default.jpg" -}}
+
+{{- $contextPath := printf "(RelPermalink) %s" $context.RelPermalink -}}
+{{- if and (ne $context.File nil) (ne $context.File.Path nil) -}}
+  {{- $contextPath = path.Dir $context.File.Path -}}
+{{- end -}}
+{{- $previewImg := "" -}}
+{{- $images := newScratch -}}
+{{- $previewReference := "" -}}
+{{- $imgLocation := "" -}}
+{{- $params := "" -}}
+{{- $previewImg := "" -}}
+
+{{- if eq $fit nil -}}
+  {{- $fit = "600x300" -}}
+{{- end -}}
+
+{{- $sourceParam := "" -}}
+{{- if and (isset $context.Params "preview") $context.Params.preview (eq $context.Params.preview "wallpaper") -}}
+  {{- if and (not (isset $context.Params "resources")) $debug -}}
+    {{- errorf "[partials/preview/preview-internal.html] Preview is set to 'wallpaper' for %s but has no resources!"  $context.RelPermalink -}}
+  {{- end -}}
+  {{- $previewReference = index $context.Params.resources 0 -}}
+{{- else if and (isset $context.Params "preview") $context.Params.preview (eq $context.Params.preview "book") -}}
+  {{- warnf "[partials/preview/preview-internal.html] Preview is set to 'book' for %s there will be no preview" -}}
+  {{- $previewReference = index (where $context.Params.resources "name" "front") 0 -}}
+{{- else if isset $context.Params "resources" -}}
+  {{- if (gt (where $context.Params.resources "name" "preview" | len) 0) -}}
+    {{- $sourceParam = "name=preview" -}}
+    {{- $previewReference = index (where $context.Params.resources "name" "preview") 0 -}}
+  {{- else if (gt (where $context.Params.resources "name" "cover" | len) 0) -}}
+    {{- $sourceParam = "name=cover" -}}
+    {{- $previewReference = index (where $context.Params.resources "name" "cover") 0 -}}
+  {{- else if (gt (where $context.Params.resources "name" "front" | len) 0) -}}
+    {{- $sourceParam = "name=front" -}}
+    {{- $previewReference = index (where $context.Params.resources "name" "front") 0 -}}
+  {{- else if (gt ($context.Params.resources | len) 0) -}}
+    {{- $sourceParam = "first" -}}
+    {{- $previewReference = index $context.Params.resources 0 -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if and (eq $previewReference "") (strings.HasPrefix $contextPath "post") -}}
+  {{- errorf "[partials/preview/preview-internal.html] Can't find preview resource name for %s" $contextPath -}}
+{{- else if and (eq $previewReference nil) (strings.HasPrefix $contextPath "post") $debug -}}
+  {{- warnf "[partials/preview/preview-internal.html] Can't find preview in the resources '#%v' for %s" $context.Params $contextPath -}}
+{{- end -}}
+
+{{- if and (ne $previewReference "") (reflect.IsMap $previewReference) -}}
+  {{- $images.Set "preview" nil -}}
+  {{- if isset $previewReference "src" -}}
+    {{- $imgLocation = (path.Join $contextPath $previewReference.src) -}}
+    {{- $images.Set "preview" ($context.Resources.Get $previewReference.src) -}}
+  {{- else -}}
+    {{ errorf "[partials/preview/preview-internal.html] No image source found in resources of %s" $contextPath }}
+  {{- end -}}
+  {{- if eq ($images.Get "preview") nil -}}
+    {{- $images.Set "preview" (($context.Resources.ByType "image").GetMatch $previewReference.name) -}}
+  {{- end -}}
+  {{- $params = $previewReference.params -}}
+{{- else if and (strings.HasPrefix $contextPath "post") -}}
+  {{- if $debug -}}
+    {{- warnf "[partials/preview/preview-internal.html] No resources for %s" $contextPath -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $previewImg = $images.Get "preview" -}}
+
+{{/* Check for JXL */}}
+{{- if eq (string $previewImg.MediaType) "image/jxl" -}}
+  {{- $previewLoc := "" -}}
+  {{- if not $previewReference.name -}}
+    {{- if $debug -}}
+      {{- warnf "[partials/preview/preview-internal.html] JXL Reference in %s, but no 'name' set, using default" $context.File.Path -}}
+    {{- end -}}
+    {{- $previewImg = partial "iiif/preview.html" (dict "context" $context "name" $previewReference.name) -}}
+  {{- else -}}
+    {{- $jxlSurogatePrefix := path.BaseName $previewReference.src -}}
+    {{- $previewLoc = path.Join (path.BaseName $previewReference.src) $fullResImgSuffix -}}
+    {{- $imgLocation = path.Join $contextPath $previewLoc -}}
+  {{- end -}}
+  {{- if or (eq $previewImg "") (eq $previewImg nil) -}}
+    {{- $previewLoc := path.Join (path.Dir $previewReference.params.iiif) $fullResImgSuffix -}}
+    {{- $imgLocation = path.Join $contextPath $previewLoc -}}
+    {{- if $debug -}}
+      {{- warnf "[partials/preview/preview-internal.html] Getting JXL preview for %s failed! Trying to load from %s" $contextPath $previewLoc -}}
+    {{- end -}}
+
+    {{- if $context.IsSection -}}
+      {{- $previewImg = $context.Page.Resources.GetMatch $previewLoc -}}
+    {{- else -}}
+      {{- $previewImg = $context.Resources.GetMatch $previewLoc -}}
+    {{- end -}}
+  {{- end -}}
+  {{- if ne $previewLoc "" -}}
+    {{- $previewImg = $context.Page.Resources.GetMatch $previewLoc -}}
+  {{- end -}}
+  {{- if eq (string $previewImg.MediaType) "image/jxl" -}}
+    {{- errorf "[partials/preview/preview-internal.html] JXL Reference (%s) couldn't be resolved to JPEG derivate in %s" $previewLoc $context.File.Path -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if and (or (eq $previewImg nil) (eq $previewImg "")) (strings.HasPrefix $contextPath "post") (not (and (isset $context.Params "type") (eq $context.Params.type "other"))) -}}
+  {{- warnf "[partials/preview/preview-internal.html] Can't load image %s for post %s (#%v)" $imgLocation $contextPath $previewReference -}}
+  {{- if lt hugo.Version "0.123.0" -}}
+    {{- errorf "This is supposed to work with Hugo 0.123" -}}
+  {{- end -}}
+  {{- if or (eq $imgLocation "") (not (fileExists (printf "/%s" $imgLocation))) -}}
+
+    {{- if or (eq $imgLocation "") (eq $imgLocation nil) -}}
+      {{- $imgLocation = printf "[imgLocation for %s is empty!]" $context.RelPermalink -}}
+    {{- end -}}
+
+    {{- errorf "[partials/preview/preview-internal.html] Image %s doesn't exist!" $imgLocation -}}
+  {{- end -}}
+{{- else -}}
+
+  {{- if $postProcess -}}
+  {{/* Vorsatzpapier specific post processing */}}
+    {{- if ne (printf "%T" $previewReference) "string" -}}
+      {{/* Format: width x height */}}
+      {{- $resize := false -}}
+      {{- $defaultWidth := int (index (split $fit "x") 0) -}}
+      {{- $defaultHeight := int (index (split $fit "x") 1) -}}
+
+      {{- $cropWidth := $defaultWidth -}}
+      {{- $cropHeight := $defaultHeight -}}
+      {{- if $previewReference.params.cropwidth -}}
+        {{- $cropWidth = $previewReference.params.cropwidth -}}
+        {{- $resize = true -}}
+      {{- end -}}
+      {{- if $previewReference.params.cropheight -}}
+        {{- $cropHeight = $previewReference.params.cropheight -}}
+        {{- $resize = true -}}
+      {{- end -}}
+
+      {{ $crop := printf "%dx%d" $cropWidth $cropHeight }}
+      {{- if eq $previewImg nil -}}
+        {{- if eq $imgLocation "" -}}
+          {{- $imgLocation = printf "[Couldn't find location for %s]" $context.RelPermalink -}}
+        {{- end -}}
+        {{- warnf "[partials/preview/preview-internal.html] Can't find image %s" $imgLocation -}}
+      {{- else -}}
+        {{ $crop2x := printf "%dx%d" (div $previewImg.Width 2) $cropHeight }}
+        {{- $previewImg = $previewImg.Fill (printf "%s %s" $crop2x "center") -}}
+        {{- $previewImg = $previewImg.Fill (printf "%s %s" $crop "center") -}}
+        {{- if eq $resize true -}}
+          {{- $previewImg = $previewImg.Fill (printf "%s %s" (printf "%dx%d" $defaultWidth $defaultHeight ) "center") -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+    {{- $rotate := "" -}}
+    {{- if isset $params "rotate" -}}
+      {{- $rotate = printf " r%d" (add $params.rotate 180) -}}
+    {{- end -}}
+    {{- $imgOptions := (printf "%s %s %s" $fit $rotate "center") -}}
+    {{- $previewImg = $previewImg.Fit $imgOptions -}}
+  {{- end -}}
+
+{{- end -}}
+
+{{- return $previewImg -}}

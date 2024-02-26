@@ -5,6 +5,7 @@ iiifContext: http://iiif.io/api/image/2/context.json
 preview: book
 itemType: book
 itemDescription: 'Ein Artikel über Tapeten'
+noPreview: true
 tags:
 - Magazin
 - Wallpaper

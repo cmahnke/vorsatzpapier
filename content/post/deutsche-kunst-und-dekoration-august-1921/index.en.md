@@ -6,13 +6,14 @@ tags:
 - Book
 - Wallpaper
 itemType: book
+noPreview: true
 itemDescription: 'This article is from the magazine "Deutsche Kunst und Dekoration Illustrierte Monatshefte für moderne Malerei, Plastik, Architektur, Wohnungs-Kunst und künstlerische Frauenarbeiten", 24th year, issue 11, published in August 1921 by Verlagsanstalt Alexander Koch, Darmstadt. <a class="worldcat" href="http://www.worldcat.org/oclc/442388049">&nbsp;</a>'
 resources:
-- src: "title.jpg"
-  name: title
+- src: "front.jpg"
+  name: front
   params:
-    iiif: title/info.json
-    class: title
+    iiif: front/info.json
+    class: front
 - src: "page265.jpg"
   params:
     iiif: page265/info.json

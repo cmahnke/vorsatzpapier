@@ -66,8 +66,9 @@ jobs:
           sshpass -e rsync -aP --size-only --delete --relative $(cat files.lst) $DEPLOY_USER@$DEPLOY_SERVER:$DEPLOY_PATH/vorsatzpapier/
           rm -f files.lst
           cd ..
+          find content/post/ -name info.json -exec dirname {} \; | xargs -I {} find {} -mindepth 1 -type d -not -path '*/full*' | xargs rm -fr
           #find content/post/ -name info.json -exec dirname {} \; | xargs rm -r
-          find content/post/ -name info.json -exec dirname {} \; | xargs -I{} find {} ! -ipath full/full/0/default.jpg | xargs rm -r
+          #find content/post/ -name info.json -exec dirname {} \; | xargs -I{} find {} ! -ipath full/full/0/default.jpg | xargs rm -r
 
       - name: Generate Files
         env:
@@ -78,7 +79,7 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2.6.0
         with:
-          hugo-version: '0.123.3'
+          hugo-version: '0.123.4'
           extended: true
 
       - name: Build Hugo site

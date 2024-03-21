@@ -13,6 +13,8 @@ resources:
   name: preview
   params:
     iiif: end-verso/info.json
+    cropWidth: 2000
+    cropHeight: 2000   
 - src: "end-recto.jpg"
   name: page
   params:

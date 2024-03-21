@@ -24,6 +24,8 @@ resources:
   params:
     iiif: front-verso/info.json
     class: order-1
+    cropWidth: 2000
+    cropHeight: 2000   
 - src: "front-recto.jpg"
   params:
     iiif: front-recto/info.json

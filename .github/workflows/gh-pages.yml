@@ -99,6 +99,9 @@ jobs:
       - name: Puppeteer
         run: ./themes/projektemacher-base/scripts/github/check-js-errors.sh
 
+      - name: Archive links
+        run: python ./themes/projektemacher-base/scripts/archive.py -d docs/ -e vorsatzpapier.projektemacher.org,projektemacher.org
+
       - name: Deploy site
         uses: peaceiris/actions-gh-pages@v3.9.3
         with:

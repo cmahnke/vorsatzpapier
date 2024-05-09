@@ -1,7 +1,6 @@
 ---
 title: "Kochkunst 1906"
-date: xxx
-draft: true
+date: 2024-05-09T08:26:53+02:00
 iiifContext: http://iiif.io/api/image/2/context.json
 tags:
 - Book

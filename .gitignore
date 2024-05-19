@@ -22,3 +22,4 @@ static/fonts/
 .DS_Store
 package.json
 yarn.lock
+data/stats.json

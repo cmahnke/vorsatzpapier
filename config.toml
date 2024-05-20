@@ -11,6 +11,7 @@ rssLimit = 25
 paginate = 10
 copyright = false
 timeout = 240
+enableGitInfo = true
 
 [languages]
     [languages.de]

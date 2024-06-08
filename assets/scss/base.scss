@@ -11,6 +11,7 @@ $link-color: #42a5f5 !default;
 @import "media-info";
 @import "footer";
 @import "menu";
+/* @import "ol"; */
 @import "ol-iiif";
 
 .fa-plus:before {
@@ -484,4 +485,9 @@ body.about .loop-container .post {
             }
         }
     }
+}
+
+p.small {
+    font-size: smaller;
+    text-align: end;
 }

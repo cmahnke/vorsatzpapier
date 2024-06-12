@@ -41,7 +41,12 @@
 
 			<div class="excerpt-container">
 				<div class="excerpt-meta">
-					<span class="date">{{ partial "date.html" . }}</span>
+					<span class="date">
+						{{- .Date | time.Format ":date_full" -}}
+						{{/*
+							{{ partial "date.html" . }}
+						*/}}
+					</span>
 					{{ range .Params.categories }}
 						<span> / </span>
 						<span class="category">

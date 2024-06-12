@@ -12,7 +12,12 @@
         {{ end }}
         <div class="entry-meta">
           {{- if not .Params.metaPage -}}
-        		<span class="date">{{ partial "date.html" . }}</span>
+        		<span class="date">
+              {{- .Date | time.Format ":date_full" -}}
+              {{/*
+                {{ partial "date.html" . }}
+              */}}
+            </span>
           {{- end -}}
         </div>
         <div class='entry-header'>

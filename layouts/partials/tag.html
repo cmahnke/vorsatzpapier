@@ -1,6 +1,10 @@
-<div class="archive-header">
+<div class="archive-header tag-list">
 	<h1>
-		Tag: {{ .Title }}
+		{{- $title := .Title -}}
+		{{- if ne (i18n $title) "" -}}
+			{{- $title = i18n $title -}}
+		{{- end -}}
+		Tag: {{ $title }}
 		{{ if .Site.Params.social.rss }}
 		<a href="{{ .RSSLink }}" data-animate-hover="pulse" class="in-page-rss" target="_blank">
       <i class="fas fa-rss" title="rss"></i>
@@ -12,7 +16,7 @@
 
 <h1 class="screen-reader-text">Posts</h1>
 <div id="loop-container" class="loop-container">
-	{{- $paginator := .Paginate (where (where .Site.Pages "Type" "post").ByDate.Reverse "IsPage" true) -}}
+	{{- $paginator := .Paginate (where (where $.Site.Pages "Params.tags" "intersect" (slice .LinkTitle)).ByDate.Reverse "IsPage" true) -}}
 	{{- range $index, $element := .Paginator.Pages -}}
 		{{- $contextPath := path.Dir .File.Path -}}
     {{- $resize := false -}}

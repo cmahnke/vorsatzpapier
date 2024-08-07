@@ -1,5 +1,5 @@
 ---
-title: "Tapete"
+title: "Wallpaper"
 date: 2021-12-24T13:28:42+01:00
 iiifContext: http://iiif.io/api/image/2/context.json
 preview: wallpaper

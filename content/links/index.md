@@ -14,5 +14,8 @@ Ich habe auch eine kleine Sammlung an Strukturwalzen, die aber noch nirgendwo pr
 
 # Tapeten
 
+Hier werden alte Tapeten teilweise auch zum Kauf angeboten:
+
 * [Jonny Tapete](https://www.johnny-tapete.de/vintage_retro_tapete_cat95/)
 * [TeenageWasteland](http://www.teenagewasteland.de/dekorativ/tapete.html)
+* [Vintage Tapeten](https://vintage-tapeten.de/70er-Vintage-Tapeten-orignal-retro-60er-50er-80er)

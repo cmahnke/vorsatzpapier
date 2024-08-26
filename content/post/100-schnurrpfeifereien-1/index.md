@@ -6,6 +6,9 @@ tags:
 - Book
 - bookEndPaper
 preview: endpaper
+outputs:
+  - iiif-manifest
+  - html
 itemType: book
 itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Hundert Schnurrpfeifereinen" von Sophus Tromholt, 14. Auflage, erschienen ca. 1908 bei Reclam, Leipzig. <a class="worldcat" href="http://www.worldcat.org/oclc/255740370">&nbsp;</a>'
 resources:

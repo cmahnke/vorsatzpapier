@@ -7,6 +7,9 @@ tags:
 - bookEndPaper
 preview: endpaper
 itemType: book
+outputs:
+  - iiif-manifest
+  - html
 itemDescription: 'This endpaper is taken from the book "Kultur-Kuriosa", first volume by Max Kemmerich, published 1910 by Albert Langen, Munich. <a class="worldcat" href="http://www.worldcat.org/oclc/923684527">&nbsp;</a>'
 resources:
 - src: "front.jpg"

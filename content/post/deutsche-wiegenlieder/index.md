@@ -4,6 +4,9 @@ date: 2020-08-05T19:36:07+02:00
 iiifContext: http://iiif.io/api/image/2/context.json
 preview: endpaper
 itemType: book
+outputs:
+  - iiif-manifest
+  - html
 itemDescription: 'Dieses Vorsatzpapier ist aus dem Buch "Deutsche Wiegenlieder" von Hans Fraungruber, erschienen ca. 1909 im Verlag Gerlach und Wiedling, Wien und Leipzig, entnommen.  <a class="worldcat" href="http://www.worldcat.org/oclc/256761549">&nbsp;</a>'
 tags:
 - Book

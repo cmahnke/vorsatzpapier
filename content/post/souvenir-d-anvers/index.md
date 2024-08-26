@@ -4,6 +4,9 @@ date: 2020-09-21T18:08:28+02:00
 iiifContext: http://iiif.io/api/image/2/context.json
 preview: endpaper
 itemType: book
+outputs:
+  - iiif-manifest
+  - html
 itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Souvenir d''Anvers", erschienen um 1900 in Antwerpen. <a class="worldcat" href="http://www.worldcat.org/oclc/647827191">&nbsp;</a>'
 tags:
 - Book

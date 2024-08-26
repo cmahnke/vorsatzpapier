@@ -3,6 +3,9 @@ title: "Mappe"
 date: 2021-05-17T09:29:42+01:00
 iiifContext: http://iiif.io/api/image/2/context.json
 preview: portfolio
+outputs:
+  - iiif-manifest
+  - html
 tags:
 - Portfolio
 resources:

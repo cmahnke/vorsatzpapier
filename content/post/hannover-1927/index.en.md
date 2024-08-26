@@ -5,6 +5,9 @@ description: 'Fritz Stadelmann: Hannover die Großstadt im Grünen. Published b
 date: 2024-06-23T20:25:07+02:00
 preview: endpaper
 itemType: book
+outputs:
+  - iiif-manifest
+  - html
 tags:
 - Book
 - bookEndPaper

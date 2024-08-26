@@ -4,6 +4,9 @@ date: 2021-01-01T9:52:28+02:00
 iiifContext: http://iiif.io/api/image/2/context.json
 preview: endpaper
 itemType: book
+outputs:
+  - iiif-manifest
+  - html
 itemDescription: 'This endpaper is taken from the book "Universalbuch der Reden und Toaste" by Justinus Abel , unknown edition, published around 1890 by Levy & Müller, Stuttgart. <a class="worldcat" href="http://www.worldcat.org/oclc/1072729133">&nbsp;</a>'
 tags:
 - Book

@@ -6,6 +6,9 @@ tags:
 - Book
 - bookEndPaper
 preview: endpaper
+outputs:
+  - iiif-manifest
+  - html
 itemType: book
 itemDescription: 'his endpaper is taken from the book "Berlin halb und halb" by Werner Kruse and Hans Rauschning, published 1959 by Lothar Blanvalet Verlag, Berlin. <a class="worldcat" href="https://search.worldcat.org/de/title/250786300">&nbsp;</a>'
 resources:

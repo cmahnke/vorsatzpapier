@@ -3,6 +3,9 @@ title: "Tapete"
 date: 2020-10-25T09:29:42+02:00
 iiifContext: http://iiif.io/api/image/2/context.json
 preview: wallpaper
+outputs:
+  - iiif-manifest
+  - html
 tags:
 - Wallpaper
 resources:

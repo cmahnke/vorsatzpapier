@@ -4,6 +4,9 @@ date: 2020-11-29T9:52:28+02:00
 iiifContext: http://iiif.io/api/image/2/context.json
 preview: endpaper
 itemType: book
+outputs:
+  - iiif-manifest
+  - html
 itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Universalbuch der Reden und Toaste" von Justinus Abel, 9. vermehrte und verbesserte Auflage, erschienen ca. 1902 bei Levy & Müller, Stuttgart. <a class="worldcat" href="http://www.worldcat.org/oclc/729128580">&nbsp;</a>'
 tags:
 - Book

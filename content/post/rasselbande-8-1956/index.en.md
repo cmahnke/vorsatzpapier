@@ -5,6 +5,9 @@ iiifContext: http://iiif.io/api/image/2/context.json
 preview: book
 itemType: book
 noPreview: true
+outputs:
+  - iiif-manifest
+  - html
 itemDescription: 'An article about wallpaper'
 tags:
 - Magazin

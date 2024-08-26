@@ -6,6 +6,9 @@ tags:
 - Book
 - bookEndPaper
 preview: endpaper
+outputs:
+  - iiif-manifest
+  - html
 itemType: book
 itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Also sprach Zarathustra: ein Buch für Alle und Keinen" von Friedrich Nietzsche, erschienen 1900 bei C. G. Naumann, Leipzig. <a class="worldcat" href="http://www.worldcat.org/oclc/864264525">&nbsp;</a>'
 resources:

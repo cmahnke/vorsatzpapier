@@ -4,6 +4,9 @@ date: 2020-09-17T07:37:34+02:00
 iiifContext: http://iiif.io/api/image/2/context.json
 preview: endpaper
 itemType: book
+outputs:
+  - iiif-manifest
+  - html
 itemDescription: 'This endpaper is taken from the book "Glückliche Kinderzeit" by Lely Kempin, 7th edition, published 1925 by Velhagen and Klasing,  Bielefeld. <a class="worldcat" href="http://www.worldcat.org/oclc/257379110">&nbsp;</a>'
 tags:
 - Book

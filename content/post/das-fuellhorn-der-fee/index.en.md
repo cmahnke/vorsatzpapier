@@ -7,6 +7,9 @@ tags:
 - bookEndPaper
 preview: endpaper
 itemType: book
+outputs:
+  - iiif-manifest
+  - html
 itemDescription: 'This endpaper is taken from the book "Das Füllhorn der Fee" by Jeannot Emil von Grotthuß, 5th edition, published around 1918 by Greiner & Pfeiffer, Stuttgart. <a class="worldcat" href="http://www.worldcat.org/oclc/256827328">&nbsp;</a>'
 resources:
 - src: "front.jpg"

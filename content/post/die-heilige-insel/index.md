@@ -6,6 +6,9 @@ tags:
 - Book
 - bookEndPaper
 preview: endpaper
+outputs:
+  - iiif-manifest
+  - html
 itemType: book
 itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Die Heilige Insel" von Lely Kempin, 8. Auflage, erschienen 1921 bei Velhagen & Klasing, Bielefeld. <a class="worldcat" href="http://www.worldcat.org/oclc/936421290">&nbsp;</a>'
 resources:

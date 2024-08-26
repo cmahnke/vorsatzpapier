@@ -6,6 +6,9 @@ tags:
 - Book
 - bookEndPaper
 preview: endpaper
+outputs:
+  - iiif-manifest
+  - html
 itemType: book
 itemDescription: 'This endpaper is taken from the book "Die Kaiserstadt Berlin, Charlottenburg und Potsdam", 3rd improved edition, published around 1908 by E.H. Schroeder, Berlin. <a class="worldcat" href="http://www.worldcat.org/oclc/67823231">&nbsp;</a>'
 resources:

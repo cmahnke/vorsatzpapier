@@ -3,6 +3,9 @@ title: "Wallpaper"
 date: 2024-10-24T13:28:42+01:00
 iiifContext: http://iiif.io/api/image/2/context.json
 preview: wallpaper
+outputs:
+  - iiif-manifest
+  - html
 tags:
 - Wallpaper
 resources:

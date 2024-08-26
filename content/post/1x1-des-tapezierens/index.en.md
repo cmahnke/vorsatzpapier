@@ -8,8 +8,8 @@ cc: false
 noPreview: true
 iiifManifest: ./manifest.json
 outputs:
-- html
-- iiif
+  - iiif-manifest
+  - html
 itemDescription: 'The title of this book is "1x1 des Tapezierens - Versuch''s mal selber" by Georg Waterstradt, 5th edition bublished 1973 by Verlag für Bauwesen, Berlin. <a class="worldcat" href="http://www.worldcat.org/oclc/73914715">&nbsp;</a>'
 tags:
 - Book

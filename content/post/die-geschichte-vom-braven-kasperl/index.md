@@ -7,6 +7,9 @@ tags:
 - Book
 - bookEndPaper
 preview: endpaper
+outputs:
+  - iiif-manifest
+  - html
 itemType: book
 itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Die Geschichte vom braven Kasperl und dem schönen Annerl" von Clemens Brentano, mit Lithographien von Carl Schulda, erschienen 1920 beim Verlag Paul Knepler, Wien. <a class="worldcat" href="https://search.worldcat.org/de/title/163022841">&nbsp;</a>'
 resources:

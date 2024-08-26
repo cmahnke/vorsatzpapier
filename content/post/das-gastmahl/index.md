@@ -6,6 +6,9 @@ tags:
 - Book
 - bookEndPaper
 preview: endpaper
+outputs:
+  - iiif-manifest
+  - html
 itemType: book
 itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Das Gastmahl", von Xenophon, übersetzt von Benno von Hagen, erschienen 1911 bei Eugen Diedrichs in Jena. <a class="worldcat" href="https://search.worldcat.org/de/title/230724161">&nbsp;</a>'
 resources:

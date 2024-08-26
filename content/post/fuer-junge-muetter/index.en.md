@@ -7,6 +7,9 @@ tags:
 - bookEndPaper
 preview: endpaper
 itemType: book
+outputs:
+  - iiif-manifest
+  - html
 itemDescription: 'This endpaper is taken from the book "Für junge Mütter ", 5th edition, by Dr. med. Fischer, published ca. 1905 by Wilhelm Möller, Berlin.'
 resources:
 - src: "front.jpg"

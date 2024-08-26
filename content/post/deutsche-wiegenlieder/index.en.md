@@ -4,6 +4,9 @@ date: 2020-08-05T19:36:07+02:00
 iiifContext: http://iiif.io/api/image/2/context.json
 preview: endpaper
 itemType: book
+outputs:
+  - iiif-manifest
+  - html
 itemDescription: 'This endpaper is taken from the book "Deutsche Wiegenlieder" by Hans Fraungruber, published around 1909 by Verlag Gerlach and Wiedling, Vienna and Leipzig. <a class="worldcat" href="http://www.worldcat.org/oclc/256761549">&nbsp;</a>'
 tags:
 - Book

@@ -7,6 +7,9 @@ tags:
 - bookEndPaper
 preview: endpaper
 itemType: book
+outputs:
+  - iiif-manifest
+  - html
 itemDescription: 'Dieses Vorsatzpapier stammt aus der Buch "Für junge Mütter ", 5. Auflage, von Dr. med. Fischer, erschienen ca. 1905 bei im Verlag von Wilhelm Möller, Berlin.'
 resources:
 - src: "front.jpg"

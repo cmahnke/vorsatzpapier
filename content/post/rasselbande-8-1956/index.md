@@ -6,6 +6,9 @@ preview: book
 itemType: book
 itemDescription: 'Ein Artikel über Tapeten'
 noPreview: true
+outputs:
+  - iiif-manifest
+  - html
 tags:
 - Magazin
 - Wallpaper

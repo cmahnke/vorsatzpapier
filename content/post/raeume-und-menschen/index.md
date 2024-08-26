@@ -7,6 +7,9 @@ tags:
 - bookEndPaper
 - Wallpaper
 preview: book
+outputs:
+  - iiif-manifest
+  - html
 itemType: book
 itemDescription: 'Buch "Räume und Menschen" von August Trueb und Heinz Josten, erschienen 1923 bei Walter Hädecke, Stuttgart. <a class="worldcat" href="https://search.worldcat.org/de/title/602250607">&nbsp;</a>'
 resources:

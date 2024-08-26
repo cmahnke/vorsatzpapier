@@ -9,6 +9,9 @@ tags:
 itemType: book
 preview: book
 noPreview: true
+outputs:
+  - iiif-manifest
+  - html
 resources:
 - src: "front.jxl"
   name: front

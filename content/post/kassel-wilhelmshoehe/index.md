@@ -7,6 +7,9 @@ tags:
 - bookEndPaper
 preview: endpaper
 itemType: book
+outputs:
+  - iiif-manifest
+  - html
 itemDescription: 'Dieses Vorsatzpapier stammt aus der Bildermappe "Kassel und Wilhelmshöhe.", erschienen zwischen ca. 1890 und 1910 bei Max Siering, Cassel. <a class="worldcat" href="http://www.worldcat.org/oclc/10159187">&nbsp;</a>'
 resources:
 - src: "front.jpg"

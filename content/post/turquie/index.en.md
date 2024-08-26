@@ -2,7 +2,7 @@
 title: "Turquie"
 date: 2021-07-13T18:08:28+02:00
 iiifContext: http://iiif.io/api/image/2/context.json
-preview: endpaper
+view: endpaper
 outputs:
   - iiif-manifest
   - html

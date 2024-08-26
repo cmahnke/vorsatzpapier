@@ -33,12 +33,12 @@
 {{- end -}}
 
 {{- $sourceParam := "" -}}
-{{- if and (isset $context.Params "preview") $context.Params.preview (eq $context.Params.preview "wallpaper") -}}
+{{- if and (isset $context.Params "view") $context.Params.view (eq $context.Params.view "wallpaper") -}}
   {{- if and (not (isset $context.Params "resources")) $debug -}}
     {{- errorf "[partials/preview/preview-internal.html] Preview is set to 'wallpaper' for %s but has no resources!"  $context.RelPermalink -}}
   {{- end -}}
   {{- $previewReference = index $context.Params.resources 0 -}}
-{{- else if and (isset $context.Params "preview") $context.Params.preview (eq $context.Params.preview "book") -}}
+{{- else if and (isset $context.Params "view") $context.Params.view (eq $context.Params.view "book") -}}
   {{- warnf "[partials/preview/preview-internal.html] Preview is set to 'book' for %s there will be no preview" -}}
   {{- $previewReference = index (where $context.Params.resources "name" "front") 0 -}}
 {{- else if isset $context.Params "resources" -}}

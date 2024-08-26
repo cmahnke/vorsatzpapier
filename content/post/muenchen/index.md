@@ -2,7 +2,7 @@
 title: 'München und Umgebung'
 date: 2021-06-15T16:29:42+02:00
 iiifContext: http://iiif.io/api/image/2/context.json
-preview: endpaper
+view: endpaper
 itemType: book
 outputs:
   - iiif-manifest

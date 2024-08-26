@@ -21,7 +21,7 @@
   <div id="loop-container" class="loop-container">
     <div class="post type-post status-publish excerpt">
       <div class="patterns-container">
-        {{- $pages := where .Site.Pages "Params.preview" "in" (slice "endpaper" "wallpaper" "portfolio") -}}
+        {{- $pages := where .Site.Pages "Params.view" "in" (slice "endpaper" "wallpaper" "portfolio") -}}
         {{- $pages := $pages.ByDate.Reverse -}}
 
         {{- range $index, $element := $pages -}}

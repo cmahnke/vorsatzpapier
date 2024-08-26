@@ -2,7 +2,7 @@
 title: 1x1 des Tapezierens - Versuch's mal selber
 date: 2020-11-08T9:52:28+02:00
 iiifContext: http://iiif.io/api/presentation/2/context.json
-preview: book
+view: book
 itemType: book
 cc: false
 noPreview: true
@@ -19,7 +19,7 @@ resources:
   params:
     iiif: front/info.json
     class: front
-    preview: true
+    view: true
 - src: "page001.jpg"
   name: title
   params:

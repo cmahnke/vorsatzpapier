@@ -2,7 +2,7 @@
 title: "Vielles chansons pour les petits enfants"
 date: 2020-12-01T9:52:28+02:00
 iiifContext: http://iiif.io/api/image/2/context.json
-preview: endpaper
+view: endpaper
 itemType: book
 outputs:
   - iiif-manifest

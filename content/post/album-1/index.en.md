@@ -2,7 +2,7 @@
 title: "album"
 date: 2021-03-15T16:29:42+02:00
 iiifContext: http://iiif.io/api/image/2/context.json
-preview: portfolio
+view: portfolio
 outputs:
   - iiif-manifest
   - html

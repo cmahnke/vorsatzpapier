@@ -7,7 +7,7 @@ tags:
 - Book
 - Wallpaper
 itemType: book
-preview: book
+view: book
 noPreview: true
 outputs:
   - iiif-manifest

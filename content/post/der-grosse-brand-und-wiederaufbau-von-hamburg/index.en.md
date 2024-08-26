@@ -2,7 +2,7 @@
 title: "Der grosse Brand und Wiederaufbau von Hamburg"
 date: 2020-10-08T09:46:20+02:00
 iiifContext: http://iiif.io/api/image/2/context.json
-preview: endpaper
+view: endpaper
 outputs:
   - iiif-manifest
   - html

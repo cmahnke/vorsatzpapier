@@ -6,7 +6,7 @@ tags:
 - Book
 - bookEndPaper
 - Wallpaper
-preview: endpaper
+view: endpaper
 itemType: book
 outputs:
   - iiif-manifest

@@ -5,7 +5,7 @@ iiifContext: http://iiif.io/api/image/2/context.json
 tags:
 - Book
 - bookEndPaper
-preview: endpaper
+view: endpaper
 outputs:
   - iiif-manifest
   - html

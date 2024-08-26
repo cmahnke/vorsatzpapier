@@ -2,7 +2,7 @@
 title: "Rasselbande 8 1956"
 date: 2021-07-06T18:08:28+02:00
 iiifContext: http://iiif.io/api/image/2/context.json
-preview: book
+view: book
 itemType: book
 itemDescription: 'Ein Artikel über Tapeten'
 noPreview: true

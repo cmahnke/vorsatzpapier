@@ -9,7 +9,7 @@ itemType: book
 outputs:
   - iiif-manifest
   - html
-preview: book
+view: book
 noPreview: true
 itemDescription: 'Dieser Artikel stammt aus der Zeitschrift "Deutsche Kunst und Dekoration Illustrierte Monatshefte für moderne Malerei, Plastik, Architektur, Wohnungs-Kunst und künstlerische Frauenarbeiten", 24. Jahrgang, Heft 11, erschienen August 1921 bei der Verlagsanstalt Alexander Koch, Darmstadt. <a class="worldcat" href="http://www.worldcat.org/oclc/442388049">&nbsp;</a>'
 resources:

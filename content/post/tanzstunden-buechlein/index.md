@@ -2,7 +2,7 @@
 title: "Tanzstunden Büchlein"
 date: 2023-12-18T17:13:30+02:00
 iiifContext: http://iiif.io/api/image/2/context.json
-preview: endpaper
+view: endpaper
 itemType: book
 outputs:
   - iiif-manifest

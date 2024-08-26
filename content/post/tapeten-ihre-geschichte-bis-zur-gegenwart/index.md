@@ -10,7 +10,7 @@ itemDescription: 'Diese Tapete ist aus dem Buch "Tapeten: Ihre Geschichte bis zu
 tags:
 - Book
 - Wallpaper
-preview: endpaper
+view: endpaper
 resources:
 - src: "cover.jpg"
   name: cover

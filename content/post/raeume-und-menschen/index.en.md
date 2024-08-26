@@ -6,7 +6,7 @@ tags:
 - Book
 - bookEndPaper
 - Wallpaper
-preview: book
+view: book
 outputs:
   - iiif-manifest
   - html

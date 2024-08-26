@@ -2,7 +2,7 @@
 title: "Deutsche Wiegenlieder"
 date: 2020-08-05T19:36:07+02:00
 iiifContext: http://iiif.io/api/image/2/context.json
-preview: endpaper
+view: endpaper
 itemType: book
 outputs:
   - iiif-manifest

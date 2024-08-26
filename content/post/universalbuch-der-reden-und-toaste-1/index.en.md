@@ -2,7 +2,7 @@
 title: "Universalbuch der Reden und Toaste"
 date: 2021-01-01T9:52:28+02:00
 iiifContext: http://iiif.io/api/image/2/context.json
-preview: endpaper
+view: endpaper
 itemType: book
 outputs:
   - iiif-manifest

@@ -5,7 +5,7 @@ iiifContext: http://iiif.io/api/image/2/context.json
 outputs:
   - iiif-manifest
   - html
-preview: wallpaper
+view: wallpaper
 tags:
 - Wallpaper
 resources:

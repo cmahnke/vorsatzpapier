@@ -2,7 +2,7 @@
 title: "Glückliche Kinderzeit"
 date: 2020-09-17T07:37:34+02:00
 iiifContext: http://iiif.io/api/image/2/context.json
-preview: endpaper
+view: endpaper
 itemType: book
 outputs:
   - iiif-manifest

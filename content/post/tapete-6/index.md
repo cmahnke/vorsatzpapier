@@ -2,7 +2,7 @@
 title: "Tapete"
 date: 2021-01-07T10:28:42+02:00
 iiifContext: http://iiif.io/api/image/2/context.json
-preview: wallpaper
+view: wallpaper
 outputs:
   - iiif-manifest
   - html

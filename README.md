@@ -12,7 +12,7 @@ find . -name '*.tif.jpg' -print -exec bash -c 'mv "{}"  $(dirname "{}")/$(basena
 
 # For larger files
 
-Larger files can't be handled by `tiff2rgba`, it will failes with the following message `./front.tif: Raster size 341660508 over memory limit (268435456), try -b option..`. 
+Larger files can't be handled by `tiff2rgba`, it will failes with the following message `./front.tif: Raster size 341660508 over memory limit (268435456), try -b option..`.
 
 ```
 find . -name '*.tif' -depth 1 -print -exec convert {} -quality 95 {}.jpg \;
@@ -86,4 +86,16 @@ hugo serve -F --debug --disableFastRender  --disableLiveReload --watch=false --r
 
 ```
 docker run --name hugo -v `pwd`/docs:/usr/share/nginx/html -p 1313:80 nginx
+```
+
+# Fixing `HTTP 400 curl 22`
+
+Error message
+```
+error: RPC failed; HTTP 400 curl 22 The requested URL returned error: 400
+send-pack: unexpected disconnect while reading sideband packet
+```
+
+```
+git config http.postBuffer 524288000
 ```

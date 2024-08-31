@@ -16,7 +16,14 @@
 
 <h1 class="screen-reader-text">Posts</h1>
 <div id="loop-container" class="loop-container">
-	{{- $paginator := .Paginate (where (where $.Site.Pages "Params.tags" "intersect" (slice .LinkTitle)).ByDate.Reverse "IsPage" true) -}}
+	{{- $pages := "" -}}
+	{{- if gt (len .Pages) 0 -}}
+		{{- $pages = .Pages -}}
+	{{- else -}}
+		{{- $pages = .Paginate (where (where $.Site.Pages "Params.tags" "intersect" (slice .LinkTitle)).ByDate.Reverse "IsPage" true) -}}
+	{{- end -}}
+
+	{{- $paginator := $pages -}}
 	{{- range $index, $element := .Paginator.Pages -}}
 		{{- $contextPath := path.Dir .File.Path -}}
     {{- $resize := false -}}
@@ -57,9 +64,6 @@
 		<div class="excerpt-container">
 			<div class="excerpt-meta">
 				<span class="date">
-					{{/*
-						{{ partial "date.html" . }}
-					*/}}
 					{{- .Date | time.Format ":date_full" -}}
 				</span>
 				{{ range .Params.categories }}
@@ -84,3 +88,4 @@
 	</div>
 	{{- end -}}
 </div>
+{{ partial "pagination.html" . }}

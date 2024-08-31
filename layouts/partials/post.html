@@ -14,9 +14,6 @@
           {{- if not .Params.metaPage -}}
         		<span class="date">
               {{- .Date | time.Format ":date_full" -}}
-              {{/*
-                {{ partial "date.html" . }}
-              */}}
             </span>
           {{- end -}}
         </div>

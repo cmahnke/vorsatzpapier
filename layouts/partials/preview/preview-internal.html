@@ -12,7 +12,11 @@
 {{- end -}}
 
 {{- if ne (printf "%T" $context) "*hugolib.pageState" -}}
-  {{- errorf "[partials/preview/preview-internal.html] Passed context if of wrong type: '%T' %#v" $context $context -}}
+  {{- if eq (printf "%T" $context) "hugolib.pageWithWeight0" -}}
+    $context = $context.Page
+  {{- else -}}
+    {{- errorf "[partials/preview/preview-internal.html] Passed context if of wrong type: '%T' %#v" $context $context -}}
+  {{- end -}}
 {{- end -}}
 
 {{- $fullResImgSuffix := "/full/full/0/default.jpg" -}}

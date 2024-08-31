@@ -13,10 +13,10 @@ itemType: book
 itemDescription: 'This endpaper is taken from the book "Die Geschichte vom braven Kasperl und dem schönen Annerl" by Clemens Brentano, with lithographs by Carl Schulda, published in 1920 by Verlag Paul Knepler, Vienna. <a class="worldcat" href="https://search.worldcat.org/de/title/163022841">&nbsp;</a>'
 resources:
 - src: "front-paper.jxl"
+  name: preview
   params:
     iiif: front-paper/info.json
     class: order-1
-    name: preview
     cropWidth: 2000
     cropHeight: 2000  
 - src: "front.jxl"

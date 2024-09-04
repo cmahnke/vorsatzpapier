@@ -9,7 +9,7 @@ import { Traverse } from '@iiif/parser';
 
 const patternCollection = "https://vorsatzpapier.projektemacher.org/patterns/collection.json";
 
-export addMap = function(element, url, rotation, baseURL, hdr) {
+function addMap(element, url, rotation, baseURL, hdr) {
     var initialRotation = 0;
     if (rotation !== undefined && rotation != 0) {
         initialRotation = rotation * Math.PI / 180;
@@ -29,18 +29,9 @@ export addMap = function(element, url, rotation, baseURL, hdr) {
 
     console.log('Setting up ' + lang);
 
-    if (hdr && checkHDR() && checkHDRCanvas()) {
-      defaultGetContextHDR();
-      console.log('Enabled HDR Canvas');
-    }
 
     var layer = new TileLayer(),
         map = new Map({
-            controls: [new Zoom({zoomInTipLabel: toolTips[lang]['zoomIn'], zoomOutTipLabel: toolTips[lang]['zoomOut']}),
-                       new FullScreen({tipLabel: toolTips[lang]['fullscreen']}),
-                       new Rotate({tipLabel: toolTips[lang]['rotate']}),
-                       new RotateLeftControl({tipLabel: toolTips[lang]['rotateLeft']}),
-                       new RotateRightControl({tipLabel: toolTips[lang]['rotateRight']})],
             layers: [layer],
             target: element,
         });
@@ -82,6 +73,47 @@ export addMap = function(element, url, rotation, baseURL, hdr) {
 }
 
 
+function getPatterns (collection: URL) {
+  var manifests = [];
+  var services = [];
+  const extractManifests = new Traverse({
+    manifest: [(manifest) => {
+      if (manifest?.items?.[0]) {
+        return manifest?.items?.[0]
+      }
+      manifests.push(manifest.id);
+    }],
+    service: [(service) => {
+      services.push(service.id)
+    }]
+  });
+
+  fetch(collection).then((response) => {
+    response.json().then((json) => {
+      extractManifests.traverseUnknown(json);
+    })
+    .then(() => {
+
+      for (const id of manifests) {
+        console.log(id);
+        fetch(id).then((response) => {
+          response.json().then((json) => {
+            let canvas = extractManifests.traverseManifest(json);
+            extractManifests.traverseAnnotationBody(canvas);
+          })
+        })
+      }
+
+    })
+  });
+
+
+
+
+
+  return manifests;
+}
+
 /*
 TODO: snippet for slider changes
 
@@ -91,6 +123,6 @@ sliders[channel].oninput = function() {
   colors[channel] = this.value;
 */
 
-
+console.log(await getPatterns(patternCollection));
 
 const canvas = document.querySelector("#renderer");

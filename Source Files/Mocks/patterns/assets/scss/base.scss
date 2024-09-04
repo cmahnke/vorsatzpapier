@@ -1,0 +1,17 @@
+.controls {
+
+  .slider {
+
+    &.horizontal {
+
+    }
+
+    &.vertical {
+      writing-mode: vertical-lr;
+      direction: rtl;
+      vertical-align: middle;
+    }
+
+  }
+
+}

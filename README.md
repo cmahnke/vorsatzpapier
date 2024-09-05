@@ -99,3 +99,11 @@ send-pack: unexpected disconnect while reading sideband packet
 ```
 git config http.postBuffer 524288000
 ```
+
+
+# TODO
+
+## Content Fixes
+
+* Prüfen
+  * tapete-5

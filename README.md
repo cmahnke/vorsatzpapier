@@ -105,5 +105,7 @@ git config http.postBuffer 524288000
 
 ## Content Fixes
 
-* Prüfen
+* Prüfen warum die Größe nicht stimmt
+  * tapete-1
+  * tapete-2
   * tapete-5

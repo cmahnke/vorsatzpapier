@@ -1,6 +1,6 @@
 ---
 title: "Das goldene Buch der Gastronomie"
-date: xxx
+#date: xxx
 draft: true
 iiifContext: http://iiif.io/api/image/2/context.json
 tags:

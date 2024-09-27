@@ -1,5 +1,4 @@
 ---
-date:
 title: "Weiterverwendung"
 metaPage: true
 displayinlist: false

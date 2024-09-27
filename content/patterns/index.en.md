@@ -1,5 +1,4 @@
 ---
-date:
 title: "Patterns"
 description : "This page lists all entries with full page patterns."
 metaPage: true

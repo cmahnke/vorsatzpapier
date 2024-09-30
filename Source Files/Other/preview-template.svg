@@ -14,6 +14,7 @@
     id="svg8"
     inkscape:version="1.0.2 (e86c8708, 2021-01-15)">
     <defs id="defs2">
+        <rect id="textbox-heading" x="0" y="125" width="1200" height="120" />
         <rect id="textbox" x="0" y="525" width="1200" height="100" />
         <pattern id="bg-pattern" patternUnits="userSpaceOnUse" width="100" height="100">
             <image href="../../static/images/raben.jpg" x="0" y="0" width="100" height="100" />
@@ -79,5 +80,6 @@
     <!--
     <image id="preview-image" xlink:href="../../content/post/kurische-nehrung/front.jpg" y="50" x="100" style="image-rendering:optimizeQuality" preserveAspectRatio="xMidYMid meet" height="400" width="1000"/>
     -->
+    <text id="heading-container" xml:space="preserve" style="filter:url(#filter4459);shape-inside:url(#textbox-heading);font-style:normal;font-weight:700;font-size:100px;line-height:1.25;font-family:'Raleway Thin';text-align:center;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;text-align:center;" >Vorsatzpapier</text>
     <text id="text-container" xml:space="preserve" style="filter:url(#filter4459);shape-inside:url(#textbox);font-style:normal;font-weight:normal;font-size:80px;line-height:1.25;font-family:'Raleway Thin';text-align:center;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;text-align:center;" >Rossitten</text>
 </svg>

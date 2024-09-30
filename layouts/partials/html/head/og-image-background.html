@@ -1,0 +1,8 @@
+{{- $context := .context -}}
+{{- $previewImg := .previewImg -}}
+{{- $width := .width -}}
+{{- $height := .height -}}
+
+{{- $previewImg = $previewImg.Fill (printf "%dx%d center" $width $height) -}}
+
+{{- return $previewImg -}}

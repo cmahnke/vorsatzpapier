@@ -1,0 +1,207 @@
+{"@context": "http://iiif.io/api/presentation/3/context.json",
+"type": "Manifest",
+"id": "https://vorsatzpapier.projektemacher.org/post/glueckliche-kinderzeit/manifest.json",
+"viewingDirection": "left-to-right","behavior":["paged"],"requiredStatement": {
+  "label": { "en": [ "Attribution" ],
+    "de": [ "Namensnennung" ]
+  },
+  "value": {"en": ["Provided by Projektemacher"],"de": ["Bereitgestellt von Projektemacher"]}
+}
+,"thumbnail": [{
+    "id": "https://vorsatzpapier.projektemacher.org/post/glueckliche-kinderzeit/end-verso_hu13088266608165167825.jpg",
+    "format": "image/jpeg",
+    "type":"Image",
+    "height": 383,
+    "width": 300
+  },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/glueckliche-kinderzeit/end-verso.jpg",
+        "format": "image/jpeg",
+        "type":"Image",
+        "height": 5792,
+        "width": 4542,
+        "service": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/glueckliche-kinderzeit/end-verso",
+          "type": "ImageService2",
+          "profile":"level0"
+        }]
+      }],"provider": [
+  {
+    "id": "https://projektemacher.org/",
+    "type": "Agent",
+    "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+    "homepage": [
+      {
+        "id": "https://projektemacher.org/",
+        "type": "Text",
+        "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+        "format": "text/html"
+    }
+  ],
+  "logo": [
+    {"id": "https://projektemacher.org/images/logo.png",
+        "type": "Image",
+        "format": "image/png",
+        "height": 1024,
+        "width": 1024}
+  ],
+  "seeAlso": [
+    {
+      "id": "https://projektemacher.org/projektemacher.json",
+      "type": "Dataset",
+      "format": "application/ld+json",
+      "profile": "https://schema.org/"
+    }
+  ]
+  }
+]
+,
+
+"homepage": [
+  {
+    "id": "https://vorsatzpapier.projektemacher.org/post/glueckliche-kinderzeit/manifest.json",
+    "type": "Text",
+    "format": "text/html",
+
+    "label": {
+        "de": [
+          "Vorsatzpapier: Glückliche Kinderzeit"
+        ],
+          "en": [
+            "Vorsatzpapier: Glückliche Kinderzeit"
+          ]
+        }
+  }
+],"label": {
+    "de": [
+      "Glückliche Kinderzeit"
+    ],
+      "en": [
+        "Glückliche Kinderzeit"
+      ]
+    }
+,"items": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/glueckliche-kinderzeit/canvas/front",
+          "type": "Canvas","label": {"de":["Vorderansicht"],"en":["Front"]},"height": 5864,
+            "width": 4404,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/glueckliche-kinderzeit/front_hu10559854060160622856.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 399,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/glueckliche-kinderzeit/annotation/front",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/glueckliche-kinderzeit/annotation/front/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/glueckliche-kinderzeit/front/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 5864,
+                  "width": 4404,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/glueckliche-kinderzeit/front",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/glueckliche-kinderzeit/canvas/front"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/glueckliche-kinderzeit/canvas/title",
+          "type": "Canvas","label": {"de":["Titelseite"],"en":["Title"]},"height": 5764,
+            "width": 4452,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/glueckliche-kinderzeit/title_hu6243055470110142707.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 388,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/glueckliche-kinderzeit/annotation/title",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/glueckliche-kinderzeit/annotation/title/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/glueckliche-kinderzeit/title/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 5764,
+                  "width": 4452,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/glueckliche-kinderzeit/title",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/glueckliche-kinderzeit/canvas/title"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/glueckliche-kinderzeit/canvas/preview",
+          "type": "Canvas","label": {"de":["Letze Seite"],"en":["Last page"]},"height": 5792,
+            "width": 4542,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/glueckliche-kinderzeit/end-verso_hu13088266608165167825.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 383,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/glueckliche-kinderzeit/annotation/end-verso",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/glueckliche-kinderzeit/annotation/end-verso/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/glueckliche-kinderzeit/end-verso/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 5792,
+                  "width": 4542,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/glueckliche-kinderzeit/end-verso",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/glueckliche-kinderzeit/canvas/preview"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/glueckliche-kinderzeit/canvas/end-recto",
+          "type": "Canvas","label": {"de":["Letze Seite"],"en":["Last page"]},"height": 5849,
+            "width": 4511,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/glueckliche-kinderzeit/end-recto_hu16193396899717661213.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 389,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/glueckliche-kinderzeit/annotation/end-recto",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/glueckliche-kinderzeit/annotation/end-recto/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/glueckliche-kinderzeit/end-recto/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 5849,
+                  "width": 4511,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/glueckliche-kinderzeit/end-recto",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/glueckliche-kinderzeit/canvas/end-recto"
+            }]
+          }]
+       }]
+}

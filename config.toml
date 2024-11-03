@@ -8,10 +8,13 @@ disableKinds = ["taxonomy"]
 ignoreErrors = ["error-disable-taxonomy"]
 DefaultContentLanguage = "de"
 rssLimit = 25
-paginate = 10
+#paginate = 10
 copyright = false
 timeout = 300
 enableGitInfo = true
+
+[pagination]
+  pagerSize = 10
 
 [languages]
     [languages.de]

@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 $font-body-font: 'Raleway' !default;
 $body-color: #4d4d4d !default;
 $font-color-body: #4d4d4d !default;
@@ -249,9 +251,9 @@ body.about .loop-container .post {
 
 .tagcloud {
     margin: 1em;
-    background-color: lighten($body-background, 60%);
+    background-color: color.adjust($body-background, $lighness: 60%);
     border-radius: 0.5em;
-    box-shadow: 0 0 5px lighten($body-background, 60%);
+    box-shadow: 0 0 5px color.adjust($body-background, $lighness: 60%);
     padding: 1em;
 
     a {
@@ -335,10 +337,10 @@ body.about .loop-container .post {
     font-size: small;
     text-align: right;
     margin: 1.5em;
-    color: lighten($body-color, 20%);
+    color: color.adjust($body-color, $lighness: 20%);
 
     a {
-        color: lighten($link-color, 20%);
+        color: color.adjust($link-color, $lighness: 20%);
     }
 }
 

@@ -18,3 +18,7 @@ resources:
     cropHeight: 5000
 ---
 A rather "boring" wallpaper from the 80s, I had a similar one in my children's room...
+
+<div class="source">
+Diese Tapete habe ich bei der <a target="_blank" href="https://www.neue-arbeit-brockensammlung.de/geschaefte/gebrauchtmoebelkaufhaus/">Brockensammlung Göttingen</a> gefunden.
+</div>

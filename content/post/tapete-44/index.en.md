@@ -1,6 +1,6 @@
 ---
 title: "Wallpaper"
-date: 2024-12-12T13:28:42+01:00
+date: 2025-01-30T13:28:42+01:00
 iiifContext: http://iiif.io/api/image/2/context.json
 view: wallpaper
 outputs:

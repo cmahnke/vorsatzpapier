@@ -1,6 +1,6 @@
 ---
 title: "Wallpaper"
-date: 2024-12-19T13:28:42+01:00
+date: 2024-12-05T12:00:00+02:00
 iiifContext: http://iiif.io/api/image/2/context.json
 view: wallpaper
 outputs:
@@ -17,8 +17,8 @@ resources:
     cropWidth: 7000
     cropHeight: 5000
 ---
-<a target="_blank" href="http://zeitzeug.de/">Zeitzeug</a> is dissolving the wallpaper collection.<!--more-->
+One of the wallpapers from this year's Christmas cards...
 
 <div class="source">
-I've purchased it from the best supplier of historical wallpapers in Göttingen - <a target="_blank" href="http://zeitzeug.de/">Zeitzeug</a>.
+Found at the <a href="https://www.facebook.com/vintagebythesea/?locale=de_DE">Vintage Wonderland Hannover</a>...
 </div>

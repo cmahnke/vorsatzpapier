@@ -1,0 +1,145 @@
+{"@context": "http://iiif.io/api/presentation/3/context.json",
+"type": "Manifest",
+"id": "https://vorsatzpapier.projektemacher.org/en/post/mappe-2/manifest.json",
+"viewingDirection": "left-to-right","behavior":["paged"],"requiredStatement": {
+  "label": { "en": [ "Attribution" ],
+    "de": [ "Namensnennung" ]
+  },
+  "value": {"en": ["Provided by Projektemacher"],"de": ["Bereitgestellt von Projektemacher"]}
+}
+,"thumbnail": [{
+    "id": "https://vorsatzpapier.projektemacher.org/post/mappe-2/front-verso_hu16534560450434846998.jpg",
+    "format": "image/jpeg",
+    "type":"Image",
+    "height": 395,
+    "width": 300
+  },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/mappe-2/front-verso.jpg",
+        "format": "image/jpeg",
+        "type":"Image",
+        "height": 6584,
+        "width": 4995,
+        "service": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/en/post/mappe-2/front-verso",
+          "type": "ImageService2",
+          "profile":"level0"
+        }]
+      }],"provider": [
+  {
+    "id": "https://projektemacher.org/",
+    "type": "Agent",
+    "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+    "homepage": [
+      {
+        "id": "https://projektemacher.org/",
+        "type": "Text",
+        "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+        "format": "text/html"
+    }
+  ],
+  "logo": [
+    {"id": "https://projektemacher.org/images/logo.png",
+        "type": "Image",
+        "format": "image/png",
+        "height": 1024,
+        "width": 1024}
+  ],
+  "seeAlso": [
+    {
+      "id": "https://projektemacher.org/projektemacher.json",
+      "type": "Dataset",
+      "format": "application/ld+json",
+      "profile": "https://schema.org/"
+    }
+  ]
+  }
+]
+,
+
+"homepage": [
+  {
+    "id": "https://vorsatzpapier.projektemacher.org/en/post/mappe-2/manifest.json",
+    "type": "Text",
+    "format": "text/html",
+
+    "label": {
+        "en": [
+          "Vorsatzpapier: Mappe"
+        ],
+          "de": [
+            "Vorsatzpapier: Mappe"
+          ]
+        }
+  }
+],"label": {
+    "en": [
+      "Mappe"
+    ],
+      "de": [
+        "Mappe"
+      ]
+    }
+,"items": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/mappe-2/canvas/preview",
+          "type": "Canvas","label": {"de":["Vorderansicht"],"en":["Front"]},"height": 6584,
+            "width": 4995,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/mappe-2/front-verso_hu16534560450434846998.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 395,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/mappe-2/annotation/front-verso",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/mappe-2/annotation/front-verso/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/mappe-2/front-verso/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 6584,
+                  "width": 4995,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/mappe-2/front-verso",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/mappe-2/canvas/preview"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/mappe-2/canvas/end-recto",
+          "type": "Canvas","label": {"de":["Letze Seite"],"en":["Last page"]},"height": 6576,
+            "width": 4965,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/mappe-2/end-recto_hu16922167654618910300.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 397,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/mappe-2/annotation/end-recto",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/mappe-2/annotation/end-recto/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/mappe-2/end-recto/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 6576,
+                  "width": 4965,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/mappe-2/end-recto",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/mappe-2/canvas/end-recto"
+            }]
+          }]
+       }]
+}

@@ -1,0 +1,114 @@
+{"@context": "http://iiif.io/api/presentation/3/context.json",
+"type": "Manifest",
+"id": "https://vorsatzpapier.projektemacher.org/post/tapete-36/manifest.json",
+"viewingDirection": "left-to-right","behavior":["paged"],"requiredStatement": {
+  "label": { "en": [ "Attribution" ],
+    "de": [ "Namensnennung" ]
+  },
+  "value": {"de": ["Bereitgestellt von Projektemacher"],"en": ["Provided by Projektemacher"]}
+}
+,"thumbnail": [{
+    "id": "https://vorsatzpapier.projektemacher.org/post/tapete-36/front/full/full/0/default_hu2320810764191604182.jpg",
+    "format": "image/jpeg",
+    "type":"Image",
+    "height": 220,
+    "width": 300
+  },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-36/front/full/full/0/default.jpg",
+        "format": "image/jpeg",
+        "type":"Image",
+        "height": 9230,
+        "width": 12596,
+        "service": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/tapete-36/front",
+          "type": "ImageService2",
+          "profile":"level0"
+        }]
+      }],"provider": [
+  {
+    "id": "https://projektemacher.org/",
+    "type": "Agent",
+    "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+    "homepage": [
+      {
+        "id": "https://projektemacher.org/",
+        "type": "Text",
+        "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+        "format": "text/html"
+    }
+  ],
+  "logo": [
+    {"id": "https://projektemacher.org/images/logo.png",
+        "type": "Image",
+        "format": "image/png",
+        "height": 1024,
+        "width": 1024}
+  ],
+  "seeAlso": [
+    {
+      "id": "https://projektemacher.org/projektemacher.json",
+      "type": "Dataset",
+      "format": "application/ld+json",
+      "profile": "https://schema.org/"
+    }
+  ]
+  }
+]
+,
+
+"homepage": [
+  {
+    "id": "https://vorsatzpapier.projektemacher.org/post/tapete-36/manifest.json",
+    "type": "Text",
+    "format": "text/html",
+
+    "label": {
+        "de": [
+          "Vorsatzpapier: Tapete"
+        ],
+          "en": [
+            "Vorsatzpapier: Wallpaper"
+          ]
+        }
+  }
+],"label": {
+    "de": [
+      "Tapete"
+    ],
+      "en": [
+        "Wallpaper"
+      ]
+    }
+,"items": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/tapete-36/canvas/preview",
+          "type": "Canvas","label": {"de":["Vorderansicht"],"en":["Front"]},"height": 9230,
+            "width": 12596,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/tapete-36/front/full/full/0/default_hu2320810764191604182.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 220,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/tapete-36/annotation/front",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/tapete-36/annotation/front/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/tapete-36/front/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 9230,
+                  "width": 12596,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/tapete-36/front",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/tapete-36/canvas/preview"
+            }]
+          }]
+       }]
+}

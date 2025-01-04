@@ -1,0 +1,207 @@
+{"@context": "http://iiif.io/api/presentation/3/context.json",
+"type": "Manifest",
+"id": "https://vorsatzpapier.projektemacher.org/post/deutsche-wiegenlieder/manifest.json",
+"viewingDirection": "left-to-right","behavior":["paged"],"requiredStatement": {
+  "label": { "en": [ "Attribution" ],
+    "de": [ "Namensnennung" ]
+  },
+  "value": {"en": ["Provided by Projektemacher"],"de": ["Bereitgestellt von Projektemacher"]}
+}
+,"thumbnail": [{
+    "id": "https://vorsatzpapier.projektemacher.org/post/deutsche-wiegenlieder/end-verso_hu16726369460144059299.jpg",
+    "format": "image/jpeg",
+    "type":"Image",
+    "height": 329,
+    "width": 300
+  },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/deutsche-wiegenlieder/end-verso.jpg",
+        "format": "image/jpeg",
+        "type":"Image",
+        "height": 1728,
+        "width": 1578,
+        "service": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/deutsche-wiegenlieder/end-verso",
+          "type": "ImageService2",
+          "profile":"level0"
+        }]
+      }],"provider": [
+  {
+    "id": "https://projektemacher.org/",
+    "type": "Agent",
+    "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+    "homepage": [
+      {
+        "id": "https://projektemacher.org/",
+        "type": "Text",
+        "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+        "format": "text/html"
+    }
+  ],
+  "logo": [
+    {"id": "https://projektemacher.org/images/logo.png",
+        "type": "Image",
+        "format": "image/png",
+        "height": 1024,
+        "width": 1024}
+  ],
+  "seeAlso": [
+    {
+      "id": "https://projektemacher.org/projektemacher.json",
+      "type": "Dataset",
+      "format": "application/ld+json",
+      "profile": "https://schema.org/"
+    }
+  ]
+  }
+]
+,
+
+"homepage": [
+  {
+    "id": "https://vorsatzpapier.projektemacher.org/post/deutsche-wiegenlieder/manifest.json",
+    "type": "Text",
+    "format": "text/html",
+
+    "label": {
+        "de": [
+          "Vorsatzpapier: Deutsche Wiegenlieder"
+        ],
+          "en": [
+            "Vorsatzpapier: Deutsche Wiegenlieder"
+          ]
+        }
+  }
+],"label": {
+    "de": [
+      "Deutsche Wiegenlieder"
+    ],
+      "en": [
+        "Deutsche Wiegenlieder"
+      ]
+    }
+,"items": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/deutsche-wiegenlieder/canvas/front",
+          "type": "Canvas","label": {"de":["Vorderansicht"],"en":["Front"]},"height": 3526,
+            "width": 3142,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/deutsche-wiegenlieder/front_hu10817982953670149838.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 337,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/deutsche-wiegenlieder/annotation/front",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/deutsche-wiegenlieder/annotation/front/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/deutsche-wiegenlieder/front/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3526,
+                  "width": 3142,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/deutsche-wiegenlieder/front",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/deutsche-wiegenlieder/canvas/front"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/deutsche-wiegenlieder/canvas/title",
+          "type": "Canvas","label": {"de":["Titelseite"],"en":["Title"]},"height": 3466,
+            "width": 3001,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/deutsche-wiegenlieder/title_hu16951940914358203613.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 346,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/deutsche-wiegenlieder/annotation/title",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/deutsche-wiegenlieder/annotation/title/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/deutsche-wiegenlieder/title/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3466,
+                  "width": 3001,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/deutsche-wiegenlieder/title",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/deutsche-wiegenlieder/canvas/title"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/deutsche-wiegenlieder/canvas/preview",
+          "type": "Canvas","label": {"de":["Letze Seite"],"en":["Last page"]},"height": 1728,
+            "width": 1578,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/deutsche-wiegenlieder/end-verso_hu16726369460144059299.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 329,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/deutsche-wiegenlieder/annotation/end-verso",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/deutsche-wiegenlieder/annotation/end-verso/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/deutsche-wiegenlieder/end-verso/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 1728,
+                  "width": 1578,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/deutsche-wiegenlieder/end-verso",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/deutsche-wiegenlieder/canvas/preview"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/deutsche-wiegenlieder/canvas/end-recto",
+          "type": "Canvas","label": {"de":["Letze Seite"],"en":["Last page"]},"height": 3445,
+            "width": 3104,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/deutsche-wiegenlieder/end-recto_hu17225581472849102709.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 333,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/deutsche-wiegenlieder/annotation/end-recto",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/deutsche-wiegenlieder/annotation/end-recto/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/deutsche-wiegenlieder/end-recto/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3445,
+                  "width": 3104,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/deutsche-wiegenlieder/end-recto",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/deutsche-wiegenlieder/canvas/end-recto"
+            }]
+          }]
+       }]
+}

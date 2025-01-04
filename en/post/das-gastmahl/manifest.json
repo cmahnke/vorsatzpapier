@@ -1,0 +1,207 @@
+{"@context": "http://iiif.io/api/presentation/3/context.json",
+"type": "Manifest",
+"id": "https://vorsatzpapier.projektemacher.org/en/post/das-gastmahl/manifest.json",
+"viewingDirection": "left-to-right","behavior":["paged"],"requiredStatement": {
+  "label": { "en": [ "Attribution" ],
+    "de": [ "Namensnennung" ]
+  },
+  "value": {"en": ["Provided by Projektemacher"],"de": ["Bereitgestellt von Projektemacher"]}
+}
+,"thumbnail": [{
+    "id": "https://vorsatzpapier.projektemacher.org/post/das-gastmahl/front-verso/full/full/0/default_hu6328298447927190697.jpg",
+    "format": "image/jpeg",
+    "type":"Image",
+    "height": 415,
+    "width": 300
+  },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/das-gastmahl/front-verso/full/full/0/default.jpg",
+        "format": "image/jpeg",
+        "type":"Image",
+        "height": 4381,
+        "width": 3170,
+        "service": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/en/post/das-gastmahl/front-verso",
+          "type": "ImageService2",
+          "profile":"level0"
+        }]
+      }],"provider": [
+  {
+    "id": "https://projektemacher.org/",
+    "type": "Agent",
+    "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+    "homepage": [
+      {
+        "id": "https://projektemacher.org/",
+        "type": "Text",
+        "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+        "format": "text/html"
+    }
+  ],
+  "logo": [
+    {"id": "https://projektemacher.org/images/logo.png",
+        "type": "Image",
+        "format": "image/png",
+        "height": 1024,
+        "width": 1024}
+  ],
+  "seeAlso": [
+    {
+      "id": "https://projektemacher.org/projektemacher.json",
+      "type": "Dataset",
+      "format": "application/ld+json",
+      "profile": "https://schema.org/"
+    }
+  ]
+  }
+]
+,
+
+"homepage": [
+  {
+    "id": "https://vorsatzpapier.projektemacher.org/en/post/das-gastmahl/manifest.json",
+    "type": "Text",
+    "format": "text/html",
+
+    "label": {
+        "en": [
+          "Vorsatzpapier: Das Gastmahl"
+        ],
+          "de": [
+            "Vorsatzpapier: Das Gastmahl"
+          ]
+        }
+  }
+],"label": {
+    "en": [
+      "Das Gastmahl"
+    ],
+      "de": [
+        "Das Gastmahl"
+      ]
+    }
+,"items": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/das-gastmahl/canvas/front",
+          "type": "Canvas","label": {"de":["Vorderansicht"],"en":["Front"]},"height": 4518,
+            "width": 3312,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/das-gastmahl/front/full/full/0/default_hu7548153705960703857.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 409,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/das-gastmahl/annotation/front",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/das-gastmahl/annotation/front/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/das-gastmahl/front/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 4518,
+                  "width": 3312,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/das-gastmahl/front",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/das-gastmahl/canvas/front"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/das-gastmahl/canvas/title",
+          "type": "Canvas","label": {"de":["Titelseite"],"en":["Title"]},"height": 4374,
+            "width": 3175,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/das-gastmahl/title/full/full/0/default_hu9349681801570166819.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 413,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/das-gastmahl/annotation/title",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/das-gastmahl/annotation/title/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/das-gastmahl/title/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 4374,
+                  "width": 3175,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/das-gastmahl/title",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/das-gastmahl/canvas/title"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/das-gastmahl/canvas/preview",
+          "type": "Canvas","label": {"de":["Vorderansicht"],"en":["Front"]},"height": 4381,
+            "width": 3170,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/das-gastmahl/front-verso/full/full/0/default_hu6328298447927190697.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 415,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/das-gastmahl/annotation/front-verso",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/das-gastmahl/annotation/front-verso/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/das-gastmahl/front-verso/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 4381,
+                  "width": 3170,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/das-gastmahl/front-verso",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/das-gastmahl/canvas/preview"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/das-gastmahl/canvas/front-recto",
+          "type": "Canvas","label": {"de":["Vorderansicht"],"en":["Front"]},"height": 4337,
+            "width": 3138,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/das-gastmahl/front-recto/full/full/0/default_hu8712864357987208036.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 415,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/das-gastmahl/annotation/front-recto",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/das-gastmahl/annotation/front-recto/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/das-gastmahl/front-recto/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 4337,
+                  "width": 3138,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/das-gastmahl/front-recto",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/das-gastmahl/canvas/front-recto"
+            }]
+          }]
+       }]
+}

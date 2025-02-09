@@ -12,6 +12,7 @@ rssLimit = 25
 copyright = false
 timeout = 300
 enableGitInfo = true
+copyright = '<a href="https://projektemacher.org/" target="_blank">Projektemacher</a>'
 
 [pagination]
   pagerSize = 10

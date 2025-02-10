@@ -8,8 +8,7 @@ disableKinds = ["taxonomy"]
 ignoreErrors = ["error-disable-taxonomy"]
 DefaultContentLanguage = "de"
 rssLimit = 25
-#paginate = 10
-copyright = false
+#copyright = false
 timeout = 300
 enableGitInfo = true
 copyright = '<a href="https://projektemacher.org/" target="_blank">Projektemacher</a>'

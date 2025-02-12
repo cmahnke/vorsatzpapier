@@ -1,0 +1,207 @@
+{"@context": "http://iiif.io/api/presentation/3/context.json",
+"type": "Manifest",
+"id": "https://vorsatzpapier.projektemacher.org/post/universalbuch-der-reden-und-toaste-2/manifest.json",
+"viewingDirection": "left-to-right","behavior":["paged"],"requiredStatement": {
+  "label": { "en": [ "Attribution" ],
+    "de": [ "Namensnennung" ]
+  },
+  "value": {"en": ["Provided by Projektemacher"],"de": ["Bereitgestellt von Projektemacher"]}
+}
+,"thumbnail": [{
+    "id": "https://vorsatzpapier.projektemacher.org/post/universalbuch-der-reden-und-toaste-2/end-recto_hu_9d2c82d565f29eb5.jpg",
+    "format": "image/jpeg",
+    "type":"Image",
+    "height": 441,
+    "width": 300
+  },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/universalbuch-der-reden-und-toaste-2/end-recto.jpg",
+        "format": "image/jpeg",
+        "type":"Image",
+        "height": 3982,
+        "width": 2707,
+        "service": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/universalbuch-der-reden-und-toaste-2/end-recto",
+          "type": "ImageService2",
+          "profile":"level0"
+        }]
+      }],"provider": [
+  {
+    "id": "https://projektemacher.org/",
+    "type": "Agent",
+    "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+    "homepage": [
+      {
+        "id": "https://projektemacher.org/",
+        "type": "Text",
+        "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+        "format": "text/html"
+    }
+  ],
+  "logo": [
+    {"id": "https://projektemacher.org/images/logo.png",
+        "type": "Image",
+        "format": "image/png",
+        "height": 1024,
+        "width": 1024}
+  ],
+  "seeAlso": [
+    {
+      "id": "https://projektemacher.org/projektemacher.json",
+      "type": "Dataset",
+      "format": "application/ld+json",
+      "profile": "https://schema.org/"
+    }
+  ]
+  }
+]
+,
+
+"homepage": [
+  {
+    "id": "https://vorsatzpapier.projektemacher.org/post/universalbuch-der-reden-und-toaste-2/manifest.json",
+    "type": "Text",
+    "format": "text/html",
+
+    "label": {
+        "de": [
+          "Vorsatzpapier: Universalbuch der Reden und Toaste"
+        ],
+          "en": [
+            "Vorsatzpapier: Universalbuch der Reden und Toaste"
+          ]
+        }
+  }
+],"label": {
+    "de": [
+      "Universalbuch der Reden und Toaste"
+    ],
+      "en": [
+        "Universalbuch der Reden und Toaste"
+      ]
+    }
+,"items": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/universalbuch-der-reden-und-toaste-2/canvas/front",
+          "type": "Canvas","label": {"de":["Vorderansicht"],"en":["Front"]},"height": 4137,
+            "width": 2846,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/universalbuch-der-reden-und-toaste-2/front_hu_7eedb4c395205795.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 436,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/universalbuch-der-reden-und-toaste-2/annotation/front",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/universalbuch-der-reden-und-toaste-2/annotation/front/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/universalbuch-der-reden-und-toaste-2/front/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 4137,
+                  "width": 2846,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/universalbuch-der-reden-und-toaste-2/front",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/universalbuch-der-reden-und-toaste-2/canvas/front"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/universalbuch-der-reden-und-toaste-2/canvas/title",
+          "type": "Canvas","label": {"de":["Titelseite"],"en":["Title"]},"height": 3948,
+            "width": 2653,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/universalbuch-der-reden-und-toaste-2/title_hu_57633d8491f3df82.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 446,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/universalbuch-der-reden-und-toaste-2/annotation/title",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/universalbuch-der-reden-und-toaste-2/annotation/title/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/universalbuch-der-reden-und-toaste-2/title/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3948,
+                  "width": 2653,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/universalbuch-der-reden-und-toaste-2/title",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/universalbuch-der-reden-und-toaste-2/canvas/title"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/universalbuch-der-reden-und-toaste-2/canvas/end-verso",
+          "type": "Canvas","label": {"de":["Letze Seite"],"en":["Last page"]},"height": 3989,
+            "width": 2809,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/universalbuch-der-reden-und-toaste-2/end-verso_hu_6de0d8c2819aca96.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 426,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/universalbuch-der-reden-und-toaste-2/annotation/end-verso",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/universalbuch-der-reden-und-toaste-2/annotation/end-verso/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/universalbuch-der-reden-und-toaste-2/end-verso/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3989,
+                  "width": 2809,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/universalbuch-der-reden-und-toaste-2/end-verso",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/universalbuch-der-reden-und-toaste-2/canvas/end-verso"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/universalbuch-der-reden-und-toaste-2/canvas/preview",
+          "type": "Canvas","label": {"de":["Letze Seite"],"en":["Last page"]},"height": 3982,
+            "width": 2707,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/universalbuch-der-reden-und-toaste-2/end-recto_hu_9d2c82d565f29eb5.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 441,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/universalbuch-der-reden-und-toaste-2/annotation/end-recto",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/universalbuch-der-reden-und-toaste-2/annotation/end-recto/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/universalbuch-der-reden-und-toaste-2/end-recto/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3982,
+                  "width": 2707,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/universalbuch-der-reden-und-toaste-2/end-recto",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/universalbuch-der-reden-und-toaste-2/canvas/preview"
+            }]
+          }]
+       }]
+}

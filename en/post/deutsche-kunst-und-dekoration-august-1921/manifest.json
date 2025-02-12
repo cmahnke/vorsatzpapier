@@ -1,0 +1,238 @@
+{"@context": "http://iiif.io/api/presentation/3/context.json",
+"type": "Manifest",
+"id": "https://vorsatzpapier.projektemacher.org/en/post/deutsche-kunst-und-dekoration-august-1921/manifest.json",
+"viewingDirection": "left-to-right","behavior":["paged"],"requiredStatement": {
+  "label": { "en": [ "Attribution" ],
+    "de": [ "Namensnennung" ]
+  },
+  "value": {"en": ["Provided by Projektemacher"],"de": ["Bereitgestellt von Projektemacher"]}
+}
+,"thumbnail": [{
+    "id": "https://vorsatzpapier.projektemacher.org/post/deutsche-kunst-und-dekoration-august-1921/front_hu_a324eddafc5663e0.jpg",
+    "format": "image/jpeg",
+    "type":"Image",
+    "height": 416,
+    "width": 300
+  },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/deutsche-kunst-und-dekoration-august-1921/front.jpg",
+        "format": "image/jpeg",
+        "type":"Image",
+        "height": 7094,
+        "width": 5111,
+        "service": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/en/post/deutsche-kunst-und-dekoration-august-1921/front",
+          "type": "ImageService2",
+          "profile":"level0"
+        }]
+      }],"provider": [
+  {
+    "id": "https://projektemacher.org/",
+    "type": "Agent",
+    "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+    "homepage": [
+      {
+        "id": "https://projektemacher.org/",
+        "type": "Text",
+        "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+        "format": "text/html"
+    }
+  ],
+  "logo": [
+    {"id": "https://projektemacher.org/images/logo.png",
+        "type": "Image",
+        "format": "image/png",
+        "height": 1024,
+        "width": 1024}
+  ],
+  "seeAlso": [
+    {
+      "id": "https://projektemacher.org/projektemacher.json",
+      "type": "Dataset",
+      "format": "application/ld+json",
+      "profile": "https://schema.org/"
+    }
+  ]
+  }
+]
+,
+
+"homepage": [
+  {
+    "id": "https://vorsatzpapier.projektemacher.org/en/post/deutsche-kunst-und-dekoration-august-1921/manifest.json",
+    "type": "Text",
+    "format": "text/html",
+
+    "label": {
+        "en": [
+          "Vorsatzpapier: Deutsche Kunst und Dekoration August 1921"
+        ],
+          "de": [
+            "Vorsatzpapier: Deutsche Kunst und Dekoration August 1921"
+          ]
+        }
+  }
+],"label": {
+    "en": [
+      "Deutsche Kunst und Dekoration August 1921"
+    ],
+      "de": [
+        "Deutsche Kunst und Dekoration August 1921"
+      ]
+    }
+,"items": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/deutsche-kunst-und-dekoration-august-1921/canvas/front",
+          "type": "Canvas","label": {"de":["Vorderansicht"],"en":["Front"]},"height": 7094,
+            "width": 5111,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/deutsche-kunst-und-dekoration-august-1921/front_hu_a324eddafc5663e0.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 416,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/deutsche-kunst-und-dekoration-august-1921/annotation/front",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/deutsche-kunst-und-dekoration-august-1921/annotation/front/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/deutsche-kunst-und-dekoration-august-1921/front/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 7094,
+                  "width": 5111,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/deutsche-kunst-und-dekoration-august-1921/front",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/deutsche-kunst-und-dekoration-august-1921/canvas/front"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/deutsche-kunst-und-dekoration-august-1921/canvas/page265",
+          "type": "Canvas","label": {"none":["page265"]},"height": 7008,
+            "width": 4923,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/deutsche-kunst-und-dekoration-august-1921/page265_hu_2c31f8b843c91e53.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 427,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/deutsche-kunst-und-dekoration-august-1921/annotation/page265",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/deutsche-kunst-und-dekoration-august-1921/annotation/page265/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/deutsche-kunst-und-dekoration-august-1921/page265/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 7008,
+                  "width": 4923,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/deutsche-kunst-und-dekoration-august-1921/page265",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/deutsche-kunst-und-dekoration-august-1921/canvas/page265"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/deutsche-kunst-und-dekoration-august-1921/canvas/page266",
+          "type": "Canvas","label": {"none":["page266"]},"height": 6999,
+            "width": 4900,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/deutsche-kunst-und-dekoration-august-1921/page266_hu_8d51aa5b0478f5b0.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 429,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/deutsche-kunst-und-dekoration-august-1921/annotation/page266",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/deutsche-kunst-und-dekoration-august-1921/annotation/page266/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/deutsche-kunst-und-dekoration-august-1921/page266/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 6999,
+                  "width": 4900,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/deutsche-kunst-und-dekoration-august-1921/page266",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/deutsche-kunst-und-dekoration-august-1921/canvas/page266"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/deutsche-kunst-und-dekoration-august-1921/canvas/page267",
+          "type": "Canvas","label": {"none":["page267"]},"height": 7008,
+            "width": 4886,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/deutsche-kunst-und-dekoration-august-1921/page267_hu_aa4cf94bf1b30c66.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 430,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/deutsche-kunst-und-dekoration-august-1921/annotation/page267",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/deutsche-kunst-und-dekoration-august-1921/annotation/page267/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/deutsche-kunst-und-dekoration-august-1921/page267/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 7008,
+                  "width": 4886,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/deutsche-kunst-und-dekoration-august-1921/page267",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/deutsche-kunst-und-dekoration-august-1921/canvas/page267"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/deutsche-kunst-und-dekoration-august-1921/canvas/page268",
+          "type": "Canvas","label": {"none":["page268"]},"height": 7005,
+            "width": 4745,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/deutsche-kunst-und-dekoration-august-1921/page268_hu_4a5d4414e4e2a762.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 443,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/deutsche-kunst-und-dekoration-august-1921/annotation/page268",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/deutsche-kunst-und-dekoration-august-1921/annotation/page268/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/deutsche-kunst-und-dekoration-august-1921/page268/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 7005,
+                  "width": 4745,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/deutsche-kunst-und-dekoration-august-1921/page268",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/deutsche-kunst-und-dekoration-august-1921/canvas/page268"
+            }]
+          }]
+       }]
+}

@@ -425,6 +425,10 @@ body.about .loop-container .post {
             font-weight: 700;
             padding-right: 0.6em;
 
+            .navigation-link i.link-icon {
+                display: none;
+            }
+
             &:after {
                 content: '|';
                 position: absolute;

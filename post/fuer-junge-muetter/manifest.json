@@ -1,0 +1,207 @@
+{"@context": "http://iiif.io/api/presentation/3/context.json",
+"type": "Manifest",
+"id": "https://vorsatzpapier.projektemacher.org/post/fuer-junge-muetter/manifest.json",
+"viewingDirection": "left-to-right","behavior":["paged"],"requiredStatement": {
+  "label": { "en": [ "Attribution" ],
+    "de": [ "Namensnennung" ]
+  },
+  "value": {"en": ["Provided by Projektemacher"],"de": ["Bereitgestellt von Projektemacher"]}
+}
+,"thumbnail": [{
+    "id": "https://vorsatzpapier.projektemacher.org/post/fuer-junge-muetter/front-verso_hu_cfa1fd9d15474e79.jpg",
+    "format": "image/jpeg",
+    "type":"Image",
+    "height": 451,
+    "width": 300
+  },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/fuer-junge-muetter/front-verso.jpg",
+        "format": "image/jpeg",
+        "type":"Image",
+        "height": 5000,
+        "width": 3326,
+        "service": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/fuer-junge-muetter/front-verso",
+          "type": "ImageService2",
+          "profile":"level0"
+        }]
+      }],"provider": [
+  {
+    "id": "https://projektemacher.org/",
+    "type": "Agent",
+    "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+    "homepage": [
+      {
+        "id": "https://projektemacher.org/",
+        "type": "Text",
+        "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+        "format": "text/html"
+    }
+  ],
+  "logo": [
+    {"id": "https://projektemacher.org/images/logo.png",
+        "type": "Image",
+        "format": "image/png",
+        "height": 1024,
+        "width": 1024}
+  ],
+  "seeAlso": [
+    {
+      "id": "https://projektemacher.org/projektemacher.json",
+      "type": "Dataset",
+      "format": "application/ld+json",
+      "profile": "https://schema.org/"
+    }
+  ]
+  }
+]
+,
+
+"homepage": [
+  {
+    "id": "https://vorsatzpapier.projektemacher.org/post/fuer-junge-muetter/manifest.json",
+    "type": "Text",
+    "format": "text/html",
+
+    "label": {
+        "de": [
+          "Vorsatzpapier: Für junge Mütter"
+        ],
+          "en": [
+            "Vorsatzpapier: Für junge Mütter"
+          ]
+        }
+  }
+],"label": {
+    "de": [
+      "Für junge Mütter"
+    ],
+      "en": [
+        "Für junge Mütter"
+      ]
+    }
+,"items": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/fuer-junge-muetter/canvas/front",
+          "type": "Canvas","label": {"de":["Vorderansicht"],"en":["Front"]},"height": 5140,
+            "width": 3413,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/fuer-junge-muetter/front_hu_7e76402f86ede8f9.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 452,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/fuer-junge-muetter/annotation/front",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/fuer-junge-muetter/annotation/front/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/fuer-junge-muetter/front/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 5140,
+                  "width": 3413,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/fuer-junge-muetter/front",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/fuer-junge-muetter/canvas/front"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/fuer-junge-muetter/canvas/title",
+          "type": "Canvas","label": {"de":["Titelseite"],"en":["Title"]},"height": 4992,
+            "width": 3271,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/fuer-junge-muetter/title_hu_84e13c46df16073.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 458,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/fuer-junge-muetter/annotation/title",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/fuer-junge-muetter/annotation/title/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/fuer-junge-muetter/title/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 4992,
+                  "width": 3271,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/fuer-junge-muetter/title",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/fuer-junge-muetter/canvas/title"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/fuer-junge-muetter/canvas/preview",
+          "type": "Canvas","label": {"de":["Vorderansicht"],"en":["Front"]},"height": 5000,
+            "width": 3326,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/fuer-junge-muetter/front-verso_hu_cfa1fd9d15474e79.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 451,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/fuer-junge-muetter/annotation/front-verso",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/fuer-junge-muetter/annotation/front-verso/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/fuer-junge-muetter/front-verso/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 5000,
+                  "width": 3326,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/fuer-junge-muetter/front-verso",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/fuer-junge-muetter/canvas/preview"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/fuer-junge-muetter/canvas/front-recto",
+          "type": "Canvas","label": {"de":["Vorderansicht"],"en":["Front"]},"height": 5017,
+            "width": 3301,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/fuer-junge-muetter/front-recto_hu_f98539457ba0ddef.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 456,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/fuer-junge-muetter/annotation/front-recto",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/fuer-junge-muetter/annotation/front-recto/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/fuer-junge-muetter/front-recto/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 5017,
+                  "width": 3301,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/fuer-junge-muetter/front-recto",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/fuer-junge-muetter/canvas/front-recto"
+            }]
+          }]
+       }]
+}

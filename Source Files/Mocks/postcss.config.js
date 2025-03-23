@@ -1,3 +1,5 @@
+
+/*
 const config = {
   plugins: [
     require("postcss-inline-svg"),
@@ -6,3 +8,4 @@ const config = {
 };
 
 module.exports = config;
+*/

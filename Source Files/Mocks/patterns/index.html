@@ -14,12 +14,7 @@
   </head>
 
   <body>
-    <div class="selector">
-      <label for="pattern">Choose a template:</label>
-      <select name="pattern" id="base-pattern">
-        
-      </select>
-    </div>
+
 
     <div class="article-container">
       <div class="content">
@@ -27,17 +22,22 @@
       </div>
     </div>
     <div id="status"></div>
-    <div class="cutting-table-content">
-      <div class="cutting-table-canvas">
-        <canvas id="renderer"></canvas>
+
+    <div class="">
+      <div class="pattern-selector">
+        <label for="pattern">Choose a template:</label>
+        <select name="pattern" id="base-pattern">
+        </select>
+      </div>
+
+      <div class="cutting-table">
+        <canvas class="cutting-table-canvas" id="cutting-table-canvas"></canvas>
+        <input type="range" min="1" max="100" value="50" class="control slider horizontal" id="height">
+        <input type="range" min="1" max="100" value="50" class="control slider vertical" id="width">
       </div>
     </div>
 
-    <div class="controls">
-      <input type="range" min="1" max="100" value="50" class="slider horizontal" id="height">
-      <input type="range" min="1" max="100" value="50" class="slider vertical" id="width">
-
-    </div>
+    <div class="texture-container" id="preview"></div>
 
     <div class="texture-container">
       <canvas id="output"></canvas>

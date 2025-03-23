@@ -1,17 +1,26 @@
-.controls {
+.cutting-table {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  grid-template-rows: repeat(5, auto);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+
+  .cutting-table-canvas {
+    grid-area: 1 / 1 / 5 / 5;
+  }
 
   .slider {
 
     &.horizontal {
-
+      grid-area: 5 / 1 / 6 / 5;
     }
 
     &.vertical {
       writing-mode: vertical-lr;
       direction: rtl;
       vertical-align: middle;
+      grid-area: 1 / 5 / 5 / 6;
     }
-
   }
 
 }

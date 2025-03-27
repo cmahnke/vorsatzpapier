@@ -3,50 +3,51 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="stylesheet preload prefetch"
-      as="style"
-      href="./assets/scss/base.scss"
-      crossorigin
-    />
+    <link rel="stylesheet preload prefetch" as="style" href="./assets/scss/base.scss" crossorigin />
 
     <title>Pattern Generator</title>
   </head>
 
   <body>
-
-
     <div class="article-container">
       <div class="content">
         <h1>Pattern Generator</h1>
       </div>
     </div>
-    <div id="status"></div>
 
-    <div class="">
-      <div class="pattern-selector">
-        <label for="pattern">Choose a template:</label>
-        <select name="pattern" id="base-pattern">
-        </select>
+    <div class="generator">
+      <div class="source-select">
+        <input class="url-input" type="url" name="url" id="collection-url" pattern="https://.*" list="defaultURLs" required />
+        <datalist id="defaultURLs">
+          <option value="https://vorsatzpapier.projektemacher.org/patterns/collection.json">Sammlung Vorsatzpapier</option>
+        </datalist>
+        <button type="button" id="load-url">Load URL</button>
+
+        <div class="select-container" id="select-container"></div>
+        <!--
+        <div class="pattern-selector">
+          <label for="pattern">Choose a template:</label>
+          <select name="pattern" id="base-pattern">
+          </select>
+        </div>
+        -->
       </div>
 
       <div class="cutting-table">
-        <canvas class="cutting-table-canvas" id="cutting-table-canvas"></canvas>
-        <input type="range" min="1" max="100" value="50" class="control slider horizontal" id="height">
-        <input type="range" min="1" max="100" value="50" class="control slider vertical" id="width">
+        <div class="cutting-table-viewer" id="cutting-table-viewer"></div>
+        <input type="range" min="1" max="100" value="50" class="control slider vertical" id="cut-y" />
+        <input type="range" min="1" max="100" value="50" class="control slider vertical offset" id="offset-y" />
+        <input type="range" min="1" max="100" value="50" class="control slider horizontal" id="cut-x" />
+        <input type="range" min="1" max="100" value="50" class="control slider horizontal offset" id="offset-x" />
       </div>
     </div>
 
     <div class="texture-container" id="preview"></div>
 
     <div class="texture-container">
-      <canvas id="output"></canvas>
+      <div id="output-viewer"></div>
     </div>
 
-    <script
-      type="module"
-      src="./assets/ts/main.ts"
-      type="text/javascript"
-    ></script>
+    <script type="module" src="./assets/ts/main.ts" type="text/javascript"></script>
   </body>
 </html>

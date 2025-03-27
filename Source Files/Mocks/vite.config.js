@@ -4,11 +4,9 @@ import eslint from "vite-plugin-eslint";
 import { viteSingleFile } from "vite-plugin-singlefile";
 import stylelint from "vite-plugin-stylelint";
 import { nodePolyfills } from "vite-plugin-node-polyfills";
-import {DynamicPublicDirectory} from "vite-multiple-assets";
+import { DynamicPublicDirectory } from "vite-multiple-assets";
 import { checker } from "vite-plugin-checker";
-//import topLevelAwait from "vite-plugin-top-level-await";
-
-const mimeTypes = { ".glb": "model/gltf-binary" };
+import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -21,7 +19,6 @@ export default defineConfig({
     stylelint({ build: true, dev: false, lintOnStart: true }),
     DynamicPublicDirectory(["patterns/public"], {
       ssr: false,
-      mimeTypes,
     }),
     checker({ typescript: false }),
     /*
@@ -32,9 +29,16 @@ export default defineConfig({
       promiseImportName: i => `__tla_${i}`
     })
     */
+    viteStaticCopy({
+      targets: [
+        {
+          src: 'node_modules/openseadragon/build/openseadragon/images/*',
+          dest: 'images/'
+        }
+      ]
+    })
   ],
   build: {
-    //target: 'esnext',
     target: "es2020",
     commonjsOptions: { transformMixedEsModules: true },
     rollupOptions: {

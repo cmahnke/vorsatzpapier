@@ -2,6 +2,7 @@
   "compilerOptions": {
     "module": "system",
     "noImplicitAny": true,
+    "strictNullChecks": true,
     "removeComments": true,
     "preserveConstEnums": true,
     "sourceMap": true,
@@ -9,17 +10,11 @@
     "noEmit": true,
     "esModuleInterop": true,
     "strict": false,
-    "typeRoots": [
-      "./node_modules/@types",
-      "./webgpu/assets/ts/@types",
-      "./pong/assets/ts/@types"
-    ],
+    "typeRoots": ["./node_modules/@types"],
     "target": "es2017",
     "skipLibCheck": true,
     "lib": ["dom", "es2017"]
   },
-  "include": [
-    "patterns/assets/**/*"
-  ],
+  "include": ["patterns/assets/**/*"],
   "exclude": ["node_modules", "**/*.spec.ts"]
 }

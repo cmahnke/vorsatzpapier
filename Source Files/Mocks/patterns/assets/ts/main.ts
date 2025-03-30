@@ -32,7 +32,8 @@ export enum CutPosition {
   Right = 3
 }
 
-type CutNotification = { [key in CutPosition]?: number | undefined };
+type CutNotification = [{ [key in CutPosition]?: number | undefined }, { [key in CutPosition]?: number }?];
+type CutNotifyFunction = (notifiction: CutNotification) => void;
 
 class Cuts {
   overlay: FabricOverlay;
@@ -40,7 +41,8 @@ class Cuts {
   height: number;
   shapes: { [key in CutPosition]?: [Line, Rect] };
   positions: { [key in CutPosition]?: number | undefined };
-  changeCallback: Function[];
+  offsets: { [key in CutPosition]?: number };
+  changeCallback: CutNotifyFunction[];
 
   constructor(positions: CutPosition[], overlay: FabricOverlay) {
     this.positions = {};
@@ -56,7 +58,7 @@ class Cuts {
   }
 
   createLine(width: number = 5): Line {
-    var line = new Line([0, 0, 0, 0], {
+    const line = new Line([0, 0, 0, 0], {
       strokeWidth: width,
       stroke: "red",
       hasControls: false
@@ -66,7 +68,7 @@ class Cuts {
   }
 
   createCover(opacity: number = 0.4, fill: string = "white"): Rect {
-    var rect = new Rect({
+    const rect = new Rect({
       left: 0,
       top: 0,
       width: 0,
@@ -78,6 +80,37 @@ class Cuts {
     });
     this.overlay.fabricCanvas().add(rect);
     return rect;
+  }
+
+  allPositions(): { [key in CutPosition]?: number } {
+    const allPositions = Object.values(CutPosition)
+      .filter((value) => typeof value === "number")
+      .map((value) => value as number);
+    const all: { [key in CutPosition]?: number } = {}; //= this.positions;
+    allPositions.forEach((position) => {
+      if (!(position in this.positions) || this.positions[position as CutPosition] === undefined) {
+        if (position == CutPosition.Top) {
+          all[position] = 0;
+        } else if (position == CutPosition.Bottom) {
+          if (this.height !== undefined) {
+            all[position] = this.height;
+          } else {
+            all[position] = 0;
+          }
+        } else if (position == CutPosition.Right) {
+          if (this.width !== undefined) {
+            all[position] = this.width;
+          } else {
+            all[position] = 0;
+          }
+        } else if (position == CutPosition.Left) {
+          all[position] = 0;
+        }
+      } else {
+        all[position as CutPosition] = this.positions[position as CutPosition];
+      }
+    });
+    return all;
   }
 
   getLine(position: CutPosition): Line | undefined {
@@ -102,7 +135,7 @@ class Cuts {
     }
   }
 
-  setSize(width: number, height: number) {
+  setSize(width: number, height: number): void {
     this.width = width;
     this.height = height;
 
@@ -176,7 +209,11 @@ class Cuts {
     });
   }
 
-  update(position: CutPosition, pos: number) {
+  offset(position: CutPosition, offset: number): void {
+    this.offsets[position] = offset;
+  }
+
+  update(position: CutPosition, pos: number): void {
     if (this.shapes[position] === undefined) {
       return;
     }
@@ -221,7 +258,12 @@ class Cuts {
     this.notify();
   }
 
-  addCallback(func: Function): void {
+  setCallback(func: CutNotifyFunction): void {
+    this.changeCallback = [];
+    this.changeCallback.push(func);
+  }
+
+  addCallback(func: CutNotifyFunction): void {
     if (this.changeCallback !== undefined) {
       this.changeCallback = [];
     }
@@ -231,11 +273,12 @@ class Cuts {
   notify(): void {
     if (this.changeCallback !== undefined) {
       this.changeCallback.forEach((fn) => {
-        let notification: CutNotification = {};
-        const validPositions = Object.keys(this.positions) as unknown as CutPosition[];
-        validPositions.forEach((position: CutPosition) => {
-          notification[position] = this.positions[position];
-        });
+        const notification: CutNotification = [{}];
+        notification[0] = this.allPositions();
+
+        if (this.offsets !== undefined) {
+          notification[1] = this.offsets;
+        }
         fn(notification);
       });
     }
@@ -244,24 +287,28 @@ class Cuts {
 
 class Renderer {
   element: HTMLElement | null;
-  _source: Object;
+  _source: object;
   viewer: OpenSeadragon.Viewer | undefined;
   defaultId: string = "#output-viewer";
+  clipRect: OpenSeadragon.Rect;
   rows: number = 3;
   columns: number = 3;
 
-  constructor(source: OpenSeadragon.Viewer, element?: HTMLElement) {
+  constructor(source?: object, element?: HTMLElement) {
     if (element === undefined) {
       this.element = document.querySelector<HTMLElement>(this.defaultId);
     } else {
       this.element = element;
     }
-    this._source = source;
+    if (source !== undefined) {
+      this._source = source;
+    }
     this.viewer = this.setupViewer();
   }
 
   set source(json: object) {
     this._source = json;
+    this.preview();
   }
 
   setupViewer() {
@@ -275,37 +322,55 @@ class Renderer {
         minZoomLevel: 0.5,
         defaultZoomLevel: 0.5,
         */
-        gestureSettingsMouse: { clickToZoom: false }
+        gestureSettingsMouse: { clickToZoom: false },
+        showFullPageControl: false,
+        showHomeControl: false,
+        autoHideControls: false
       };
-      let outputViewer: OpenSeadragon.Viewer = OpenSeadragon(options);
-      return outputViewer;
+      return OpenSeadragon(options);
+    } else {
+      throw new Error("Result viewer element is null!");
     }
   }
 
   clip(left: number = 0, top: number = 0, width: number, height: number) {
-    //const tiledImage: OpenSeadragon.TiledImage = this.source.world.getItemAt(0);
+    const tiledImage: OpenSeadragon.TiledImage | undefined = this.viewer?.world.getItemAt(0);
     //const imageSize = tiledImage.getContentSize()
 
-    if (tiledImage) {
-      let clipRect = new OpenSeadragon.Rect(left, top, width, height);
-      tiledImage.setClip(clipRect);
+    if (tiledImage !== undefined) {
+      if (this.clipRect === undefined) {
+        this.clipRect = new OpenSeadragon.Rect(left, top, width, height);
+      } else {
+        this.clipRect.x = left;
+        this.clipRect.y = top;
+        this.clipRect.width = width;
+        this.clipRect.height = height;
+      }
+      tiledImage.setClip(this.clipRect);
     }
-    return tiledImage;
   }
 
-  changeSize(columns: number, rows: number) {
+  changeSize(columns: number, rows: number): void {
     this.columns = columns;
     this.rows = rows;
   }
 
+  notify(cuts: CutNotification): void {
+    this.preview(cuts[0][CutPosition.Left], cuts[0][CutPosition.Top], cuts[0][CutPosition.Right], cuts[0][CutPosition.Bottom]);
+  }
+
   preview(left: number = 0, top: number = 0, width?: number, height?: number) {
-    let image: OpenSeadragon.TiledImage;
-    if (width !== undefined && height !== undefined) {
-      image = this.clip(left, top, width, height);
-    } else {
-      //image = ;
+    if (this.viewer === undefined) {
+      throw new Error("Result viewer not initialized");
     }
-    this.viewer?.addTiledImage({ index: this.viewer.world.getItemCount(), tileSource: this.source });
+    if (width !== undefined && height !== undefined) {
+      this.clip(left, top, width, height);
+    } else {
+      console.log("initial load");
+      this.viewer.open(this._source);
+    }
+
+    //this.viewer?.addTiledImage({ index: this.viewer.world.getItemCount(), tileSource: this.source });
   }
 
   /*
@@ -325,8 +390,8 @@ let cuts: Cuts;
 let current: IIIFSelect[] = new Array(3);
 let fabricOverlay: FabricOverlay;
 
-let cutY: HTMLInputElement;
-let cutX: HTMLInputElement;
+let cutY: HTMLInputElement, cutX: HTMLInputElement;
+let offsetY: HTMLInputElement, offsetX: HTMLInputElement;
 
 const selectStrings = [
   { chooseDE: "Vorlage auswählen", chooseEN: "Select template", buttonDE: "Auswählen", buttonEN: "Select" },
@@ -371,18 +436,6 @@ async function loadImageAPI(imageAPIEndpoint: URL) {
 
   if (viewer !== undefined) {
     viewer.addTiledImage({ index: viewer.world.getItemCount(), tileSource: service });
-    /*
-    viewer.addTiledImage({
-      tileSource: imageAPIEndpoint.toString(),
-      index: viewer.world.getItemCount(), // Add the layer on top
-      success: function(event) {
-        console.log('IIIF layer added successfully:', event);
-      },
-      error: function(error) {
-        console.error('Error adding IIIF layer:', error);
-      }
-    });
-    */
     if (service["@context"].startsWith("http://iiif.io/api/image/")) {
       updateLines(service.height, service.width);
     }
@@ -400,6 +453,10 @@ function updateLines(height: number, width: number) {
   cuts.setSize(width, height);
   cuts.setLineWidth(CutPosition.Right, lineWidth);
   cuts.setLineWidth(CutPosition.Bottom, lineWidth);
+
+  if (renderer !== undefined) {
+    cuts.setCallback(renderer.notify.bind(renderer));
+  }
 
   cutX.max = String(width);
   cutX.value = String(width);
@@ -430,13 +487,6 @@ function setupOSD(element: HTMLDivElement) {
   viewer = OpenSeadragon(options);
   fabricOverlay = viewer.fabricOverlay({ fabricCanvasOptions: { selection: false } });
 }
-
-//See https://openlayers.org/en/latest/examples/layer-clipping-vector.html
-
-// traverseDescriptive for thumbnail
-/**
- * TODO: check for collection, manifest or Image API
- */
 
 function createSelect(options: IIIFSelect, clz?: string, id?: string, element?: HTMLDivElement, label?: string) {
   const selectList = document.createElement("select");
@@ -539,7 +589,7 @@ async function loadUrl(url: URL) {
           label = m.label[Object.keys(m.label)[0]].join(" ");
         }
       }
-      let entry = { id: m.image.uri, label: label } as IIIFImageEntry;
+      const entry = { id: m.image.uri, label: label } as IIIFImageEntry;
       if ("width" in m && "height" in m) {
         entry.height = m.height;
         entry.width = m.width;
@@ -549,7 +599,6 @@ async function loadUrl(url: URL) {
     current[1] = pages;
   } else if (manifest instanceof Image) {
     const image: IIIFSelect = { type: "Image", entries: [], source: url };
-    console.log(manifest);
     image.entries.push({ id: manifest.uri, label: "" });
     current[2] = image;
   }
@@ -578,7 +627,7 @@ function setupOutput(): OpenSeadragon.Viewer | undefined {
       */
       gestureSettingsMouse: { clickToZoom: false }
     };
-    let outputViewer: OpenSeadragon.Viewer = OpenSeadragon(options);
+    const outputViewer: OpenSeadragon.Viewer = OpenSeadragon(options);
     return outputViewer;
   }
 }
@@ -586,7 +635,6 @@ function setupOutput(): OpenSeadragon.Viewer | undefined {
 async function setupCuttingTable() {
   const viewerElement = document.querySelector<HTMLDivElement>("#cutting-table-viewer");
   if (viewerElement !== null) {
-    //setupMap(viewerElement);
     setupOSD(viewerElement);
   }
 
@@ -607,11 +655,17 @@ async function setupCuttingTable() {
     }
   });
   //Result renderer
-  renderer = new Renderer(viewer);
+  renderer = new Renderer();
 
   //Cutter
-  cutY = document.querySelector<HTMLInputElement>("#cut-y");
-  cutX = document.querySelector<HTMLInputElement>("#cut-x");
+  const cY = document.querySelector<HTMLInputElement>("#cut-y"),
+    cX = document.querySelector<HTMLInputElement>("#cut-x");
+  if (cY !== null && cX !== null) {
+    cutY = cY;
+    cutX = cX;
+  } else {
+    return;
+  }
   if (cuts === undefined) {
     cutY.disabled = true;
     cutX.disabled = true;
@@ -622,16 +676,43 @@ async function setupCuttingTable() {
     const height = Number(cutY.max);
 
     cuts.update(CutPosition.Right, value);
-    //cuts[CutPosition.Right]?.update(value);
-    renderer?.preview();
   });
 
   cutY?.addEventListener("input", (e) => {
     const value = Number((e.target as HTMLInputElement).value);
     const width = Number(cutX.max);
 
-    //cuts[CutPosition.Bottom]?.update(value);
     cuts.update(CutPosition.Bottom, value);
+  });
+
+  //Offsets
+  let offsetY: HTMLInputElement, offsetX: HTMLInputElement;
+  const oY = document.querySelector<HTMLInputElement>("#offset-y"),
+    oX = document.querySelector<HTMLInputElement>("#offset-x");
+  if (oY !== null && oX !== null) {
+    offsetY = oY;
+    offsetX = oX;
+  } else {
+    return;
+  }
+
+  if (cuts === undefined) {
+    offsetY.disabled = true;
+    offsetX.disabled = true;
+  }
+  offsetX?.addEventListener("input", (e) => {
+    const value = Number((e.target as HTMLInputElement).value);
+    const height = Number(offsetY.max);
+
+    cuts.offset(CutPosition.Right, value);
+    renderer?.preview();
+  });
+
+  offsetY?.addEventListener("input", (e) => {
+    const value = Number((e.target as HTMLInputElement).value);
+    const width = Number(offsetX.max);
+
+    cuts.offset(CutPosition.Bottom, value);
     renderer?.preview();
   });
 }

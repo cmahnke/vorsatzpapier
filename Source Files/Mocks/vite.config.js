@@ -6,7 +6,7 @@ import stylelint from "vite-plugin-stylelint";
 import { nodePolyfills } from "vite-plugin-node-polyfills";
 import { DynamicPublicDirectory } from "vite-multiple-assets";
 import { checker } from "vite-plugin-checker";
-import { viteStaticCopy } from 'vite-plugin-static-copy'
+import { viteStaticCopy } from "vite-plugin-static-copy";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -14,11 +14,11 @@ export default defineConfig({
   plugins: [
     nodePolyfills(),
     {
-      apply: "build",
+      apply: "build"
     },
     stylelint({ build: true, dev: false, lintOnStart: true }),
     DynamicPublicDirectory(["patterns/public"], {
-      ssr: false,
+      ssr: false
     }),
     checker({ typescript: false }),
     /*
@@ -32,8 +32,8 @@ export default defineConfig({
     viteStaticCopy({
       targets: [
         {
-          src: 'node_modules/openseadragon/build/openseadragon/images/*',
-          dest: 'images/'
+          src: "node_modules/openseadragon/build/openseadragon/images/*",
+          dest: "images/"
         }
       ]
     })
@@ -43,30 +43,33 @@ export default defineConfig({
     commonjsOptions: { transformMixedEsModules: true },
     rollupOptions: {
       input: {
-        main: resolve(__dirname, "patterns/index.html"),
+        main: resolve(__dirname, "patterns/index.html")
       },
       output: {
-        assetFileNames: `assets/[name].[ext]`,
-      },
-    },
+        assetFileNames: `assets/[name].[ext]`
+      }
+    }
   },
   resolve: {
     preserveSymlinks: true,
     alias: [
       {
         find: /~(.+)/,
-        replacement: join(process.cwd(), "node_modules/$1"),
-      },
-    ],
+        replacement: join(process.cwd(), "node_modules/$1")
+      }
+    ]
   },
   optimizeDeps: {
-    exclude: ["@monogrid/gainmap-js/libultrahdr", "three"],
+    exclude: ["@monogrid/gainmap-js/libultrahdr", "three"]
   },
   css: {
     preprocessorOptions: {
       scss: {
-        api: 'modern-compiler'
+        api: "modern-compiler"
       }
     }
+  },
+  server: {
+    cors: true
   }
 });

@@ -1,0 +1,207 @@
+{"@context": "http://iiif.io/api/presentation/3/context.json",
+"type": "Manifest",
+"id": "https://vorsatzpapier.projektemacher.org/en/post/kochkunst-1906/manifest.json",
+"viewingDirection": "left-to-right","behavior":["paged"],"requiredStatement": {
+  "label": { "en": [ "Attribution" ],
+    "de": [ "Namensnennung" ]
+  },
+  "value": {"en": ["Provided by Projektemacher"],"de": ["Bereitgestellt von Projektemacher"]}
+}
+,"thumbnail": [{
+    "id": "https://vorsatzpapier.projektemacher.org/post/kochkunst-1906/end-verso/full/full/0/default_hu_6c329751d7142046.jpg",
+    "format": "image/jpeg",
+    "type":"Image",
+    "height": 440,
+    "width": 300
+  },{
+        "id": "https://static.projektemacher.org/vorsatzpapier/en/post/kochkunst-1906/end-verso/full/full/0/default.jpg",
+        "format": "image/jpeg",
+        "type":"Image",
+        "height": 5701,
+        "width": 3883,
+        "service": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/en/post/kochkunst-1906/end-verso",
+          "type": "ImageService2",
+          "profile":"level0"
+        }]
+      }],"provider": [
+  {
+    "id": "https://projektemacher.org/",
+    "type": "Agent",
+    "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+    "homepage": [
+      {
+        "id": "https://projektemacher.org/",
+        "type": "Text",
+        "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+        "format": "text/html"
+    }
+  ],
+  "logo": [
+    {"id": "https://projektemacher.org/images/logo.png",
+        "type": "Image",
+        "format": "image/png",
+        "height": 1024,
+        "width": 1024}
+  ],
+  "seeAlso": [
+    {
+      "id": "https://projektemacher.org/projektemacher.json",
+      "type": "Dataset",
+      "format": "application/ld+json",
+      "profile": "https://schema.org/"
+    }
+  ]
+  }
+]
+,
+
+"homepage": [
+  {
+    "id": "https://vorsatzpapier.projektemacher.org/en/post/kochkunst-1906/manifest.json",
+    "type": "Text",
+    "format": "text/html",
+
+    "label": {
+        "en": [
+          "Vorsatzpapier: Kochkunst 1906"
+        ],
+          "de": [
+            "Vorsatzpapier: Kochkunst 1906"
+          ]
+        }
+  }
+],"label": {
+    "en": [
+      "Kochkunst 1906"
+    ],
+      "de": [
+        "Kochkunst 1906"
+      ]
+    }
+,"items": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/kochkunst-1906/canvas/front",
+          "type": "Canvas","label": {"de":["Vorderansicht"],"en":["Front"]},"height": 5850,
+            "width": 3980,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/kochkunst-1906/front/full/full/0/default_hu_7b17d745576d14fa.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 441,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/kochkunst-1906/annotation/front",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/kochkunst-1906/annotation/front/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/kochkunst-1906/front/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 5850,
+                  "width": 3980,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/kochkunst-1906/front",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/kochkunst-1906/canvas/front"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/kochkunst-1906/canvas/title",
+          "type": "Canvas","label": {"de":["Titelseite"],"en":["Title"]},"height": 5666,
+            "width": 3855,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/kochkunst-1906/title/full/full/0/default_hu_a00911b039bbbec2.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 441,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/kochkunst-1906/annotation/title",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/kochkunst-1906/annotation/title/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/kochkunst-1906/title/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 5666,
+                  "width": 3855,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/kochkunst-1906/title",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/kochkunst-1906/canvas/title"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/kochkunst-1906/canvas/preview",
+          "type": "Canvas","label": {"de":["Letze Seite"],"en":["Last page"]},"height": 5701,
+            "width": 3883,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/kochkunst-1906/end-verso/full/full/0/default_hu_6c329751d7142046.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 440,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/kochkunst-1906/annotation/end-verso",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/kochkunst-1906/annotation/end-verso/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/kochkunst-1906/end-verso/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 5701,
+                  "width": 3883,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/kochkunst-1906/end-verso",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/kochkunst-1906/canvas/preview"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/kochkunst-1906/canvas/end-recto",
+          "type": "Canvas","label": {"de":["Letze Seite"],"en":["Last page"]},"height": 5698,
+            "width": 3866,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/kochkunst-1906/end-recto/full/full/0/default_hu_3a91d034b107e7ba.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 442,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/kochkunst-1906/annotation/end-recto",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/kochkunst-1906/annotation/end-recto/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/kochkunst-1906/end-recto/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 5698,
+                  "width": 3866,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/kochkunst-1906/end-recto",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/kochkunst-1906/canvas/end-recto"
+            }]
+          }]
+       }]
+}

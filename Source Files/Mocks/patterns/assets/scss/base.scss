@@ -59,7 +59,19 @@
         }
       }
     }
+
+    .box {
+      &.rulers {
+        grid-column-start: 3;
+        grid-row-start: 3;
+      }
+    }
   }
+}
+
+.link.disabled {
+  pointer-events: none;
+  color: gray;
 }
 
 .texture-container {

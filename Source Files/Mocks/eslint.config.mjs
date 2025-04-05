@@ -8,8 +8,8 @@ export default [
   {
     languageOptions: { globals: globals.browser },
     rules: {
+      "no-unused-vars": "off",
       "@typescript-eslint/no-unused-vars": ["warn", { vars: "all", args: "after-used", ignoreRestSiblings: false }],
-      "no-unused-vars": ["warn", { vars: "all", args: "after-used", ignoreRestSiblings: false }],
       "no-warning-comments": ["warn", {}],
       "no-irregular-whitespace": ["warn", {}],
       "no-console": ["warn", {}]

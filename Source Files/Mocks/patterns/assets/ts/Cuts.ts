@@ -1,8 +1,8 @@
-import { Canvas as FabricCanvas, Line, Rect } from "fabric";
+import { Line, Rect } from "fabric";
 import { FabricOverlay } from "openseadragon-fabric";
 
-import type { CutNotifyFunction,  CutNotification } from "./types";
-import { CutPosition } from "./types";
+import type { CutNotifyFunction, CutNotification, CutJSON } from "./types";
+import { CutPosition, CutPositionUtil } from "./types";
 
 export class Cuts {
   overlay: FabricOverlay;
@@ -10,13 +10,19 @@ export class Cuts {
   height: number;
   shapes: { [key in CutPosition]?: [Line, Rect] };
   positions: { [key in CutPosition]?: number | undefined };
-  offsets: { [key in CutPosition]?: number };
+  offsets: { [key in CutPosition]?: number } = {};
+  rotations: { [key in CutPosition]?: number } = {};
   changeCallback: CutNotifyFunction[];
+  _url: URL | undefined;
+  _show: boolean = true;
 
-  constructor(positions: CutPosition[], overlay: FabricOverlay) {
+  constructor(positions: CutPosition[], overlay: FabricOverlay, url?: URL) {
     this.positions = {};
     this.shapes = {};
     this.overlay = overlay;
+    if (url !== undefined) {
+      this.url = url;
+    }
 
     positions.forEach((position) => {
       const cover = this.createCover();
@@ -24,6 +30,17 @@ export class Cuts {
       this.shapes[position] = [line, cover];
       this.positions[position] = undefined;
     });
+  }
+
+  set url(url: URL) {
+    this._url = url;
+  }
+
+  get url(): string {
+    if (this._url !== undefined) {
+      return this._url.toString();
+    }
+    return "";
   }
 
   createLine(width: number = 5): Line {
@@ -104,6 +121,24 @@ export class Cuts {
     }
   }
 
+  setVisibility(show?: boolean) {
+    if (show === undefined) {
+      show = !this._show;
+    }
+    if (this.shapes !== undefined) {
+      const validPositions = Object.keys(this.shapes) as unknown as CutPosition[];
+      validPositions.forEach((position: CutPosition) => {
+        if (this.shapes[position] !== undefined) {
+          for (let i = 0; i < this.shapes[position].length; i++) {
+            this.shapes[position][i].visible = show;
+            this.shapes[position][i].canvas?.renderAll();
+          }
+        }
+      });
+    }
+    this._show = show;
+  }
+
   setSize(width: number, height: number): void {
     this.width = width;
     this.height = height;
@@ -178,8 +213,25 @@ export class Cuts {
     });
   }
 
-  offset(position: CutPosition, offset: number): void {
-    this.offsets[position] = offset;
+  set offsetX(offset: number) {
+    if (offset < 0) {
+      this.offsets[CutPosition.Left] = offset;
+    } else if (offset > 0) {
+      this.offsets[CutPosition.Right] = offset;
+    }
+    if (offset != 0) {
+      this.notify();
+    }
+  }
+  set offsetY(offset: number) {
+    if (offset < 0) {
+      this.offsets[CutPosition.Top] = offset;
+    } else if (offset > 0) {
+      this.offsets[CutPosition.Bottom] = offset;
+    }
+    if (offset != 0) {
+      this.notify();
+    }
   }
 
   update(position: CutPosition, pos: number): void {
@@ -227,7 +279,7 @@ export class Cuts {
     this.notify();
   }
 
-  setCallback(func: CutNotifyFunction): void {
+  set callback(func: CutNotifyFunction) {
     this.changeCallback = [];
     this.changeCallback.push(func);
   }
@@ -248,8 +300,43 @@ export class Cuts {
         if (this.offsets !== undefined) {
           notification[1] = this.offsets;
         }
+        if (this.rotations !== undefined) {
+          notification[2] = this.rotations;
+        }
         fn(notification);
       });
     }
+  }
+
+  toJSON(): CutJSON {
+    function expandPositions(cutPostions: { [key in CutPosition]?: number }): { [key: string]: number } {
+      const positions: { [key: string]: number } = {};
+      const validPositions = Object.keys(cutPostions) as unknown as CutPosition[];
+      validPositions.forEach((key: CutPosition) => {
+        if (cutPostions[key] !== undefined) {
+          positions[CutPositionUtil.toString(key)] = cutPostions[key];
+        }
+      });
+      return positions;
+    }
+
+    const json: CutJSON = {
+      url: this.url,
+      width: this.width,
+      height: this.height
+    };
+    const cuts = expandPositions(this.positions);
+    if (this.positions !== undefined && Object.keys(cuts).length) {
+      json["cuts"] = cuts;
+    }
+    const offsets = expandPositions(this.offsets);
+    if (this.offsets !== undefined && Object.keys(offsets).length) {
+      json["offsets"] = offsets;
+    }
+    const rotations = expandPositions(this.rotations);
+    if (this.rotations !== undefined && Object.keys(rotations).length) {
+      json["rotations"] = rotations;
+    }
+    return json;
   }
 }

@@ -12,7 +12,7 @@ export default [
       "@typescript-eslint/no-unused-vars": ["warn", { vars: "all", args: "after-used", ignoreRestSiblings: false }],
       "no-warning-comments": ["warn", {}],
       "no-irregular-whitespace": ["warn", {}],
-      "no-console": ["warn", {}]
+      "no-console": ["warn", { allow: ["warn", "error"] }]
     }
   },
   {

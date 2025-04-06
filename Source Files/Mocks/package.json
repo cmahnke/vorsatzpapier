@@ -11,7 +11,7 @@
     "record": "playwright test"
   },
   "dependencies": {
-    "@allmaps/iiif-parser": "^1.0.0-beta.40",
+    "@allmaps/iiif-parser": "^1.0.0-beta.42",
     "@iiif/parser": "^2.1.7",
     "fabric": "^6.6.2",
     "openseadragon": "^5.0.1",

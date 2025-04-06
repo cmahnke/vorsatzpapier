@@ -1,5 +1,5 @@
 .generator {
-  margin: auto;
+  margin: 2rem;
 
   .source-select {
     display: flex;
@@ -15,6 +15,11 @@
       flex-basis: 100%;
     }
 
+    .status-container {
+      flex-basis: 100%;
+      color: red;
+    }
+
     .pattern-selector {
       flex-basis: 100%;
     }
@@ -22,27 +27,32 @@
 
   .cutting-table {
     display: grid;
-    grid-template-columns: repeat(4, auto);
-    grid-template-rows: repeat(4, auto);
+    grid-template-columns: 1fr auto auto auto;
+    grid-template-rows: 1fr 1fr auto auto auto;
     gap: 0px;
-    height: 100vh;
-    width: 100vw;
+    min-height: 60vh;
+    width: 100%;
 
     .cutting-table-viewer {
-      grid-column: span 1 / span 2;
-      grid-row: span 1 / span 2;
+      grid-column: span 1 / span 3;
+      grid-row: span 1 / span 3;
       grid-column-start: 1;
       grid-row-start: 1;
     }
 
     .slider {
       &.horizontal {
-        grid-column: span 2 / span 2;
+        grid-column: span 3 / span 3;
         grid-column-start: 1;
-        grid-row-start: 3;
+        grid-row-start: 4;
+        height: fit-content;
+        width: 100%;
 
         &.offset {
-          grid-row-start: 4;
+          grid-row-start: 5;
+          grid-column-start: 1;
+          grid-column: span 2 / span 2;
+          height: unset;
         }
       }
 
@@ -50,19 +60,35 @@
         writing-mode: vertical-rl;
         direction: ltr;
         vertical-align: middle;
-        grid-row: span 2 / span 2;
-        grid-column-start: 3;
+        grid-row: span 3 / span 3;
+        grid-column-start: 4;
         grid-row-start: 1;
+        width: fit-content;
 
         &.offset {
-          grid-column-start: 4;
+          grid-column-start: 5;
+          grid-row-start: 2;
+          grid-row: span 2 / span 2;
+          width: unset;
         }
       }
     }
 
     .box {
       &.rulers {
+        grid-column-start: 4;
+        grid-row-start: 4;
+      }
+    }
+
+    .rotation {
+      &.horizontal {
         grid-column-start: 3;
+        grid-row-start: 5;
+      }
+
+      &.vertical {
+        grid-column-start: 5;
         grid-row-start: 3;
       }
     }

@@ -10,6 +10,7 @@ export type IIIFType = "Collection" | "Manifest" | "Image";
 export type IIIFEntry = {
   label: string;
   id: string;
+  thumbnail?: URL;
 };
 
 export type Dimensions = {
@@ -38,9 +39,15 @@ export class CutPositionUtil {
     return CutPosition[position];
   }
 
-  public static fromString(position: string): CutPosition {
-    throw new Error("Converting from string not implemented");
-    //return CutPosition[position];
+  public static fromString(position: string): CutPosition | undefined {
+    const positions = Object.keys(CutPosition) as unknown as CutPosition[];
+    let ret;
+    positions.forEach((key: CutPosition) => {
+      if (position.toLowerCase() == CutPosition[key].toLowerCase()) {
+        ret = key;
+      }
+    });
+    return ret;
   }
 }
 // cuts, offsets, rotations

@@ -79,6 +79,10 @@ export class Renderer {
     }
   }
 
+  get loaded(): boolean {
+    return this._loaded;
+  }
+
   set offsets(offsets: { [key in CutPosition]?: number }) {
     if (
       CutPosition.Left in offsets &&
@@ -177,10 +181,33 @@ export class Renderer {
     this.layout(immediately);
   }
 
+  static createOffsetRect(offsets: { [key in CutPosition]?: number }): OpenSeadragon.Rect | undefined {
+    let width, height;
+    let rotation = 1;
+    if (CutPosition.Left in offsets && offsets[CutPosition.Left] != undefined) {
+      width = Math.sign(offsets[CutPosition.Left]) * offsets[CutPosition.Left];
+      rotation = -1;
+    }
+    if (CutPosition.Right in offsets && offsets[CutPosition.Right] != undefined) {
+      width = Math.sign(offsets[CutPosition.Right]) * offsets[CutPosition.Right];
+    }
+    if (CutPosition.Top in offsets && offsets[CutPosition.Top] != undefined) {
+      height = Math.sign(offsets[CutPosition.Top]) * offsets[CutPosition.Top];
+      rotation = -1;
+    }
+    if (CutPosition.Bottom in offsets && offsets[CutPosition.Bottom] != undefined) {
+      height = Math.sign(offsets[CutPosition.Bottom]) * offsets[CutPosition.Bottom];
+    }
+    if (width !== undefined && height !== undefined) {
+      return new OpenSeadragon.Rect(0, 0, width, height, rotation);
+    }
+  }
+
   /*
   TODO:
-    * offsets
-    * cuts at top and left
+    * Offsets
+    * Cuts at top and left
+    * Alternated rotations
 
   See also:
   * https://codepen.io/iangilman/pen/beJaGQ
@@ -194,6 +221,10 @@ export class Renderer {
       for (let c = 0; c < this.columns; c++) {
         const tiledImage: OpenSeadragon.TiledImage | undefined = this.viewer?.world.getItemAt(pos);
         let offsetRect;
+        if (this._offsets !== undefined) {
+          offsetRect = Renderer.createOffsetRect(this._offsets);
+        }
+
         // Offset Rect
         /*
         if (this.offsetX != 0 || this.offsetY != 0) {
@@ -219,6 +250,9 @@ export class Renderer {
             x = previousImage.getBounds().x + width;
           }
         }
+        if (offsetRect !== undefined && c > 0) {
+          x = r * firstImage.imageToViewportRectangle(offsetRect).width * offsetRect.degrees;
+        }
         /*
         if (this.offsetX != 0 && c >0) {
           x = r * firstImage.imageToViewportRectangle(offsetRect).width;
@@ -236,6 +270,9 @@ export class Renderer {
             }
             y = previousImage.getBounds().y + height;
           }
+        }
+        if (offsetRect !== undefined && r == 1) {
+          y = y + firstImage.imageToViewportRectangle(offsetRect).height * offsetRect.degrees;
         }
         /*
         if (this.offsetY != 0 && r == 1) {
@@ -261,14 +298,6 @@ export class Renderer {
       }
     }
   }
-
-  /*
-  fullSize() {
-    let tiledImage = this.viewer?.world.getItemAt(0);
-    let targetZoom = tiledImage.source.dimensions.x / viewer.viewport.getContainerSize().x;
-    this.viewer?.viewport.zoomTo(targetZoom, null, true);
-  }
-  */
 
   notify(cuts: CutNotification): void {
     this.preview(
@@ -306,16 +335,25 @@ export class Renderer {
     }
   }
 
+  /*
+  fullSize() {
+    let tiledImage = this.viewer?.world.getItemAt(0);
+    let targetZoom = tiledImage.source.dimensions.x / viewer.viewport.getContainerSize().x;
+    this.viewer?.viewport.zoomTo(targetZoom, null, true);
+  }
+  */
+
   renderImage(width: number = 1920, height: number = 1080, type: string = "image/png"): undefined | string {
     //TODO: Fit to width: https://github.com/openseadragon/openseadragon/issues/839
     const offscreen = new OffscreenCanvas(width, height);
     const drawer: OpenSeadragon.Drawer | undefined = this.viewer?.drawer;
     if (drawer !== undefined && drawer?.context !== null) {
       const context: CanvasRenderingContext2D | null = drawer?.context;
-      //const intialContext = context;
+      const initialContext = context;
       drawer.context = offscreen.getContext("2d") as unknown as CanvasRenderingContext2D;
       this.viewer?.forceRedraw();
       const imgUrl: string = (drawer?.canvas as HTMLCanvasElement).toDataURL(type);
+      drawer.context = initialContext;
       return imgUrl;
     }
   }

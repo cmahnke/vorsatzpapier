@@ -216,58 +216,101 @@ export class Cuts {
   set offsetX(offset: number) {
     if (offset < 0) {
       this.offsets[CutPosition.Left] = offset;
+      if (CutPosition.Right in this.offsets) {
+        delete this.offsets[CutPosition.Right];
+      }
     } else if (offset > 0) {
       this.offsets[CutPosition.Right] = offset;
+      if (CutPosition.Left in this.offsets) {
+        delete this.offsets[CutPosition.Left];
+      }
     }
     if (offset != 0) {
       this.notify();
     }
   }
+
   set offsetY(offset: number) {
     if (offset < 0) {
       this.offsets[CutPosition.Top] = offset;
+      if (CutPosition.Bottom in this.offsets) {
+        delete this.offsets[CutPosition.Bottom];
+      }
     } else if (offset > 0) {
       this.offsets[CutPosition.Bottom] = offset;
+      if (CutPosition.Top in this.offsets) {
+        delete this.offsets[CutPosition.Top];
+      }
     }
     if (offset != 0) {
       this.notify();
     }
+  }
+
+  set rotateX(deg: number) {
+    this.rotations[CutPosition.Right] = deg;
+  }
+
+  set rotateY(deg: number) {
+    this.rotations[CutPosition.Bottom] = deg;
   }
 
   update(position: CutPosition, pos: number): void {
     if (this.shapes[position] === undefined) {
       return;
     }
+    if (this.positions[position] == pos) {
+      return;
+    }
     this.positions[position] = pos;
+
     const line = this.shapes[position][0];
     const cover = this.shapes[position][1];
 
-    if (position == CutPosition.Bottom) {
+    if (position == CutPosition.Bottom || position == CutPosition.Top) {
       line.set({
         x1: 0,
         y1: pos,
         x2: this.width,
         y2: pos
       });
-      cover.set({
-        left: 0,
-        top: pos,
-        width: this.width,
-        height: this.height - pos
-      });
-    } else if (position == CutPosition.Right) {
+      if (position == CutPosition.Bottom) {
+        cover.set({
+          left: 0,
+          top: pos,
+          width: this.width,
+          height: this.height - pos
+        });
+      } else {
+        cover.set({
+          left: 0,
+          top: 0,
+          width: this.width,
+          height: pos
+        });
+      }
+    } else if (position == CutPosition.Right || position == CutPosition.Left) {
       line.set({
         x1: pos,
         y1: 0,
         x2: pos,
         y2: this.height
       });
-      cover.set({
-        left: pos,
-        top: 0,
-        width: this.width - pos,
-        height: this.height
-      });
+      if (position == CutPosition.Right) {
+        cover.set({
+          left: pos,
+          top: 0,
+          width: this.width - pos,
+          height: this.height
+        });
+      } else {
+        cover.set({
+          left: 0,
+          top: 0,
+          width: pos,
+          height: this.height
+        });
+      }
     } else {
       //TODO: Finish top and left
       throw new Error("Not all postions aren't implemented yet");

@@ -1,6 +1,7 @@
-import { IIIF, Collection, Manifest, Image } from "@allmaps/iiif-parser";
+import { IIIF, Collection, Manifest, Canvas, Image } from "@allmaps/iiif-parser";
+//import type { Manifest.Thumbnail } from "@allmaps/iiif-parser";
 import { CuttingTable } from "./CuttingTable";
-import type { IIIFSelect, IIIFImageEntry, IIIFType, Translation } from "./types";
+import type { IIIFSelect, IIIFEntry, IIIFImageEntry, IIIFType, Translation } from "./types";
 import { getLang, loadInfoJson } from "./util";
 
 export class IIIFForm {
@@ -26,15 +27,22 @@ export class IIIFForm {
   inputField: HTMLInputElement;
   selectContainerId: string = "#select-container";
   selectContainer: HTMLDivElement;
+  statusContainerId: string = "#status-container";
+  statusContainer: HTMLDivElement;
 
   current?: IIIFType;
   entries: { [key in IIIFType]?: IIIFSelect } = {};
   initial: { string: string };
 
-  constructor(cuttingTable: CuttingTable, element?: HTMLElement) {
+  constructor(cuttingTable: CuttingTable, element?: HTMLDivElement) {
     this.cuttingTable = cuttingTable;
     this.inputField = document.querySelector<HTMLInputElement>(this.inputFieldId)!;
-    this.selectContainer = document.querySelector<HTMLDivElement>(this.selectContainerId)!;
+    if (element === undefined) {
+      this.selectContainer = document.querySelector<HTMLDivElement>(this.selectContainerId)!;
+    } else {
+      this.selectContainer = element;
+    }
+    this.statusContainer = document.querySelector<HTMLDivElement>(this.statusContainerId)!;
     this.button = document.querySelector<HTMLButtonElement>(this.buttonId)!;
     this.setup();
   }
@@ -45,7 +53,7 @@ export class IIIFForm {
         const url = this.inputField?.value;
 
         if (url !== undefined && url !== "") {
-          console.log(`Loading ${url}`);
+          //console.log(`Loading ${url}`);
           this.loadUrl(new URL(url)).then((options: IIIFSelect) => {
             this.createForm(options);
           });
@@ -55,7 +63,6 @@ export class IIIFForm {
   }
 
   createForm(options: IIIFSelect) {
-    console.log(options);
     if (options.type in this.entries) {
       this.entries[options.type] = this.addSelect(options);
       this.current = options.type;
@@ -67,7 +74,6 @@ export class IIIFForm {
   }
 
   updateForm(url: URL) {
-    console.log(url);
     this.loadUrl(new URL(url)).then((options: IIIFSelect) => {
       this.createForm(options);
     });
@@ -82,7 +88,7 @@ export class IIIFForm {
         return res.json();
       })
       .catch((error) => {
-        console.log("Network or CORS issue:", error);
+        console.warn("Network or CORS issue:", error);
         if (trySuffix) {
           let u = url.toString();
           if (!u.endsWith("/")) {
@@ -99,7 +105,6 @@ export class IIIFForm {
     const json = await this.safeLoadIIIF(url, true);
 
     if (json === undefined) {
-      console.log(json);
       return;
       //TODO: Display error message
     }
@@ -109,7 +114,7 @@ export class IIIFForm {
     if (manifest instanceof Collection) {
       const manifests: IIIFSelect = { type: "Collection", entries: [], source: url };
 
-      manifest.items.forEach((m) => {
+      manifest.items.forEach((m: Manifest) => {
         let label = "";
         if (m.label !== undefined) {
           if (lang in m.label) {
@@ -118,13 +123,17 @@ export class IIIFForm {
             label = m.label[Object.keys(m.label)[0]].join(" ");
           }
         }
-        manifests.entries.push({ id: m.uri, label: label });
+        const entry = { id: m.uri, label: label } as IIIFEntry;
+        if ("thumbnail" in m && m.thumbnail !== undefined) {
+          entry.thumbnail = new URL(m.thumbnail[0].id);
+        }
+        manifests.entries.push(entry);
       });
       this.current = "Collection";
       this.entries["Collection"] = manifests;
     } else if (manifest instanceof Manifest) {
       const pages: IIIFSelect = { type: "Manifest", entries: [], source: url };
-      manifest.canvases.forEach((m) => {
+      manifest.canvases.forEach((m: Canvas) => {
         let label = "";
         if (m.label !== undefined) {
           if (lang in m.label) {
@@ -137,6 +146,9 @@ export class IIIFForm {
         if ("width" in m && "height" in m) {
           entry.height = m.height;
           entry.width = m.width;
+        }
+        if ("thumbnail" in m && m.thumbnail !== undefined) {
+          entry.thumbnail = new URL(m.thumbnail[0].id);
         }
         pages.entries.push(entry);
       });
@@ -153,6 +165,7 @@ export class IIIFForm {
   }
 
   static createSelect(options: IIIFSelect, clz?: string, id?: string, element?: HTMLDivElement, label?: string): IIIFSelect {
+    const includeThumb = false;
     const selectList = document.createElement("select");
     const selectName = "select-" + Math.random().toString(16).slice(5);
     const selectId = "select-" + options.type;
@@ -180,7 +193,17 @@ export class IIIFForm {
     options.entries.forEach((optionEntry) => {
       const option = document.createElement("option");
       option.value = optionEntry.id;
-      option.text = optionEntry.label;
+      if (includeThumb && optionEntry.thumbnail !== undefined) {
+        const thumbnail = document.createElement("img");
+        thumbnail.src = optionEntry.thumbnail.toString();
+        thumbnail.style.width = "30px"; // Adjust thumbnail size as needed
+        thumbnail.style.height = "30px";
+        thumbnail.style.verticalAlign = "middle";
+        thumbnail.style.marginRight = "5px";
+        option.innerHTML = thumbnail.outerHTML + optionEntry.label;
+      } else {
+        option.text = optionEntry.label;
+      }
       selectList.appendChild(option);
     });
 
@@ -202,25 +225,18 @@ export class IIIFForm {
       options = IIIFForm.createSelect(options, id, `select-${options.type}`, this.selectContainer, label);
     }
 
-    //if (autoLoadSingle)
-    if (options.entries.length == 1) {
+    if (autoLoadSingle && options.entries.length == 1) {
       if ("element" in options && options.element !== undefined) {
         (options.element as HTMLSelectElement).disabled = true;
       }
-      if (options.type === "Manifest") {
-        console.log(`Autoloading ${options.entries[0].id}`);
-        this.loadImageAPI(new URL(options.entries[0].id));
-      }
-      if (options.type === "Image") {
-        console.log(`Autoloading ${options.entries[0].id}`);
+      if (options.type === "Manifest" || options.type === "Image") {
+        console.warn(`Autoloading ${options.entries[0].id}`);
         this.loadImageAPI(new URL(options.entries[0].id));
       }
     } else {
       options.element?.addEventListener("change", (e) => {
-        console.log("Got select change", e.target);
         if (e.target instanceof HTMLSelectElement) {
           const url = new URL(e.target.value);
-          console.log(`Got select change to ${url} for ${options.type}`);
           this.updateForm(url);
         }
       });
@@ -236,7 +252,6 @@ export class IIIFForm {
     } catch {
       console.warn(`Failed to get ${imageAPIEndpoint}`);
     }
-    console.log("setting", imageAPIEndpoint);
     this.cuttingTable.imageService = service;
     this.cuttingTable.imageServiceUrl = imageAPIEndpoint;
 

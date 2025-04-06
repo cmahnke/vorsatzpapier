@@ -1,5 +1,7 @@
 import OpenSeadragon from "openseadragon";
 import { initOSDFabricJS, FabricOverlay } from "openseadragon-fabric";
+import { RotatingInput } from "./components/RotatingInput";
+import { DualRangeSlider } from "./components/DualRangeSlider";
 import { Cuts } from "./Cuts";
 import { Renderer } from "./Renderer";
 import { IIIFForm } from "./IIIFForm";
@@ -15,6 +17,7 @@ export class CuttingTable {
   };
 
   defaultId: string = "#cutting-table";
+  container: HTMLDivElement;
   selectContainerId: string = "#select-container";
   viewerElementId: string = "#cutting-table-viewer";
   viewer: OpenSeadragon.Viewer;
@@ -22,18 +25,28 @@ export class CuttingTable {
   cuts: Cuts;
   form: IIIFForm;
   fabricOverlay: FabricOverlay;
-  selectContainer: HTMLDivElement;
   viewerElement: HTMLDivElement;
-  cutY: HTMLInputElement;
-  cutX: HTMLInputElement;
+  cutY: DualRangeSlider;
+  cutX: DualRangeSlider;
   offsetY: HTMLInputElement;
   offsetX: HTMLInputElement;
+  rotationX: RotatingInput;
+  rotationY: RotatingInput;
   rulerCheckbox: HTMLInputElement;
   downloadLink: HTMLAnchorElement;
   _imageAPI: URL;
   download: boolean = false;
 
-  constructor(element?: HTMLElement) {
+  constructor(element?: HTMLDivElement) {
+    if (element === undefined) {
+      this.container = document.querySelector<HTMLDivElement>(this.defaultId)!;
+    } else {
+      this.container = element;
+    }
+    //Components
+    customElements.define("rotating-input", RotatingInput);
+    customElements.define("dual-range-slider", DualRangeSlider);
+
     //Result renderer
     this.form = new IIIFForm(this);
     this.renderer = new Renderer();
@@ -69,10 +82,9 @@ export class CuttingTable {
     this.downloadLink.classList.add("link", "json", "disabled");
     this.downloadLink.setAttribute("id", "downloadJSON");
     this.downloadLink.setAttribute("download", "cuttingTable.json");
-    this.downloadLink.addEventListener("click", (e) => {
+    this.downloadLink.addEventListener("click", () => {
       if (this.cuts !== undefined) {
         const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(this.cuts.toJSON(), null, 2));
-        console.log("downloading ", this.cuts.toJSON());
         this.downloadLink.setAttribute("href", dataStr);
       }
     });
@@ -98,30 +110,36 @@ export class CuttingTable {
       }
       this.cuts.url = imageAPIEndpoint;
     } else {
-      console.log("Viewer not initialized");
+      console.warn("Viewer not initialized");
     }
   }
 
   set imageService(endpointService: IIIFImageStub) {
     if (this.renderer !== undefined) {
+      if (this.renderer.loaded) {
+        this.renderer.clear();
+      }
       this.renderer.source = endpointService;
     }
     if (this.viewer !== undefined) {
-      this.viewer.addTiledImage({ index: this.viewer.world.getItemCount(), tileSource: endpointService });
+      if (this.viewer.world.getItemCount()) {
+        this.viewer.close();
+        this.viewer.open(endpointService);
+      } else {
+        this.viewer.addTiledImage({ index: this.viewer.world.getItemCount(), tileSource: endpointService });
+      }
       if (endpointService["@context"].startsWith("http://iiif.io/api/image/")) {
         this.updateLines(endpointService.height, endpointService.width);
       }
     } else {
-      console.log("Viewer not initialized");
+      console.warn("Viewer not initialized");
     }
-    console.log("set", endpointService);
     if (this.download) {
       this.downloadLink.classList.remove("disabled");
     }
   }
 
   set imageServiceUrl(url: URL) {
-    console.log("set", url);
     this._imageAPI = url;
     this.cuts.url = url;
   }
@@ -130,27 +148,27 @@ export class CuttingTable {
     const lineWidth = Math.ceil(5 / this.viewer.viewport.getZoom());
 
     if (this.cuts === undefined) {
-      this.cuts = new Cuts([CutPosition.Right, CutPosition.Bottom], this.fabricOverlay);
+      this.cuts = new Cuts([CutPosition.Right, CutPosition.Bottom, CutPosition.Top, CutPosition.Left], this.fabricOverlay);
     }
     this.cuts.setSize(width, height);
     this.cuts.setLineWidth(CutPosition.Right, lineWidth);
     this.cuts.setLineWidth(CutPosition.Bottom, lineWidth);
+    this.cuts.setLineWidth(CutPosition.Left, lineWidth);
+    this.cuts.setLineWidth(CutPosition.Top, lineWidth);
 
     if (this.renderer !== undefined) {
       this.cuts.callback = this.renderer.notify.bind(this.renderer);
     }
 
-    this.cutX.max = String(width);
-    this.cutX.setAttribute("value", String(width));
-    this.cutX.value = String(width);
+    this.cutX.setAttribute("max", String(width));
+    this.cutX.setAttribute("value-max", String(width));
     this.offsetX.min = String(Math.ceil(0 - width / 2));
     this.offsetX.max = String(Math.floor(width / 2));
     this.offsetX.setAttribute("value", "0");
     this.cutX.disabled = false;
     this.offsetX.disabled = false;
-    this.cutY.max = String(height);
-    this.cutY.setAttribute("value", String(height));
-    this.cutY.value = String(height);
+    this.cutY.setAttribute("max", String(height));
+    this.cutY.setAttribute("value-max", String(height));
     this.offsetY.min = String(Math.ceil(0 - height / 2));
     this.offsetY.max = String(Math.floor(height / 2));
     this.offsetY.setAttribute("value", "0");
@@ -160,26 +178,30 @@ export class CuttingTable {
 
   async setup() {
     //Cutter
-    this.cutY = document.querySelector<HTMLInputElement>("#cut-y")!;
-    this.cutX = document.querySelector<HTMLInputElement>("#cut-x")!;
+    this.cutY = document.querySelector<DualRangeSlider>("#cut-y")!;
+    this.cutX = document.querySelector<DualRangeSlider>("#cut-x")!;
 
     if (this.cuts === undefined) {
       this.cutY.disabled = true;
       this.cutX.disabled = true;
     }
 
-    this.cutX?.addEventListener("input", (e: Event) => {
-      const value = Number((e.target as HTMLInputElement).value);
-      const height = Number(this.cutY.max);
-
-      this.cuts.update(CutPosition.Right, value);
+    this.cutX?.addEventListener("input", (e: CustomEvent) => {
+      if (e.detail !== undefined) {
+        const min = Number(e.detail.min);
+        const max = Number(e.detail.max);
+        this.cuts.update(CutPosition.Left, min);
+        this.cuts.update(CutPosition.Right, max);
+      }
     });
 
-    this.cutY?.addEventListener("input", (e: Event) => {
-      const value = Number((e.target as HTMLInputElement).value);
-      const width = Number(this.cutX.max);
-
-      this.cuts.update(CutPosition.Bottom, value);
+    this.cutY?.addEventListener("input", (e: CustomEvent) => {
+      if (e.detail !== undefined) {
+        const min = Number(e.detail.min);
+        const max = Number(e.detail.max);
+        this.cuts.update(CutPosition.Top, min);
+        this.cuts.update(CutPosition.Bottom, max);
+      }
     });
 
     //Offsets
@@ -192,21 +214,32 @@ export class CuttingTable {
     }
     this.offsetX?.addEventListener("input", (e: Event) => {
       const value = Number((e.target as HTMLInputElement).value);
-      const height = Number(this.offsetY.max);
+      //const height = Number(this.offsetY.max);
 
       this.cuts.offsetX = value;
     });
 
     this.offsetY?.addEventListener("input", (e: Event) => {
       const value = Number((e.target as HTMLInputElement).value);
-      const width = Number(this.offsetX.max);
+      //const width = Number(this.offsetX.max);
 
       this.cuts.offsetY = value;
     });
+
+    //Rotations
+    this.rotationX = document.querySelector<RotatingInput>("#rotate-x")!;
+    this.rotationY = document.querySelector<RotatingInput>("#rotate-y")!;
+    this.rotationX?.addEventListener("degreeChange", (event: CustomEvent<{ degree: number }>) => {
+      this.cuts.rotateX = event.detail.degree;
+    });
+    this.rotationY?.addEventListener("degreeChange", (event: CustomEvent<{ degree: number }>) => {
+      this.cuts.rotateY = event.detail.degree;
+    });
+
     //Options
     this.rulerCheckbox = document.querySelector<HTMLInputElement>("#ruler-visible")!;
 
-    this.rulerCheckbox?.addEventListener("change", (e: Event) => {
+    this.rulerCheckbox?.addEventListener("change", () => {
       this.cuts.setVisibility();
     });
   }

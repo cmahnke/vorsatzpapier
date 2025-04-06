@@ -1,5 +1,5 @@
 import { IIIF, Collection, Manifest, Canvas, Image } from "@allmaps/iiif-parser";
-//import type { Manifest.Thumbnail } from "@allmaps/iiif-parser";
+import { IconDropdownSelect } from "./components/IconDropdownSelect";
 import { CuttingTable } from "./CuttingTable";
 import type { IIIFSelect, IIIFEntry, IIIFImageEntry, IIIFType, Translation } from "./types";
 import { getLang, loadInfoJson } from "./util";
@@ -36,6 +36,7 @@ export class IIIFForm {
 
   constructor(cuttingTable: CuttingTable, element?: HTMLDivElement) {
     this.cuttingTable = cuttingTable;
+    customElements.define("icon-dropdown-select", IconDropdownSelect);
     this.inputField = document.querySelector<HTMLInputElement>(this.inputFieldId)!;
     if (element === undefined) {
       this.selectContainer = document.querySelector<HTMLDivElement>(this.selectContainerId)!;
@@ -53,7 +54,6 @@ export class IIIFForm {
         const url = this.inputField?.value;
 
         if (url !== undefined && url !== "") {
-          //console.log(`Loading ${url}`);
           this.loadUrl(new URL(url)).then((options: IIIFSelect) => {
             this.createForm(options);
           });
@@ -165,13 +165,16 @@ export class IIIFForm {
   }
 
   static createSelect(options: IIIFSelect, clz?: string, id?: string, element?: HTMLDivElement, label?: string): IIIFSelect {
-    const includeThumb = false;
-    const selectList = document.createElement("select");
+    const includeThumb = true;
+    //const selectList = document.createElement("select");
+    const selectList = document.createElement("icon-dropdown-select");
+    //console.log(options)
+    selectList.classList.add("select", options.type.toLowerCase());
     const selectName = "select-" + Math.random().toString(16).slice(5);
     const selectId = "select-" + options.type;
     const labelElement = document.createElement("label");
     if (label !== undefined) {
-      const existing = document.querySelector<HTMLSelectElement>(`#${selectId}`);
+      const existing = document.querySelector<IconDropdownSelect>(`#${selectId}`);
       if (existing !== null) {
         existing.remove();
       }
@@ -179,7 +182,9 @@ export class IIIFForm {
       labelElement.innerHTML = label;
       labelElement.htmlFor = selectId;
       selectList.appendChild(labelElement);
-      selectList.name = selectName;
+      if (selectList instanceof HTMLSelectElement) {
+        selectList.name = selectName;
+      }
       selectList.id = selectId;
       labelElement.id = selectId;
     }
@@ -196,10 +201,6 @@ export class IIIFForm {
       if (includeThumb && optionEntry.thumbnail !== undefined) {
         const thumbnail = document.createElement("img");
         thumbnail.src = optionEntry.thumbnail.toString();
-        thumbnail.style.width = "30px"; // Adjust thumbnail size as needed
-        thumbnail.style.height = "30px";
-        thumbnail.style.verticalAlign = "middle";
-        thumbnail.style.marginRight = "5px";
         option.innerHTML = thumbnail.outerHTML + optionEntry.label;
       } else {
         option.text = optionEntry.label;
@@ -210,7 +211,7 @@ export class IIIFForm {
     if (options.type === "Image") {
       options.element = labelElement;
     } else {
-      options.element = selectList;
+      options.element = selectList as IconDropdownSelect;
     }
     if (element !== undefined) {
       element.appendChild(selectList);
@@ -234,9 +235,9 @@ export class IIIFForm {
         this.loadImageAPI(new URL(options.entries[0].id));
       }
     } else {
-      options.element?.addEventListener("change", (e) => {
-        if (e.target instanceof HTMLSelectElement) {
-          const url = new URL(e.target.value);
+      options.element?.addEventListener("change", (event: CustomEvent) => {
+        if (event.detail !== undefined) {
+          const url = new URL(event.detail);
           this.updateForm(url);
         }
       });

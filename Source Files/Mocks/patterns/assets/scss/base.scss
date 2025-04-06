@@ -13,6 +13,13 @@
 
     .select-container {
       flex-basis: 100%;
+
+      .select {
+        &.collection {
+          max-width: 50%;
+          min-width: 33%;
+        }
+      }
     }
 
     .status-container {
@@ -52,7 +59,9 @@
           grid-row-start: 5;
           grid-column-start: 1;
           grid-column: span 2 / span 2;
+          width: 90%;
           height: unset;
+          justify-self: center;
         }
       }
 
@@ -70,6 +79,8 @@
           grid-row-start: 2;
           grid-row: span 2 / span 2;
           width: unset;
+          height: 90%;
+          align-self: center;
         }
       }
     }

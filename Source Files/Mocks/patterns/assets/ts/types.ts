@@ -1,7 +1,9 @@
+import { IconDropdownSelect } from "./components/IconDropdownSelect";
+
 export type IIIFSelect = {
   type: IIIFType;
   entries: Array<IIIFEntry | IIIFImageEntry>;
-  element?: HTMLSelectElement | HTMLLabelElement;
+  element?: HTMLSelectElement | HTMLLabelElement | IconDropdownSelect;
   source?: URL;
 };
 

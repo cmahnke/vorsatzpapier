@@ -63,6 +63,8 @@ export class CuttingTable {
   setupOSD(element: HTMLDivElement) {
     initOSDFabricJS();
     const options: OpenSeadragon.Options = {
+      zoomInButton: element.querySelector<Element>(".zoomin")!,
+      zoomOutButton: element.querySelector<Element>(".zoomout")!,
       element: element,
       gestureSettingsMouse: { clickToZoom: false },
       showFullPageControl: false,
@@ -144,12 +146,20 @@ export class CuttingTable {
     this.cuts.url = url;
   }
 
-  updateLines(height: number, width: number) {
-    const lineWidth = Math.ceil(5 / this.viewer.viewport.getZoom());
-
+  initCuts() {
     if (this.cuts === undefined) {
       this.cuts = new Cuts([CutPosition.Right, CutPosition.Bottom, CutPosition.Top, CutPosition.Left], this.fabricOverlay);
     }
+    this.cuts.setVisibility(false);
+    this.viewer.addHandler("open", () => {
+      this.cuts.setVisibility(true);
+    });
+  }
+
+  updateLines(height: number, width: number) {
+    const lineWidth = Math.ceil(5 / this.viewer.viewport.getZoom());
+
+    this.initCuts();
     this.cuts.setSize(width, height);
     this.cuts.setLineWidth(CutPosition.Right, lineWidth);
     this.cuts.setLineWidth(CutPosition.Bottom, lineWidth);
@@ -214,15 +224,11 @@ export class CuttingTable {
     }
     this.offsetX?.addEventListener("input", (e: Event) => {
       const value = Number((e.target as HTMLInputElement).value);
-      //const height = Number(this.offsetY.max);
-
       this.cuts.offsetX = value;
     });
 
     this.offsetY?.addEventListener("input", (e: Event) => {
       const value = Number((e.target as HTMLInputElement).value);
-      //const width = Number(this.offsetX.max);
-
       this.cuts.offsetY = value;
     });
 

@@ -19,6 +19,7 @@ export class IIIFForm {
       button: { de: "Anzeigen", en: "Show" }
     }
   };
+  static typeHierarchy: { [key in IIIFType]: string } = { Collection: "collection.json", Manifest: "manifest.json", Image: "info.json" };
 
   cuttingTable: CuttingTable;
   buttonId: string = "#load-url";
@@ -54,7 +55,8 @@ export class IIIFForm {
         const url = this.inputField?.value;
 
         if (url !== undefined && url !== "") {
-          this.loadUrl(new URL(url)).then((options: IIIFSelect) => {
+          this.selectContainer.innerHTML = "";
+          this.loadUrl(new URL(url), undefined).then((options: IIIFSelect) => {
             this.createForm(options);
           });
         }
@@ -73,13 +75,13 @@ export class IIIFForm {
     }
   }
 
-  updateForm(url: URL) {
-    this.loadUrl(new URL(url)).then((options: IIIFSelect) => {
+  updateForm(url: URL, type?: IIIFType) {
+    this.loadUrl(new URL(url), type).then((options: IIIFSelect) => {
       this.createForm(options);
     });
   }
 
-  async safeLoadIIIF(url: URL, trySuffix: boolean = false) {
+  async safeLoadIIIF(url: URL, trySuffix: string = ""): Promise<object> {
     return fetch(url)
       .then((res) => {
         if (!res.ok) {
@@ -89,20 +91,26 @@ export class IIIFForm {
       })
       .catch((error) => {
         console.warn("Network or CORS issue:", error);
-        if (trySuffix) {
+        if (trySuffix !== "") {
           let u = url.toString();
           if (!u.endsWith("/")) {
-            u = u + "/info.json";
+            u = u + "/" + trySuffix;
           } else {
-            u = u + "info.json";
+            u = u + trySuffix;
           }
-          this.safeLoadIIIF(new URL(u));
+          return this.safeLoadIIIF(new URL(u));
         }
       });
   }
 
-  async loadUrl(url: URL) {
-    const json = await this.safeLoadIIIF(url, true);
+  async loadUrl(url: URL, type: IIIFType = "Image") {
+    let trySuffix;
+    if (type === undefined) {
+      trySuffix = "";
+    } else {
+      trySuffix = IIIFForm.typeHierarchy[type];
+    }
+    const json = await this.safeLoadIIIF(url, trySuffix);
 
     if (json === undefined) {
       return;
@@ -166,9 +174,7 @@ export class IIIFForm {
 
   static createSelect(options: IIIFSelect, clz?: string, id?: string, element?: HTMLDivElement, label?: string): IIIFSelect {
     const includeThumb = true;
-    //const selectList = document.createElement("select");
     const selectList = document.createElement("icon-dropdown-select");
-    //console.log(options)
     selectList.classList.add("select", options.type.toLowerCase());
     const selectName = "select-" + Math.random().toString(16).slice(5);
     const selectId = "select-" + options.type;
@@ -181,7 +187,6 @@ export class IIIFForm {
 
       labelElement.innerHTML = label;
       labelElement.htmlFor = selectId;
-      selectList.appendChild(labelElement);
       if (selectList instanceof HTMLSelectElement) {
         selectList.name = selectName;
       }
@@ -213,6 +218,9 @@ export class IIIFForm {
     } else {
       options.element = selectList as IconDropdownSelect;
     }
+    if (labelElement !== undefined) {
+      options.label = labelElement;
+    }
     if (element !== undefined) {
       element.appendChild(selectList);
     }
@@ -238,7 +246,13 @@ export class IIIFForm {
       options.element?.addEventListener("change", (event: CustomEvent) => {
         if (event.detail !== undefined) {
           const url = new URL(event.detail);
-          this.updateForm(url);
+          const typeKeys = Object.keys(IIIFForm.typeHierarchy) as IIIFType[];
+          let expectedType;
+          if (options.type !== undefined) {
+            const currentType = typeKeys.indexOf(options.type);
+            expectedType = typeKeys[currentType + 1];
+          }
+          this.updateForm(url, expectedType);
         }
       });
     }

@@ -7,6 +7,10 @@ import { nodePolyfills } from "vite-plugin-node-polyfills";
 import { DynamicPublicDirectory } from "vite-multiple-assets";
 import { checker } from "vite-plugin-checker";
 import { viteStaticCopy } from "vite-plugin-static-copy";
+import svg from "vite-plugin-svgo";
+
+// External configs
+import svgoConfig from "./svgo.config.mjs";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -29,6 +33,7 @@ export default defineConfig({
       promiseImportName: i => `__tla_${i}`
     })
     */
+    svg(svgoConfig),
     viteStaticCopy({
       targets: [
         {

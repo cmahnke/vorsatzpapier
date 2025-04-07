@@ -4,6 +4,7 @@ export type IIIFSelect = {
   type: IIIFType;
   entries: Array<IIIFEntry | IIIFImageEntry>;
   element?: HTMLSelectElement | HTMLLabelElement | IconDropdownSelect;
+  label?: HTMLLabelElement;
   source?: URL;
 };
 

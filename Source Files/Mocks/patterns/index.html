@@ -28,7 +28,9 @@
       </div>
 
       <div class="cutting-table">
-        <div class="cutting-table-viewer" id="cutting-table-viewer"></div>
+        <div class="cutting-table-viewer" id="cutting-table-viewer">
+          <i class="controls button zoomin"></i><i class="controls button zoomout"></i>
+        </div>
         <dual-range-slider min="0" max="1" value-min="0" value-max="1" class="control slider vertical" id="cut-y"></dual-range-slider>
         <input type="range" min="1" max="100" value="50" class="control slider vertical offset" id="offset-y" />
         <rotating-input step="90" display-degrees="false" radius="25" class="control rotation vertical" id="rotate-y"></rotating-input>
@@ -40,7 +42,12 @@
     </div>
 
     <div class="texture-container" id="preview">
-      <div class="viewer" id="output-viewer"></div>
+      <div class="output-viewer" id="output-viewer">
+        <i class="controls button zoomin"></i>
+        <i class="controls button zoomout"></i>
+        <i class="controls button fullscreen"></i>
+        <i class="controls button fullwidth"></i>
+      </div>
     </div>
 
     <script type="module" src="./assets/ts/main.ts" type="text/javascript"></script>

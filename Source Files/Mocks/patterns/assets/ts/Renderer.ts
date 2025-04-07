@@ -1,4 +1,6 @@
 import OpenSeadragon from "openseadragon";
+import { ImageResolutionSelect } from "./components/ImageResolutionSelect";
+import { OffscreenCanvasDownload } from "./components/OffscreenCanvasDownload";
 import { CutPosition } from "./types";
 import type { CutNotification, IIIFImageStub, Translation } from "./types";
 import { getLang } from "./util";
@@ -7,6 +9,9 @@ export class Renderer {
   static labels: { [key: string]: { [key: string]: Translation } } = {
     links: {
       image: { de: "Bild herunterladen", en: "Download image" }
+    },
+    select: {
+      custom: { de: "Eigene", en: "Custom" }
     }
   };
 
@@ -20,9 +25,12 @@ export class Renderer {
   columns: number = 4;
   tileSources: object[] = [];
   _loaded: boolean = false;
-  downloadLink: HTMLAnchorElement;
+  resolutionSelect: ImageResolutionSelect;
+  downloadButton: OffscreenCanvasDownload;
 
   constructor(source?: IIIFImageStub, element?: HTMLElement) {
+    customElements.define("image-resolution-select", ImageResolutionSelect);
+    customElements.define("offscreencanvas-download", OffscreenCanvasDownload);
     if (element === undefined) {
       this.element = document.querySelector<HTMLElement>(this.defaultId);
     } else {
@@ -135,14 +143,26 @@ export class Renderer {
         minZoomLevel: 0.5,
         defaultZoomLevel: 0.5,
         */
+        drawer: "canvas",
         gestureSettingsMouse: { clickToZoom: false },
         showHomeControl: false,
         autoHideControls: false,
         collectionTileMargin: 0,
         collectionRows: this.rows,
         collectionColumns: this.columns,
-        crossOriginPolicy: "Anonymous"
+        crossOriginPolicy: "Anonymous",
+        zoomInButton: this.element.querySelector<Element>(".zoomin")!,
+        zoomOutButton: this.element.querySelector<Element>(".zoomout")!,
+        fullPageButton: this.element.querySelector<Element>(".fullscreen")!
       };
+      const fullwidth = this.element.querySelector<HTMLElement>(".fullwidth")!;
+      fullwidth.addEventListener("click", () => {
+        if (this._loaded) {
+          if (this.viewer !== undefined) {
+            Renderer.fitToWidth(this.viewer);
+          }
+        }
+      });
       return OpenSeadragon(options);
     } else {
       throw new Error("Result viewer element is null!");
@@ -288,6 +308,42 @@ export class Renderer {
     }
   }
 
+  static fitToWidth(viewer: OpenSeadragon.Viewer) {
+    if (viewer.world.getItemCount() > 0) {
+      let minX = Infinity;
+      let maxX = -Infinity;
+      let minY = Infinity;
+      let maxY = -Infinity;
+
+      for (let i = 0; i < viewer.world.getItemCount(); i++) {
+        const tiledImage = viewer.world.getItemAt(i);
+        const bounds = tiledImage.getBounds();
+        minX = Math.min(minX, bounds.x);
+        maxX = Math.max(maxX, bounds.x + bounds.width);
+        minY = Math.min(minY, bounds.y);
+        maxY = Math.max(maxY, bounds.y + bounds.height);
+      }
+
+      const combinedWidth = maxX - minX;
+      const combinedHeight = maxY - minY;
+      const combinedBounds = new OpenSeadragon.Rect(minX, minY, combinedWidth, combinedHeight);
+
+      if (combinedWidth > 0) {
+        const targetZoom = 1.0 / combinedWidth;
+        viewer.viewport.zoomTo(targetZoom, undefined, true);
+
+        const combinedCenterX = minX + combinedWidth / 2;
+
+        viewer.viewport.panTo(new OpenSeadragon.Point(combinedCenterX, viewer.viewport.getCenter().y), true);
+
+        const currentViewportBounds = viewer.viewport.getBounds();
+        if (currentViewportBounds.y < 0) {
+          viewer.viewport.panBy(new OpenSeadragon.Point(0, -currentViewportBounds.y), true);
+        }
+      }
+    }
+  }
+
   changeSize(columns: number, rows: number): void {
     if (this.columns != columns || this.rows != rows) {
       this.columns = columns;
@@ -330,8 +386,8 @@ export class Renderer {
       this._loaded = true;
     }
     this.clip(left, top, width, height, immediately, offsets);
-    if (this.downloadLink !== undefined) {
-      this.downloadLink.classList.remove("disabled");
+    if (this.downloadButton !== undefined) {
+      this.downloadButton.disabled = false;
     }
   }
 
@@ -343,36 +399,52 @@ export class Renderer {
   }
   */
 
-  renderImage(width: number = 1920, height: number = 1080, type: string = "image/png"): undefined | string {
+  renderImage(width: number = 1920, height: number = 1080): OffscreenCanvas | undefined {
     //TODO: Fit to width: https://github.com/openseadragon/openseadragon/issues/839
     const offscreen = new OffscreenCanvas(width, height);
     const drawer: OpenSeadragon.Drawer | undefined = this.viewer?.drawer;
     if (drawer !== undefined && drawer?.context !== null) {
       const context: CanvasRenderingContext2D | null = drawer?.context;
       const initialContext = context;
-      drawer.context = offscreen.getContext("2d") as unknown as CanvasRenderingContext2D;
-      this.viewer?.forceRedraw();
-      const imgUrl: string = (drawer?.canvas as HTMLCanvasElement).toDataURL(type);
-      drawer.context = initialContext;
-      return imgUrl;
+      const offscreenContext = offscreen.getContext("2d") as unknown as CanvasRenderingContext2D;
+
+      const viewportBounds = this.viewer?.viewport.getBounds();
+      const contentSize = this.viewer?.viewport.getContainerSize;
+      const minLevel = this.viewer?.viewport.getMinZoom();
+      const maxLevel = this.viewer?.viewport.getMaxZoom();
+
+      this.viewer?.drawer.draw(offscreenContext, viewportBounds, contentSize, minLevel, maxLevel);
+      //drawer.context = offscreenContext;
+      //this.viewer?.forceRedraw();
+      //drawer.context = initialContext;
+      return offscreen;
     }
   }
 
   addImageLink(element: HTMLElement, width: number = 1920, height: number = 1080, type: string = "image/png") {
-    this.downloadLink = document.createElement("a");
-    this.downloadLink.innerText = Renderer.labels.links.image[getLang()];
-    this.downloadLink.title = Renderer.labels.links.image[getLang()];
-    this.downloadLink.setAttribute("href", "javascript:void(0)");
-    this.downloadLink.classList.add("link", "json", "disabled");
-    this.downloadLink.setAttribute("id", "downloadImage");
+    this.downloadButton = document.createElement("offscreencanvas-download") as OffscreenCanvasDownload;
+
     const suffix = type.split("/")[1];
-    this.downloadLink.setAttribute("download", `wallpaper.${suffix}`);
-    this.downloadLink.addEventListener("click", () => {
-      const dataStr = this.renderImage(width, height, type);
-      if (dataStr !== undefined) {
-        this.downloadLink.setAttribute("href", dataStr);
+    this.downloadButton.format = suffix;
+    this.downloadButton.buttonText = Renderer.labels.links.image[getLang()]; //`${suffix.toUpperCase()} Herunterladen`;
+    this.downloadButton.renderCallback = this.renderImage.bind(this);
+    this.downloadButton.fileName = `wallpaper.${suffix}`;
+    this.downloadButton.width = width;
+    this.downloadButton.height = height;
+
+    this.resolutionSelect = document.createElement("image-resolution-select") as ImageResolutionSelect;
+    const options = this.resolutionSelect.options;
+    options[0].label = Renderer.labels.select.custom[getLang()];
+    this.resolutionSelect.setAttribute("confirm-button", "true");
+    this.resolutionSelect.addEventListener("change", (event: CustomEvent) => {
+      if (event.detail !== undefined) {
+        this.downloadButton.width = event.detail[0];
+        this.downloadButton.height = event.detail[1];
+        this.downloadButton.disabled = false;
       }
     });
-    element.appendChild(this.downloadLink);
+
+    element.appendChild(this.resolutionSelect);
+    element.appendChild(this.downloadButton);
   }
 }

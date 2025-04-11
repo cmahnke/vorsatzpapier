@@ -17,6 +17,12 @@ export class IIIFForm {
     image: {
       choose: { de: "Bild auswählen", en: "Select image" },
       button: { de: "Anzeigen", en: "Show" }
+    },
+    load: {
+      button: { de: "URL laden", en: "Load URL" }
+    },
+    error: {
+      json: { de: "<b>IIIF Datei konnte nicht geladen werden</b>", en: "<b>IIIF file could not be loaded</b>" }
     }
   };
   static typeHierarchy: { [key in IIIFType]: string } = { Collection: "collection.json", Manifest: "manifest.json", Image: "info.json" };
@@ -46,6 +52,7 @@ export class IIIFForm {
     }
     this.statusContainer = document.querySelector<HTMLDivElement>(this.statusContainerId)!;
     this.button = document.querySelector<HTMLButtonElement>(this.buttonId)!;
+    this.button.innerText = IIIFForm.labels.load.button[getLang()];
     this.setup();
   }
 
@@ -55,6 +62,7 @@ export class IIIFForm {
         const url = this.inputField?.value;
 
         if (url !== undefined && url !== "") {
+          this.statusContainer.innerHTML = "";
           this.selectContainer.innerHTML = "";
           this.loadUrl(new URL(url), undefined).then((options: IIIFSelect) => {
             this.createForm(options);
@@ -64,7 +72,16 @@ export class IIIFForm {
     });
   }
 
+  set urlInput(url: URL) {
+    if (this.inputField !== null) {
+      this.inputField.value = url.toString();
+    }
+  }
+
   createForm(options: IIIFSelect) {
+    if (options.type === "Image") {
+      return;
+    }
     if (options.type in this.entries) {
       this.entries[options.type] = this.addSelect(options);
       this.current = options.type;
@@ -72,6 +89,7 @@ export class IIIFForm {
       this.entries[options.type] = this.addSelect(options);
       this.current = options.type;
     } else {
+      throw new Error("This should't happen!");
     }
   }
 
@@ -81,7 +99,7 @@ export class IIIFForm {
     });
   }
 
-  async safeLoadIIIF(url: URL, trySuffix: string = ""): Promise<object> {
+  async safeLoadIIIF(url: URL, trySuffix: string = ""): Promise<object | undefined> {
     return fetch(url)
       .then((res) => {
         if (!res.ok) {
@@ -100,7 +118,16 @@ export class IIIFForm {
           }
           return this.safeLoadIIIF(new URL(u));
         }
+        return undefined;
       });
+  }
+
+  displayMessage(msg: string) {
+    this.statusContainer.innerHTML = msg;
+  }
+
+  clearMessage() {
+    this.statusContainer.innerHTML = "";
   }
 
   async loadUrl(url: URL, type: IIIFType = "Image") {
@@ -113,8 +140,8 @@ export class IIIFForm {
     const json = await this.safeLoadIIIF(url, trySuffix);
 
     if (json === undefined) {
+      this.displayMessage(IIIFForm.labels.error.json[getLang()]);
       return;
-      //TODO: Display error message
     }
     const manifest = IIIF.parse(json);
     const lang = getLang();
@@ -179,6 +206,7 @@ export class IIIFForm {
     const selectName = "select-" + Math.random().toString(16).slice(5);
     const selectId = "select-" + options.type;
     const labelElement = document.createElement("label");
+
     if (label !== undefined) {
       const existing = document.querySelector<IconDropdownSelect>(`#${selectId}`);
       if (existing !== null) {

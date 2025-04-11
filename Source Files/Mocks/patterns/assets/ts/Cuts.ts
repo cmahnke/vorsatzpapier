@@ -8,25 +8,27 @@ export class Cuts {
   overlay: FabricOverlay;
   width: number;
   height: number;
-  shapes: { [key in CutPosition]?: [Line, Rect] };
+  shapes: { [key in CutPosition]?: [Line, Rect] } = {};
   positions: { [key in CutPosition]?: number | undefined };
   offsets: { [key in CutPosition]?: number } = {};
   rotations: { [key in CutPosition]?: number } = {};
   changeCallback: CutNotifyFunction[];
   _url: URL | undefined;
-  _show: boolean = true;
+  _show: boolean = false;
+  lastAxis: CutPosition | undefined;
 
   constructor(positions: CutPosition[], overlay: FabricOverlay, url?: URL) {
     this.positions = {};
-    this.shapes = {};
     this.overlay = overlay;
     if (url !== undefined) {
       this.url = url;
     }
 
     positions.forEach((position) => {
-      const cover = this.createCover();
       const line = this.createLine();
+      line.visible = false;
+      const cover = this.createCover();
+      cover.visible = false;
       this.shapes[position] = [line, cover];
       this.positions[position] = undefined;
     });
@@ -43,11 +45,96 @@ export class Cuts {
     return "";
   }
 
+  get calculatedWidth(): number {
+    let width = this.width;
+    if (CutPosition.Left in this.positions && this.positions[CutPosition.Left] !== undefined) {
+      width = width - this.positions[CutPosition.Left];
+    }
+    if (CutPosition.Right in this.positions && this.positions[CutPosition.Right] !== undefined) {
+      width = width - (this.width - this.positions[CutPosition.Right]);
+    }
+    return width;
+  }
+
+  get calculatedHeight(): number {
+    let height = this.height;
+    if (CutPosition.Top in this.positions && this.positions[CutPosition.Top] !== undefined) {
+      height = height - this.positions[CutPosition.Top];
+    }
+    if (CutPosition.Bottom in this.positions && this.positions[CutPosition.Bottom] !== undefined) {
+      height = height - (this.width - this.positions[CutPosition.Bottom]);
+    }
+    return height;
+  }
+
+  getPosition(position: CutPosition): number {
+    let val: number;
+    if (this.positions[position] !== undefined) {
+      val = this.positions[position];
+    } else if (this.positions[position] === undefined && position == CutPosition.Right) {
+      val = this.width;
+    } else if (this.positions[position] === undefined && position == CutPosition.Left) {
+      val = 0;
+    } else if (this.positions[position] === undefined && position == CutPosition.Bottom) {
+      val = this.height;
+    } else if (this.positions[position] === undefined && position == CutPosition.Top) {
+      val = 0;
+    } else {
+      throw new Error("Unknown CutPosition, this should never happen!");
+    }
+    return val;
+  }
+
+  square(): boolean {
+    const changes: { position: CutPosition; value: number }[] = [];
+    if (this.lastAxis === undefined) {
+      if (this.height > this.width) {
+        changes.push({ position: CutPosition.Bottom, value: this.width });
+      } else if (this.height < this.width) {
+        changes.push({ position: CutPosition.Right, value: this.height });
+      }
+    } else {
+      const width = this.calculatedWidth;
+      const height = this.calculatedHeight;
+
+      if (height > width) {
+        if (this.lastAxis == undefined) {
+          changes.push({ position: CutPosition.Bottom, value: width });
+        } else if (this.lastAxis == CutPosition.Bottom) {
+          changes.push({ position: CutPosition.Bottom, value: this.height - this.getPosition(CutPosition.Bottom) + width });
+        } else if (this.lastAxis == CutPosition.Top) {
+          changes.push({ position: CutPosition.Top, value: this.getPosition(CutPosition.Top) + width });
+        } else {
+          changes.push({ position: CutPosition.Bottom, value: width });
+        }
+      } else if (width > height) {
+        if (this.lastAxis == undefined) {
+          changes.push({ position: CutPosition.Right, value: height });
+        } else if (this.lastAxis == CutPosition.Right) {
+          changes.push({ position: CutPosition.Right, value: this.width - this.getPosition(CutPosition.Right) + height });
+        } else if (this.lastAxis == CutPosition.Left) {
+          changes.push({ position: CutPosition.Left, value: this.getPosition(CutPosition.Left) + height });
+        } else {
+          changes.push({ position: CutPosition.Right, value: height });
+        }
+      }
+    }
+
+    if (changes.length) {
+      changes.forEach((change) => {
+        this.update(change.position, change.value);
+      });
+      return true;
+    }
+    return false;
+  }
+
   createLine(width: number = 5): Line {
     const line = new Line([0, 0, 0, 0], {
       strokeWidth: width,
       stroke: "red",
-      hasControls: false
+      hasControls: false,
+      visible: false
     });
     this.overlay.fabricCanvas().add(line);
     return line;
@@ -62,7 +149,8 @@ export class Cuts {
       strokeWidth: 0,
       hasControls: false,
       opacity: opacity,
-      fill: fill
+      fill: fill,
+      visible: false
     });
     this.overlay.fabricCanvas().add(rect);
     return rect;
@@ -103,12 +191,14 @@ export class Cuts {
     if (position in this.positions && this.shapes[position] !== undefined) {
       return this.shapes[position][0];
     }
+    return undefined;
   }
 
   getCover(position: CutPosition): Rect | undefined {
     if (position in this.positions && this.shapes[position] !== undefined) {
       return this.shapes[position][1];
     }
+    return undefined;
   }
 
   setLineWidth(position: CutPosition, width: number) {
@@ -129,10 +219,9 @@ export class Cuts {
       const validPositions = Object.keys(this.shapes) as unknown as CutPosition[];
       validPositions.forEach((position: CutPosition) => {
         if (this.shapes[position] !== undefined) {
-          for (let i = 0; i < this.shapes[position].length; i++) {
-            this.shapes[position][i].visible = show;
-            this.shapes[position][i].canvas?.renderAll();
-          }
+          this.shapes[position][0].visible = show;
+          this.shapes[position][1].visible = show;
+          this.shapes[position][1].canvas?.renderAll();
         }
       });
     }
@@ -219,11 +308,13 @@ export class Cuts {
       if (CutPosition.Right in this.offsets) {
         delete this.offsets[CutPosition.Right];
       }
+      this.lastAxis = CutPosition.Left;
     } else if (offset > 0) {
       this.offsets[CutPosition.Right] = offset;
       if (CutPosition.Left in this.offsets) {
         delete this.offsets[CutPosition.Left];
       }
+      this.lastAxis = CutPosition.Right;
     }
     if (offset != 0) {
       this.notify();
@@ -236,11 +327,13 @@ export class Cuts {
       if (CutPosition.Bottom in this.offsets) {
         delete this.offsets[CutPosition.Bottom];
       }
+      this.lastAxis = CutPosition.Top;
     } else if (offset > 0) {
       this.offsets[CutPosition.Bottom] = offset;
       if (CutPosition.Top in this.offsets) {
         delete this.offsets[CutPosition.Top];
       }
+      this.lastAxis = CutPosition.Bottom;
     }
     if (offset != 0) {
       this.notify();
@@ -248,11 +341,17 @@ export class Cuts {
   }
 
   set rotateX(deg: number) {
-    this.rotations[CutPosition.Right] = deg;
+    if (this.rotations[CutPosition.Right] != deg) {
+      this.rotations[CutPosition.Right] = deg;
+      this.notify();
+    }
   }
 
   set rotateY(deg: number) {
-    this.rotations[CutPosition.Bottom] = deg;
+    if (this.rotations[CutPosition.Bottom] != deg) {
+      this.rotations[CutPosition.Bottom] = deg;
+      this.notify();
+    }
   }
 
   update(position: CutPosition, pos: number): void {
@@ -262,11 +361,43 @@ export class Cuts {
     if (this.positions[position] == pos) {
       return;
     }
+    //Sanity check
+    if (
+      position == CutPosition.Bottom &&
+      CutPosition.Top in this.positions &&
+      this.positions[CutPosition.Top] !== undefined &&
+      this.positions[CutPosition.Top] < pos
+    ) {
+      this.positions[CutPosition.Top] = pos;
+    } else if (
+      position == CutPosition.Top &&
+      CutPosition.Bottom in this.positions &&
+      this.positions[CutPosition.Bottom] !== undefined &&
+      this.positions[CutPosition.Bottom] > pos
+    ) {
+      this.positions[CutPosition.Bottom] = pos;
+    } else if (
+      position == CutPosition.Right &&
+      CutPosition.Left in this.positions &&
+      this.positions[CutPosition.Left] !== undefined &&
+      this.positions[CutPosition.Left] > pos
+    ) {
+      this.positions[CutPosition.Left] = pos;
+    } else if (
+      position == CutPosition.Left &&
+      CutPosition.Right in this.positions &&
+      this.positions[CutPosition.Right] !== undefined &&
+      this.positions[CutPosition.Right] < pos
+    ) {
+      this.positions[CutPosition.Right] = pos;
+    }
+
     this.positions[position] = pos;
 
     const line = this.shapes[position][0];
     const cover = this.shapes[position][1];
 
+    //Update shapes (line and rect)
     if (position == CutPosition.Bottom || position == CutPosition.Top) {
       line.set({
         x1: 0,
@@ -312,10 +443,9 @@ export class Cuts {
         });
       }
     } else {
-      //TODO: Finish top and left
-      throw new Error("Not all postions aren't implemented yet");
+      throw new Error("THis should never happen!");
     }
-
+    this.lastAxis = position;
     line.setCoords();
     cover.setCoords();
     line.canvas?.renderAll();
@@ -381,5 +511,41 @@ export class Cuts {
       json["rotations"] = rotations;
     }
     return json;
+  }
+
+  loadJSON(json: CutJSON) {
+    if (json.url !== undefined) {
+      this.url = new URL(json.url);
+    }
+    this.width = json.width;
+    this.height = json.height;
+
+    if ("cuts" in json && json.cuts !== undefined) {
+      Object.keys(json.cuts).forEach((key: string) => {
+        const typedKey = CutPositionUtil.fromString(key);
+        if (typedKey !== undefined && json.cuts !== undefined && json.cuts[key] !== undefined) {
+          this.positions[typedKey] = json.cuts[key];
+        }
+      });
+    }
+    if ("offsets" in json && json.offsets !== undefined) {
+      Object.keys(json.offsets).forEach((key: string) => {
+        const typedKey = CutPositionUtil.fromString(key);
+        if (typedKey !== undefined && json.offsets !== undefined && json.offsets[key] !== undefined) {
+          this.offsets[typedKey] = json.offsets[key];
+        }
+      });
+    }
+    if ("rotations" in json && json.rotations !== undefined) {
+      Object.keys(json.rotations).forEach((key: string) => {
+        const typedKey = CutPositionUtil.fromString(key);
+        if (typedKey !== undefined && json.rotations !== undefined && json.rotations[key] !== undefined) {
+          this.rotations[typedKey] = json.rotations[key];
+        }
+      });
+    }
+
+    this.setVisibility(true);
+    this.notify();
   }
 }

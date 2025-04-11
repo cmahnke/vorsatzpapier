@@ -46,7 +46,7 @@ export class CutPositionUtil {
     const positions = Object.keys(CutPosition) as unknown as CutPosition[];
     let ret;
     positions.forEach((key: CutPosition) => {
-      if (position.toLowerCase() == CutPosition[key].toLowerCase()) {
+      if (typeof CutPosition[key] === "string" && position.toLowerCase() == CutPosition[key].toLowerCase()) {
         ret = key;
       }
     });

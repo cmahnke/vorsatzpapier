@@ -16,8 +16,8 @@ export class ImageResolutionSelect extends HTMLElement {
   private _disabled = false;
   private _value: string | null = null;
   private _selectedIndex = -1;
-  private customWidth: number = 0;
-  private customHeight: number = 0;
+  private _customWidth: number = 0;
+  private _customHeight: number = 0;
   private customInputs: HTMLDivElement | null = null;
   private confirmButton: HTMLButtonElement | null = null;
 
@@ -99,12 +99,30 @@ export class ImageResolutionSelect extends HTMLElement {
     } else if (name === "value") {
       this.value = newValue;
     } else if (name === "custom-width") {
-      this.customWidth = newValue ? parseInt(newValue) || 0 : 0;
+      this._customWidth = newValue ? parseInt(newValue) || 0 : 0;
       this.updateCustomInputs();
     } else if (name === "custom-height") {
-      this.customHeight = newValue ? parseInt(newValue) || 0 : 0;
+      this._customHeight = newValue ? parseInt(newValue) || 0 : 0;
       this.updateCustomInputs();
     }
+  }
+
+  get customWidth(): number {
+    return this._customWidth;
+  }
+
+  set customWidth(value: number) {
+    this._customWidth = value;
+    this.updateCustomInputs();
+  }
+
+  get customHeight(): number {
+    return this._customHeight;
+  }
+
+  set customHeight(value: number) {
+    this._customHeight = value;
+    this.updateCustomInputs();
   }
 
   get disabled(): boolean {
@@ -150,6 +168,8 @@ export class ImageResolutionSelect extends HTMLElement {
       .wrapper {
         position: relative;
         display: inline-block;
+        min-width: 14em;
+        font-size: 16px;
       }
       .display {
         border: 1px solid #ccc;
@@ -157,6 +177,9 @@ export class ImageResolutionSelect extends HTMLElement {
         cursor: pointer;
         display: flex;
         align-items: center;
+        background: white;
+        width: 100%;
+        border-radius: .4rem;
       }
       .display.disabled {
         cursor: default;
@@ -171,6 +194,7 @@ export class ImageResolutionSelect extends HTMLElement {
         border: 1px solid #ccc;
         background-color: white;
         z-index: 10;
+        border-radius: .4rem;
       }
       .options-container.open {
         display: block;
@@ -188,7 +212,7 @@ export class ImageResolutionSelect extends HTMLElement {
       .custom-inputs {
         display: flex;
         align-items: center;
-        margin-left: 8px;
+        /* margin-left: 8px; */
       }
       .custom-inputs input {
         width: 60px;
@@ -263,13 +287,13 @@ export class ImageResolutionSelect extends HTMLElement {
       if (this.options[index].value !== "custom") {
         const [width, height] = this.options[index].value.split("x").map(Number);
         if (!isNaN(width) && !isNaN(height)) {
-          this.customWidth = width;
-          this.customHeight = height;
+          this._customWidth = width;
+          this._customHeight = height;
           this.updateCustomInputs();
           detailValue = [width, height];
         }
       } else {
-        detailValue = [this.customWidth, this.customHeight];
+        detailValue = [this._customWidth, this._customHeight];
       }
 
       this.dispatchEvent(new CustomEvent("change", { detail: detailValue }));
@@ -292,6 +316,7 @@ export class ImageResolutionSelect extends HTMLElement {
     this.options.forEach((option, index) => {
       const optionElement = document.createElement("div");
       optionElement.classList.add("option");
+      optionElement.dataset.value = option.value;
       optionElement.textContent = option.label;
       optionElement.addEventListener("click", () => {
         this.selectOption(index);
@@ -329,9 +354,9 @@ export class ImageResolutionSelect extends HTMLElement {
 
       const widthInput = document.createElement("input");
       widthInput.type = "number";
-      widthInput.value = this.customWidth.toString();
+      widthInput.value = this._customWidth.toString();
       widthInput.addEventListener("change", (e) => {
-        this.customWidth = parseInt((e.target as HTMLInputElement).value) || 0;
+        this._customWidth = parseInt((e.target as HTMLInputElement).value) || 0;
         this.updateCustomValue();
         this.enableConfirmButton();
       });
@@ -341,9 +366,9 @@ export class ImageResolutionSelect extends HTMLElement {
 
       const heightInput = document.createElement("input");
       heightInput.type = "number";
-      heightInput.value = this.customHeight.toString();
+      heightInput.value = this._customHeight.toString();
       heightInput.addEventListener("change", (e) => {
-        this.customHeight = parseInt((e.target as HTMLInputElement).value) || 0;
+        this._customHeight = parseInt((e.target as HTMLInputElement).value) || 0;
         this.updateCustomValue();
         this.enableConfirmButton();
       });
@@ -369,10 +394,13 @@ export class ImageResolutionSelect extends HTMLElement {
         this.customInputs.appendChild(this.confirmButton);
       }
 
-      const customOption = Array.from(this.optionsContainer.children).find((option) => option.textContent === "Custom");
+      const customOption = Array.from(this.optionsContainer.children).find((option: HTMLElement) => {
+        return option.dataset.value === "custom";
+      });
       if (customOption) {
+        const initialLabel = this.getCustomOption().label;
         customOption.innerHTML = "";
-        customOption.appendChild(document.createTextNode("Custom ("));
+        customOption.appendChild(document.createTextNode(`${initialLabel} (`));
         customOption.appendChild(this.customInputs);
         customOption.appendChild(document.createTextNode(")"));
       }
@@ -387,17 +415,17 @@ export class ImageResolutionSelect extends HTMLElement {
       const heightInput = this.customInputs.querySelector("input[type='number']:last-of-type") as HTMLInputElement;
 
       if (widthInput) {
-        widthInput.value = this.customWidth.toString();
+        widthInput.value = this._customWidth.toString();
       }
 
       if (heightInput) {
-        heightInput.value = this.customHeight.toString();
+        heightInput.value = this._customHeight.toString();
       }
     }
   }
 
   private updateCustomValue() {
-    this.value = `${this.customWidth}x${this.customHeight}`;
+    this.value = `${this._customWidth}x${this._customHeight}`;
   }
 
   private confirmCustomSelection() {
@@ -410,6 +438,8 @@ export class ImageResolutionSelect extends HTMLElement {
       this.confirmButton.style.display = "inline-block";
     }
   }
-}
 
-//customElements.define("image-resolution-select", ImageResolutionSelect);
+  private getCustomOption(): { [key: string]: string } {
+    return this.options.filter((opt) => opt.value === "custom")[0];
+  }
+}

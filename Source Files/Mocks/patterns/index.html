@@ -15,7 +15,7 @@
       </div>
     </div>
 
-    <div class="generator">
+    <div class="generator" id="generator">
       <div class="source-select">
         <input class="url-input" type="url" name="url" id="collection-url" pattern="https://.*" list="defaultURLs" required />
         <datalist id="defaultURLs">
@@ -30,6 +30,7 @@
       <div class="cutting-table">
         <div class="cutting-table-viewer" id="cutting-table-viewer">
           <i class="controls button zoomin"></i><i class="controls button zoomout"></i>
+          <i class="controls button square"></i>
         </div>
         <dual-range-slider min="0" max="1" value-min="0" value-max="1" class="control slider vertical" id="cut-y"></dual-range-slider>
         <input type="range" min="1" max="100" value="50" class="control slider vertical offset" id="offset-y" />

@@ -78,6 +78,7 @@ export class IconDropdownSelect extends HTMLElement {
         cursor: pointer;
         display: flex;
         align-items: center;
+        border-radius: .4rem;
       }
       .display.disabled {
         cursor: default;

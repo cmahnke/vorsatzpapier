@@ -150,8 +150,9 @@ export class CuttingTable {
 
   set imageService(endpointService: IIIFImageStub) {
     if (this.viewer !== undefined) {
-      this.viewer.addHandler("open", () => {
+      this.viewer.world.addHandler("add-item", () => {
         if (this.cuts !== undefined) {
+          this.cuts.lastAxis = undefined;
           this.cuts.setVisibility(true);
         }
       });
@@ -162,7 +163,7 @@ export class CuttingTable {
         this.viewer.addTiledImage({ index: this.viewer.world.getItemCount(), tileSource: endpointService });
       }
       if (endpointService["@context"].startsWith("http://iiif.io/api/image/")) {
-        this.updateLines(endpointService.height, endpointService.width);
+        this.updateLines(endpointService.height, endpointService.width, false);
       }
     } else {
       console.warn("Viewer not initialized");
@@ -297,12 +298,12 @@ export class CuttingTable {
     }
   }
 
-  updateLines(height: number, width: number) {
+  updateLines(height: number, width: number, visibility: boolean = true) {
     this.fabricOverlay.fabricCanvas().clear();
     this.initCuts();
     this.cuts.setSize(width, height);
     this.updateCutLineWidth();
-    this.cuts.setVisibility(true);
+    this.cuts.setVisibility(visibility);
 
     if (this.renderer !== undefined) {
       this.cuts.callback = this.renderer.notify.bind(this.renderer);
@@ -311,19 +312,19 @@ export class CuttingTable {
     this.cutX.setAttribute("max", String(width));
     this.cutX.setAttribute("value-min", "0");
     this.cutX.setAttribute("value-max", String(width));
+    this.cutX.disabled = false;
     this.offsetX.min = String(Math.ceil(0 - width / 2));
     this.offsetX.max = String(Math.floor(width / 2));
     this.offsetX.setAttribute("value", "0");
-    this.cutX.disabled = false;
     this.offsetX.disabled = false;
     this.rotationX.disabled = false;
     this.cutY.setAttribute("max", String(height));
     this.cutY.setAttribute("value-min", "0");
     this.cutY.setAttribute("value-max", String(height));
+    this.cutY.disabled = false;
     this.offsetY.min = String(Math.ceil(0 - height / 2));
     this.offsetY.max = String(Math.floor(height / 2));
     this.offsetY.setAttribute("value", "0");
-    this.cutY.disabled = false;
     this.offsetY.disabled = false;
     this.rotationY.disabled = false;
     this.rulerCheckbox.disabled = false;
@@ -366,6 +367,7 @@ export class CuttingTable {
         const max = Number(e.detail.max);
         this.cuts.update(CutPosition.Left, min);
         this.cuts.update(CutPosition.Right, max);
+        console.log(e.detail.min, e.detail.max);
       }
     });
     this.cutY?.addEventListener("input", (e: CustomEvent) => {

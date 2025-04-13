@@ -59,4 +59,8 @@ export class OffsetRect extends OpenSeadragon.Rect {
     }
     return 0;
   }
+
+  static cloneRect(rect: OpenSeadragon.Rect): OpenSeadragon.Rect {
+    return new OpenSeadragon.Rect(rect.x, rect.y, rect.width, rect.height);
+  }
 }

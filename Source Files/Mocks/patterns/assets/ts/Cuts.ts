@@ -98,7 +98,7 @@ export class Cuts {
       const height = this.calculatedHeight;
 
       if (height > width) {
-        if (this.lastAxis == undefined) {
+        if (this.lastAxis === undefined) {
           changes.push({ position: CutPosition.Bottom, value: width });
         } else if (this.lastAxis == CutPosition.Bottom) {
           changes.push({ position: CutPosition.Bottom, value: this.height - this.getPosition(CutPosition.Bottom) + width });
@@ -108,7 +108,7 @@ export class Cuts {
           changes.push({ position: CutPosition.Bottom, value: width });
         }
       } else if (width > height) {
-        if (this.lastAxis == undefined) {
+        if (this.lastAxis === undefined) {
           changes.push({ position: CutPosition.Right, value: height });
         } else if (this.lastAxis == CutPosition.Right) {
           changes.push({ position: CutPosition.Right, value: this.width - this.getPosition(CutPosition.Right) + height });
@@ -366,7 +366,7 @@ export class Cuts {
       position == CutPosition.Bottom &&
       CutPosition.Top in this.positions &&
       this.positions[CutPosition.Top] !== undefined &&
-      this.positions[CutPosition.Top] < pos
+      this.positions[CutPosition.Top] > pos
     ) {
       this.positions[CutPosition.Top] = pos;
     } else if (
@@ -391,7 +391,6 @@ export class Cuts {
     ) {
       this.positions[CutPosition.Right] = pos;
     }
-
     this.positions[position] = pos;
 
     const line = this.shapes[position][0];

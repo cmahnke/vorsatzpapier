@@ -78,6 +78,7 @@ export class CuttingTable {
       showFullPageControl: false,
       showHomeControl: false,
       autoHideControls: false,
+      drawer: "canvas",
       crossOriginPolicy: "Anonymous"
     };
     this.viewer = OpenSeadragon(options);

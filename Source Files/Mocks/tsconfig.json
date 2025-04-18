@@ -11,12 +11,16 @@
     "sourceMap": true,
     "moduleResolution": "bundler",
     "noEmit": true,
-    "esModuleInterop": true,
+    "esModuleInterop": false,
     "strict": false,
     "target": "es2020",
     "skipLibCheck": true,
     "lib": ["dom", "es2020"],
-    "typeRoots": ["./patterns/assets/ts/types", "./node_modules/@types"]
+    "typeRoots": [
+      "./node_modules/@types",
+      "./patterns/assets/ts/@types"
+
+    ]
   },
   "include": ["patterns/assets/**/*"],
   "exclude": ["node_modules", "**/*.spec.ts"]

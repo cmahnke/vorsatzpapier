@@ -17,9 +17,7 @@
     "skipLibCheck": true,
     "lib": ["dom", "es2020"],
     "typeRoots": [
-      "./node_modules/@types",
-      "./patterns/assets/ts/@types"
-
+      "./node_modules/@types"
     ]
   },
   "include": ["patterns/assets/**/*"],

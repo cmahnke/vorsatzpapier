@@ -18,6 +18,6 @@ export default [
     }
   },
   {
-    ignores: ["dist/", "eslint.config.mjs", "vite.config.js", "postcss.config.js"]
+    ignores: ["dist/", "build/", "eslint.config.mjs", "vite.config.js", "postcss.config.js"]
   }
 ];

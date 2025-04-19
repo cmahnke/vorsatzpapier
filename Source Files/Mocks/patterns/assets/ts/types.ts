@@ -70,6 +70,26 @@ export type CutJSON = {
   rotations?: { [key: string]: number };
 };
 
+export type CutJSONLD = {
+  id: string;
+  type: "Annotation" | string;
+  motivation: "editing" | string;
+  body: {
+    id: string;
+    type: "Dataset" | string;
+    value: { [key: string]: { [key: string]: number } };
+  };
+  target: {
+    source: string;
+    type: "SpecificResource" | string;
+    selector: {
+      type: string;
+      conformsTo?: string;
+      value: string;
+    };
+  };
+};
+
 export type Translation = {
   de: string;
   en: string;

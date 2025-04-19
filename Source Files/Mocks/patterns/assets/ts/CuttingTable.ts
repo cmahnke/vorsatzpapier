@@ -3,6 +3,7 @@ import { initOSDFabricJS, FabricOverlay } from "openseadragon-fabric";
 import { RotatingInput } from "./components/RotatingInput";
 import { DualRangeSlider } from "./components/DualRangeSlider";
 import { Cuts } from "./Cuts";
+import type { CutType } from "./Cuts";
 import { Renderer } from "./Renderer";
 import { IIIFForm } from "./IIIFForm";
 import { CutPosition } from "./types";
@@ -19,6 +20,22 @@ export class CuttingTable {
     }
   };
 
+  //Element identifiers / classes / selectors
+  static defaultId: string = "generator";
+  static selectContainerClass: string = "select-container";
+  static statusContainerClass: string = "status-container";
+  static viewerElementClass: string = "cutting-table-viewer";
+  static dropZoneElementClass: string = "input-area";
+  static rendererElementClass = "texture-container";
+  static rulerElementSelector = ".box.rulers";
+  static squareButtonSelector = ".square";
+  static controlSelectors: { [key in CutType]: { x: string; y: string } } = {
+    cut: { x: ".cut-x", y: ".cut-y" },
+    offset: { x: ".offset-x", y: ".offset-y" },
+    rotation: { x: ".rotation-x", y: ".rotation-y" }
+  };
+
+  container: HTMLDivElement;
   _imageAPI: URL;
   download: boolean = true;
   viewer: OpenSeadragon.Viewer;
@@ -26,13 +43,7 @@ export class CuttingTable {
   cuts: Cuts;
   form: IIIFForm;
   fabricOverlay: FabricOverlay;
-  container: HTMLDivElement;
-  //Element identifiers
-  defaultId: string = "#cutting-table";
-  selectContainerId: string = "#select-container";
-  viewerElementId: string = "#cutting-table-viewer";
-  dropZoneElementId = "#generator";
-  //Elements of Contols and
+  //Elements of Contols and children
   viewerElement: HTMLDivElement;
   cutY: DualRangeSlider;
   cutX: DualRangeSlider;
@@ -44,21 +55,47 @@ export class CuttingTable {
   squareButton: HTMLElement;
   downloadLink: HTMLAnchorElement;
   dropZoneElement: HTMLDivElement;
+  //URL handling
+  _initialUrls: { url: string; label: string }[];
+  _urlInput: boolean;
+  _url: URL;
 
-  constructor(element?: HTMLDivElement) {
-    if (element === undefined) {
-      this.container = document.querySelector<HTMLDivElement>(this.defaultId)!;
-    } else {
+  constructor(element: HTMLDivElement, urlInput: boolean = true, urls?: URL | { url: string; label: string }[]) {
+    if (element !== undefined) {
       this.container = element;
+    } else {
+      this.container = document.querySelector<HTMLDivElement>(`.${CuttingTable.defaultId}`)!;
     }
+
+    if (this.container === undefined) {
+      throw new Error("Couldn't setup element");
+    }
+
+    if ("urlInput" in element.dataset && element.dataset.urlInput !== undefined && element.dataset.urlInput !== "") {
+      urlInput = element.dataset.urlInput === "true";
+    }
+    this._urlInput = urlInput;
+    if ("urls" in element.dataset && element.dataset.urls !== undefined && element.dataset.urls !== "") {
+      urls = new URL(element.dataset.urls);
+    }
+    if (urls !== undefined && urls instanceof URL) {
+      this._url = urls;
+    } else if (urls !== undefined && Array.isArray(urls)) {
+      this._initialUrls = urls;
+    }
+
     //Components
     customElements.define("rotating-input", RotatingInput);
     customElements.define("dual-range-slider", DualRangeSlider);
+    this.setupInterface();
 
+    //Input form
+    const selectContainer = this.container.querySelector<HTMLDivElement>(`.${CuttingTable.selectContainerClass}`)!;
+    this.form = new IIIFForm(this, selectContainer);
     //Result renderer
-    this.form = new IIIFForm(this);
-    this.renderer = new Renderer();
-    this.viewerElement = document.querySelector<HTMLDivElement>(this.viewerElementId)!;
+    const renderElement = this.container.querySelector<HTMLDivElement>(`.${CuttingTable.rendererElementClass}`)!;
+    this.renderer = new Renderer(renderElement);
+    this.viewerElement = this.container.querySelector<HTMLDivElement>(`.${CuttingTable.viewerElementClass}`)!;
 
     this.setupOSD(this.viewerElement);
     if (this.viewerElement.parentElement !== null && this.download) {
@@ -152,8 +189,11 @@ export class CuttingTable {
   set imageService(endpointService: IIIFImageStub) {
     if (this.viewer !== undefined) {
       this.viewer.world.addHandler("add-item", () => {
+        //this.cuts = new Cuts(this.cuts.cutPostions, this.fabricOverlay);
+
         if (this.cuts !== undefined) {
           this.cuts.lastAxis = undefined;
+          this.updateLines(endpointService.width, endpointService.height);
           this.cuts.setVisibility(true);
         }
       });
@@ -164,7 +204,7 @@ export class CuttingTable {
         this.viewer.addTiledImage({ index: this.viewer.world.getItemCount(), tileSource: endpointService });
       }
       if (endpointService["@context"].startsWith("http://iiif.io/api/image/")) {
-        this.updateLines(endpointService.height, endpointService.width, false);
+        this.updateLines(endpointService.width, endpointService.height, false);
       }
     } else {
       console.warn("Viewer not initialized");
@@ -183,6 +223,18 @@ export class CuttingTable {
   set imageServiceUrl(url: URL) {
     this._imageAPI = url;
     this.cuts.url = url;
+  }
+
+  set initialUrls(initialUrls: { url: string; label: string }[]) {
+    this._initialUrls = initialUrls;
+  }
+
+  get url(): URL {
+    return this._url;
+  }
+
+  get urlInput(): boolean {
+    return this._urlInput;
   }
 
   initCuts() {
@@ -299,7 +351,7 @@ export class CuttingTable {
     }
   }
 
-  updateLines(height: number, width: number, visibility: boolean = true) {
+  updateLines(width: number, height: number, visibility: boolean = true) {
     this.fabricOverlay.fabricCanvas().clear();
     this.initCuts();
     this.cuts.setSize(width, height);
@@ -317,8 +369,10 @@ export class CuttingTable {
     this.offsetX.min = String(Math.ceil(0 - width / 2));
     this.offsetX.max = String(Math.floor(width / 2));
     this.offsetX.setAttribute("value", "0");
+    this.offsetX.value = "0";
     this.offsetX.disabled = false;
     this.rotationX.disabled = false;
+    this.rotationX.value = 0;
     this.cutY.setAttribute("max", String(height));
     this.cutY.setAttribute("value-min", "0");
     this.cutY.setAttribute("value-max", String(height));
@@ -326,8 +380,10 @@ export class CuttingTable {
     this.offsetY.min = String(Math.ceil(0 - height / 2));
     this.offsetY.max = String(Math.floor(height / 2));
     this.offsetY.setAttribute("value", "0");
+    this.offsetY.value = "0";
     this.offsetY.disabled = false;
     this.rotationY.disabled = false;
+    this.rotationY.value = 0;
     this.rulerCheckbox.disabled = false;
     this.rulerCheckbox.checked = true;
     this.squareButton.dataset.height = String(height);
@@ -358,17 +414,70 @@ export class CuttingTable {
     });
   }
 
+  setupInterface() {
+    let listId = "";
+    let initialUrls = "";
+    if (this._initialUrls !== undefined && this._initialUrls.length != 0) {
+      listId = "defaultURLs";
+      const dataList = document.createElement("datalist");
+      dataList.setAttribute("id", listId);
+      this._initialUrls.forEach((optionEntry) => {
+        const option = document.createElement("option");
+        option.value = optionEntry.url;
+        option.text = optionEntry.label;
+        dataList.appendChild(option);
+      });
+      initialUrls = dataList.outerHTML;
+    }
+
+    let url = "",
+      urlInput = "";
+    if (this.url !== undefined) {
+      url = this.url.toString();
+    }
+
+    if (this._urlInput) {
+      urlInput = `<input class="url-input" type="url" value="${url}" name="url" id="collection-url" pattern="https://.*" list="${listId}" required />
+          ${initialUrls}
+          <button type="button" class="load-url-button">Load URL</button>`;
+    }
+
+    this.container.innerHTML = `
+      <div class="input-area">
+        <div class="source-select">
+          ${urlInput}
+          <div class="select-container"></div>
+          <div class="status-container"></div>
+        </div>
+        <div class="cutting-table">
+          <div class="${CuttingTable.viewerElementClass}">
+            <i class="controls button zoomin"></i><i class="controls button zoomout"></i>
+            <i class="controls button square"></i>
+          </div>
+          <dual-range-slider min="0" max="1" value-min="0" value-max="1" class="control slider vertical cut-y"></dual-range-slider>
+          <input type="range" min="1" max="100" value="50" class="control slider vertical offset offset-y" />
+          <rotating-input step="90" display-degrees="false" radius="25" class="control rotation vertical rotation-y"></rotating-input>
+          <dual-range-slider min="0" max="1" value-min="0" value-max="1" class="control slider horizontal cut-x"></dual-range-slider>
+          <input type="range" min="1" max="100" value="50" class="control slider horizontal offset offset-x" />
+          <rotating-input step="90" display-degrees="false" radius="25" class="control rotation horizontal rotation-x"></rotating-input>
+          <input type="checkbox" class="control box rulers" checked />
+        </div>
+      </div>
+      <div class="${CuttingTable.rendererElementClass} output-area">
+      </div>
+    `;
+  }
+
   async setupControls() {
     //Cutter
-    this.cutY = document.querySelector<DualRangeSlider>("#cut-y")!;
-    this.cutX = document.querySelector<DualRangeSlider>("#cut-x")!;
+    this.cutX = this.container.querySelector<DualRangeSlider>(CuttingTable.controlSelectors.cut.x)!;
+    this.cutY = this.container.querySelector<DualRangeSlider>(CuttingTable.controlSelectors.cut.y)!;
     this.cutX?.addEventListener("input", (e: CustomEvent) => {
       if (e.detail !== undefined) {
         const min = Number(e.detail.min);
         const max = Number(e.detail.max);
         this.cuts.update(CutPosition.Left, min);
         this.cuts.update(CutPosition.Right, max);
-        console.log(e.detail.min, e.detail.max);
       }
     });
     this.cutY?.addEventListener("input", (e: CustomEvent) => {
@@ -381,8 +490,8 @@ export class CuttingTable {
     });
 
     //Offsets
-    this.offsetY = document.querySelector<HTMLInputElement>("#offset-y")!;
-    this.offsetX = document.querySelector<HTMLInputElement>("#offset-x")!;
+    this.offsetX = this.container.querySelector<HTMLInputElement>(CuttingTable.controlSelectors.offset.x)!;
+    this.offsetY = this.container.querySelector<HTMLInputElement>(CuttingTable.controlSelectors.offset.y)!;
     this.offsetX?.addEventListener("input", (e: Event) => {
       const value = Number((e.target as HTMLInputElement).value);
       this.cuts.offsetX = value;
@@ -393,8 +502,8 @@ export class CuttingTable {
     });
 
     //Rotations
-    this.rotationX = document.querySelector<RotatingInput>("#rotate-x")!;
-    this.rotationY = document.querySelector<RotatingInput>("#rotate-y")!;
+    this.rotationX = this.container.querySelector<RotatingInput>(CuttingTable.controlSelectors.rotation.x)!;
+    this.rotationY = this.container.querySelector<RotatingInput>(CuttingTable.controlSelectors.rotation.y)!;
     this.rotationX?.addEventListener("degreeChange", (event: CustomEvent<{ degree: number }>) => {
       this.cuts.rotateX = event.detail.degree;
     });
@@ -403,23 +512,24 @@ export class CuttingTable {
     });
 
     //Options
-    this.rulerCheckbox = document.querySelector<HTMLInputElement>("#ruler-visible")!;
+    this.rulerCheckbox = this.container.querySelector<HTMLInputElement>(CuttingTable.rulerElementSelector)!;
     this.rulerCheckbox?.addEventListener("change", (e: Event) => {
       const value = Boolean((e.target as HTMLInputElement).checked);
       this.cuts.setVisibility(value);
     });
-    this.squareButton = this.viewerElement.querySelector<HTMLElement>(".square")!;
+    this.squareButton = this.viewerElement.querySelector<HTMLElement>(CuttingTable.squareButtonSelector)!;
     this.squareButton.addEventListener("click", () => {
       this.square();
     });
     this.squareButton.classList.add("disabled");
 
-    this.dropZoneElement = document.querySelector<HTMLDivElement>(this.dropZoneElementId)!;
+    //Upload
+    this.dropZoneElement = this.container.querySelector<HTMLDivElement>(`.${CuttingTable.dropZoneElementClass}`)!;
     this.createJsonUploader(this.dropZoneElement);
 
     if (this.cuts === undefined) {
-      this.cutY.disabled = true;
       this.cutX.disabled = true;
+      this.cutY.disabled = true;
       this.offsetX.disabled = true;
       this.offsetY.disabled = true;
       this.rotationX.disabled = true;

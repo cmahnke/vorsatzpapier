@@ -17,4 +17,3 @@
 - Fix cuts on all four sides
 - Fix square function
   - Make sure updating sliders work
-- Fix upload

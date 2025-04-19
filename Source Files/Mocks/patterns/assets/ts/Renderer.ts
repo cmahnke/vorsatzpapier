@@ -4,7 +4,7 @@ import { CanvasDownloadButton } from "./components/CanvasDownloadButton";
 import { CutPosition } from "./types";
 import { OffsetRect } from "./openseadragon/OffsetRect";
 import type { CutNotification, IIIFImageStub, Translation } from "./types";
-import { getLang } from "./util";
+import { equals, getLang } from "./util";
 
 export class Renderer {
   static labels: { [key: string]: { [key: string]: Translation } } = {
@@ -31,10 +31,9 @@ export class Renderer {
   downloadButton: CanvasDownloadButton;
   _margins: boolean = false;
   defaultExportDimensions: [number, number] = [1920, 1080];
-  //width:number
-  //height:number
+  _notificationQueue: CutNotification[] = [];
 
-  constructor(source?: IIIFImageStub, element?: HTMLElement, json?: IIIFImageStub) {
+  constructor(source?: IIIFImageStub, element?: HTMLElement) {
     customElements.define("image-resolution-select", ImageResolutionSelect);
     customElements.define("offscreencanvas-download", CanvasDownloadButton);
     if (element === undefined) {
@@ -43,10 +42,13 @@ export class Renderer {
       this.element = element;
     }
     this.viewer = this.setupViewer();
+
+    /*
     this.viewer.addHandler("open", () => {
-      //this.layout();
       this.preview();
     });
+    */
+
     if (source !== undefined) {
       this.source = source;
     }
@@ -59,9 +61,6 @@ export class Renderer {
     }
     if (this.element !== null) {
       this.addControls(this.element, width, height);
-    }
-    if (json !== undefined) {
-      this.source = json;
     }
   }
 
@@ -91,6 +90,9 @@ export class Renderer {
   }
 
   set source(json: IIIFImageStub) {
+    if (this.viewer === undefined) {
+      throw new Error("Result viewer element is null!");
+    }
     this._source = json;
     this._loaded = false;
 
@@ -98,9 +100,23 @@ export class Renderer {
       this.clipRect = new OpenSeadragon.Rect(0, 0, json.width, json.height);
     }
     this.tileSources = [];
+    let loadCounter: number = 0;
+    this.viewer.world.addHandler("add-item", (event) => {
+      loadCounter++;
+      if (loadCounter == this.tileSources.length) {
+        this._loaded = true;
+        if (!this._notificationQueue.length) {
+          //this.preview();
+          this.layout(true);
+        } else {
+          this._notificationQueue.forEach((notification: CutNotification) => {
+            this.notify(notification);
+          });
+        }
+      }
+    });
     this.setupSources();
-
-    this.preview();
+    this.viewer.open(this.tileSources);
   }
 
   get width(): number | undefined {
@@ -208,6 +224,63 @@ export class Renderer {
     }
   }
 
+  preview(
+    left: number = 0,
+    top: number = 0,
+    width?: number,
+    height?: number,
+    immediately: boolean = true,
+    offsets?: { [key in CutPosition]?: number },
+    rotations?: { [key in CutPosition]?: number }
+  ) {
+    if (this.viewer === undefined) {
+      throw new Error("Result viewer not initialized");
+    }
+
+    if (width === undefined && height === undefined) {
+      width = this.width;
+      height = this.height;
+    }
+    if (
+      left === undefined ||
+      top === undefined ||
+      width == undefined ||
+      height === undefined ||
+      this.viewer.world.getItemCount() === undefined
+    ) {
+      throw new Error("Can't clip image, some dimensions aren't defined");
+    }
+
+    const itemCount = this.viewer.world.getItemCount();
+    for (let i = 0; i < itemCount; i++) {
+      const tiledImage: OpenSeadragon.TiledImage | undefined = this.viewer.world.getItemAt(i);
+      if (tiledImage !== undefined) {
+        if (this.clipRect === undefined) {
+          throw new Error("Clip rect is empty!");
+        } else {
+          this.clipRect.x = left;
+          this.clipRect.y = top;
+          this.clipRect.width = width;
+          this.clipRect.height = height;
+        }
+        tiledImage.setClip(this.clipRect);
+      } else {
+        throw new Error("Couldn't generate clip mask, no images found!");
+      }
+    }
+    if (offsets !== undefined) {
+      this.offsets = offsets;
+    }
+    if (rotations !== undefined) {
+      this.rotations = rotations;
+    }
+    this.layout(immediately);
+    if (this.downloadButton !== undefined) {
+      this.downloadButton.disabled = false;
+    }
+  }
+
+  /*
   clip(
     left: number = 0,
     top: number = 0,
@@ -225,7 +298,7 @@ export class Renderer {
       const tiledImage: OpenSeadragon.TiledImage | undefined = this.viewer?.world.getItemAt(i);
       if (tiledImage !== undefined) {
         if (this.clipRect === undefined) {
-          this.clipRect = new OpenSeadragon.Rect(left, top, width, height);
+          throw new Error("Clip rect is empty!");
         } else {
           this.clipRect.x = left;
           this.clipRect.y = top;
@@ -233,6 +306,8 @@ export class Renderer {
           this.clipRect.height = height;
         }
         tiledImage.setClip(this.clipRect);
+      } else {
+        throw new Error("Couldn't generate clip mask, no images found!");
       }
     }
     if (offsets !== undefined) {
@@ -243,6 +318,7 @@ export class Renderer {
     }
     this.layout(immediately);
   }
+  */
 
   static createOffsetRect(offsets: { [key in CutPosition]?: number }, reference: OpenSeadragon.TiledImage): OffsetRect | undefined {
     let width = 0,
@@ -277,19 +353,25 @@ export class Renderer {
   TODO:
     * Offsets includin wrap arounds and margins
     * Cuts at top and left
-
+    * Check this https://github.com/openseadragon/openseadragon/pull/2616
 
   */
   layout(immediately: boolean = true) {
     //this.viewer?.world.arrange({ rows: this.rows, columns: this.columns, tileMargin: 0, immediately: true });
     let columns = this.columns;
     let rows = this.rows;
+    this.viewer?.world.setAutoRefigureSizes(false);
     if (this._margins) {
       columns = columns + 2;
       rows = rows + 2;
     }
     let pos = 0;
-    const firstImage: OpenSeadragon.TiledImage | undefined = this.viewer?.world.getItemAt(0);
+    let firstImage: OpenSeadragon.TiledImage | undefined = this.viewer?.world.getItemAt(0);
+    if (this._margins) {
+      firstImage = this.viewer?.world.getItemAt(this.rows + 2);
+    }
+    firstImage.setPosition({ x: 0, y: 0 } as OpenSeadragon.Point, immediately);
+    const initialSizes = this.viewer.viewport.imageToViewportRectangle(this.clipRect);
     for (let r = 0; r < rows; r++) {
       for (let c = 0; c < columns; c++) {
         //Variables
@@ -298,19 +380,27 @@ export class Renderer {
         let x = 0;
         let y = 0;
         const tiledImage: OpenSeadragon.TiledImage | undefined = this.viewer?.world.getItemAt(pos);
+        const referenceImage = firstImage;
         //Sanity checks
         if (tiledImage === undefined || firstImage === undefined || this.clipRect === undefined) {
           console.warn(tiledImage, firstImage, this.clipRect);
           throw new Error("Required variables are not defined");
         }
+        /*
+        const expectedSize: [number, number] = [
+          firstImage.imageToViewportRectangle(this.clipRect).width * this.columns,
+          firstImage.imageToViewportRectangle(this.clipRect).height * this.rows
+        ];
+        */
 
         let offsetRect;
-        if (this._offsets !== undefined) {
-          offsetRect = Renderer.createOffsetRect(this._offsets, firstImage);
+
+        if (this._offsets != undefined) {
+          offsetRect = Renderer.createOffsetRect(this._offsets, tiledImage);
         }
         //TODO: Parts need to be moved to the bottom
         if (this._margins) {
-          let hideRect = new OpenSeadragon.Rect(
+          const hideRect = new OpenSeadragon.Rect(
             0,
             0,
             tiledImage.getBounds().width,
@@ -347,17 +437,18 @@ export class Renderer {
           offsetRect = new OpenSeadragon.Rect(0, 0, this.offsetX, this.offsetY);
           console.log(offsetRect);
         }
-        */
+
         if (this._offsets !== undefined && Object.keys(this._offsets).length) {
         }
+        */
 
         // Rotations
         if (this._rotations !== undefined && Object.keys(this._rotations).length) {
           if (CutPosition.Right in this._rotations && this._rotations[CutPosition.Right] !== undefined && row % 2 == 0 && column % 2 == 1) {
             const rotate = this._rotations[CutPosition.Right];
             const rotatedRect = Renderer.cloneRect(this.clipRect);
-            rotatedRect.rotate(rotate);
-            tiledImage.setRotation(rotate, false);
+            //rotatedRect.rotate(rotate);
+            tiledImage.setRotation(rotate, immediately);
           }
           if (
             CutPosition.Bottom in this._rotations &&
@@ -367,8 +458,8 @@ export class Renderer {
           ) {
             const rotate = this._rotations[CutPosition.Bottom];
             const rotatedRect = Renderer.cloneRect(this.clipRect);
-            rotatedRect.rotate(rotate);
-            tiledImage.setRotation(rotate, false);
+            //rotatedRect.rotate(rotate);
+            tiledImage.setRotation(rotate, immediately);
           }
           if (
             CutPosition.Right in this._rotations &&
@@ -379,33 +470,52 @@ export class Renderer {
             if (row % 2 == 0 && column % 2 == 1 && column % 2 == 0 && row % 2 == 1) {
               const rotate = this._rotations[CutPosition.Right] + this._rotations[CutPosition.Bottom];
               const rotatedRect = Renderer.cloneRect(this.clipRect);
-              rotatedRect.rotate(rotate);
-              tiledImage.setRotation(rotate, false);
+              //rotatedRect.rotate(rotate);
+              tiledImage.setRotation(rotate, immediately);
             }
           }
         }
 
+        /*
         //Only every column, starting at the first
         if (column % 2 == 0) {
         }
         //Only every column, starting at the second
         if (column % 2 == 1) {
         }
+        */
 
-        if (pos > 0 && column > 0) {
-          //TODO add Margin
-          const previousColumnImage: OpenSeadragon.TiledImage | undefined = this.viewer?.world.getItemAt(pos - 1);
-          if (previousColumnImage !== undefined) {
-            let width;
-            if (this.clipRect !== undefined && previousColumnImage !== undefined) {
-              width = previousColumnImage.imageToViewportRectangle(this.clipRect).width;
-            } else {
-              width = previousColumnImage.getBounds().width;
-            }
-            x = previousColumnImage.getBounds().x + width;
-          }
+        //initial position
+        console.log(this.clipRect, referenceImage.imageToViewportRectangle(this.clipRect));
+        x = referenceImage.imageToViewportRectangle(this.clipRect).width * column;
+        y = referenceImage.imageToViewportRectangle(this.clipRect).height * row;
+
+        let leftShift = 0,
+          topShift = 0;
+        if (this.clipRect.x !== undefined && this.clipRect.x != 0 && column > 0) {
+          //x = x-tiledImage.imageToViewportRectangle(this.clipRect).x;
+          leftShift = tiledImage.imageToViewportRectangle(this.clipRect).x;
+          //x = x - leftShift;
         }
-        console.log(offsetRect);
+        if (this.clipRect.y !== undefined && this.clipRect.y != 0) {
+          topShift = tiledImage.imageToViewportRectangle(this.clipRect).y;
+          //y=y-topShift
+        }
+        //console.log("clip rect x", this.clipRect);
+        console.log(
+          `${column}:${row} x`,
+          this.clipRect.x,
+          x,
+          leftShift,
+          x - leftShift,
+          " y ",
+          this.clipRect.y,
+          y,
+          topShift,
+          x - leftShift,
+          y - topShift
+        );
+
         if (column > 0 && offsetRect !== undefined) {
           y = offsetRect.calculateX() * column;
           if (y < 0) {
@@ -414,25 +524,7 @@ export class Renderer {
             tiledImage.setClip(offsetClipRect);
           }
         }
-        /*
-        if (this.offsetX != 0 && c >0) {
-          x = r * firstImage.imageToViewportRectangle(offsetRect).width;
-          //width = width +  previousImage.imageToViewportRectangle(offsetRect).width;
-        }
-        */
-        if (row > 0) {
-          //TODO: Add margin and line wrap
-          const previousRowImage: OpenSeadragon.TiledImage | undefined = this.viewer?.world.getItemAt(pos - this.columns);
-          if (previousRowImage !== undefined) {
-            let height;
-            if (this.clipRect !== undefined && previousRowImage !== undefined) {
-              height = previousRowImage.imageToViewportRectangle(this.clipRect).height;
-            } else {
-              height = previousRowImage.getBounds().height;
-            }
-            y = previousRowImage.getBounds().y + height;
-          }
-        }
+
         if (row > 0 && offsetRect !== undefined) {
           x = offsetRect.calculateY() * row;
           if (x < 0) {
@@ -441,18 +533,14 @@ export class Renderer {
             tiledImage.setClip(offsetClipRect);
           }
         }
-        /*
-        if (this.offsetY != 0 && r == 1) {
-          y = y + firstImage.imageToViewportRectangle(offsetRect).height;
-          //height = height + previousImage.imageToViewportRectangle(offsetRect).height;
-        }
-        */
+
         pos++;
         if (tiledImage !== undefined) {
           tiledImage.setPosition({ x: x, y: y } as OpenSeadragon.Point, immediately);
         }
       }
     }
+    this.viewer?.world.setAutoRefigureSizes(true);
   }
 
   static fitToWidth(viewer: OpenSeadragon.Viewer, immediately: boolean = false) {
@@ -506,44 +594,26 @@ export class Renderer {
     }
   }
 
-  notify(cuts: CutNotification): void {
-    this.preview(
-      cuts[0][CutPosition.Left],
-      cuts[0][CutPosition.Top],
-      cuts[0][CutPosition.Right],
-      cuts[0][CutPosition.Bottom],
-      false,
-      cuts[1],
-      cuts[2]
-    );
+  appendNotification(cuts: CutNotification): void {
+    const last: CutNotification = this._notificationQueue[this._notificationQueue.length - 1];
+    if (last === undefined || !equals(last, cuts)) {
+      this._notificationQueue.push(cuts);
+    }
   }
 
-  preview(
-    left: number = 0,
-    top: number = 0,
-    width?: number,
-    height?: number,
-    immediately: boolean = true,
-    offsets?: { [key in CutPosition]?: number },
-    rotations?: { [key in CutPosition]?: number }
-  ) {
-    if (this.viewer === undefined) {
-      throw new Error("Result viewer not initialized");
-    }
-    if (width === undefined && height === undefined) {
-      width = this.width;
-      height = this.height;
-    }
-    if (!this._loaded) {
-      this.viewer.open(this.tileSources);
-      this._loaded = true;
-    }
-    if (left === undefined || top === undefined || width == undefined || height === undefined) {
-      throw new Error("Can't clip image, some dimensions aren't defined");
-    }
-    this.clip(left, top, width, height, immediately, offsets, rotations);
-    if (this.downloadButton !== undefined) {
-      this.downloadButton.disabled = false;
+  notify(cuts: CutNotification): void {
+    if (!this._loaded || this.viewer === undefined) {
+      this.appendNotification(cuts);
+    } else {
+      this.preview(
+        cuts[0][CutPosition.Left],
+        cuts[0][CutPosition.Top],
+        cuts[0][CutPosition.Right],
+        cuts[0][CutPosition.Bottom],
+        false,
+        cuts[1],
+        cuts[2]
+      );
     }
   }
 

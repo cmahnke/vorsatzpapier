@@ -4,6 +4,8 @@ import { CuttingTable } from "./CuttingTable";
 import type { IIIFSelect, IIIFEntry, IIIFImageEntry, IIIFType, Translation } from "./types";
 import { getLang, loadInfoJson } from "./util";
 
+type ReturnJSON = { url: URL; json: object | undefined };
+
 export class IIIFForm {
   static labels: { [key: string]: { [key: string]: Translation } } = {
     collection: {
@@ -28,48 +30,56 @@ export class IIIFForm {
   static typeHierarchy: { [key in IIIFType]: string } = { Collection: "collection.json", Manifest: "manifest.json", Image: "info.json" };
 
   cuttingTable: CuttingTable;
-  buttonId: string = "#load-url";
+  buttonClass: string = "load-url-button";
   button: HTMLButtonElement;
-  inputFieldId: string = "#collection-url";
+  inputFieldClass: string = "url-input";
   inputField: HTMLInputElement;
-  selectContainerId: string = "#select-container";
   selectContainer: HTMLDivElement;
-  statusContainerId: string = "#status-container";
   statusContainer: HTMLDivElement;
 
   current?: IIIFType;
   entries: { [key in IIIFType]?: IIIFSelect } = {};
   initial: { string: string };
+  _urlInput: boolean;
 
-  constructor(cuttingTable: CuttingTable, element?: HTMLDivElement) {
+  constructor(cuttingTable: CuttingTable, element: HTMLDivElement, urlInput: boolean = true) {
     this.cuttingTable = cuttingTable;
     customElements.define("icon-dropdown-select", IconDropdownSelect);
-    this.inputField = document.querySelector<HTMLInputElement>(this.inputFieldId)!;
+    this.inputField = this.cuttingTable.container.querySelector<HTMLInputElement>(`.${this.inputFieldClass}`)!;
     if (element === undefined) {
-      this.selectContainer = document.querySelector<HTMLDivElement>(this.selectContainerId)!;
+      this.selectContainer = this.cuttingTable.container.querySelector<HTMLDivElement>(`.${CuttingTable.selectContainerClass}`)!;
     } else {
       this.selectContainer = element;
     }
-    this.statusContainer = document.querySelector<HTMLDivElement>(this.statusContainerId)!;
-    this.button = document.querySelector<HTMLButtonElement>(this.buttonId)!;
+    this._urlInput = urlInput;
+    this.statusContainer = this.cuttingTable.container.querySelector<HTMLDivElement>(`.${CuttingTable.statusContainerClass}`)!;
+    this.button = this.cuttingTable.container.querySelector<HTMLButtonElement>(`.${this.buttonClass}`)!;
     this.button.innerText = IIIFForm.labels.load.button[getLang()];
     this.setup();
   }
 
   setup() {
-    this.button?.addEventListener("click", () => {
-      if (this.inputField !== null) {
-        const url = this.inputField?.value;
+    if (this._urlInput) {
+      this.button?.addEventListener("click", () => {
+        if (this.inputField !== null) {
+          const url = this.inputField?.value;
 
-        if (url !== undefined && url !== "") {
-          this.statusContainer.innerHTML = "";
-          this.selectContainer.innerHTML = "";
-          this.loadUrl(new URL(url), undefined).then((options: IIIFSelect) => {
-            this.createForm(options);
-          });
+          if (url !== undefined && url !== "") {
+            this.statusContainer.innerHTML = "";
+            this.selectContainer.innerHTML = "";
+            this.loadUrl(new URL(url), undefined).then((options: IIIFSelect) => {
+              this.createForm(options);
+            });
+          }
         }
-      }
-    });
+      });
+    } else if (this.cuttingTable.url !== undefined) {
+      this.loadUrl(new URL(this.cuttingTable.url), undefined).then((options: IIIFSelect) => {
+        this.createForm(options);
+      });
+    } else {
+      throw new Error("Input is disabled but no default URL given!");
+    }
   }
 
   set urlInput(url: URL) {
@@ -99,16 +109,15 @@ export class IIIFForm {
     });
   }
 
-  async safeLoadIIIF(url: URL, trySuffix: string = ""): Promise<object | undefined> {
-    return fetch(url)
+  async safeLoadIIIF(url: URL, trySuffix: string = ""): Promise<ReturnJSON> {
+    return fetch(url, { redirect: "follow" })
       .then((res) => {
         if (!res.ok) {
           throw new Error(`HTTP error! status: ${res.status}`);
         }
-        return res.json();
+        return { url: url, json: res.json() };
       })
       .catch((error) => {
-        console.warn("Network or CORS issue:", error);
         if (trySuffix !== "") {
           let u = url.toString();
           if (!u.endsWith("/")) {
@@ -117,8 +126,10 @@ export class IIIFForm {
             u = u + trySuffix;
           }
           return this.safeLoadIIIF(new URL(u));
+        } else {
+          console.warn(`Network or CORS issue for ${url.toString()}:`, error);
         }
-        return undefined;
+        return { url: url, json: undefined };
       });
   }
 
@@ -137,7 +148,9 @@ export class IIIFForm {
     } else {
       trySuffix = IIIFForm.typeHierarchy[type];
     }
-    const json = await this.safeLoadIIIF(url, trySuffix);
+    const loaded = await this.safeLoadIIIF(url, trySuffix);
+    const json = await loaded.json;
+    const loadedUrl = loaded.url;
 
     if (json === undefined) {
       this.displayMessage(IIIFForm.labels.error.json[getLang()]);
@@ -194,6 +207,7 @@ export class IIIFForm {
       image.entries.push({ id: manifest.uri, label: "" });
       this.current = "Image";
       this.entries["Image"] = image;
+      this.loadImageAPI(loadedUrl);
     }
 
     return this.entries[this.current!];
@@ -208,9 +222,11 @@ export class IIIFForm {
     const labelElement = document.createElement("label");
 
     if (label !== undefined) {
-      const existing = document.querySelector<IconDropdownSelect>(`#${selectId}`);
-      if (existing !== null) {
-        existing.remove();
+      if (element !== undefined) {
+        const existing = element.querySelector<IconDropdownSelect>(`#${selectId}`);
+        if (existing !== null) {
+          existing.remove();
+        }
       }
 
       labelElement.innerHTML = label;

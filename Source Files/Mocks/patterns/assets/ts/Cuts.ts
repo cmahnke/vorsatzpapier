@@ -1,8 +1,10 @@
 import { Line, Rect } from "fabric";
 import { FabricOverlay } from "openseadragon-fabric";
 
-import type { CutNotifyFunction, CutNotification, CutJSON } from "./types";
+import type { CutNotifyFunction, CutNotification, CutJSON, CutJSONLD } from "./types";
 import { CutPosition, CutPositionUtil } from "./types";
+
+export type CutType = "cut" | "offset" | "rotation";
 
 export class Cuts {
   overlay: FabricOverlay;
@@ -24,6 +26,10 @@ export class Cuts {
       this.url = url;
     }
 
+    this.initCutShapes(positions);
+  }
+
+  initCutShapes(positions: CutPosition[]) {
     positions.forEach((position) => {
       const line = this.createLine();
       line.visible = false;
@@ -43,6 +49,10 @@ export class Cuts {
       return this._url.toString();
     }
     return "";
+  }
+
+  get cutPostions() {
+    return Object.keys(this.shapes) as unknown as CutPosition[];
   }
 
   get calculatedWidth(): number {
@@ -480,34 +490,70 @@ export class Cuts {
     }
   }
 
-  toJSON(): CutJSON {
-    function expandPositions(cutPostions: { [key in CutPosition]?: number }): { [key: string]: number } {
-      const positions: { [key: string]: number } = {};
-      const validPositions = Object.keys(cutPostions) as unknown as CutPosition[];
-      validPositions.forEach((key: CutPosition) => {
-        if (cutPostions[key] !== undefined) {
-          positions[CutPositionUtil.toString(key)] = cutPostions[key];
-        }
-      });
-      return positions;
-    }
+  static expandPositions(cutPostions: { [key in CutPosition]?: number }): { [key: string]: number } {
+    const positions: { [key: string]: number } = {};
+    const validPositions = Object.keys(cutPostions) as unknown as CutPosition[];
+    validPositions.forEach((key: CutPosition) => {
+      if (cutPostions[key] !== undefined) {
+        positions[CutPositionUtil.toString(key)] = cutPostions[key];
+      }
+    });
+    return positions;
+  }
 
+  toJSON(): CutJSON {
     const json: CutJSON = {
       url: this.url,
       width: this.width,
       height: this.height
     };
-    const cuts = expandPositions(this.positions);
+    const cuts = Cuts.expandPositions(this.positions);
     if (this.positions !== undefined && Object.keys(cuts).length) {
       json["cuts"] = cuts;
     }
-    const offsets = expandPositions(this.offsets);
+    const offsets = Cuts.expandPositions(this.offsets);
     if (this.offsets !== undefined && Object.keys(offsets).length) {
       json["offsets"] = offsets;
     }
-    const rotations = expandPositions(this.rotations);
+    const rotations = Cuts.expandPositions(this.rotations);
     if (this.rotations !== undefined && Object.keys(rotations).length) {
       json["rotations"] = rotations;
+    }
+    return json;
+  }
+
+  toJSONLD(): CutJSONLD {
+    const fragSelector = `xywh=0,0,${this.width},${this.height}`;
+    const json: CutJSONLD = {
+      id: "",
+      motivation: "editing",
+      type: "Annotation",
+      body: {
+        type: "Dataset",
+        id: "",
+        value: {}
+      },
+      target: {
+        source: this.url,
+        type: "SpecificResource",
+        selector: {
+          type: "FragmentSelector",
+          value: fragSelector
+        }
+      }
+    };
+
+    const cuts = Cuts.expandPositions(this.positions);
+    if (this.positions !== undefined && Object.keys(cuts).length) {
+      json.body.value.cuts = cuts;
+    }
+    const offsets = Cuts.expandPositions(this.offsets);
+    if (this.offsets !== undefined && Object.keys(offsets).length) {
+      json.body.value.offsets = offsets;
+    }
+    const rotations = Cuts.expandPositions(this.rotations);
+    if (this.rotations !== undefined && Object.keys(rotations).length) {
+      json.body.value.rotations = rotations;
     }
     return json;
   }
@@ -518,6 +564,8 @@ export class Cuts {
     }
     this.width = json.width;
     this.height = json.height;
+    this.initCutShapes(this.cutPostions);
+    this.setSize(this.width, this.height);
 
     if ("cuts" in json && json.cuts !== undefined) {
       Object.keys(json.cuts).forEach((key: string) => {
@@ -546,5 +594,25 @@ export class Cuts {
 
     this.setVisibility(true);
     this.notify();
+  }
+
+  loadJSONLD(json: CutJSONLD) {
+    const dimensions = json.target.selector.value.split("=")[1].split(".");
+
+    const cutJson: CutJSON = {
+      url: json.target.source,
+      width: Number(dimensions[2]),
+      height: Number(dimensions[3])
+    };
+    if ("cuts" in json.body.value) {
+      cutJson["cuts"] = json.body.value.cuts;
+    }
+    if ("offsets" in json.body.value) {
+      cutJson["offsets"] = json.body.value.offsets;
+    }
+    if ("rotations" in json.body.value) {
+      cutJson["rotations"] = json.body.value.rotations;
+    }
+    this.loadJSON(cutJson);
   }
 }

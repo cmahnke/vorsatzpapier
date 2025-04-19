@@ -427,6 +427,7 @@ export class CanvasDownloadButton extends HTMLElement {
                 --btn-font-size: 16px;
                 --btn-cursor: pointer;
                 --btn-disabled-cursor: not-allowed;
+                --btn-margin: 0 2em;
 
                 padding: var(--btn-padding);
                 border: none;
@@ -438,6 +439,7 @@ export class CanvasDownloadButton extends HTMLElement {
                 background-color: var(--btn-bg-color);
                 white-space: nowrap; /* Prevent text wrapping */
                 line-height: 1.5; /* Adjust line height */
+                margin: var(--btn-margin);
             }
 
             .download-button:hover:not(:disabled) {

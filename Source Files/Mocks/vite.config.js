@@ -8,7 +8,7 @@ import { DynamicPublicDirectory } from "vite-multiple-assets";
 import { checker } from "vite-plugin-checker";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 import svg from "vite-plugin-svgo";
-import browserslistToEsbuild from 'browserslist-to-esbuild'
+import browserslistToEsbuild from "browserslist-to-esbuild";
 
 // External configs
 import svgoConfig from "./svgo.config.mjs";

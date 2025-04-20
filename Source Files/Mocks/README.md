@@ -4,7 +4,7 @@
 
 - Add spinner while loading
 - Handle Offsets
-  - Handle overlaps
+  - Add Clippings
 
 ## Known issues
 
@@ -14,6 +14,12 @@
 - Image export
   - Image not exported with full width
   - Image export won't work with offscreencanvas yet
-- Fix cuts on all four sides
-- Fix square function
-  - Make sure updating sliders work
+- Initial layout
+
+# Commands
+
+## Updating OpenSeadragon Types
+
+```
+ npx patch-package @types/openseadragon
+```

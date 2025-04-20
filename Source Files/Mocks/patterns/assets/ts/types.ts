@@ -62,7 +62,7 @@ export type CutNotification = [
 export type CutNotifyFunction = (notifiction: CutNotification) => void;
 
 export type CutJSON = {
-  url?: string;
+  url: string;
   width: number;
   height: number;
   cuts?: { [key: string]: number };
@@ -76,8 +76,8 @@ export type CutJSONLD = {
   motivation: "editing" | string;
   body: {
     id: string;
-    type: "Dataset" | string;
-    value: { [key: string]: { [key: string]: number } };
+    type: "Dataset" | "Image" | string;
+    value: { [key: string]: { [key: string]: number } } | string;
   };
   target: {
     source: string;

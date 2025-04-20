@@ -15,7 +15,7 @@ export class Cuts {
   offsets: { [key in CutPosition]?: number } = {};
   rotations: { [key in CutPosition]?: number } = {};
   changeCallback: CutNotifyFunction[];
-  _url: URL | undefined;
+  _url: URL;
   _show: boolean = false;
   lastAxis: CutPosition | undefined;
 
@@ -106,26 +106,58 @@ export class Cuts {
     } else {
       const width = this.calculatedWidth;
       const height = this.calculatedHeight;
+      if (height == width) {
+        return false;
+      }
 
-      if (height > width) {
-        if (this.lastAxis === undefined) {
-          changes.push({ position: CutPosition.Bottom, value: width });
-        } else if (this.lastAxis == CutPosition.Bottom) {
-          changes.push({ position: CutPosition.Bottom, value: this.height - this.getPosition(CutPosition.Bottom) + width });
-        } else if (this.lastAxis == CutPosition.Top) {
-          changes.push({ position: CutPosition.Top, value: this.getPosition(CutPosition.Top) + width });
-        } else {
-          changes.push({ position: CutPosition.Bottom, value: width });
+      let side;
+      if (this.lastAxis == CutPosition.Left || this.lastAxis == CutPosition.Right) {
+        side = width;
+        if (this.height < side) {
+          side = this.height;
         }
-      } else if (width > height) {
-        if (this.lastAxis === undefined) {
-          changes.push({ position: CutPosition.Right, value: height });
+        if (this.lastAxis == CutPosition.Left && this.width - this.getPosition(CutPosition.Left) < side) {
+          side = this.width - this.getPosition(CutPosition.Left);
+        }
+        if (this.lastAxis == CutPosition.Right && this.getPosition(CutPosition.Right) < side) {
+          side = this.getPosition(CutPosition.Right);
+        }
+      } else if (this.lastAxis == CutPosition.Top || this.lastAxis == CutPosition.Bottom) {
+        side = height;
+        if (this.width < side) {
+          side = this.width;
+        }
+        if (this.lastAxis == CutPosition.Top && this.width - this.getPosition(CutPosition.Top) < side) {
+          side = this.width - this.getPosition(CutPosition.Top);
+        }
+        if (this.lastAxis == CutPosition.Bottom && this.getPosition(CutPosition.Bottom) < side) {
+          side = this.getPosition(CutPosition.Bottom);
+        }
+      }
+
+      if (this.lastAxis == CutPosition.Left || this.lastAxis == CutPosition.Right) {
+        if (this.lastAxis == CutPosition.Left) {
+          changes.push({ position: CutPosition.Right, value: this.getPosition(CutPosition.Left) + side });
         } else if (this.lastAxis == CutPosition.Right) {
-          changes.push({ position: CutPosition.Right, value: this.width - this.getPosition(CutPosition.Right) + height });
-        } else if (this.lastAxis == CutPosition.Left) {
-          changes.push({ position: CutPosition.Left, value: this.getPosition(CutPosition.Left) + height });
+          changes.push({ position: CutPosition.Left, value: this.getPosition(CutPosition.Right) - side });
+        }
+        if (this.getPosition(CutPosition.Top) + side <= this.height) {
+          changes.push({ position: CutPosition.Bottom, value: this.getPosition(CutPosition.Top) + side });
         } else {
-          changes.push({ position: CutPosition.Right, value: height });
+          changes.push({ position: CutPosition.Bottom, value: this.height });
+          changes.push({ position: CutPosition.Top, value: this.height - side });
+        }
+      } else if (this.lastAxis == CutPosition.Top || this.lastAxis == CutPosition.Bottom) {
+        if (this.lastAxis == CutPosition.Top) {
+          changes.push({ position: CutPosition.Bottom, value: this.getPosition(CutPosition.Top) + side });
+        } else if (this.lastAxis == CutPosition.Bottom) {
+          changes.push({ position: CutPosition.Top, value: this.getPosition(CutPosition.Bottom) - side });
+        }
+        if (this.getPosition(CutPosition.Left) + side <= this.width) {
+          changes.push({ position: CutPosition.Right, value: this.getPosition(CutPosition.Left) + side });
+        } else {
+          changes.push({ position: CutPosition.Right, value: this.width });
+          changes.push({ position: CutPosition.Left, value: this.width - side });
         }
       }
     }
@@ -490,12 +522,19 @@ export class Cuts {
     }
   }
 
-  static expandPositions(cutPostions: { [key in CutPosition]?: number }): { [key: string]: number } {
+  static expandPositions(cutPostions: { [key in CutPosition]?: number }, all: boolean = false): { [key: string]: number } {
     const positions: { [key: string]: number } = {};
-    const validPositions = Object.keys(cutPostions) as unknown as CutPosition[];
+    let validPositions: CutPosition[];
+    if (!all) {
+      validPositions = Object.keys(cutPostions) as unknown as CutPosition[];
+    } else {
+      validPositions = Object.keys(CutPosition) as unknown as CutPosition[];
+    }
     validPositions.forEach((key: CutPosition) => {
-      if (cutPostions[key] !== undefined) {
+      if (key in cutPostions && cutPostions[key] !== undefined) {
         positions[CutPositionUtil.toString(key)] = cutPostions[key];
+      } else {
+        positions[CutPositionUtil.toString(key)] = 0;
       }
     });
     return positions;
@@ -543,25 +582,45 @@ export class Cuts {
       }
     };
 
-    const cuts = Cuts.expandPositions(this.positions);
+    const value: { [key: string]: { [key: string]: number } } = {};
+
+    const cuts = Cuts.expandPositions(this.positions, true);
     if (this.positions !== undefined && Object.keys(cuts).length) {
-      json.body.value.cuts = cuts;
+      value.cuts = cuts;
     }
-    const offsets = Cuts.expandPositions(this.offsets);
+    const offsets = Cuts.expandPositions(this.offsets, true);
     if (this.offsets !== undefined && Object.keys(offsets).length) {
-      json.body.value.offsets = offsets;
+      value.offsets = offsets;
     }
-    const rotations = Cuts.expandPositions(this.rotations);
+    const rotations = Cuts.expandPositions(this.rotations, true);
     if (this.rotations !== undefined && Object.keys(rotations).length) {
-      json.body.value.rotations = rotations;
+      value.rotations = rotations;
     }
+    json.body.value = value;
+
+    let rotation = "";
+    if ("Bottom" in rotations && rotations.Bottom !== 0) {
+      rotation += ` rotate(${rotations.Bottom}, ${Math.ceil(this.width / 2)}, ${this.height})`;
+    }
+    if ("Right" in rotations && rotations.Right !== 0) {
+      rotation += ` rotate(${rotations.Right}, ${this.width}, ${Math.ceil(this.height / 2)})`;
+    }
+
+    let svgPattern = `
+    <pattern id="pattern" width="${this.width}" height="${this.height}" x="${offsets.Right}" y="${offsets.Bottom}">
+      <clipPath id="cuts">
+        <rect x="${cuts.Left}" y="${cuts.Top}" width="${cuts.Right - cuts.Left}" height="${cuts.Bottom - cuts.Top}" transform="${rotation}" />
+      </clipPath>
+    </pattern>`;
+    svgPattern = svgPattern.replace(/\n|\r/g, "");
+    //TODO: Loading this format isnt' implemented yet
+    json.body.value = svgPattern;
+
     return json;
   }
 
   loadJSON(json: CutJSON) {
-    if (json.url !== undefined) {
-      this.url = new URL(json.url);
-    }
+    this.url = new URL(json.url);
     this.width = json.width;
     this.height = json.height;
     this.initCutShapes(this.cutPostions);
@@ -597,22 +656,81 @@ export class Cuts {
   }
 
   loadJSONLD(json: CutJSONLD) {
-    const dimensions = json.target.selector.value.split("=")[1].split(".");
+    const dimensions = json.target.selector.value.split("=")[1].split(",");
 
     const cutJson: CutJSON = {
       url: json.target.source,
       width: Number(dimensions[2]),
       height: Number(dimensions[3])
     };
-    if ("cuts" in json.body.value) {
-      cutJson["cuts"] = json.body.value.cuts;
+    if (typeof json.body.value !== "string" && "cuts" in json.body.value) {
+      cutJson.cuts = json.body.value.cuts;
     }
-    if ("offsets" in json.body.value) {
-      cutJson["offsets"] = json.body.value.offsets;
+    if (typeof json.body.value !== "string" && "offsets" in json.body.value) {
+      cutJson.offsets = json.body.value.offsets;
     }
-    if ("rotations" in json.body.value) {
-      cutJson["rotations"] = json.body.value.rotations;
+    if (typeof json.body.value !== "string" && "rotations" in json.body.value) {
+      cutJson.rotations = json.body.value.rotations;
     }
+    if (typeof json.body.value === "string") {
+      const parser = new DOMParser();
+      const svg = parser.parseFromString(json.body.value, "image/svg+xml");
+      const patternElement = svg.querySelector("pattern")!;
+      const offsets: { [key: string]: number } = {};
+      if (patternElement.hasAttribute("x") && patternElement.getAttribute("x") !== "0") {
+        offsets.Right = Number(patternElement.getAttribute("x"));
+      }
+      if (patternElement.hasAttribute("y") && patternElement.getAttribute("y") !== "0") {
+        offsets.Bottom = Number(patternElement.getAttribute("y"));
+      }
+      if (Object.keys(offsets).length) {
+        cutJson.offsets = offsets;
+      }
+      const rectElement = svg.querySelector("rect")!;
+      const cuts: { [key: string]: number } = { Left: 0, Top: 0, Right: Number(dimensions[2]), Bottom: Number(dimensions[3]) };
+      if (rectElement.hasAttribute("x") && rectElement.getAttribute("x") !== "0") {
+        cuts.Left = Number(rectElement.getAttribute("x"));
+      }
+      if (rectElement.hasAttribute("y") && rectElement.getAttribute("y") !== "0") {
+        cuts.Top = Number(rectElement.getAttribute("y"));
+      }
+      if (rectElement.hasAttribute("width") && rectElement.getAttribute("width") !== "0") {
+        cuts.Right = Number(rectElement.getAttribute("x")) + Number(rectElement.getAttribute("width"));
+      }
+      if (rectElement.hasAttribute("height") && rectElement.getAttribute("height") !== "0") {
+        cuts.Bottom = Number(rectElement.getAttribute("y")) + Number(rectElement.getAttribute("height"));
+      }
+      if (Object.keys(cuts).length) {
+        cutJson.cuts = cuts;
+      }
+      const rotations: { [key: string]: number } = {};
+      if (rectElement.hasAttribute("transform") && rectElement.getAttribute("transform") !== "") {
+        const transform = rectElement.getAttribute("transform")!;
+        const re: RegExp = /rotate\((.*?)\)/g;
+        let match: RegExpExecArray | null;
+        //let rotationStr = [];
+        while ((match = re.exec(transform))) {
+          //rotationStr.push(match[1]);
+          if (match.length < 2) {
+            continue;
+          }
+          const rotValues = match[1].split(",").map((item: string) => {
+            return item.trim();
+          });
+          if (rotValues[0] !== "0") {
+            if (rotValues[1] == dimensions[2]) {
+              rotations.Right = Number(rotValues[0]);
+            } else if (rotValues[2] == dimensions[3]) {
+              rotations.Bottom = Number(rotValues[0]);
+            }
+          }
+        }
+      }
+      if (Object.keys(rotations).length) {
+        cutJson.rotations = rotations;
+      }
+    }
+
     this.loadJSON(cutJson);
   }
 }

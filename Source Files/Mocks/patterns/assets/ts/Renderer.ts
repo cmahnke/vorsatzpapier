@@ -16,15 +16,20 @@ export class Renderer {
     }
   };
 
-  element: HTMLElement | null;
+  //Element identifiers / classes / selectors
+  static defaultSelector: string = ".texture-container";
+  static rendererViewerSelector = ".output-viewer";
+
+  element: HTMLElement;
   _source: IIIFImageStub | undefined;
   viewer: OpenSeadragon.Viewer | undefined;
-  defaultId: string = "#output-viewer";
+  viewerElement: HTMLElement;
+
   clipRect: OpenSeadragon.Rect | undefined;
   _offsets: { [key in CutPosition]?: number } | undefined;
   _rotations: { [key in CutPosition]?: number } | undefined;
-  rows: number = 4;
-  columns: number = 4;
+  rows: number;
+  columns: number;
   tileSources: object[] = [];
   _loaded: boolean = false;
   resolutionSelect: ImageResolutionSelect;
@@ -33,21 +38,21 @@ export class Renderer {
   defaultExportDimensions: [number, number] = [1920, 1080];
   _notificationQueue: CutNotification[] = [];
 
-  constructor(source?: IIIFImageStub, element?: HTMLElement) {
+  constructor(element: HTMLElement, columns: number = 4, rows: number = 4, source?: IIIFImageStub) {
+    if (element !== undefined) {
+      this.element = element;
+    } else {
+      this.element = document.querySelector<HTMLDivElement>(Renderer.defaultSelector)!;
+    }
+
     customElements.define("image-resolution-select", ImageResolutionSelect);
     customElements.define("offscreencanvas-download", CanvasDownloadButton);
-    if (element === undefined) {
-      this.element = document.querySelector<HTMLElement>(this.defaultId);
-    } else {
-      this.element = element;
-    }
-    this.viewer = this.setupViewer();
+    this.setupHTML();
+    this.viewerElement = this.element.querySelector(Renderer.rendererViewerSelector)!;
+    this.viewer = this.setupViewer(this.viewerElement);
 
-    /*
-    this.viewer.addHandler("open", () => {
-      this.preview();
-    });
-    */
+    this.columns = columns;
+    this.rows = rows;
 
     if (source !== undefined) {
       this.source = source;
@@ -60,7 +65,7 @@ export class Renderer {
       height = this.viewer.container.clientHeight;
     }
     if (this.element !== null) {
-      this.addControls(this.element, width, height);
+      this.addControls(this.viewerElement, width, height);
     }
   }
 
@@ -101,7 +106,7 @@ export class Renderer {
     }
     this.tileSources = [];
     let loadCounter: number = 0;
-    this.viewer.world.addHandler("add-item", (event) => {
+    this.viewer.world.addHandler("add-item", () => {
       loadCounter++;
       if (loadCounter == this.tileSources.length) {
         this._loaded = true;
@@ -187,10 +192,24 @@ export class Renderer {
     return true;
   }
 
-  setupViewer() {
-    if (this.element !== null) {
+  setupHTML() {
+    this.element.innerHTML = `
+      <div class="output-viewer">
+        <i class="controls button zoomin"></i>
+        <i class="controls button zoomout"></i>
+        <i class="controls button fullscreen"></i>
+        <i class="controls button fullwidth"></i>
+      </div>
+    `;
+  }
+
+  setupViewer(element?: HTMLElement) {
+    if (element !== undefined) {
+      element = this.viewerElement;
+    }
+    if (element !== null && element !== undefined) {
       const options: OpenSeadragon.Options = {
-        element: this.element,
+        element: element,
         collectionMode: true,
         preserveViewport: true,
         /*
@@ -342,7 +361,7 @@ export class Renderer {
       vertical = CutPosition.Bottom;
     }
     if (width != 0 || height != 0) {
-      const offsetRect = new OffsetRect(0, 0, width, height, horizontal, vertical);
+      const offsetRect = new OffsetRect(0, 0, width, height, undefined, horizontal, vertical);
       offsetRect.reference = reference;
       return offsetRect;
     }
@@ -356,42 +375,63 @@ export class Renderer {
     * Check this https://github.com/openseadragon/openseadragon/pull/2616
 
   */
+
   layout(immediately: boolean = true) {
-    //this.viewer?.world.arrange({ rows: this.rows, columns: this.columns, tileMargin: 0, immediately: true });
     let columns = this.columns;
     let rows = this.rows;
-    this.viewer?.world.setAutoRefigureSizes(false);
+    let initial = false;
+    this.viewer?.world.setAutoRefigureSizes(true);
     if (this._margins) {
       columns = columns + 2;
       rows = rows + 2;
     }
     let pos = 0;
+    let expectedSize: OpenSeadragon.Rect;
+    if (this.clipRect === undefined) {
+      throw new Error("Clip rect is not defined");
+    }
     let firstImage: OpenSeadragon.TiledImage | undefined = this.viewer?.world.getItemAt(0);
     if (this._margins) {
       firstImage = this.viewer?.world.getItemAt(this.rows + 2);
     }
-    firstImage.setPosition({ x: 0, y: 0 } as OpenSeadragon.Point, immediately);
-    const initialSizes = this.viewer.viewport.imageToViewportRectangle(this.clipRect);
+    if (firstImage === undefined) {
+      throw new Error("Couldn't get first tiled image!");
+    }
+    //firstImage.setPosition({ x: 0, y: 0 } as OpenSeadragon.Point, immediately);
+
+    if (firstImage.getBounds().width == 1) {
+      initial = true;
+      //This is needed for the size calculation based on reference images
+      this.viewer?.world.arrange({ rows: this.rows, columns: this.columns, tileMargin: 0, immediately: true });
+    }
+
+    const referenceImage = firstImage;
+
+    //const initialSizes = this.viewer?.viewport.imageToViewportRectangle(this.clipRect);
+
+    console.log("First check ", firstImage.imageToViewportRectangle(this.clipRect));
+
+    //const initialSizes = firstImage.imageToViewportRectangle(this.clipRect);
+    this.viewer?.world.setAutoRefigureSizes(false);
     for (let r = 0; r < rows; r++) {
       for (let c = 0; c < columns; c++) {
         //Variables
         let row = r;
         let column = c;
-        let x = 0;
-        let y = 0;
+        let x = 0,
+          y = 0;
+        let width = 0,
+          height = 0;
         const tiledImage: OpenSeadragon.TiledImage | undefined = this.viewer?.world.getItemAt(pos);
-        const referenceImage = firstImage;
+
         //Sanity checks
-        if (tiledImage === undefined || firstImage === undefined || this.clipRect === undefined) {
-          console.warn(tiledImage, firstImage, this.clipRect);
+        if (tiledImage === undefined || firstImage === undefined) {
+          console.warn(tiledImage, firstImage);
           throw new Error("Required variables are not defined");
         }
-        /*
-        const expectedSize: [number, number] = [
-          firstImage.imageToViewportRectangle(this.clipRect).width * this.columns,
-          firstImage.imageToViewportRectangle(this.clipRect).height * this.rows
-        ];
-        */
+
+        const transformedClipRect = referenceImage.imageToViewportRectangle(this.clipRect);
+        expectedSize = new OpenSeadragon.Rect(0, 0, transformedClipRect.width * this.columns, transformedClipRect.height * this.rows);
 
         let offsetRect;
 
@@ -446,7 +486,7 @@ export class Renderer {
         if (this._rotations !== undefined && Object.keys(this._rotations).length) {
           if (CutPosition.Right in this._rotations && this._rotations[CutPosition.Right] !== undefined && row % 2 == 0 && column % 2 == 1) {
             const rotate = this._rotations[CutPosition.Right];
-            const rotatedRect = Renderer.cloneRect(this.clipRect);
+            //const rotatedRect = Renderer.cloneRect(this.clipRect);
             //rotatedRect.rotate(rotate);
             tiledImage.setRotation(rotate, immediately);
           }
@@ -457,8 +497,8 @@ export class Renderer {
             row % 2 == 1
           ) {
             const rotate = this._rotations[CutPosition.Bottom];
-            const rotatedRect = Renderer.cloneRect(this.clipRect);
-            //rotatedRect.rotate(rotate);
+            //const rotatedRect = Renderer.cloneRect(this.clipRect);
+            //rotatedRect.rotate(rotate, rotatedRect.getCenter());
             tiledImage.setRotation(rotate, immediately);
           }
           if (
@@ -469,8 +509,8 @@ export class Renderer {
           ) {
             if (row % 2 == 0 && column % 2 == 1 && column % 2 == 0 && row % 2 == 1) {
               const rotate = this._rotations[CutPosition.Right] + this._rotations[CutPosition.Bottom];
-              const rotatedRect = Renderer.cloneRect(this.clipRect);
-              //rotatedRect.rotate(rotate);
+              //const rotatedRect = Renderer.cloneRect(this.clipRect);
+              //rotatedRect.rotate(rotate, rotatedRect.getCenter());
               tiledImage.setRotation(rotate, immediately);
             }
           }
@@ -486,61 +526,74 @@ export class Renderer {
         */
 
         //initial position
-        console.log(this.clipRect, referenceImage.imageToViewportRectangle(this.clipRect));
-        x = referenceImage.imageToViewportRectangle(this.clipRect).width * column;
-        y = referenceImage.imageToViewportRectangle(this.clipRect).height * row;
-
-        let leftShift = 0,
-          topShift = 0;
-        if (this.clipRect.x !== undefined && this.clipRect.x != 0 && column > 0) {
-          //x = x-tiledImage.imageToViewportRectangle(this.clipRect).x;
-          leftShift = tiledImage.imageToViewportRectangle(this.clipRect).x;
-          //x = x - leftShift;
+        //console.log("Clip calculated by reference ", this.clipRect, referenceImage.imageToViewportRectangle(this.clipRect));
+        width = transformedClipRect.width;
+        height = transformedClipRect.height;
+        if (transformedClipRect.x > 0) {
+          width = width - transformedClipRect.x;
         }
-        if (this.clipRect.y !== undefined && this.clipRect.y != 0) {
-          topShift = tiledImage.imageToViewportRectangle(this.clipRect).y;
-          //y=y-topShift
+        if (transformedClipRect.y > 0) {
+          height = height - transformedClipRect.y;
         }
-        //console.log("clip rect x", this.clipRect);
-        console.log(
-          `${column}:${row} x`,
-          this.clipRect.x,
-          x,
-          leftShift,
-          x - leftShift,
-          " y ",
-          this.clipRect.y,
-          y,
-          topShift,
-          x - leftShift,
-          y - topShift
-        );
 
-        if (column > 0 && offsetRect !== undefined) {
-          y = offsetRect.calculateX() * column;
-          if (y < 0) {
-            const offsetClipRect = Renderer.cloneRect(this.clipRect);
-            offsetClipRect.width = offsetClipRect.width + x;
-            tiledImage.setClip(offsetClipRect);
+        x = width * column;
+        y = height * row;
+
+        if (offsetRect !== undefined) {
+          //const offsetClipRect = Renderer.cloneRect(this.clipRect);
+          if (column > 0 && offsetRect.width > 0) {
+            const shift = offsetRect.calculateX(referenceImage) * column;
+            y = y + shift;
+            if ((column = this.columns - 1)) {
+              const borderClip = Renderer.cloneRect(this.clipRect);
+              borderClip.height = shift;
+              //TODO: Add clip
+              //tiledImage.setClip(borderClip);
+            }
+          } else if (column > 0 && offsetRect.width < 0) {
+            const shift = offsetRect.calculateX(referenceImage) * column;
+            y = y - shift;
+            if (column == 1) {
+              const borderClip = Renderer.cloneRect(this.clipRect);
+              borderClip.height = shift;
+              //TODO: Add clip
+            }
           }
-        }
-
-        if (row > 0 && offsetRect !== undefined) {
-          x = offsetRect.calculateY() * row;
-          if (x < 0) {
-            const offsetClipRect = Renderer.cloneRect(this.clipRect);
-            offsetClipRect.height = offsetClipRect.height + y;
-            tiledImage.setClip(offsetClipRect);
+          if (row > 0 && offsetRect.height > 0) {
+            const shift = offsetRect.calculateY(referenceImage) * row;
+            x = x + shift;
+            if ((row = this.rows - 1)) {
+              const borderClip = Renderer.cloneRect(this.clipRect);
+              borderClip.width = shift;
+              //TODO: Add clip
+            }
+          } else if (row > 0 && offsetRect.height < 0) {
+            const shift = offsetRect.calculateY(referenceImage) * row;
+            x = x - shift;
+            if (row == 1) {
+              const borderClip = Renderer.cloneRect(this.clipRect);
+              borderClip.width = shift;
+              //TODO: Add clip
+            }
           }
+          console.log("offsets", offsetRect, offsetRect.calculateX(referenceImage), offsetRect.calculateY(referenceImage), x, y);
         }
 
         pos++;
         if (tiledImage !== undefined) {
-          tiledImage.setPosition({ x: x, y: y } as OpenSeadragon.Point, immediately);
+          tiledImage.setPosition(new OpenSeadragon.Point(x, y), immediately);
+          //‚tiledImage.setWidth(width, immediately);
         }
+        //console.log("clip rect x", this.clipRect);
+        console.log(`${column}:${row} x`, tiledImage.getBounds(), this.clipRect.x, x, " y ", this.clipRect.y, y);
       }
     }
+
+    if (initial) {
+      this.viewer?.viewport.fitBounds(expectedSize, true);
+    }
     this.viewer?.world.setAutoRefigureSizes(true);
+    //this.viewer?.forceRedraw()
   }
 
   static fitToWidth(viewer: OpenSeadragon.Viewer, immediately: boolean = false) {
@@ -610,13 +663,13 @@ export class Renderer {
         cuts[0][CutPosition.Top],
         cuts[0][CutPosition.Right],
         cuts[0][CutPosition.Bottom],
-        false,
+        true, // Check if flse looks better
         cuts[1],
         cuts[2]
       );
     }
   }
-
+  /*
   cloneViewerToCanvas(originalViewer: OpenSeadragon.Viewer, targetCanvas: HTMLCanvasElement): Promise<OpenSeadragon.Viewer> {
     // Note: Changed return type to Promise<Viewer>
     return new Promise((resolve, reject) => {
@@ -787,7 +840,7 @@ export class Renderer {
       });
     });
   }
-
+*/
   /*
   cloneViewerToCanvas(sourceViewer: OpenSeadragon.Viewer, canvas: OffscreenCanvas): OpenSeadragon.Viewer {
     const viewportSize = sourceViewer.viewport.getContainerSize();
@@ -955,10 +1008,10 @@ export class Renderer {
       const initialContext: CanvasRenderingContext2D | null = drawer?.context;
       const canvasContext = canvas.getContext("2d") as CanvasRenderingContext2D;
 
-      const viewportBounds = this.viewer?.viewport.getBounds();
-      const contentSize = this.viewer?.viewport.getContainerSize;
-      const minLevel = this.viewer?.viewport.getMinZoom();
-      const maxLevel = this.viewer?.viewport.getMaxZoom();
+      //const viewportBounds = this.viewer?.viewport.getBounds();
+      //const contentSize = this.viewer?.viewport.getContainerSize;
+      //const minLevel = this.viewer?.viewport.getMinZoom();
+      //const maxLevel = this.viewer?.viewport.getMaxZoom();
 
       //this.viewer?.drawer.draw(canvasContext, viewportBounds, contentSize, minLevel, maxLevel);
       drawer.canvas = canvas;

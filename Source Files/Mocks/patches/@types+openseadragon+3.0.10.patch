@@ -1,5 +1,5 @@
 diff --git a/node_modules/@types/openseadragon/index.d.ts b/node_modules/@types/openseadragon/index.d.ts
-index 8b45a56..417acb5 100644
+index 8b45a56..5e7f495 100644
 --- a/node_modules/@types/openseadragon/index.d.ts
 +++ b/node_modules/@types/openseadragon/index.d.ts
 @@ -350,14 +350,15 @@ declare namespace OpenSeadragon {
@@ -26,3 +26,24 @@ index 8b45a56..417acb5 100644
          sequenceMode?: boolean | undefined;
          /**
           * If sequenceMode is true, display this page initially.
+@@ -920,6 +921,10 @@ declare namespace OpenSeadragon {
+ 
+     class TiledImage {
+         source: TileSource;
++        pivotPoint?: Point;
++        _clip?: Rect;
++        _worldWidthCurrent: number;
++        _worldWidthTarget: number;
+         constructor(options: {
+             source: TileSource;
+             viewer: Viewer;
+@@ -1029,6 +1034,9 @@ declare namespace OpenSeadragon {
+         ): Rect;
+         viewportToImageZoom(viewportZoom: number): number;
+         windowToImageCoordinates(pixel: Point): Point;
++        _getRotationPoint(current: boolean): Point;
++        setRotationPoint(point: Point): void;
++        getRotationPoint(): Point;
+     }
+ 
+     class TileSource extends EventSource {

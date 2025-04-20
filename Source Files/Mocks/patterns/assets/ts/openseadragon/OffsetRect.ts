@@ -38,8 +38,11 @@ export class OffsetRect extends OpenSeadragon.Rect {
     return this._vertical;
   }
 
-  calculateX(): number {
-    if (this.reference !== undefined) {
+  calculateX(reference?: OpenSeadragon.TiledImage): number {
+    if (reference === undefined && this.reference !== undefined) {
+      reference = this.reference;
+    }
+    if (reference !== undefined) {
       const width = this.reference.imageToViewportRectangle(this).width;
       if (this.horizontal !== undefined && this.horizontal == CutPosition.Left) {
         return -1 * width;
@@ -49,8 +52,11 @@ export class OffsetRect extends OpenSeadragon.Rect {
     return 0;
   }
 
-  calculateY(): number {
-    if (this.reference !== undefined) {
+  calculateY(reference?: OpenSeadragon.TiledImage): number {
+    if (reference === undefined && this.reference !== undefined) {
+      reference = this.reference;
+    }
+    if (reference !== undefined) {
       const height = this.reference.imageToViewportRectangle(this).height;
       if (this.vertical !== undefined && this.vertical == CutPosition.Top) {
         return -1 * height;

@@ -40,6 +40,7 @@ export class IIIFForm {
   current?: IIIFType;
   entries: { [key in IIIFType]?: IIIFSelect } = {};
   initial: { string: string };
+  _imageAPIUrl: URL;
   _urlInput: boolean;
 
   constructor(cuttingTable: CuttingTable, element: HTMLDivElement, urlInput: boolean = true) {
@@ -207,6 +208,7 @@ export class IIIFForm {
       image.entries.push({ id: manifest.uri, label: "" });
       this.current = "Image";
       this.entries["Image"] = image;
+      //this._imageAPIUrl = loadedUrl
       this.loadImageAPI(loadedUrl);
     }
 
@@ -312,7 +314,12 @@ export class IIIFForm {
       console.warn(`Failed to get ${imageAPIEndpoint}`);
     }
     this.cuttingTable.imageService = service;
-    this.cuttingTable.imageServiceUrl = imageAPIEndpoint;
+
+    if (this._imageAPIUrl !== undefined && this._imageAPIUrl != imageAPIEndpoint) {
+      this.cuttingTable.imageServiceUrl = this._imageAPIUrl;
+    } else {
+      this.cuttingTable.imageServiceUrl = imageAPIEndpoint;
+    }
 
     return service;
   }

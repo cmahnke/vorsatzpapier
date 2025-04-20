@@ -7,7 +7,7 @@ import type { CutType } from "./Cuts";
 import { Renderer } from "./Renderer";
 import { IIIFForm } from "./IIIFForm";
 import { CutPosition } from "./types";
-import type { IIIFImageStub, Translation, CutJSON } from "./types";
+import type { IIIFImageStub, Translation, CutJSON, CutJSONLD } from "./types";
 import { getLang, loadInfoJson } from "./util";
 
 export class CuttingTable {
@@ -19,6 +19,10 @@ export class CuttingTable {
       error: { de: "JSON konnte nicht geladen werden", en: "JSON could not be loaded" }
     }
   };
+
+  static {
+    CuttingTable.patchOpenSeadragon();
+  }
 
   //Element identifiers / classes / selectors
   static defaultId: string = "generator";
@@ -55,10 +59,15 @@ export class CuttingTable {
   squareButton: HTMLElement;
   downloadLink: HTMLAnchorElement;
   dropZoneElement: HTMLDivElement;
+  //Renderer tiles
+  _columns = 4;
+  _rows = 4;
+
   //URL handling
   _initialUrls: { url: string; label: string }[];
   _urlInput: boolean;
   _url: URL;
+  _postLoad: (() => void) | undefined;
 
   constructor(element: HTMLDivElement, urlInput: boolean = true, urls?: URL | { url: string; label: string }[]) {
     if (element !== undefined) {
@@ -94,7 +103,7 @@ export class CuttingTable {
     this.form = new IIIFForm(this, selectContainer);
     //Result renderer
     const renderElement = this.container.querySelector<HTMLDivElement>(`.${CuttingTable.rendererElementClass}`)!;
-    this.renderer = new Renderer(renderElement);
+    this.renderer = new Renderer(renderElement, this.columns, this.rows);
     this.viewerElement = this.container.querySelector<HTMLDivElement>(`.${CuttingTable.viewerElementClass}`)!;
 
     this.setupOSD(this.viewerElement);
@@ -119,11 +128,6 @@ export class CuttingTable {
       crossOriginPolicy: "Anonymous"
     };
     this.viewer = OpenSeadragon(options);
-    this.viewer.addHandler("open", () => {
-      if (this.cuts !== undefined) {
-        this.cuts.setVisibility(true);
-      }
-    });
     this.fabricOverlay = this.viewer.fabricOverlay({ fabricCanvasOptions: { selection: false } });
   }
 
@@ -137,10 +141,12 @@ export class CuttingTable {
     this.downloadLink.setAttribute("download", "cuttingTable.json");
     this.downloadLink.addEventListener("click", () => {
       if (this.cuts !== undefined) {
-        if (this.cuts.url === undefined && this._imageAPI !== undefined) {
-          this.cuts.url = this._imageAPI;
+        if (this.cuts.url === "" && this.imageServiceUrl === undefined) {
+          throw new Error("Couldn' set target URL!");
+        } else {
+          this.cuts.url = this.imageServiceUrl;
         }
-        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(this.cuts.toJSON(), null, 2));
+        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(this.cuts.toJSONLD(), null, 2));
         this.downloadLink.setAttribute("href", dataStr);
       }
     });
@@ -152,12 +158,13 @@ export class CuttingTable {
       this.cutY.valueMin = this.cuts.getPosition(CutPosition.Top);
       this.cutY.valueMax = this.cuts.getPosition(CutPosition.Bottom);
       this.cutX.valueMin = this.cuts.getPosition(CutPosition.Left);
-      this.cutY.valueMax = this.cuts.getPosition(CutPosition.Right);
+      this.cutX.valueMax = this.cuts.getPosition(CutPosition.Right);
     }
   }
 
-  async loadImageAPI(imageAPIEndpoint: URL) {
+  async loadImageAPI(imageAPIEndpoint: URL, postLoad?: () => void) {
     let service;
+    this._postLoad = postLoad;
     try {
       service = await loadInfoJson(imageAPIEndpoint);
     } catch {
@@ -194,7 +201,11 @@ export class CuttingTable {
         if (this.cuts !== undefined) {
           this.cuts.lastAxis = undefined;
           this.updateLines(endpointService.width, endpointService.height);
+          //this.cuts.url = url;
           this.cuts.setVisibility(true);
+        }
+        if (this._postLoad !== undefined) {
+          this._postLoad = undefined;
         }
       });
       if (this.viewer.world.getItemCount()) {
@@ -209,9 +220,7 @@ export class CuttingTable {
     } else {
       console.warn("Viewer not initialized");
     }
-    if (this.download) {
-      this.downloadLink.classList.remove("disabled");
-    }
+
     if (this.renderer !== undefined) {
       if (this.renderer.loaded) {
         this.renderer.clear();
@@ -221,8 +230,15 @@ export class CuttingTable {
   }
 
   set imageServiceUrl(url: URL) {
+    if (this.download) {
+      this.downloadLink.classList.remove("disabled");
+    }
     this._imageAPI = url;
     this.cuts.url = url;
+  }
+
+  get imageServiceUrl() {
+    return this._imageAPI;
   }
 
   set initialUrls(initialUrls: { url: string; label: string }[]) {
@@ -258,16 +274,38 @@ export class CuttingTable {
           if (e !== undefined && e.target !== null && e.target.result !== null) {
             try {
               const result = e.target.result as string;
-              const json = JSON.parse(result) as CutJSON;
-              if (json.url !== undefined) {
-                this.form.urlInput = new URL(json.url);
+              let json: CutJSON | CutJSONLD | object;
+              let url: URL;
+              json = JSON.parse(result) as object;
+              if ("type" in json) {
+                url = new URL((json as CutJSONLD).target.source);
+                this.form.urlInput = url;
+                await this.loadImageAPI(url, () => {
+                  this.cuts.loadJSONLD(json as CutJSONLD);
+                  this.updateControls();
+                });
+
+                /*
+                this.viewer?.world.addOnceHandler("add-item", () => {
+
+                });
+                */
+              } else {
+                url = new URL((json as CutJSON).url);
+                this.form.urlInput = url;
+                await this.loadImageAPI(url, () => {
+                  this.cuts.loadJSON(json as CutJSON);
+                  this.updateControls();
+                });
+                //this.cuts.loadJSON(json as CutJSON);
+                /*
+                this.viewer?.world.addOnceHandler("add-item", () => {
+
+                });*/
               }
-              if (json.url !== undefined) {
-                await this.loadImageAPI(new URL(json.url));
-              }
-              this.cuts.loadJSON(json);
               this.cuts.setVisibility(true);
-              this.updateControls();
+              //TODO: This is currently overwritten when image is loaded
+              //this.updateControls();
             } catch (error) {
               console.error(error);
               this.form.displayMessage(CuttingTable.labels.upload.error[getLang()] + "+ " + error.message);
@@ -355,6 +393,9 @@ export class CuttingTable {
     this.fabricOverlay.fabricCanvas().clear();
     this.initCuts();
     this.cuts.setSize(width, height);
+    if (this.cuts.url === undefined) {
+      this.cuts.url = this.imageServiceUrl;
+    }
     this.updateCutLineWidth();
     this.cuts.setVisibility(visibility);
 
@@ -536,5 +577,18 @@ export class CuttingTable {
       this.rotationY.disabled = true;
       this.rulerCheckbox.disabled = true;
     }
+  }
+
+  static patchOpenSeadragon() {
+    OpenSeadragon.TiledImage.prototype._getRotationPoint = function (current: boolean): OpenSeadragon.Point {
+      let bounds = this.getBoundsNoRotate(current);
+      if (this._clip) {
+        const worldWidth = current ? this._worldWidthCurrent : this._worldWidthTarget;
+        const ratio = worldWidth / this.source.dimensions.x;
+        const clip = this._clip.times(ratio);
+        bounds = new OpenSeadragon.Rect(bounds.x + clip.x, bounds.y + clip.y, clip.width, clip.height);
+      }
+      return bounds.getCenter();
+    };
   }
 }

@@ -9,6 +9,7 @@ import { IIIFForm } from "./IIIFForm";
 import { CutPosition } from "./types";
 import type { IIIFImageStub, Translation, CutJSON, CutJSONLD } from "./types";
 import { getLang, loadInfoJson } from "./util";
+import i18next from 'i18next';
 
 export class CuttingTable {
   static labels: { [key: string]: { [key: string]: Translation } } = {
@@ -44,9 +45,14 @@ export class CuttingTable {
   download: boolean = true;
   viewer: OpenSeadragon.Viewer;
   renderer: Renderer | undefined;
+  // Components
   cuts: Cuts;
   form: IIIFForm;
   fabricOverlay: FabricOverlay;
+  _postLoad: (() => void) | undefined;
+  //Options
+  _urlInput: boolean;
+  _gridSelector: boolean;
   //Elements of Contols and children
   viewerElement: HTMLDivElement;
   cutY: DualRangeSlider;
@@ -65,11 +71,10 @@ export class CuttingTable {
 
   //URL handling
   _initialUrls: { url: string; label: string }[];
-  _urlInput: boolean;
-  _url: URL;
-  _postLoad: (() => void) | undefined;
 
-  constructor(element: HTMLDivElement, urlInput: boolean = true, urls?: URL | { url: string; label: string }[]) {
+  _url: URL;
+
+  constructor(element: HTMLDivElement, urlInput: boolean = true, gridSelector = true, urls?: URL | { url: string; label: string }[]) {
     if (element !== undefined) {
       this.container = element;
     } else {
@@ -84,6 +89,10 @@ export class CuttingTable {
       urlInput = element.dataset.urlInput === "true";
     }
     this._urlInput = urlInput;
+    if ("gridSelector" in element.dataset && element.dataset.gridSelector !== undefined && element.dataset.gridSelector !== "") {
+      gridSelector = element.dataset.gridSelector === "true";
+    }
+    this._gridSelector = gridSelector;
     if ("urls" in element.dataset && element.dataset.urls !== undefined && element.dataset.urls !== "") {
       urls = new URL(element.dataset.urls);
     }
@@ -103,7 +112,7 @@ export class CuttingTable {
     this.form = new IIIFForm(this, selectContainer);
     //Result renderer
     const renderElement = this.container.querySelector<HTMLDivElement>(`.${CuttingTable.rendererElementClass}`)!;
-    this.renderer = new Renderer(renderElement, this._columns, this._rows);
+    this.renderer = new Renderer(renderElement, this._columns, this._rows, this._gridSelector);
     this.viewerElement = this.container.querySelector<HTMLDivElement>(`.${CuttingTable.viewerElementClass}`)!;
 
     this.setupOSD(this.viewerElement);

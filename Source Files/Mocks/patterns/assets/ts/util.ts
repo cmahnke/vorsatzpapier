@@ -2,8 +2,13 @@ import type { Lang } from "./types";
 
 export function getLang(): Lang {
   let lang = "en";
-  if (document.documentElement.lang !== undefined) {
-    lang = document.documentElement.lang.split("-")[0];
+  try {
+    lang = browser.i18n.getUILanguage();
+    lang = lang.split("-")[0];
+  } catch {
+    if (document.documentElement.lang !== undefined) {
+      lang = document.documentElement.lang.split("-")[0];
+    }
   }
   return lang as Lang;
 }

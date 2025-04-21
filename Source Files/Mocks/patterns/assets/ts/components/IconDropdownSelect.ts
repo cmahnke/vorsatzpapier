@@ -67,11 +67,16 @@ export class IconDropdownSelect extends HTMLElement {
   private applyStyles() {
     const style = document.createElement("style");
     style.textContent = `
+      :host {
+          display: inline-block;
+      }
+
       .wrapper {
         position: relative;
         display: inline-block;
         width: 100%;
       }
+      
       .display {
         border: 1px solid #ccc;
         padding: 8px;
@@ -80,16 +85,19 @@ export class IconDropdownSelect extends HTMLElement {
         align-items: center;
         border-radius: .4rem;
       }
+
       .display.disabled {
         cursor: default;
         background-color: #eee;
         color: #999;
       }
+
       .display img {
         margin-right: 8px;
         width: 20px;
         height: 20px;
       }
+
       .options-container {
         position: absolute;
         top: 100%;
@@ -103,26 +111,28 @@ export class IconDropdownSelect extends HTMLElement {
         min-height: 30vh;
         max-height: 80vh;
       }
+
       .options-container.open {
         display: block;
       }
+
       .option {
         padding: .2rem;
         display: flex;
         align-items: center;
         cursor: pointer;
       }
+
       .option img {
         margin-right: 8px;
         width: 20px;
         height: 20px;
       }
+
       .option.selected {
         background-color: #f0f0f0;
       }
-      :host {
-          display: inline-block;
-      }
+
     `;
     this.shadow.appendChild(style);
   }

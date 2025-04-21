@@ -412,44 +412,54 @@ export class CanvasDownloadButton extends HTMLElement {
     const style = document.createElement("style");
     style.textContent = `
             :host {
-                display: inline-block; /* Default display */
-                vertical-align: middle;
+              display: inline-block; /* Default display */
+              vertical-align: middle;
+              /* Variables for easier theming */
+              --btn-bg-color: #66afff;
+              --btn-text-color: white;
+              --btn-hover-bg-color: #007bff;
+              --btn-hover-tansition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+              --btn-disabled-bg-color: #cccccc;
+              --btn-disabled-text-color: #666666;
+              --btn-padding: 8px 16px;
+              --btn-border-radius: 0.4rem;
+              --btn-font-size: 1em;
+              --btn-cursor: pointer;
+              --btn-disabled-cursor: not-allowed;
+              --btn-margin: 0 2em;
+              --disabled-opacity: .6;
+              --font-family: sans-serif;
             }
-            .download-button {
-                /* Variables for easier theming */
-                --btn-bg-color: #4CAF50;
-                --btn-text-color: white;
-                --btn-hover-bg-color: #45a049; /* Darker green */
-                --btn-disabled-bg-color: #cccccc;
-                --btn-disabled-text-color: #666666;
-                --btn-padding: 8px 16px;
-                --btn-border-radius: 0.4rem;
-                --btn-font-size: 16px;
-                --btn-cursor: pointer;
-                --btn-disabled-cursor: not-allowed;
-                --btn-margin: 0 2em;
 
-                padding: var(--btn-padding);
-                border: none;
-                border-radius: var(--btn-border-radius);
-                cursor: var(--btn-cursor);
-                font-size: var(--btn-font-size);
-                transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-                color: var(--btn-text-color);
-                background-color: var(--btn-bg-color);
-                white-space: nowrap; /* Prevent text wrapping */
-                line-height: 1.5; /* Adjust line height */
-                margin: var(--btn-margin);
+            :host(.disabled) {
+              opacity: var(--disabled-opacity);
+              pointer-events: none;
+            }
+
+            .download-button {
+              font-family: var(--font-family);
+              padding: var(--btn-padding);
+              border: none;
+              border-radius: var(--btn-border-radius);
+              cursor: var(--btn-cursor);
+              font-size: var(--btn-font-size);
+              transition: var(--btn-hover-tansition);
+              color: var(--btn-text-color);
+              background-color: var(--btn-bg-color);
+              white-space: nowrap; /* Prevent text wrapping */
+              line-height: 1.5; /* Adjust line height */
+              margin: var(--btn-margin);
             }
 
             .download-button:hover:not(:disabled) {
-                background-color: var(--btn-hover-bg-color);
+              background-color: var(--btn-hover-bg-color);
             }
 
             .download-button:disabled {
-                background-color: var(--btn-disabled-bg-color);
-                color: var(--btn-disabled-text-color);
-                cursor: var(--btn-disabled-cursor);
+              background-color: var(--btn-disabled-bg-color);
+              color: var(--btn-disabled-text-color);
+              cursor: var(--btn-disabled-cursor);
+              opacity: var(--disabled-opacity)
             }
             `;
     this.shadow.appendChild(style);

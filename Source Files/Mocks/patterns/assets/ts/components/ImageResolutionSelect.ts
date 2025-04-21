@@ -165,12 +165,30 @@ export class ImageResolutionSelect extends HTMLElement {
   private applyStyles() {
     const style = document.createElement("style");
     style.textContent = `
+      :host {
+        display: inline-block;
+        --btn-bg-color: #66afff;
+        --btn-font-size: 1em;
+        --font-family: sans-serif;
+        --disabled-opacity: .6;
+        --btn-disabled-bg-color: #cccccc;
+        --btn-disabled-text-color: #666666;
+        --btn-disabled-cursor: not-allowed;
+        --btn-hover-bg-color: #45a049;
+        --btn-hover-tansition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+        --btn-hover-bg-color: #007bff;
+        --btn-border-radius: 0.4rem;
+        --btn-padding: 8px 16px;
+      }
+
       .wrapper {
         position: relative;
         display: inline-block;
         min-width: 14em;
-        font-size: 16px;
+        font-size: var(--btn-font-size);
+        font-family: var(--font-family);
       }
+
       .display {
         border: 1px solid #ccc;
         padding: 8px;
@@ -181,11 +199,15 @@ export class ImageResolutionSelect extends HTMLElement {
         width: 100%;
         border-radius: .4rem;
       }
+
       .display.disabled {
-        cursor: default;
-        background-color: #eee;
-        color: #999;
+        background-color: var(--btn-disabled-bg-color);
+        color: var(--btn-disabled-text-color);
+        opacity: var(--disabled-opacity);
+        pointer-events: none;
+        cursor: var(--btn-disabled-cursor);
       }
+
       .options-container {
         position: absolute;
         top: 100%;
@@ -196,9 +218,11 @@ export class ImageResolutionSelect extends HTMLElement {
         z-index: 10;
         border-radius: .4rem;
       }
+
       .options-container.open {
         display: block;
       }
+
       .option {
         padding: 8px;
         display: flex;
@@ -206,23 +230,41 @@ export class ImageResolutionSelect extends HTMLElement {
         cursor: pointer;
         white-space: nowrap;
       }
+
       .option.selected {
         background-color: #f0f0f0;
       }
+
       .custom-inputs {
         display: flex;
         align-items: center;
         /* margin-left: 8px; */
       }
+
       .custom-inputs input {
         width: 60px;
         margin: 0 4px;
       }
+
       .custom-inputs button {
         margin-left: 4px;
+        transition: var(--btn-hover-tansition);
+        border-radius: var(--btn-border-radius);
+        background-color: var(--btn-bg-color);
+        font-size: var(--btn-font-size);
+        color: white;
+        border: none;
+        padding: var(--btn-padding);
       }
-      :host {
-          display: inline-block;
+
+      .custom-inputs button:hover:not(:disabled) {
+        background-color: var(--btn-hover-bg-color);
+      }
+
+      .custom-inputs button:disabled {
+        background-color: var(--btn-disabled-bg-color);
+        color: var(--btn-disabled-text-color);
+        cursor: var(--btn-disabled-cursor);
       }
     `;
     this.shadow.appendChild(style);

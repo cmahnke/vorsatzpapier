@@ -1,6 +1,7 @@
 import OpenSeadragon from "openseadragon";
 import { ImageResolutionSelect } from "./components/ImageResolutionSelect";
 import { CanvasDownloadButton } from "./components/CanvasDownloadButton";
+import { GridSizeSelector } from "./components/GridSizeSelector";
 import { CutPosition } from "./types";
 import { OffsetRect } from "./openseadragon/OffsetRect";
 import type { CutNotification, IIIFImageStub, Translation } from "./types";
@@ -25,30 +26,34 @@ export class Renderer {
   viewer: OpenSeadragon.Viewer | undefined;
   viewerElement: HTMLElement;
 
+  _gridSelector: boolean;
   clipRect: OpenSeadragon.Rect | undefined;
   _offsets: { [key in CutPosition]?: number } | undefined;
   _rotations: { [key in CutPosition]?: number } | undefined;
-  rows: number;
-  columns: number;
+  _rows: number;
+  _columns: number;
   tileSources: object[] = [];
   _loaded: boolean = false;
   resolutionSelect: ImageResolutionSelect;
   downloadButton: CanvasDownloadButton;
+  gridSizeSelect: GridSizeSelector;
   _margins: boolean = false;
   defaultExportDimensions: [number, number] = [1920, 1080];
   _notificationQueue: CutNotification[] = [];
 
-  constructor(element: HTMLElement, columns: number = 4, rows: number = 4, source?: IIIFImageStub) {
+  constructor(element: HTMLElement, columns: number = 4, rows: number = 4, gridSelector: boolean = true, source?: IIIFImageStub) {
     if (element !== undefined) {
       this.element = element;
     } else {
       this.element = document.querySelector<HTMLDivElement>(Renderer.defaultSelector)!;
     }
 
-    this.columns = columns;
-    this.rows = rows;
+    this._columns = columns;
+    this._rows = rows;
+    this._gridSelector = gridSelector;
     customElements.define("image-resolution-select", ImageResolutionSelect);
     customElements.define("offscreencanvas-download", CanvasDownloadButton);
+    customElements.define("grid-size-selector", GridSizeSelector);
     this.setupHTML();
     this.viewerElement = this.element.querySelector(Renderer.rendererViewerSelector)!;
     this.viewer = this.setupViewer(this.viewerElement);
@@ -80,8 +85,8 @@ export class Renderer {
   }
 
   setupSources() {
-    let columns = this.columns;
-    let rows = this.rows;
+    let columns = this._columns;
+    let rows = this._rows;
     if (this._margins) {
       columns = columns + 2;
       rows = rows + 2;
@@ -121,6 +126,7 @@ export class Renderer {
     });
     this.setupSources();
     this.viewer.open(this.tileSources);
+    this.enableControls();
   }
 
   get width(): number | undefined {
@@ -143,6 +149,7 @@ export class Renderer {
 
   set margins(margins: boolean) {
     this._margins = margins;
+    this.setSize(this.columns, this.rows);
     //This triggers reinitialization
     if (this._source !== undefined) {
       this.source = this._source;
@@ -159,6 +166,42 @@ export class Renderer {
     if (Renderer.validateSidedVariations(rotations, "rotation")) {
       this._rotations = rotations;
     }
+  }
+
+  get rows(): number {
+    if (this._margins) {
+      return this._rows - 2;
+    }
+    return this._rows;
+  }
+  get columns(): number {
+    if (this._margins) {
+      return this._columns - 2;
+    }
+    return this._columns;
+  }
+
+  setSize(columns: number, rows: number): void {
+    if (this._margins) {
+      columns = columns + 2;
+      rows = rows + 2;
+    }
+    if (this._columns != columns || this._rows != rows) {
+      this._columns = columns;
+      this._rows = rows;
+      this.viewer?.world.arrange({ rows: this._rows, columns: this._columns, tileMargin: 0, immediately: true });
+
+      //This triggers reinitialization
+      if (this._source !== undefined) {
+        this.source = this._source;
+      }
+    }
+  }
+
+  enableControls() {
+    this.gridSizeSelect.removeAttribute("disabled");
+    this.resolutionSelect.removeAttribute("disabled");
+    this.downloadButton.removeAttribute("disabled");
   }
 
   static validateSidedVariations(variation: { [key in CutPosition]?: number }, type: string): boolean {
@@ -220,8 +263,8 @@ export class Renderer {
         showHomeControl: false,
         autoHideControls: false,
         collectionTileMargin: 0,
-        collectionRows: this.rows,
-        collectionColumns: this.columns,
+        collectionRows: this._rows,
+        collectionColumns: this._columns,
         crossOriginPolicy: "Anonymous",
         drawer: "canvas",
         zoomInButton: this.element.querySelector<Element>(".zoomin")!,
@@ -374,8 +417,8 @@ export class Renderer {
   */
 
   layout(immediately: boolean = true) {
-    let columns = this.columns;
-    let rows = this.rows;
+    let columns = this._columns;
+    let rows = this._rows;
     let initial = false;
     this.viewer?.world.setAutoRefigureSizes(true);
     if (this._margins) {
@@ -389,7 +432,7 @@ export class Renderer {
     }
     let firstImage: OpenSeadragon.TiledImage | undefined = this.viewer?.world.getItemAt(0);
     if (this._margins) {
-      firstImage = this.viewer?.world.getItemAt(this.rows + 2);
+      firstImage = this.viewer?.world.getItemAt(this._rows + 2);
     }
     if (firstImage === undefined) {
       throw new Error("Couldn't get first tiled image!");
@@ -399,14 +442,14 @@ export class Renderer {
     if (firstImage.getBounds().width == 1) {
       initial = true;
       //This is needed for the size calculation based on reference images
-      this.viewer?.world.arrange({ rows: this.rows, columns: this.columns, tileMargin: 0, immediately: true });
+      this.viewer?.world.arrange({ rows: this._rows, columns: this._columns, tileMargin: 0, immediately: true });
     }
 
     const referenceImage = firstImage;
 
     //const initialSizes = this.viewer?.viewport.imageToViewportRectangle(this.clipRect);
 
-    console.log("First check ", firstImage.imageToViewportRectangle(this.clipRect));
+    //console.log("First check ", firstImage.imageToViewportRectangle(this.clipRect));
 
     //const initialSizes = firstImage.imageToViewportRectangle(this.clipRect);
     this.viewer?.world.setAutoRefigureSizes(false);
@@ -428,7 +471,7 @@ export class Renderer {
         }
 
         const transformedClipRect = referenceImage.imageToViewportRectangle(this.clipRect);
-        expectedSize = new OpenSeadragon.Rect(0, 0, transformedClipRect.width * this.columns, transformedClipRect.height * this.rows);
+        expectedSize = new OpenSeadragon.Rect(0, 0, transformedClipRect.width * this._columns, transformedClipRect.height * this._rows);
 
         let offsetRect;
 
@@ -445,14 +488,14 @@ export class Renderer {
             tiledImage.getRotation()
           );
           //First and last column (margin)
-          if (c == 0 || c == this.columns + 1) {
+          if (c == 0 || c == this._columns + 1) {
             column = c - 1;
             if (offsetRect !== undefined && r > 1 && r % 2 == 0) {
               hideRect.height = firstImage.imageToViewportRectangle(offsetRect).height * (r / 2) * offsetRect.degrees;
             }
           }
           //First and last row (margin)
-          if (r == 0 || r == this.rows + 1) {
+          if (r == 0 || r == this._rows + 1) {
             row = r - 1;
             if (offsetRect !== undefined && c > 1 && c % 2 == 0) {
               if (offsetRect.degrees > 0 && r == 0) {
@@ -618,19 +661,6 @@ export class Renderer {
       }
     } else {
       throw new Error("Not a valid viewer");
-    }
-  }
-
-  changeSize(columns: number, rows: number): void {
-    if (this.columns != columns || this.rows != rows) {
-      this.columns = columns;
-      this.rows = rows;
-      this.viewer?.world.arrange({ rows: this.rows, columns: this.columns, tileMargin: 0, immediately: true });
-
-      //This triggers reinitialization
-      if (this._source !== undefined) {
-        this.source = this._source;
-      }
     }
   }
 
@@ -1019,7 +1049,21 @@ export class Renderer {
     this.downloadButton.fileName = `wallpaper`;
     this.downloadButton.width = width;
     this.downloadButton.height = height;
+    this.downloadButton.setAttribute("disabled", "true");
     this.downloadButton.classList.add("download-button");
+
+    this.gridSizeSelect = document.createElement("grid-size-selector") as GridSizeSelector;
+    this.gridSizeSelect.setAttribute("disabled", "true");
+    this.gridSizeSelect.setAttribute("width", String(this.columns));
+    this.gridSizeSelect.setAttribute("height", String(this.rows));
+    this.gridSizeSelect.classList.add("grid-select");
+    const sizeChangeHandler = (event: CustomEvent) => {
+      const columns = event.detail.width;
+      const rows = event.detail.height;
+      this.setSize(columns, rows);
+      //this.layout(true);
+    };
+    this.gridSizeSelect.addEventListener("size-changed", sizeChangeHandler.bind(this));
 
     this.resolutionSelect = document.createElement("image-resolution-select") as ImageResolutionSelect;
     const options = this.resolutionSelect.optionsData;
@@ -1027,6 +1071,7 @@ export class Renderer {
     this.resolutionSelect.setAttribute("confirm-button", "true");
     this.resolutionSelect.customHeight = height;
     this.resolutionSelect.customWidth = width;
+    this.resolutionSelect.setAttribute("disabled", "true");
     this.resolutionSelect.addEventListener("change", (event: CustomEvent) => {
       if (event.detail !== undefined) {
         this.downloadButton.width = event.detail[0];
@@ -1038,6 +1083,9 @@ export class Renderer {
 
     element.appendChild(this.resolutionSelect);
     element.appendChild(this.downloadButton);
+    if (this._gridSelector) {
+      element.appendChild(this.gridSizeSelect);
+    }
   }
 
   static cloneRect(rect: OpenSeadragon.Rect): OpenSeadragon.Rect {

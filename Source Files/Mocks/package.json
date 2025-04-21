@@ -16,6 +16,7 @@
     "@allmaps/iiif-parser": "^1.0.0-beta.42",
     "@iiif/parser": "^2.1.8",
     "fabric": "^6.6.4",
+    "i18next": "^25.0.1",
     "openseadragon": "^5.0.1",
     "openseadragon-fabric": "^1.0.8"
   },
@@ -27,6 +28,7 @@
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^12.1.2",
+    "@types/i18next": "^12.1.0",
     "@types/jsdom": "^21.1.7",
     "@types/node": "^22.14.1",
     "@types/openseadragon": "^3.0.10",

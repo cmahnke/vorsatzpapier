@@ -144,6 +144,9 @@ $active-color: #007bff;
     }
 
     &.json {
+      max-width: min-content;
+      margin: 0 0.6em;
+      text-align: center;
     }
   }
 
@@ -164,11 +167,18 @@ $active-color: #007bff;
         margin-right: 1em;
       }
 
+      .grid-select {
+        position: absolute;
+        top: 4em;
+        right: 1em;
+      }
+
       .download-button {
         max-width: 9em;
         position: absolute;
         top: 1em;
         right: 1em;
+        --btn-margin: 0;
       }
     }
   }
@@ -227,4 +237,44 @@ $active-color: #007bff;
       }
     }
   }
+
+  //.control.slider
+  /*
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+
+    &::-moz-range-track {
+      background: transparent;
+      border: none;
+    }
+
+    &:hover {
+      &::-webkit-slider-thumb,
+      &::-moz-range-thumb {
+        background-color: #0056b3;
+      }
+    }
+
+    &:active {
+      &::-webkit-slider-thumb,
+      &::-moz-range-thumb {
+        background-color: #004085;
+      }
+    }
+
+    &::-webkit-slider-thumb,
+    &::-moz-range-thumb {
+      background-color: #007bff;
+    }
+
+    &.disabled {
+      &::-webkit-slider-thumb,
+      &::-moz-range-thumb {
+        pointer-events: none;
+        background-color: #ccc;
+      }
+    }
+  }
+  */
 }

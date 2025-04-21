@@ -60,8 +60,8 @@ export class CuttingTable {
   downloadLink: HTMLAnchorElement;
   dropZoneElement: HTMLDivElement;
   //Renderer tiles
-  _columns = 4;
-  _rows = 4;
+  _columns: number = 4;
+  _rows: number = 4;
 
   //URL handling
   _initialUrls: { url: string; label: string }[];
@@ -103,7 +103,7 @@ export class CuttingTable {
     this.form = new IIIFForm(this, selectContainer);
     //Result renderer
     const renderElement = this.container.querySelector<HTMLDivElement>(`.${CuttingTable.rendererElementClass}`)!;
-    this.renderer = new Renderer(renderElement, this.columns, this.rows);
+    this.renderer = new Renderer(renderElement, this._columns, this._rows);
     this.viewerElement = this.container.querySelector<HTMLDivElement>(`.${CuttingTable.viewerElementClass}`)!;
 
     this.setupOSD(this.viewerElement);

@@ -45,14 +45,13 @@ export class Renderer {
       this.element = document.querySelector<HTMLDivElement>(Renderer.defaultSelector)!;
     }
 
+    this.columns = columns;
+    this.rows = rows;
     customElements.define("image-resolution-select", ImageResolutionSelect);
     customElements.define("offscreencanvas-download", CanvasDownloadButton);
     this.setupHTML();
     this.viewerElement = this.element.querySelector(Renderer.rendererViewerSelector)!;
     this.viewer = this.setupViewer(this.viewerElement);
-
-    this.columns = columns;
-    this.rows = rows;
 
     if (source !== undefined) {
       this.source = source;
@@ -353,7 +352,7 @@ export class Renderer {
       horizontal = CutPosition.Right;
     }
     if (CutPosition.Top in offsets && offsets[CutPosition.Top] != undefined) {
-      height = -1 * offsets[CutPosition.Top];
+      height = offsets[CutPosition.Top];
       vertical = CutPosition.Top;
     }
     if (CutPosition.Bottom in offsets && offsets[CutPosition.Bottom] != undefined) {
@@ -371,9 +370,7 @@ export class Renderer {
   /*
   TODO:
     * Offsets includin wrap arounds and margins
-    * Cuts at top and left
     * Check this https://github.com/openseadragon/openseadragon/pull/2616
-
   */
 
   layout(immediately: boolean = true) {
@@ -471,23 +468,10 @@ export class Renderer {
           continue;
         }
 
-        // Offset Rect
-        /*
-        if (this.offsetX != 0 || this.offsetY != 0) {
-          offsetRect = new OpenSeadragon.Rect(0, 0, this.offsetX, this.offsetY);
-          console.log(offsetRect);
-        }
-
-        if (this._offsets !== undefined && Object.keys(this._offsets).length) {
-        }
-        */
-
         // Rotations
         if (this._rotations !== undefined && Object.keys(this._rotations).length) {
           if (CutPosition.Right in this._rotations && this._rotations[CutPosition.Right] !== undefined && row % 2 == 0 && column % 2 == 1) {
             const rotate = this._rotations[CutPosition.Right];
-            //const rotatedRect = Renderer.cloneRect(this.clipRect);
-            //rotatedRect.rotate(rotate);
             tiledImage.setRotation(rotate, immediately);
           }
           if (
@@ -497,8 +481,6 @@ export class Renderer {
             row % 2 == 1
           ) {
             const rotate = this._rotations[CutPosition.Bottom];
-            //const rotatedRect = Renderer.cloneRect(this.clipRect);
-            //rotatedRect.rotate(rotate, rotatedRect.getCenter());
             tiledImage.setRotation(rotate, immediately);
           }
           if (
@@ -509,8 +491,6 @@ export class Renderer {
           ) {
             if (row % 2 == 0 && column % 2 == 1 && column % 2 == 0 && row % 2 == 1) {
               const rotate = this._rotations[CutPosition.Right] + this._rotations[CutPosition.Bottom];
-              //const rotatedRect = Renderer.cloneRect(this.clipRect);
-              //rotatedRect.rotate(rotate, rotatedRect.getCenter());
               tiledImage.setRotation(rotate, immediately);
             }
           }
@@ -526,7 +506,6 @@ export class Renderer {
         */
 
         //initial position
-        //console.log("Clip calculated by reference ", this.clipRect, referenceImage.imageToViewportRectangle(this.clipRect));
         width = transformedClipRect.width;
         height = transformedClipRect.height;
         if (transformedClipRect.x > 0) {
@@ -540,42 +519,48 @@ export class Renderer {
         y = height * row;
 
         if (offsetRect !== undefined) {
-          //const offsetClipRect = Renderer.cloneRect(this.clipRect);
-          if (column > 0 && offsetRect.width > 0) {
-            const shift = offsetRect.calculateX(referenceImage) * column;
+          if (column > 0 && offsetRect.height > 0) {
+            const shift = offsetRect.calculateY(referenceImage) * column;
             y = y + shift;
-            if ((column = this.columns - 1)) {
-              const borderClip = Renderer.cloneRect(this.clipRect);
-              borderClip.height = shift;
-              //TODO: Add clip
-              //tiledImage.setClip(borderClip);
-            }
-          } else if (column > 0 && offsetRect.width < 0) {
-            const shift = offsetRect.calculateX(referenceImage) * column;
+          } else if (column > 0 && offsetRect.height < 0) {
+            const shift = offsetRect.calculateY(referenceImage) * column;
             y = y - shift;
-            if (column == 1) {
-              const borderClip = Renderer.cloneRect(this.clipRect);
-              borderClip.height = shift;
-              //TODO: Add clip
-            }
           }
-          if (row > 0 && offsetRect.height > 0) {
-            const shift = offsetRect.calculateY(referenceImage) * row;
+          if (column == this.columns - 1 && offsetRect.width > 0) {
+            const borderClip = Renderer.cloneRect(tiledImage.getClip());
+            const imageCoordShift = offsetRect.width * row;
+            borderClip.width = borderClip.width - imageCoordShift;
+            tiledImage.setClip(borderClip);
+          }
+          if (column == 0 && row > 0 && offsetRect.width < 0) {
+            const borderClip = Renderer.cloneRect(tiledImage.getClip());
+            const imageCoordShift = offsetRect.width * row * -1;
+            borderClip.width = borderClip.width - imageCoordShift;
+            borderClip.x = borderClip.x + imageCoordShift;
+            tiledImage.setClip(borderClip);
+          }
+          if (row > 0 && offsetRect.width > 0) {
+            const shift = offsetRect.calculateX(referenceImage) * row;
             x = x + shift;
-            if ((row = this.rows - 1)) {
-              const borderClip = Renderer.cloneRect(this.clipRect);
-              borderClip.width = shift;
-              //TODO: Add clip
-            }
-          } else if (row > 0 && offsetRect.height < 0) {
-            const shift = offsetRect.calculateY(referenceImage) * row;
+          } else if (row > 0 && offsetRect.width < 0) {
+            const shift = offsetRect.calculateX(referenceImage) * row;
             x = x - shift;
-            if (row == 1) {
-              const borderClip = Renderer.cloneRect(this.clipRect);
-              borderClip.width = shift;
-              //TODO: Add clip
-            }
           }
+
+          if (row == this.rows - 1 && offsetRect.height > 0) {
+            const borderClip = Renderer.cloneRect(tiledImage.getClip());
+            const imageCoordShift = offsetRect.height * column;
+            borderClip.height = borderClip.height - imageCoordShift;
+            tiledImage.setClip(borderClip);
+          }
+          if (row == 0 && column > 0 && offsetRect.height < 0) {
+            const borderClip = Renderer.cloneRect(tiledImage.getClip());
+            const imageCoordShift = offsetRect.height * column * -1;
+            borderClip.height = borderClip.height - imageCoordShift;
+            borderClip.y = borderClip.y + imageCoordShift;
+            tiledImage.setClip(borderClip);
+          }
+
           console.log("offsets", offsetRect, offsetRect.calculateX(referenceImage), offsetRect.calculateY(referenceImage), x, y);
         }
 
@@ -585,7 +570,7 @@ export class Renderer {
           //‚tiledImage.setWidth(width, immediately);
         }
         //console.log("clip rect x", this.clipRect);
-        console.log(`${column}:${row} x`, tiledImage.getBounds(), this.clipRect.x, x, " y ", this.clipRect.y, y);
+        //console.log(`${column}:${row} x`, tiledImage.getBounds(), this.clipRect.x, x, " y ", this.clipRect.y, y);
       }
     }
 
@@ -640,6 +625,8 @@ export class Renderer {
     if (this.columns != columns || this.rows != rows) {
       this.columns = columns;
       this.rows = rows;
+      this.viewer?.world.arrange({ rows: this.rows, columns: this.columns, tileMargin: 0, immediately: true });
+
       //This triggers reinitialization
       if (this._source !== undefined) {
         this.source = this._source;

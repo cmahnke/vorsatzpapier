@@ -15,6 +15,7 @@
   - Image not exported with full width
   - Image export won't work with offscreencanvas yet
 - Initial layout
+- Controls after json load are resetted
 
 # Commands
 

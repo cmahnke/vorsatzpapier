@@ -109,8 +109,8 @@ export class Cuts {
       if (height == width) {
         return false;
       }
-
       let side;
+
       if (this.lastAxis == CutPosition.Left || this.lastAxis == CutPosition.Right) {
         side = width;
         if (this.height < side) {
@@ -132,6 +132,12 @@ export class Cuts {
         }
         if (this.lastAxis == CutPosition.Bottom && this.getPosition(CutPosition.Bottom) < side) {
           side = this.getPosition(CutPosition.Bottom);
+        }
+      } else {
+        if (this.height > this.width) {
+          side = this.width;
+        } else {
+          side = this.height;
         }
       }
 

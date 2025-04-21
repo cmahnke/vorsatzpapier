@@ -1,32 +1,13 @@
 import { IIIF, Collection, Manifest, Canvas, Image } from "@allmaps/iiif-parser";
 import { IconDropdownSelect } from "./components/IconDropdownSelect";
 import { CuttingTable } from "./CuttingTable";
-import type { IIIFSelect, IIIFEntry, IIIFImageEntry, IIIFType, Translation } from "./types";
+import type { IIIFSelect, IIIFEntry, IIIFImageEntry, IIIFType } from "./types";
 import { getLang, loadInfoJson } from "./util";
+import i18next from "i18next";
 
 type ReturnJSON = { url: URL; json: object | undefined };
 
 export class IIIFForm {
-  static labels: { [key: string]: { [key: string]: Translation } } = {
-    collection: {
-      choose: { de: "Manifest aus der Sammlung auswählen", en: "Select manifest from the collection" },
-      button: { de: "Auswählen", en: "Select" }
-    },
-    manifest: {
-      choose: { de: "Seite als Vorlage auswählen", en: "Select page as template" },
-      button: { de: "Auswählen", en: "Select" }
-    },
-    image: {
-      choose: { de: "Bild auswählen", en: "Select image" },
-      button: { de: "Anzeigen", en: "Show" }
-    },
-    load: {
-      button: { de: "URL laden", en: "Load URL" }
-    },
-    error: {
-      json: { de: "<b>IIIF Datei konnte nicht geladen werden</b>", en: "<b>IIIF file could not be loaded</b>" }
-    }
-  };
   static typeHierarchy: { [key in IIIFType]: string } = { Collection: "collection.json", Manifest: "manifest.json", Image: "info.json" };
 
   cuttingTable: CuttingTable;
@@ -55,7 +36,7 @@ export class IIIFForm {
     this._urlInput = urlInput;
     this.statusContainer = this.cuttingTable.container.querySelector<HTMLDivElement>(`.${CuttingTable.statusContainerClass}`)!;
     this.button = this.cuttingTable.container.querySelector<HTMLButtonElement>(`.${this.buttonClass}`)!;
-    this.button.innerText = IIIFForm.labels.load.button[getLang()];
+    this.button.innerText = i18next.t("iiifForm:loadButton"); //IIIFForm.labels.load.button[getLang()];
     this.setup();
   }
 
@@ -154,7 +135,7 @@ export class IIIFForm {
     const loadedUrl = loaded.url;
 
     if (json === undefined) {
-      this.displayMessage(IIIFForm.labels.error.json[getLang()]);
+      this.displayMessage(i18next.t("iiifForm:errorJson")); //IIIFForm.labels.error.json[getLang()]);
       return;
     }
     const manifest = IIIF.parse(json);
@@ -275,7 +256,7 @@ export class IIIFForm {
 
   addSelect(options: IIIFSelect, autoLoadSingle: boolean = true): IIIFSelect {
     if (this.selectContainer !== null) {
-      const label = IIIFForm.labels[options.type.toLowerCase()]["choose"][getLang()];
+      const label = i18next.t(`iiifForm:${options.type.toLowerCase()}Choose`); //IIIFForm.labels[options.type.toLowerCase()]["choose"][getLang()];
       const id = "";
       options = IIIFForm.createSelect(options, id, `select-${options.type}`, this.selectContainer, label);
     }

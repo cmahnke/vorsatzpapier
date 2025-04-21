@@ -17,14 +17,17 @@
     "@iiif/parser": "^2.1.8",
     "fabric": "^6.6.4",
     "i18next": "^25.0.1",
+    "i18next-browser-languagedetector": "^8.0.5",
     "openseadragon": "^5.0.1",
     "openseadragon-fabric": "^1.0.8"
   },
   "devDependencies": {
     "@allmaps/types": "^1.0.0-beta.15",
     "@eslint/js": "^9.25.0",
+    "@rollup/plugin-alias": "^5.1.1",
     "@rollup/plugin-commonjs": "^28.0.3",
     "@rollup/plugin-image": "^3.0.3",
+    "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^12.1.2",

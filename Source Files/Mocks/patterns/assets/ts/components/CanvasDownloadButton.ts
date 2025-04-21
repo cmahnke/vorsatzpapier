@@ -1,3 +1,5 @@
+import i18next from "i18next";
+
 export class CanvasDownloadButton extends HTMLElement {
   // --- Private Properties ---
   private _canvas: OffscreenCanvas | HTMLCanvasElement | undefined;
@@ -20,7 +22,7 @@ export class CanvasDownloadButton extends HTMLElement {
     this._button = document.createElement("button");
     this._button.className = "download-button";
     this._button.part = "button"; // Expose button for external styling
-    this._button.textContent = "Download"; // Default text
+    this._button.textContent = i18next.t("canvasDownloadButton:download");
     this._button.addEventListener("click", this._initiateDownload.bind(this));
 
     this.shadow.appendChild(this._button);
@@ -55,7 +57,7 @@ export class CanvasDownloadButton extends HTMLElement {
         this.disabled = newValue !== null; // Update property based on attribute presence
         break;
       case "button-text":
-        this.buttonText = newValue || "Download";
+        this.buttonText = newValue || i18next.t("canvasDownloadButton:download");
         break;
       case "file-name":
         this.fileName = newValue || "canvas-image";
@@ -145,7 +147,7 @@ export class CanvasDownloadButton extends HTMLElement {
   }
 
   set buttonText(value: string) {
-    const text = String(value || "Download");
+    const text = String(value || i18next.t("canvasDownloadButton:download"));
     if (this._button && this._button.textContent !== text) {
       this._button.textContent = text;
       // Reflect attribute change if needed, though less common for button text
@@ -359,7 +361,7 @@ export class CanvasDownloadButton extends HTMLElement {
       console.error("Error during download process:", error);
       this.dispatchEvent(
         new CustomEvent("download-error", {
-          detail: { message: "Download failed.", error: error },
+          detail: { message: i18next.t("canvasDownloadButton:downloadFailed"), error: error },
           bubbles: true,
           composed: true
         })

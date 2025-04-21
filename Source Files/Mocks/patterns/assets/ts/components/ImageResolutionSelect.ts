@@ -1,9 +1,11 @@
+import i18next from "i18next";
+
 export class ImageResolutionSelect extends HTMLElement {
   private shadow: ShadowRoot;
   private displayElement: HTMLElement;
   private optionsContainer: HTMLElement;
   private options: { value: string; label: string }[] = [
-    { value: "custom", label: "Custom" },
+    { value: "custom", label: i18next.t("imageResolutionSelect:custom") },
     { value: "1920x1080", label: "1080p (Full HD) (1920x1080)" },
     { value: "1280x720", label: "720p (HD) (1280x720)" },
     { value: "800x600", label: "SVGA (800x600)" },

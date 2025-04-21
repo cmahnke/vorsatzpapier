@@ -4,19 +4,11 @@ import { CanvasDownloadButton } from "./components/CanvasDownloadButton";
 import { GridSizeSelector } from "./components/GridSizeSelector";
 import { CutPosition } from "./types";
 import { OffsetRect } from "./openseadragon/OffsetRect";
-import type { CutNotification, IIIFImageStub, Translation } from "./types";
-import { equals, getLang } from "./util";
+import type { CutNotification, IIIFImageStub } from "./types";
+import { equals } from "./util";
+import i18next from "i18next";
 
 export class Renderer {
-  static labels: { [key: string]: { [key: string]: Translation } } = {
-    links: {
-      image: { de: "Bild herunterladen", en: "Download image" }
-    },
-    select: {
-      custom: { de: "Eigene Auflösung", en: "Custom resolution" }
-    }
-  };
-
   //Element identifiers / classes / selectors
   static defaultSelector: string = ".texture-container";
   static rendererViewerSelector = ".output-viewer";
@@ -562,6 +554,7 @@ export class Renderer {
         y = height * row;
 
         if (offsetRect !== undefined) {
+          //Vertical shifts
           if (column > 0 && offsetRect.height > 0) {
             const shift = offsetRect.calculateY(referenceImage) * column;
             y = y + shift;
@@ -569,19 +562,21 @@ export class Renderer {
             const shift = offsetRect.calculateY(referenceImage) * column;
             y = y - shift;
           }
-          if (column == this.columns - 1 && offsetRect.width > 0) {
-            const borderClip = Renderer.cloneRect(tiledImage.getClip());
-            const imageCoordShift = offsetRect.width * row;
-            borderClip.width = borderClip.width - imageCoordShift;
-            tiledImage.setClip(borderClip);
-          }
+          //Vertical overlaps
           if (column == 0 && row > 0 && offsetRect.width < 0) {
-            const borderClip = Renderer.cloneRect(tiledImage.getClip());
+            const borderClip = Renderer.cloneRect(tiledImage.getClip()!);
             const imageCoordShift = offsetRect.width * row * -1;
             borderClip.width = borderClip.width - imageCoordShift;
             borderClip.x = borderClip.x + imageCoordShift;
             tiledImage.setClip(borderClip);
           }
+          if (column == this.columns - 1 && offsetRect.width > 0) {
+            const borderClip = Renderer.cloneRect(tiledImage.getClip()!);
+            const imageCoordShift = offsetRect.width * row;
+            borderClip.width = borderClip.width - imageCoordShift;
+            tiledImage.setClip(borderClip);
+          }
+          // Horizontal shifts
           if (row > 0 && offsetRect.width > 0) {
             const shift = offsetRect.calculateX(referenceImage) * row;
             x = x + shift;
@@ -589,20 +584,31 @@ export class Renderer {
             const shift = offsetRect.calculateX(referenceImage) * row;
             x = x - shift;
           }
-
-          if (row == this.rows - 1 && offsetRect.height > 0) {
-            const borderClip = Renderer.cloneRect(tiledImage.getClip());
-            const imageCoordShift = offsetRect.height * column;
-            borderClip.height = borderClip.height - imageCoordShift;
-            tiledImage.setClip(borderClip);
-          }
+          // Horizontal overlaps
           if (row == 0 && column > 0 && offsetRect.height < 0) {
-            const borderClip = Renderer.cloneRect(tiledImage.getClip());
+            const borderClip = Renderer.cloneRect(tiledImage.getClip()!);
             const imageCoordShift = offsetRect.height * column * -1;
             borderClip.height = borderClip.height - imageCoordShift;
             borderClip.y = borderClip.y + imageCoordShift;
             tiledImage.setClip(borderClip);
           }
+          if (row == this.rows - 1 && offsetRect.height > 0) {
+            const borderClip = Renderer.cloneRect(tiledImage.getClip()!);
+            const imageCoordShift = offsetRect.height * column;
+            borderClip.height = borderClip.height - imageCoordShift;
+            tiledImage.setClip(borderClip);
+          }
+
+          /*
+          if(this._margins) {
+            if (r == 0 && column > 0 && offsetRect.height < 0) {
+
+            }
+            if (r == this.rows  && offsetRect.height > 0) {
+
+            }
+          }
+          */
 
           console.log("offsets", offsetRect, offsetRect.calculateX(referenceImage), offsetRect.calculateY(referenceImage), x, y);
         }
@@ -1044,7 +1050,7 @@ export class Renderer {
     this.downloadButton = document.createElement("offscreencanvas-download") as CanvasDownloadButton;
     const suffix = type.split("/")[1];
     this.downloadButton.format = suffix;
-    this.downloadButton.buttonText = Renderer.labels.links.image[getLang()]; //`${suffix.toUpperCase()} Herunterladen`;
+    this.downloadButton.buttonText = i18next.t("renderer:linksImage"); //Renderer.labels.links.image[getLang()]; //`${suffix.toUpperCase()} Herunterladen`;
     this.downloadButton.renderCallback = this.renderImage.bind(this);
     this.downloadButton.fileName = `wallpaper`;
     this.downloadButton.width = width;
@@ -1067,7 +1073,7 @@ export class Renderer {
 
     this.resolutionSelect = document.createElement("image-resolution-select") as ImageResolutionSelect;
     const options = this.resolutionSelect.optionsData;
-    options.filter((opt) => opt.value === "custom")[0].label = Renderer.labels.select.custom[getLang()];
+    options.filter((opt) => opt.value === "custom")[0].label = i18next.t("renderer:selectCustom");
     this.resolutionSelect.setAttribute("confirm-button", "true");
     this.resolutionSelect.customHeight = height;
     this.resolutionSelect.customWidth = width;

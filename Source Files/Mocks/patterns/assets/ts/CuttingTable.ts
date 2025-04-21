@@ -7,20 +7,20 @@ import type { CutType } from "./Cuts";
 import { Renderer } from "./Renderer";
 import { IIIFForm } from "./IIIFForm";
 import { CutPosition } from "./types";
-import type { IIIFImageStub, Translation, CutJSON, CutJSONLD } from "./types";
-import { getLang, loadInfoJson } from "./util";
-import i18next from 'i18next';
+import type { IIIFImageStub, CutJSON, CutJSONLD } from "./types";
+import { loadInfoJson } from "./util";
+import i18next from "i18next";
+import LanguageDetector from "i18next-browser-languagedetector";
+// @ts-ignore Avoid type errors with JSON import
+import translations from "@/json/translations.json" with { type: "json" };
+
+i18next.use(LanguageDetector).init({
+  debug: true,
+  fallbackLng: "en",
+  resources: translations
+});
 
 export class CuttingTable {
-  static labels: { [key: string]: { [key: string]: Translation } } = {
-    links: {
-      json: { de: "Als JSON herunterladen", en: "Download as JSON" }
-    },
-    upload: {
-      error: { de: "JSON konnte nicht geladen werden", en: "JSON could not be loaded" }
-    }
-  };
-
   static {
     CuttingTable.patchOpenSeadragon();
   }
@@ -142,8 +142,8 @@ export class CuttingTable {
 
   addJSONLink(element: HTMLElement) {
     this.downloadLink = document.createElement("a");
-    this.downloadLink.innerText = CuttingTable.labels.links.json[getLang()];
-    this.downloadLink.title = CuttingTable.labels.links.json[getLang()];
+    this.downloadLink.innerText = i18next.t("cuttingTable:linksJson");
+    this.downloadLink.title = i18next.t("cuttingTable:linksJson");
     this.downloadLink.setAttribute("href", "javascript:void(0)");
     this.downloadLink.classList.add("link", "json", "disabled");
     this.downloadLink.setAttribute("id", "downloadJSON");
@@ -317,14 +317,15 @@ export class CuttingTable {
               //this.updateControls();
             } catch (error) {
               console.error(error);
-              this.form.displayMessage(CuttingTable.labels.upload.error[getLang()] + "+ " + error.message);
+
+              this.form.displayMessage(i18next.t("cuttingTable:uploadError") + "+ " + error.message);
             }
           }
         });
         reader.readAsText(file);
       } else {
         const msg = "File is not a JSON";
-        this.form.displayMessage(CuttingTable.labels.upload.error[getLang()] + ": " + msg);
+        this.form.displayMessage(i18next.t("cuttingTable:uploadError") + ": " + msg);
         throw new Error(msg);
       }
     }
@@ -489,7 +490,7 @@ export class CuttingTable {
     if (this._urlInput) {
       urlInput = `<input class="url-input" type="url" value="${url}" name="url" id="collection-url" pattern="https://.*" list="${listId}" required />
           ${initialUrls}
-          <button type="button" class="load-url-button">Load URL</button>`;
+          <button type="button" class="load-url-button">${i18next.t("cuttingTable:loadUrl")}</button>`;
     }
 
     this.container.innerHTML = `

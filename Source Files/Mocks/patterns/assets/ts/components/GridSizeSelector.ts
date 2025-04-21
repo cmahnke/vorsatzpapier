@@ -1,3 +1,5 @@
+import i18next from "i18next";
+
 export class GridSizeSelector extends HTMLElement {
   static observedAttributes = ["width", "height", "maxrows", "maxcols", "disabled"];
 
@@ -49,7 +51,7 @@ export class GridSizeSelector extends HTMLElement {
   }
 
   addEventListeners() {
-    const gridArea = this.shadowRoot?.querySelector(".grid-area");
+    const gridArea = this.shadowRoot?.querySelector<HTMLElement>(".grid-area");
     if (gridArea && !this.disabled) {
       gridArea.addEventListener("mousedown", this.handleMouseDown.bind(this));
       gridArea.addEventListener("mousemove", this.handleMouseMove.bind(this));
@@ -73,7 +75,7 @@ export class GridSizeSelector extends HTMLElement {
   }
 
   removeEventListeners() {
-    const gridArea = this.shadowRoot?.querySelector(".grid-area");
+    const gridArea = this.shadowRoot?.querySelector<HTMLElement>(".grid-area");
     if (gridArea) {
       gridArea.removeEventListener("mousedown", this.handleMouseDown.bind(this));
       gridArea.removeEventListener("mousemove", this.handleMouseMove.bind(this));
@@ -127,7 +129,6 @@ export class GridSizeSelector extends HTMLElement {
 
       .container {
         display: flex;
-        flex-direction: column;
         align-items: flex-start;
         gap: var(--gap);
         font-family: var(--font-family);
@@ -141,11 +142,13 @@ export class GridSizeSelector extends HTMLElement {
       .input-area {
         display: flex;
         gap: var(--gap);
-        align-items: center;
+        align-self: center;
       }
 
-      .input-area label {
+      .container label {
+        vertical-align: middle;
         text-shadow: 0px 0px 15px white, 0px 0px 15px white, 0px 0px 15px white, 0px 0px 15px white, 0px 0px 15px white, 0px 0px 15px white, 0px 0px 15px white;
+        align-self: center;
       }
 
       input[type="number"] {
@@ -231,11 +234,10 @@ export class GridSizeSelector extends HTMLElement {
 
   render() {
     this.shadowRoot!.innerHTML = `
-      <style>${GridSizeSelector.styles}</style>
-      <div class="container">
-        <div class="input-area">
-          <button class="trigger-button" ${this.disabled ? "disabled" : ""}>Select Size</button>
-          <label for="widthInput">Columns :</label>
+        <style>${GridSizeSelector.styles}</style>
+        <div class="container">
+          <button class="trigger-button" ${this.disabled ? "disabled" : ""}>${i18next.t("gridSizeSelector:selectSize")}</button>
+          <label for="widthInput">${i18next.t("generic:columns")}:</label>
           <input
             id="widthInput"
             type="number"
@@ -244,7 +246,7 @@ export class GridSizeSelector extends HTMLElement {
             value="${this._width}"
             ${this.disabled ? "disabled" : ""}
           />
-          <label for="heightInput">Rows:</label>
+          <label for="heightInput">${i18next.t("generic:rows")}:</label>
           <input
             id="heightInput"
             type="number"
@@ -253,7 +255,9 @@ export class GridSizeSelector extends HTMLElement {
             value="${this._height}"
             ${this.disabled ? "disabled" : ""}
           />
-          <button class="update-button" ${this._disableSizeUpdate || this.disabled ? "disabled" : ""}>Update Size</button>
+          <button class="update-button" ${
+            this._disableSizeUpdate || this.disabled ? "disabled" : ""
+          }>${i18next.t("gridSizeSelector:updateSize")}</button>
         </div>
         <div class="grid-container">
           <div class="grid-area">
@@ -261,7 +265,7 @@ export class GridSizeSelector extends HTMLElement {
           </div>
         </div>
       </div>
-    `;
+      `;
     this.initializeElements();
     this.addEventListeners();
     this.classList.toggle("disabled", this.disabled);
@@ -294,7 +298,7 @@ export class GridSizeSelector extends HTMLElement {
 
   handleMouseDown(event: MouseEvent) {
     if (this.disabled) return;
-    const gridArea = this.shadowRoot?.querySelector(".grid-area");
+    const gridArea = this.shadowRoot?.querySelector<HTMLElement>(".grid-area");
     if (!gridArea) return;
 
     const cell = (event.target as HTMLElement).closest(".grid-cell");
@@ -313,7 +317,7 @@ export class GridSizeSelector extends HTMLElement {
   handleMouseMove(event: MouseEvent) {
     if (this.disabled) return;
     if (!this._isDragging) return;
-    const gridArea = this.shadowRoot?.querySelector(".grid-area");
+    const gridArea = this.shadowRoot?.querySelector<HTMLElement>(".grid-area");
     if (!gridArea) return;
 
     const cell = (event.target as HTMLElement).closest(".grid-cell");
@@ -392,7 +396,7 @@ export class GridSizeSelector extends HTMLElement {
   }
 
   updateGrid() {
-    const gridArea = this.shadowRoot?.querySelector(".grid-area");
+    const gridArea = this.shadowRoot?.querySelector<HTMLElement>(".grid-area");
     if (!gridArea) return;
     gridArea.innerHTML = this._renderGrid();
     gridArea.style.display = this._isOpen ? "grid" : "none";

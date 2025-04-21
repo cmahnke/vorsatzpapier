@@ -1,0 +1,74 @@
+{
+  "en": {
+    "cuttingTable": {
+      "linksJson": "Download as JSON",
+      "uploadError": "JSON could not be loaded",
+      "loadUrl": "Load URL"
+    },
+    "renderer": {
+      "linksImage": "Download image",
+      "selectCustom": "Custom resolution"
+    },
+    "iiifForm": {
+      "collectionChoose": "Select manifest from the collection",
+      "collectionButton": "Select",
+      "manifestChoose": "Select page as template",
+      "manifestButton": "Select",
+      "imageChoose": "Select image",
+      "imageButton": "Select",
+      "loadButton": "Load URL",
+      "errorJson": "<b>IIIF file could not be loaded</b>"
+    },
+    "canvasDownloadButton": {
+      "download": "Download",
+      "downloadFailed": "Download failed."
+    },
+    "mageResolutionSelect": {
+      "custom": "Custom resolution"
+    },
+    "gridSizeSelector": {
+      "selectSize": "Select Size",
+      "updateSize": "Update Size"
+    },
+    "generic": {
+      "columns": "Columns",
+      "rows": "Rows"
+    }
+  },
+  "de": {
+    "cuttingTable": {
+      "linksJson": "Als JSON herunterladen",
+      "uploadError": "JSON konnte nicht geladen werden",
+      "loadUrl": "URL laden"
+    },
+    "renderer": {
+      "linksImage": "Bild herunterladen",
+      "selectCustom": "Eigene Auflösung"
+    },
+    "iiifForm": {
+      "collectionChoose": "Manifest aus der Sammlung auswählen",
+      "collectionButton": "Auswählen",
+      "manifestChoose": "Seite als Vorlage auswählen",
+      "manifestButton": "Auswählen",
+      "imageChoose": "Bild auswählen",
+      "imageButton": "Auswählen",
+      "loadButton": "URL laden",
+      "errorJson": "<b>IIIF Datei konnte nicht geladen werden</b>"
+    },
+    "canvasDownloadButton": {
+      "download": "Herunterladen",
+      "downloadFailed": "Download fehlgeschlagen."
+    },
+    "imageResolutionSelect": {
+      "custom": "Eigene Auflösung"
+    },
+    "gridSizeSelector": {
+      "selectSize": "Größe wählen",
+      "updateSize": "Größe aktualisieren"
+    },
+    "generic": {
+      "columns": "Spalten",
+      "rows": "Zeilen"
+    }
+  }
+}

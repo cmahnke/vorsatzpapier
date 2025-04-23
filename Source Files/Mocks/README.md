@@ -2,21 +2,16 @@
 
 # TODO
 
-- Add spinner while loading
 - Handle Offsets
-  - Add Clippings
+  - Implement margins, add Clippings
 
 ## Known issues
 
 - CSS for cutting table
-- Check translations
 - Preview icon in collections, implemented but parser doesn't support it
 - Image export
   - Image not exported with full width
   - Image export won't work with offscreencanvas yet
-- Initial layout
-- Controls after json load are resetted
-- Setting grid size
 
 # Commands
 

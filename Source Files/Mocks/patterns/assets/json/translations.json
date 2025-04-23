@@ -5,10 +5,6 @@
       "uploadError": "JSON could not be loaded",
       "loadUrl": "Load URL"
     },
-    "renderer": {
-      "linksImage": "Download image",
-      "selectCustom": "Custom resolution"
-    },
     "iiifForm": {
       "collectionChoose": "Select manifest from the collection",
       "collectionButton": "Select",
@@ -40,10 +36,6 @@
       "linksJson": "Als JSON herunterladen",
       "uploadError": "JSON konnte nicht geladen werden",
       "loadUrl": "URL laden"
-    },
-    "renderer": {
-      "linksImage": "Bild herunterladen",
-      "selectCustom": "Eigene Auflösung"
     },
     "iiifForm": {
       "collectionChoose": "Manifest aus der Sammlung auswählen",

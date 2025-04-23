@@ -12,10 +12,10 @@ import { loadInfoJson } from "./util";
 import i18next from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 // @ts-ignore Avoid type errors with JSON import
-import translations from "@/json/translations.json" with { type: "json" };
+import translations from "@/json/translations.json";
 
 i18next.use(LanguageDetector).init({
-  debug: true,
+  debug: false,
   fallbackLng: "en",
   resources: translations
 });
@@ -49,7 +49,6 @@ export class CuttingTable {
   cuts: Cuts;
   form: IIIFForm;
   fabricOverlay: FabricOverlay;
-  _postLoad: (() => void) | undefined;
   //Options
   _urlInput: boolean;
   _gridSelector: boolean;
@@ -71,7 +70,6 @@ export class CuttingTable {
 
   //URL handling
   _initialUrls: { url: string; label: string }[];
-
   _url: URL;
 
   constructor(element: HTMLDivElement, urlInput: boolean = true, gridSelector = true, urls?: URL | { url: string; label: string }[]) {
@@ -100,6 +98,12 @@ export class CuttingTable {
       this._url = urls;
     } else if (urls !== undefined && Array.isArray(urls)) {
       this._initialUrls = urls;
+    }
+    if ("columns" in element.dataset && element.dataset.columns !== undefined && element.dataset.columns !== "") {
+      this._columns = parseInt(element.dataset.columns);
+    }
+    if ("rows" in element.dataset && element.dataset.rows !== undefined && element.dataset.rows !== "") {
+      this._rows = parseInt(element.dataset.rows);
     }
 
     //Components
@@ -171,9 +175,8 @@ export class CuttingTable {
     }
   }
 
-  async loadImageAPI(imageAPIEndpoint: URL, postLoad?: () => void) {
+  async loadImageAPI(imageAPIEndpoint: URL) {
     let service;
-    this._postLoad = postLoad;
     try {
       service = await loadInfoJson(imageAPIEndpoint);
     } catch {
@@ -186,35 +189,16 @@ export class CuttingTable {
 
     this.imageService = service as IIIFImageStub;
     this.imageServiceUrl = imageAPIEndpoint;
-    /*
-    if (this.viewer !== undefined) {
-      this.viewer.addTiledImage({ index: this.viewer.world.getItemCount(), tileSource: service });
-
-      if (service["@context"].startsWith("http://iiif.io/api/image/")) {
-        this.updateLines(service.height, service.width);
-      }
-
-      this.cuts.url = imageAPIEndpoint;
-
-    } else {
-      console.warn("Viewer not initialized");
-    }
-    */
   }
 
   set imageService(endpointService: IIIFImageStub) {
     if (this.viewer !== undefined) {
       this.viewer.world.addHandler("add-item", () => {
-        //this.cuts = new Cuts(this.cuts.cutPostions, this.fabricOverlay);
-
         if (this.cuts !== undefined) {
           this.cuts.lastAxis = undefined;
           this.updateLines(endpointService.width, endpointService.height);
-          //this.cuts.url = url;
+          this.form.clearMessage();
           this.cuts.setVisibility(true);
-        }
-        if (this._postLoad !== undefined) {
-          this._postLoad = undefined;
         }
       });
       if (this.viewer.world.getItemCount()) {
@@ -286,32 +270,25 @@ export class CuttingTable {
               let json: CutJSON | CutJSONLD | object;
               let url: URL;
               json = JSON.parse(result) as object;
+              let jsonLoadCallback: OpenSeadragon.EventHandler<OpenSeadragon.TileLoadedEvent>;
               if ("type" in json) {
                 url = new URL((json as CutJSONLD).target.source);
                 this.form.urlInput = url;
-                await this.loadImageAPI(url, () => {
+
+                jsonLoadCallback = () => {
                   this.cuts.loadJSONLD(json as CutJSONLD);
                   this.updateControls();
-                });
-
-                /*
-                this.viewer?.world.addOnceHandler("add-item", () => {
-
-                });
-                */
+                };
               } else {
                 url = new URL((json as CutJSON).url);
                 this.form.urlInput = url;
-                await this.loadImageAPI(url, () => {
+                jsonLoadCallback = () => {
                   this.cuts.loadJSON(json as CutJSON);
                   this.updateControls();
-                });
-                //this.cuts.loadJSON(json as CutJSON);
-                /*
-                this.viewer?.world.addOnceHandler("add-item", () => {
-
-                });*/
+                };
               }
+              await this.loadImageAPI(url);
+              this.viewer?.addOnceHandler("tile-loaded", jsonLoadCallback.bind(this));
               this.cuts.setVisibility(true);
               //TODO: This is currently overwritten when image is loaded
               //this.updateControls();
@@ -389,11 +366,11 @@ export class CuttingTable {
       });
       const rotations = Object.keys(this.cuts.rotations) as unknown as CutPosition[];
       rotations.forEach((position: CutPosition) => {
-        if (position == CutPosition.Right && this.cuts.positions[CutPosition.Right] !== undefined) {
-          this.rotationX.value = this.cuts.positions[CutPosition.Right];
+        if (position == CutPosition.Right && this.cuts.rotations[CutPosition.Right] !== undefined) {
+          this.rotationX.value = this.cuts.rotations[CutPosition.Right];
         }
-        if (position == CutPosition.Bottom && this.cuts.positions[CutPosition.Bottom] !== undefined) {
-          this.rotationY.value = this.cuts.positions[CutPosition.Bottom];
+        if (position == CutPosition.Bottom && this.cuts.rotations[CutPosition.Bottom] !== undefined) {
+          this.rotationY.value = this.cuts.rotations[CutPosition.Bottom];
         }
       });
     }
@@ -437,6 +414,8 @@ export class CuttingTable {
     this.rotationY.value = 0;
     this.rulerCheckbox.disabled = false;
     this.rulerCheckbox.checked = true;
+    this.viewerElement.querySelector<Element>(".zoomin")?.classList.remove("disabled");
+    this.viewerElement.querySelector<Element>(".zoomout")?.classList.remove("disabled");
     this.squareButton.dataset.height = String(height);
     this.squareButton.dataset.width = String(width);
     this.squareButton.classList.remove("disabled");
@@ -568,6 +547,11 @@ export class CuttingTable {
       const value = Boolean((e.target as HTMLInputElement).checked);
       this.cuts.setVisibility(value);
     });
+
+    //Buttons
+    this.viewerElement.querySelector<Element>(".zoomin")?.classList.add("disabled");
+    this.viewerElement.querySelector<Element>(".zoomout")?.classList.add("disabled");
+
     this.squareButton = this.viewerElement.querySelector<HTMLElement>(CuttingTable.squareButtonSelector)!;
     this.squareButton.addEventListener("click", () => {
       this.square();

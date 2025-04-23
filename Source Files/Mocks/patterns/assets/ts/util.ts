@@ -3,7 +3,7 @@ import type { Lang } from "./types";
 export function getLang(): Lang {
   let lang = "en";
   try {
-    lang = browser.i18n.getUILanguage();
+    lang = navigator.language;
     lang = lang.split("-")[0];
   } catch {
     if (document.documentElement.lang !== undefined) {

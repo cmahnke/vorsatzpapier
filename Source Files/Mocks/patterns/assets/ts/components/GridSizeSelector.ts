@@ -3,10 +3,13 @@ import i18next from "i18next";
 export class GridSizeSelector extends HTMLElement {
   static observedAttributes = ["width", "height", "maxrows", "maxcols", "disabled"];
 
+  static initialMaxRows = 20;
+  static initialMaxCols = 20;
+
   width = 10;
   height = 10;
-  maxrows = 20;
-  maxcols = 20;
+  maxrows = GridSizeSelector.initialMaxRows;
+  maxcols = GridSizeSelector.initialMaxCols;
   disabled = false;
 
   _width = this.width;
@@ -101,10 +104,6 @@ export class GridSizeSelector extends HTMLElement {
   static get styles(): string {
     return `
       :host {
-        display: block;
-        font-family: sans-serif;
-        opacity: 1;
-        transition: opacity 0.3s ease;
         --btn-bg-color: #66afff;
         --btn-disabled-bg-color: #cccccc;
         --btn-disabled-text-color: #666666;
@@ -120,6 +119,12 @@ export class GridSizeSelector extends HTMLElement {
         --input-border: 1px solid #ccc;
         --grid-width: 15em;
         --grid-height: 15em;
+
+        display: block;
+        font-family: var(--font-family);
+        opacity: 1;
+        transition: opacity 0.3s ease;
+
       }
 
       :host(.disabled) {
@@ -188,8 +193,8 @@ export class GridSizeSelector extends HTMLElement {
 
       .grid-area {
         display: none;
-        grid-template-columns: repeat(${GridSizeSelector.maxcols}, auto);
-        grid-template-rows: repeat(${GridSizeSelector.maxrows}, auto);
+        grid-template-columns: repeat(${GridSizeSelector.initialMaxCols}, auto);
+        grid-template-rows: repeat(${GridSizeSelector.initialMaxRows}, auto);
         width: var(--grid-width, 200px);
         height: var(--grid-height, 200px);
         border: 1px solid #aaa;

@@ -2,7 +2,7 @@ import i18next from "i18next";
 
 export class CanvasDownloadButton extends HTMLElement {
   // --- Private Properties ---
-  private _canvas: OffscreenCanvas | HTMLCanvasElement | undefined;
+  private _canvas: HTMLCanvasElement | undefined;
   private _button: HTMLButtonElement;
   private _disabled: boolean = true; // Internal disabled state
   private _fileName: string = "canvas-image";
@@ -10,8 +10,10 @@ export class CanvasDownloadButton extends HTMLElement {
   private _internallySettingFormat: boolean = false; // Prevents recursion in attributeChangedCallback
   private _height: number | null = null; // Required for renderCallback
   private _width: number | null = null; // Required for renderCallback
-  // Callback to dynamically generate an OffscreenCanvas for download
-  private _renderCallback: ((width: number, height: number) => OffscreenCanvas | HTMLCanvasElement | undefined) | null = null;
+  // Callback to dynamically generate a canvas for download
+  private _renderCallback:
+    | ((width: number, height: number) => Promise<HTMLCanvasElement | undefined> | HTMLCanvasElement | undefined)
+    | null = null;
   private shadow: ShadowRoot;
 
   // --- Constructor and Core Lifecycle ---
@@ -33,7 +35,7 @@ export class CanvasDownloadButton extends HTMLElement {
   connectedCallback() {
     // Ensure initial attribute values are reflected if set before connection
     this._reflectAttribute("disabled", this.hasAttribute("disabled"));
-    this._reflectAttribute("button-text", this.getAttribute("button-text") || "Download");
+    this._reflectAttribute("button-text", this.getAttribute("button-text") || i18next.t("canvasDownloadButton:download"));
     this._reflectAttribute("file-name", this.getAttribute("file-name") || "canvas-image");
     this._reflectAttribute("format", this.getAttribute("format") || "png");
     this._reflectAttribute("height", this.getAttribute("height"));
@@ -102,21 +104,16 @@ export class CanvasDownloadButton extends HTMLElement {
   // --- Public Properties (Getters/Setters) ---
 
   /**
-   * The OffscreenCanvas or HTMLCanvasElement to be downloaded.
+   * The HTMLCanvasElement to be downloaded.
    * Setting this will enable the download button if not disabled.
    */
-  get canvas(): OffscreenCanvas | HTMLCanvasElement | undefined {
+  get canvas(): HTMLCanvasElement | undefined {
     return this._canvas;
   }
 
-  set canvas(canvasInstance: OffscreenCanvas | HTMLCanvasElement | undefined) {
-    // *** CHANGE: Accept both types ***
-    if (canvasInstance instanceof OffscreenCanvas || canvasInstance instanceof HTMLCanvasElement || canvasInstance === undefined) {
-      this._canvas = canvasInstance;
-      this._updateButtonState();
-    } else {
-      console.warn("Invalid type assigned to canvas property. Expected OffscreenCanvas, HTMLCanvasElement, or undefined.");
-    }
+  set canvas(canvasInstance: HTMLCanvasElement | undefined) {
+    this._canvas = canvasInstance;
+    this._updateButtonState();
   }
 
   /**
@@ -237,17 +234,19 @@ export class CanvasDownloadButton extends HTMLElement {
   }
 
   /**
-   * A callback function that generates an OffscreenCanvas on demand for download.
+   * A callback function that generates a canvas on demand for download.
    * It receives the required width and height (must be set via attributes or properties).
    * If this is set, it takes precedence over the `canvas` property during download initiation,
    * but only if `width` and `height` are also provided.
    */
-  set renderCallback(callback: ((width: number, height: number) => OffscreenCanvas | HTMLCanvasElement | undefined) | null) {
+  set renderCallback(
+    callback: ((width: number, height: number) => Promise<HTMLCanvasElement | undefined> | HTMLCanvasElement | undefined) | null
+  ) {
     this._renderCallback = callback;
     this._updateButtonState();
   }
 
-  get renderCallback(): ((width: number, height: number) => OffscreenCanvas | HTMLCanvasElement | undefined) | null {
+  get renderCallback(): ((width: number, height: number) => Promise<HTMLCanvasElement | undefined> | HTMLCanvasElement | undefined) | null {
     return this._renderCallback;
   }
 
@@ -276,24 +275,27 @@ export class CanvasDownloadButton extends HTMLElement {
   }
 
   /** Initiates the download process when the button is clicked */
-  private _initiateDownload() {
+  private async _initiateDownload() {
     if (!this._canDownload()) return; // Double check state
 
     this.dispatchEvent(new CustomEvent("download-start", { bubbles: true, composed: true }));
 
-    let canvasToDownload: OffscreenCanvas | HTMLCanvasElement | undefined = undefined;
+    let canvasToDownload: HTMLCanvasElement | undefined = undefined;
 
     // Prioritize render callback if conditions are met
     if (this._renderCallback && typeof this._width === "number" && typeof this._height === "number") {
       try {
         // Execute the callback to generate the canvas
-        canvasToDownload = this._renderCallback(this._width, this._height);
+        const result = this._renderCallback(this._width, this._height);
+        // Check if the result is a promise or a direct value
+        canvasToDownload = result instanceof Promise ? await result : result;
+
         if (!canvasToDownload) {
           // Check if callback returned a canvas
-          throw new Error("Render callback did not return a valid OffscreenCanvas.");
+          throw new Error("Render callback did not return a valid HTMLCanvasElement.");
         }
-        if (!(canvasToDownload instanceof OffscreenCanvas)) {
-          throw new Error("Render callback must return an OffscreenCanvas.");
+        if (!(canvasToDownload instanceof HTMLCanvasElement)) {
+          throw new Error("Render callback must return an HTMLCanvasElement.");
         }
       } catch (error) {
         console.error("Error executing render callback:", error);
@@ -332,7 +334,7 @@ export class CanvasDownloadButton extends HTMLElement {
   }
 
   /** Handles the actual blob creation and download link generation */
-  private async _download(canvas: OffscreenCanvas | HTMLCanvasElement, format: string, fileName: string) {
+  private async _download(canvas: HTMLCanvasElement, format: string, fileName: string) {
     try {
       const blob = await this._getBlob(canvas, format); // Use the updated _getBlob
       if (!blob) {
@@ -373,35 +375,23 @@ export class CanvasDownloadButton extends HTMLElement {
   }
 
   /**
-   * Generates a Blob from either an OffscreenCanvas or HTMLCanvasElement.
-   * *** CHANGE: Handles both canvas types ***
+   * Generates a Blob from  HTMLCanvasElement.
    */
-  private _getBlob(canvas: OffscreenCanvas | HTMLCanvasElement, format: string): Promise<Blob | null> {
+  private _getBlob(canvas: HTMLCanvasElement, format: string): Promise<Blob | null> {
     return new Promise((resolve, reject) => {
       const type = format === "jpeg" ? "image/jpeg" : "image/png";
       const quality = format === "jpeg" ? 0.92 : undefined; // Optional: Specify quality for JPEG
 
       try {
-        if (canvas instanceof OffscreenCanvas) {
-          // Use convertToBlob for OffscreenCanvas (returns a Promise)
-          canvas
-            .convertToBlob({ type, quality })
-            .then(resolve) // Resolve with the blob (or null if failed)
-            .catch(reject); // Reject on error during conversion
-        } else if (canvas instanceof HTMLCanvasElement) {
-          // Use toBlob for HTMLCanvasElement (uses a callback)
-          canvas.toBlob(
-            (blob) => {
-              // Callback function
-              resolve(blob); // Resolve with the blob (or null if failed)
-            },
-            type, // Mime type
-            quality // Quality argument (for JPEG)
-          );
-        } else {
-          // Should not happen with proper type checks earlier, but good practice
-          reject(new Error("Invalid object passed to _getBlob. Expected OffscreenCanvas or HTMLCanvasElement."));
-        }
+        // Use toBlob for HTMLCanvasElement (uses a callback)
+        canvas.toBlob(
+          (blob) => {
+            // Callback function
+            resolve(blob); // Resolve with the blob (or null if failed)
+          },
+          type, // Mime type
+          quality // Quality argument (for JPEG)
+        );
       } catch (error) {
         // Catch synchronous errors (e.g., security errors if canvas is tainted)
         reject(error);

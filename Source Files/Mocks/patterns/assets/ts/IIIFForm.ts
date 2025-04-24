@@ -2,7 +2,7 @@ import { IIIF, Collection, Manifest, Canvas, Image } from "@allmaps/iiif-parser"
 import { IconDropdownSelect } from "./components/IconDropdownSelect";
 import { CuttingTable } from "./CuttingTable";
 import type { IIIFSelect, IIIFEntry, IIIFImageEntry, IIIFType } from "./types";
-import { getLang, loadInfoJson } from "./util";
+import { loadInfoJson } from "./util";
 import i18next from "i18next";
 
 type ReturnJSON = { url: URL; json: object | undefined };
@@ -36,7 +36,7 @@ export class IIIFForm {
     this._urlInput = urlInput;
     this.statusContainer = this.cuttingTable.container.querySelector<HTMLDivElement>(`.${CuttingTable.statusContainerClass}`)!;
     this.button = this.cuttingTable.container.querySelector<HTMLButtonElement>(`.${this.buttonClass}`)!;
-    this.button.innerText = i18next.t("iiifForm:loadButton"); //IIIFForm.labels.load.button[getLang()];
+    this.button.innerText = i18next.t("iiifForm:loadButton");
     this.setup();
   }
 
@@ -100,6 +100,7 @@ export class IIIFForm {
         return { url: url, json: res.json() };
       })
       .catch((error) => {
+        console.warn(`Failed to load ${url}, it's safe to ignore CORS warnings, those are the results of checking for manifests.`);
         if (trySuffix !== "") {
           let u = url.toString();
           if (!u.endsWith("/")) {
@@ -135,11 +136,11 @@ export class IIIFForm {
     const loadedUrl = loaded.url;
 
     if (json === undefined) {
-      this.displayMessage(i18next.t("iiifForm:errorJson")); //IIIFForm.labels.error.json[getLang()]);
+      this.displayMessage(i18next.t("iiifForm:errorJson"));
       return;
     }
     const manifest = IIIF.parse(json);
-    const lang = getLang();
+    const lang = i18next.language.split("-")[0];
 
     if (manifest instanceof Collection) {
       const manifests: IIIFSelect = { type: "Collection", entries: [], source: url };
@@ -256,7 +257,7 @@ export class IIIFForm {
 
   addSelect(options: IIIFSelect, autoLoadSingle: boolean = true): IIIFSelect {
     if (this.selectContainer !== null) {
-      const label = i18next.t(`iiifForm:${options.type.toLowerCase()}Choose`); //IIIFForm.labels[options.type.toLowerCase()]["choose"][getLang()];
+      const label = i18next.t(`iiifForm:${options.type.toLowerCase()}Choose`);
       const id = "";
       options = IIIFForm.createSelect(options, id, `select-${options.type}`, this.selectContainer, label);
     }

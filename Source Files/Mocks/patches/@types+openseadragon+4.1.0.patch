@@ -1,0 +1,47 @@
+diff --git a/node_modules/@types/openseadragon/index.d.ts b/node_modules/@types/openseadragon/index.d.ts
+index 4958ca5..d615a56 100644
+--- a/node_modules/@types/openseadragon/index.d.ts
++++ b/node_modules/@types/openseadragon/index.d.ts
+@@ -281,6 +281,7 @@ declare namespace OpenSeadragon {
+             | "copy"
+             | "xor"
+             | undefined;
++        drawer?: 'webgl' | 'canvas' | 'html';
+         placeholderFillStyle?: string | CanvasGradient | CanvasPattern | undefined;
+         degrees?: number | undefined;
+         flipped?: boolean | undefined;
+@@ -774,7 +775,7 @@ declare namespace OpenSeadragon {
+         destroy(): void;
+         drawHTML(container: HTMLElement): void;
+         getBounds(viewport: Viewport): Rect;
+-        update(location: Point | Rect, placement: Placement): void;
++        update(location: Point | Rect, placement?: Placement): void;
+     }
+ 
+     class Point {
+@@ -955,6 +956,9 @@ declare namespace OpenSeadragon {
+             ajaxHeaders?: object | undefined;
+         });
+ 
++        _clip?: Rect;
++        _worldWidthCurrent: number;
++        _worldWidthTarget: number;
+         addHandler<T extends keyof TiledImageEventMap>(
+             eventName: T,
+             handler: EventHandler<TiledImageEventMap[T]>,
+@@ -978,6 +982,7 @@ declare namespace OpenSeadragon {
+         getFlip(): boolean;
+         getHandler(eventName: string): (source: Event, ...args: any[]) => void;
+         getOpacity(): number;
++        getPosition(current?: boolean): Point;
+         getPreload(): boolean;
+         getRotation(current?: boolean): number;
+         getSizeInWindowCoordinates(): Point;
+@@ -1029,6 +1034,7 @@ declare namespace OpenSeadragon {
+         ): Rect;
+         viewportToImageZoom(viewportZoom: number): number;
+         windowToImageCoordinates(pixel: Point): Point;
++        _getRotationPoint(current: boolean): Point;
+     }
+ 
+     class TileSource extends EventSource {

@@ -247,9 +247,7 @@ export class CuttingTable {
   }
 
   initCuts() {
-    //if (this.cuts === undefined) {
     this.cuts = new Cuts([CutPosition.Right, CutPosition.Bottom, CutPosition.Top, CutPosition.Left], this.fabricOverlay);
-    //}
     this.cuts.setVisibility(false);
   }
 
@@ -267,9 +265,8 @@ export class CuttingTable {
           if (e !== undefined && e.target !== null && e.target.result !== null) {
             try {
               const result = e.target.result as string;
-              let json: CutJSON | CutJSONLD | object;
               let url: URL;
-              json = JSON.parse(result) as object;
+              const json: CutJSON | CutJSONLD | object = JSON.parse(result) as object;
               let jsonLoadCallback: OpenSeadragon.EventHandler<OpenSeadragon.TileLoadedEvent>;
               if ("type" in json) {
                 url = new URL((json as CutJSONLD).target.source);
@@ -290,8 +287,6 @@ export class CuttingTable {
               await this.loadImageAPI(url);
               this.viewer?.addOnceHandler("tile-loaded", jsonLoadCallback.bind(this));
               this.cuts.setVisibility(true);
-              //TODO: This is currently overwritten when image is loaded
-              //this.updateControls();
             } catch (error) {
               console.error(error);
 
@@ -583,6 +578,38 @@ export class CuttingTable {
         bounds = new OpenSeadragon.Rect(bounds.x + clip.x, bounds.y + clip.y, clip.width, clip.height);
       }
       return bounds.getCenter();
+    };
+
+    OpenSeadragon.TiledImage.prototype.getPosition = function (current?: boolean): OpenSeadragon.Point {
+      const bounds = this.getBounds(current);
+      return new OpenSeadragon.Point(bounds.x, bounds.y);
+    };
+
+    OpenSeadragon.TileSource.prototype.getTileAtPoint = function (level: number, point: OpenSeadragon.Point) {
+      /*
+          var validPoint = point.x >= 0 && point.x <= 1 &&
+              point.y >= 0 && point.y <= 1 / this.aspectRatio;
+          $.console.assert(validPoint, "[TileSource.getTileAtPoint] must be called with a valid point.");
+          */
+
+      const widthScaled = this.dimensions.x * this.getLevelScale(level);
+      const pixelX = point.x * widthScaled;
+      const pixelY = point.y * widthScaled;
+
+      let x = Math.floor(pixelX / this.getTileWidth(level));
+      let y = Math.floor(pixelY / this.getTileHeight(level));
+
+      // When point.x == 1 or point.y == 1 / this.aspectRatio we want to
+      // return the last tile of the row/column
+      if (point.x >= 1) {
+        x = this.getNumTiles(level).x - 1;
+      }
+      const EPSILON = 1e-15;
+      if (point.y >= 1 / this.aspectRatio - EPSILON) {
+        y = this.getNumTiles(level).y - 1;
+      }
+
+      return new OpenSeadragon.Point(x, y);
     };
   }
 }

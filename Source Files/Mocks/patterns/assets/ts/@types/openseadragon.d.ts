@@ -3,4 +3,8 @@ declare namespace OpenSeadragon {
     "grid-size-changed": OpenSeadragon.ViewerEvent;
     "source-loaded": OpenSeadragon.ViewerEvent;
   }
+
+  interface Options {
+    debug?: boolean;
+  }
 }

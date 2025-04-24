@@ -619,7 +619,6 @@ export class Cuts {
       </clipPath>
     </pattern>`;
     svgPattern = svgPattern.replace(/\n|\r/g, "");
-    //TODO: Loading this format isnt' implemented yet
     json.body.value = svgPattern;
 
     return json;

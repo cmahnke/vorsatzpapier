@@ -16,7 +16,7 @@ export class IIIFForm {
   inputFieldClass: string = "url-input";
   inputField: HTMLInputElement;
   selectContainer: HTMLDivElement;
-  statusContainer: HTMLDivElement;
+  statusContainer: HTMLDivElement | null;
 
   current?: IIIFType;
   entries: { [key in IIIFType]?: IIIFSelect } = {};
@@ -24,7 +24,7 @@ export class IIIFForm {
   _imageAPIUrl: URL;
   _urlInput: boolean;
 
-  constructor(cuttingTable: CuttingTable, element: HTMLDivElement, urlInput: boolean = true) {
+  constructor(cuttingTable: CuttingTable, element: HTMLDivElement, statusContainer: HTMLDivElement | null, urlInput: boolean = true) {
     this.cuttingTable = cuttingTable;
     customElements.define("icon-dropdown-select", IconDropdownSelect);
     this.inputField = this.cuttingTable.container.querySelector<HTMLInputElement>(`.${this.inputFieldClass}`)!;
@@ -34,7 +34,8 @@ export class IIIFForm {
       this.selectContainer = element;
     }
     this._urlInput = urlInput;
-    this.statusContainer = this.cuttingTable.container.querySelector<HTMLDivElement>(`.${CuttingTable.statusContainerClass}`)!;
+    //this.statusContainer = this.cuttingTable.container.querySelector<HTMLDivElement>(`.${CuttingTable.statusContainerClass}`)!;
+    this.statusContainer = statusContainer;
     this.button = this.cuttingTable.container.querySelector<HTMLButtonElement>(`.${this.buttonClass}`)!;
     this.button.innerText = i18next.t("iiifForm:loadButton");
     this.setup();
@@ -46,7 +47,7 @@ export class IIIFForm {
         if (this.inputField !== null) {
           const url = this.inputField?.value;
 
-          if (url !== undefined && url !== "") {
+          if (url !== undefined && url !== "" && this.statusContainer !== null) {
             this.statusContainer.innerHTML = "";
             this.selectContainer.innerHTML = "";
             this.loadUrl(new URL(url), undefined).then((options: IIIFSelect) => {
@@ -117,11 +118,15 @@ export class IIIFForm {
   }
 
   displayMessage(msg: string) {
-    this.statusContainer.innerHTML = msg;
+    if (this.statusContainer !== null) {
+      this.statusContainer.innerHTML = msg;
+    }
   }
 
   clearMessage() {
-    this.statusContainer.innerHTML = "";
+    if (this.statusContainer !== null) {
+      this.statusContainer.innerHTML = "";
+    }
   }
 
   async loadUrl(url: URL, type: IIIFType = "Image") {

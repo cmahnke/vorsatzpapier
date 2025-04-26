@@ -1,5 +1,5 @@
 diff --git a/node_modules/@types/openseadragon/index.d.ts b/node_modules/@types/openseadragon/index.d.ts
-index 4958ca5..d615a56 100644
+index 4958ca5..0aa1c62 100644
 --- a/node_modules/@types/openseadragon/index.d.ts
 +++ b/node_modules/@types/openseadragon/index.d.ts
 @@ -281,6 +281,7 @@ declare namespace OpenSeadragon {
@@ -19,17 +19,18 @@ index 4958ca5..d615a56 100644
      }
  
      class Point {
-@@ -955,6 +956,9 @@ declare namespace OpenSeadragon {
+@@ -955,6 +956,10 @@ declare namespace OpenSeadragon {
              ajaxHeaders?: object | undefined;
          });
  
 +        _clip?: Rect;
++        _rotationPoint: Point;
 +        _worldWidthCurrent: number;
 +        _worldWidthTarget: number;
          addHandler<T extends keyof TiledImageEventMap>(
              eventName: T,
              handler: EventHandler<TiledImageEventMap[T]>,
-@@ -978,6 +982,7 @@ declare namespace OpenSeadragon {
+@@ -978,6 +983,7 @@ declare namespace OpenSeadragon {
          getFlip(): boolean;
          getHandler(eventName: string): (source: Event, ...args: any[]) => void;
          getOpacity(): number;
@@ -37,7 +38,16 @@ index 4958ca5..d615a56 100644
          getPreload(): boolean;
          getRotation(current?: boolean): number;
          getSizeInWindowCoordinates(): Point;
-@@ -1029,6 +1034,7 @@ declare namespace OpenSeadragon {
+@@ -1014,6 +1020,8 @@ declare namespace OpenSeadragon {
+         setPosition(position: Point, immediately?: boolean): void;
+         setPreload(preload: boolean): void;
+         setRotation(degrees: number, immediately?: boolean): void;
++        setRotationPoint(rotationPoint: Point ): void;
++        setRotationPointImageCoordinates(rotationPoint: Point ): void;
+         setWidth(width: number, immediately?: boolean): void;
+         update(): boolean;
+         viewerElementToImageCoordinates(pixel: Point): Point;
+@@ -1029,6 +1037,7 @@ declare namespace OpenSeadragon {
          ): Rect;
          viewportToImageZoom(viewportZoom: number): number;
          windowToImageCoordinates(pixel: Point): Point;

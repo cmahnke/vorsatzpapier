@@ -52,6 +52,8 @@ export class CuttingTable {
   //Options
   _urlInput: boolean;
   _gridSelector: boolean;
+  _download: boolean;
+  _debug: boolean = true;
   //Elements of Contols and children
   viewerElement: HTMLDivElement;
   cutY: DualRangeSlider;
@@ -64,6 +66,7 @@ export class CuttingTable {
   squareButton: HTMLElement;
   downloadLink: HTMLAnchorElement;
   dropZoneElement: HTMLDivElement;
+  statusContainer: HTMLDivElement | null;
   //Renderer tiles
   _columns: number = 4;
   _rows: number = 4;
@@ -72,7 +75,13 @@ export class CuttingTable {
   _initialUrls: { url: string; label: string }[];
   _url: URL;
 
-  constructor(element: HTMLDivElement, urlInput: boolean = true, gridSelector = true, urls?: URL | { url: string; label: string }[]) {
+  constructor(
+    element: HTMLDivElement,
+    urlInput: boolean = true,
+    gridSelector: boolean = true,
+    download: boolean = true,
+    urls?: URL | { url: string; label: string }[]
+  ) {
     if (element !== undefined) {
       this.container = element;
     } else {
@@ -82,15 +91,27 @@ export class CuttingTable {
     if (this.container === undefined) {
       throw new Error("Couldn't setup element");
     }
+    //Debug?
+    if ("debug" in element.dataset && element.dataset.debug !== undefined && element.dataset.debug !== "") {
+      this._debug = element.dataset.debug === "true";
+    }
 
+    // URL input field?
     if ("urlInput" in element.dataset && element.dataset.urlInput !== undefined && element.dataset.urlInput !== "") {
       urlInput = element.dataset.urlInput === "true";
     }
     this._urlInput = urlInput;
+    // Enable resite option?
     if ("gridSelector" in element.dataset && element.dataset.gridSelector !== undefined && element.dataset.gridSelector !== "") {
       gridSelector = element.dataset.gridSelector === "true";
     }
     this._gridSelector = gridSelector;
+    //Enable downloading?
+    if ("download" in element.dataset && element.dataset.download !== undefined && element.dataset.download !== "") {
+      download = element.dataset.download === "true";
+    }
+    this._download = download;
+    //get preconfigured URL
     if ("urls" in element.dataset && element.dataset.urls !== undefined && element.dataset.urls !== "") {
       urls = new URL(element.dataset.urls);
     }
@@ -113,10 +134,13 @@ export class CuttingTable {
 
     //Input form
     const selectContainer = this.container.querySelector<HTMLDivElement>(`.${CuttingTable.selectContainerClass}`)!;
-    this.form = new IIIFForm(this, selectContainer);
+    this.statusContainer = this.container.querySelector<HTMLDivElement>(`.${CuttingTable.statusContainerClass}`)!;
+    this.form = new IIIFForm(this, selectContainer, this.statusContainer);
     //Result renderer
     const renderElement = this.container.querySelector<HTMLDivElement>(`.${CuttingTable.rendererElementClass}`)!;
-    this.renderer = new Renderer(renderElement, this._columns, this._rows, this._gridSelector);
+    this.renderer = new Renderer(renderElement, this._columns, this._rows, this._gridSelector, this._download);
+    this.renderer.debug = this._debug;
+    this.renderer.statusContainer = this.statusContainer;
     this.viewerElement = this.container.querySelector<HTMLDivElement>(`.${CuttingTable.viewerElementClass}`)!;
 
     this.setupOSD(this.viewerElement);
@@ -570,6 +594,10 @@ export class CuttingTable {
 
   static patchOpenSeadragon() {
     OpenSeadragon.TiledImage.prototype._getRotationPoint = function (current: boolean): OpenSeadragon.Point {
+      if (this._rotationPoint !== undefined) {
+        return this._rotationPoint;
+      }
+
       let bounds = this.getBoundsNoRotate(current);
       if (this._clip) {
         const worldWidth = current ? this._worldWidthCurrent : this._worldWidthTarget;
@@ -578,6 +606,14 @@ export class CuttingTable {
         bounds = new OpenSeadragon.Rect(bounds.x + clip.x, bounds.y + clip.y, clip.width, clip.height);
       }
       return bounds.getCenter();
+    };
+
+    OpenSeadragon.TiledImage.prototype.setRotationPointImageCoordinates = function (rotationPoint: OpenSeadragon.Point): void {
+      this._rotationPoint = this.imageToViewportCoordinates(rotationPoint);
+    };
+
+    OpenSeadragon.TiledImage.prototype.setRotationPoint = function (rotationPoint: OpenSeadragon.Point): void {
+      this._rotationPoint = rotationPoint;
     };
 
     OpenSeadragon.TiledImage.prototype.getPosition = function (current?: boolean): OpenSeadragon.Point {

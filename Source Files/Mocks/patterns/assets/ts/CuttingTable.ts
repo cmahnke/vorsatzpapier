@@ -594,22 +594,24 @@ export class CuttingTable {
 
   static patchOpenSeadragon() {
     OpenSeadragon.TiledImage.prototype._getRotationPoint = function (current: boolean): OpenSeadragon.Point {
+      let bounds = this.getBoundsNoRotate(current);
+      const worldWidth = current ? this._worldWidthCurrent : this._worldWidthTarget;
+      const ratio = worldWidth / this.source.dimensions.x;
       if (this._rotationPoint !== undefined) {
-        return this._rotationPoint;
+        const point = this._rotationPoint.times(ratio);
+        /*
+        if (this.getRotation(current) !=0 && this.getRotation(current)!=180 && this.getRotation(current)!==undefined) {
+          bounds = bounds.rotate(-this.getRotation(current), new OpenSeadragon.Point(bounds.x + point.x, bounds.y + point.y));
+        }
+        */
+        return new OpenSeadragon.Point(bounds.x + point.x, bounds.y + point.y);
       }
 
-      let bounds = this.getBoundsNoRotate(current);
       if (this._clip) {
-        const worldWidth = current ? this._worldWidthCurrent : this._worldWidthTarget;
-        const ratio = worldWidth / this.source.dimensions.x;
         const clip = this._clip.times(ratio);
         bounds = new OpenSeadragon.Rect(bounds.x + clip.x, bounds.y + clip.y, clip.width, clip.height);
       }
       return bounds.getCenter();
-    };
-
-    OpenSeadragon.TiledImage.prototype.setRotationPointImageCoordinates = function (rotationPoint: OpenSeadragon.Point): void {
-      this._rotationPoint = this.imageToViewportCoordinates(rotationPoint);
     };
 
     OpenSeadragon.TiledImage.prototype.setRotationPoint = function (rotationPoint: OpenSeadragon.Point): void {
@@ -622,11 +624,8 @@ export class CuttingTable {
     };
 
     OpenSeadragon.TileSource.prototype.getTileAtPoint = function (level: number, point: OpenSeadragon.Point) {
-      /*
-          var validPoint = point.x >= 0 && point.x <= 1 &&
-              point.y >= 0 && point.y <= 1 / this.aspectRatio;
-          $.console.assert(validPoint, "[TileSource.getTileAtPoint] must be called with a valid point.");
-          */
+      const validPoint = point.x >= 0 && point.x <= 1 && point.y >= 0 && point.y <= 1 / this.aspectRatio;
+      //console.assert(validPoint, "[TileSource.getTileAtPoint] must be called with a valid point.");
 
       const widthScaled = this.dimensions.x * this.getLevelScale(level);
       const pixelX = point.x * widthScaled;
@@ -646,6 +645,48 @@ export class CuttingTable {
       }
 
       return new OpenSeadragon.Point(x, y);
+    };
+
+    OpenSeadragon.Viewport.prototype._setContentBounds = function (bounds, contentFactor) {
+      if (isNaN(bounds.x) || isNaN(bounds.y) || isNaN(bounds.width) || isNaN(bounds.width)) {
+        return;
+      }
+
+      console.assert(bounds, "[Viewport._setContentBounds] bounds is required");
+      console.assert(bounds instanceof OpenSeadragon.Rect, "[Viewport._setContentBounds] bounds must be an OpenSeadragon.Rect");
+      console.assert(bounds.width > 0, "[Viewport._setContentBounds] bounds.width must be greater than 0");
+      console.assert(bounds.height > 0, "[Viewport._setContentBounds] bounds.height must be greater than 0");
+
+      this._contentBoundsNoRotate = bounds.clone();
+      this._contentSizeNoRotate = this._contentBoundsNoRotate.getSize().times(contentFactor);
+
+      this._contentBounds = bounds.rotate(this.getRotation()).getBoundingBox();
+      this._contentSize = this._contentBounds.getSize().times(contentFactor);
+      this._contentAspectRatio = this._contentSize.x / this._contentSize.y;
+
+      if (this.viewer) {
+        /**
+         * Raised when the viewer's content size or home bounds are reset
+         * (see {@link OpenSeadragon.Viewport#resetContentSize}).
+         *
+         * @event reset-size
+         * @memberof OpenSeadragon.Viewer
+         * @type {object}
+         * @property {OpenSeadragon.Viewer} eventSource - A reference to the Viewer which raised this event.
+         * @property {OpenSeadragon.Point} contentSize
+         * @property {OpenSeadragon.Rect} contentBounds - Content bounds.
+         * @property {OpenSeadragon.Rect} homeBounds - Content bounds.
+         * Deprecated use contentBounds instead.
+         * @property {Number} contentFactor
+         * @property {?Object} userData - Arbitrary subscriber-defined object.
+         */
+        this.viewer.raiseEvent("reset-size", {
+          contentSize: this._contentSizeNoRotate.clone(),
+          contentFactor: contentFactor,
+          homeBounds: this._contentBoundsNoRotate.clone(),
+          contentBounds: this._contentBounds.clone()
+        });
+      }
     };
   }
 }

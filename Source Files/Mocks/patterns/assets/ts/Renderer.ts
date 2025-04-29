@@ -35,7 +35,7 @@ export class Renderer {
   _debug: boolean = false;
   statusContainer: HTMLDivElement | null;
   _debugOverlays: Map<OpenSeadragon.TiledImage, { element: HTMLElement; location: OpenSeadragon.Rect }[]>;
-  renderTimeout: number = 15000;
+  renderTimeout: number = 150000;
   //_image
 
   constructor(
@@ -567,28 +567,34 @@ export class Renderer {
 
         // Rotations
         if (this._rotations !== undefined && Object.keys(this._rotations).length) {
+          //TODO: Rotating back results in wrong width and height
           let rowEven = false,
             columnEven = false;
-          if (r % 2 == 0 && !margins) {
+          if (r % 2 == 0 && (!margins || (margins && marginWidth % 2 == 0))) {
             rowEven = true;
-          } else if (r % 2 == 1 && margins) {
+          } else if (r % 2 == 1 && margins && marginWidth % 2 == 1) {
             rowEven = true;
           }
-          if (c % 2 == 0 && !margins) {
+          if (c % 2 == 0 && (!margins || (margins && marginWidth % 2 == 0))) {
             columnEven = true;
-          } else if (c % 2 == 1 && margins) {
+          } else if (c % 2 == 1 && margins && marginWidth % 2 == 1) {
             columnEven = true;
           }
+
+          const clipRotationPoint = this.clipRect.getCenter();
+
+          console.log("Rotation", `${c},${r}`, tiledImage.getBounds(), clipRotationPoint);
+
           if (CutPosition.Right in this._rotations && this._rotations[CutPosition.Right] !== undefined && rowEven && !columnEven) {
             const rotate = this._rotations[CutPosition.Right];
             //tiledImage.getClip()!.rotate(rotate)
-            tiledImage.setRotationPointImageCoordinates(this.clipRect.getCenter());
+            tiledImage.setRotationPoint(clipRotationPoint);
             tiledImage.setRotation(rotate, immediately);
           }
           if (CutPosition.Bottom in this._rotations && this._rotations[CutPosition.Bottom] !== undefined && columnEven && !rowEven) {
             const rotate = this._rotations[CutPosition.Bottom];
             //tiledImage.getClip()!.rotate(rotate)
-            tiledImage.setRotationPointImageCoordinates(this.clipRect.getCenter());
+            tiledImage.setRotationPoint(clipRotationPoint);
             tiledImage.setRotation(rotate, immediately);
           }
           if (
@@ -600,11 +606,12 @@ export class Renderer {
             if (rowEven && !columnEven && columnEven && !rowEven) {
               const rotate = this._rotations[CutPosition.Right] + this._rotations[CutPosition.Bottom];
               //tiledImage.getClip()!.rotate(rotate)
-              tiledImage.setRotationPointImageCoordinates(this.clipRect.getCenter());
+              tiledImage.setRotationPoint(clipRotationPoint);
               tiledImage.setRotation(rotate, immediately);
             }
           }
-          console.log(tiledImage.getBoundsNoRotate());
+
+          console.log("Bounds after rotation", `${r},${c}`, tiledImage.getBounds(), tiledImage.getClip());
         }
 
         if (offsetRect !== undefined) {
@@ -667,14 +674,13 @@ export class Renderer {
                 tiledImage.getContentSize().y == tiledImage.getClip()!.y &&
                 this.clipRect !== undefined
               ) {
-                //const clip =
                 return Renderer.cloneRect(this.clipRect);
-                //TODO: Remove Rotation Point: tiledImage.setRotationPoint(undefined);
               } else {
                 return tiledImage.getClip()!;
               }
             };
 
+            // TODO Check if shift is covering the current margin tile
             if (c < marginWidth && offsetRect.width > 0) {
               const borderClip = checkModifiedClip(tiledImage);
               const imageCoordShift = offsetRect.width * row;
@@ -712,6 +718,7 @@ export class Renderer {
         }
 
         tiledImage.setPosition(new OpenSeadragon.Point(x, y), immediately);
+        console.log("final rotation point", `${c}, ${r}`, tiledImage._getRotationPoint(true), tiledImage.getBounds());
 
         let debugText = `${c}, ${r} (${column}, ${row})`;
         if (tiledImage === referenceImage) {
@@ -724,25 +731,6 @@ export class Renderer {
     this.viewer.world.setAutoRefigureSizes(true);
     if (immediately) {
       raiseFinished.bind(this)();
-    }
-  }
-
-  static layout(
-    viewer: OpenSeadragon.Viewer,
-    columns: number,
-    rows: number,
-    clipRect: OpenSeadragon.Rect,
-    margins?: boolean,
-    offsets?: { [key in CutPosition]?: number },
-    rotations?: { [key in CutPosition]?: number },
-    immediately: boolean = true
-  ) {
-    if (margins === undefined) {
-      margins = false;
-    }
-    if (margins) {
-      columns = columns + 2;
-      rows = rows + 2;
     }
   }
 
@@ -841,7 +829,7 @@ export class Renderer {
         if (currentViewportBounds.y > 0 && fitTop) {
           viewer.viewport.panBy(new OpenSeadragon.Point(0, -currentViewportBounds.y), immediately);
         }
-        viewer.raiseEvent("full-width", {});
+        viewer.raiseEvent("full-width", viewer);
       }
     } else {
       throw new Error("Not a valid viewer");
@@ -871,143 +859,162 @@ export class Renderer {
     }
   }
 
-  renderImage(width: number = 1920, height: number = 1080, type = "image/png"): Promise<HTMLCanvasElement | string> {
-    /*
-    const type = format === "png" ? "image/png" : "image/jpeg";
-    let quality: number | undefined;
+  async renderImage(width: number = 1920, height: number = 1080): Promise<OpenSeadragon.Viewer> {
+    const container = document.createElement("div");
 
-    if (format === "jpeg") {
-      quality = 0.9;
-    } else {
-      quality = undefined;
+    if (this._debug !== undefined && this._debug) {
+      let debugElement = document.querySelector<HTMLElement>("#debug");
+      if (debugElement === null) {
+        debugElement = document.querySelector<HTMLElement>("body");
+      }
+      debugElement!.insertAdjacentElement("beforeend", container);
     }
-    */
 
-    return new Promise<HTMLCanvasElement | string>((resolve, reject) => {
-      const container = document.createElement("div");
+    const renderer: Renderer = new Renderer(container, this.columns, this.rows, false, false, false, undefined, width, height);
+    const childViewer = renderer.viewer;
 
-      if (this._debug !== undefined && this._debug) {
-        let debugElement = document.querySelector<HTMLElement>("#debug");
-        if (debugElement === null) {
-          debugElement = document.querySelector<HTMLElement>("body");
+    if (!childViewer) {
+      throw new Error("Child Renderer has no viewer!");
+    }
+
+    if (!this._source) {
+      throw new Error("Parent viewer has no source!");
+    }
+
+    const clip: { [key in CutPosition]?: number | undefined } = {};
+    const offsets: { [key in CutPosition]?: number } | undefined = this._offsets;
+    const rotations: { [key in CutPosition]?: number } | undefined = this._rotations;
+
+    if (this.clipRect !== undefined) {
+      clip[CutPosition.Top] = this.clipRect.y;
+      clip[CutPosition.Left] = this.clipRect.x;
+      clip[CutPosition.Right] = this.clipRect.width;
+      clip[CutPosition.Bottom] = this.clipRect.height;
+    } else {
+      clip[CutPosition.Top] = 0;
+      clip[CutPosition.Left] = 0;
+      clip[CutPosition.Right] = this._source!.width;
+      clip[CutPosition.Bottom] = this._source!.height;
+    }
+
+    renderer.source = this._source;
+    const numTiles = childViewer.world.getItemCount();
+
+    return new Promise<OpenSeadragon.Viewer>((resolve, reject) => {
+      let timer: number;
+      let layoutFinished = false;
+      let updateViewportFired = false;
+      let tilesDrawn = 0;
+
+      let fullWidthFired = false;
+      let tileDrawnHandler: OpenSeadragon.EventHandler<OpenSeadragon.ViewerEvent>;
+      let layoutFinishHandler: () => void;
+      let fullWidthHandler: OpenSeadragon.EventHandler<OpenSeadragon.ViewerEvent>;
+      console.log(`Awaiting ${numTiles} tiles`);
+
+      const checkReady = () => {
+        if (layoutFinished && tilesDrawn >= numTiles && fullWidthFired) {
+          try {
+            resolve(childViewer);
+            clearTimeout(timer);
+            //remove handlers
+            if (tileDrawnHandler) childViewer.removeHandler("tile-drawn", tileDrawnHandler);
+            if (layoutFinishHandler) childViewer.removeHandler("layout-finish", layoutFinishHandler);
+            if (fullWidthHandler) childViewer.removeHandler("full-width", fullWidthHandler);
+          } catch (error) {
+            reject(error);
+            clearTimeout(timer);
+            if (tileDrawnHandler) childViewer.removeHandler("tile-drawn", tileDrawnHandler);
+            if (layoutFinishHandler) childViewer.removeHandler("layout-finish", layoutFinishHandler);
+            if (fullWidthHandler) childViewer.removeHandler("full-width", fullWidthHandler);
+          }
         }
-        debugElement!.insertAdjacentElement("beforeend", container);
-      }
+      };
 
-      const timer = setTimeout(() => {
-        reject(new Error(`Render not finished after ${this.renderTimeout}ms`));
-      }, this.renderTimeout);
+      tileDrawnHandler = (event: OpenSeadragon.ViewerEvent) => {
+        console.log(`tile-drawn event fired ${tilesDrawn}`, event);
+        tilesDrawn++;
+        checkReady();
+      };
 
-      const renderer: Renderer = new Renderer(container, this.columns, this.rows, false, false, false, undefined, width, height);
+      layoutFinishHandler = () => {
+        console.log("layout-finish event fired");
+        layoutFinished = true;
+        childViewer.addOnceHandler("full-width", fullWidthHandler);
+        Renderer.fitToWidth(childViewer, true, undefined, true);
+        checkReady();
+      };
 
-      const childViewer = renderer.viewer;
-      if (childViewer === undefined) {
-        clearTimeout(timer);
-        reject("Child Renderer has no viewer!");
-      }
+      fullWidthHandler = (event: OpenSeadragon.ViewerEvent) => {
+        console.log("full-width event fired", event);
+        fullWidthFired = true;
+        checkReady();
+      };
 
-      //const viewportRect = this.viewer?.viewport.getBounds(true);
-      if (this._source === undefined) {
-        clearTimeout(timer);
-        reject("Parent viewer has no source!");
-      }
-      renderer.source = this._source!;
+      // Add tile-drawn handler immediately
+      childViewer.addHandler("tile-drawn", tileDrawnHandler);
 
-      const clip: { [key in CutPosition]?: number | undefined } = {};
-      const offsets: { [key in CutPosition]?: number } | undefined = this._offsets;
-      const rotations: { [key in CutPosition]?: number } | undefined = this._rotations;
+      const updateViewportHandler: OpenSeadragon.EventHandler<OpenSeadragon.ViewerEvent> = (event: OpenSeadragon.ViewerEvent) => {
+        console.log("update viewport event fired", event);
+        updateViewportFired = true;
+      };
+      childViewer.addHandler("update-viewport", updateViewportHandler);
 
-      if (this.clipRect !== undefined) {
-        clip[CutPosition.Top] = this.clipRect.y;
-        clip[CutPosition.Left] = this.clipRect.x;
-        clip[CutPosition.Right] = this.clipRect.width;
-        clip[CutPosition.Bottom] = this.clipRect.height;
-      } else {
-        clip[CutPosition.Top] = 0;
-        clip[CutPosition.Left] = 0;
-        clip[CutPosition.Right] = this._source!.width;
-        clip[CutPosition.Bottom] = this._source!.height;
-      }
-
-      childViewer!.addOnceHandler(
-        "source-loaded",
-        (() => {
-          childViewer!.addOnceHandler(
-            "layout-finish",
-            (() => {
-              childViewer!.addOnceHandler(
-                "full-width",
-                (() => {
-                  console.log("Output canvas resized");
-                  const canvas: HTMLCanvasElement = childViewer!.drawer.canvas as HTMLCanvasElement;
-
-                  const context = canvas.getContext("2d");
-                  if (!context) {
-                    clearTimeout(timer);
-                    reject(new Error("Could not get 2D rendering context for the canvas."));
-                  }
-                  /*
-                  canvas.toBlob(
-                    (blob) => {
-                      // Callback function
-                      resolve(blob); // Resolve with the blob (or null if failed)
-                    },
-                    type, // Mime type
-                    quality // Quality argument (for JPEG)
-                  );
-                  const url = URL.createObjectURL(blob);
-                  */
-
-                  clearTimeout(timer);
-                  resolve(canvas);
-                }).bind(this)
-              );
-              console.log("render finished");
-              Renderer.fitToWidth(childViewer!, true, undefined, true);
-            }).bind(this)
-          );
-          console.log("Source loaded");
+      const waitForTiles = () => {
+        if (tilesDrawn >= numTiles) {
+          childViewer.removeHandler("tile-drawn", waitForTiles); // Remove this temporary handler
+          childViewer.addOnceHandler("layout-finish", layoutFinishHandler);
           renderer.notify([clip, offsets, rotations] as CutNotification, true);
-        }).bind(this)
-      );
+        }
+      };
+      childViewer.addHandler("tile-drawn", waitForTiles);
+
+      timer = setTimeout(() => {
+        reject(new Error(`Render not finished after ${this.renderTimeout}ms`));
+        if (tileDrawnHandler) childViewer.removeHandler("tile-drawn", tileDrawnHandler);
+        if (layoutFinishHandler) childViewer.removeHandler("layout-finish", layoutFinishHandler);
+        if (fullWidthHandler) childViewer.removeHandler("full-width", fullWidthHandler);
+      }, this.renderTimeout);
     });
   }
 
   addControls(element: HTMLElement, width: number = 1920, height: number = 1080, type: string = "image/png") {
-    const renderCallback = async (width: number = 1920, height: number = 1080): Promise<HTMLCanvasElement | undefined> => {
+    let childViewer: OpenSeadragon.Viewer | null;
+    const renderCallback = async (width: number = 1920, height: number = 1080): Promise<HTMLCanvasElement> => {
       try {
-        const canvas: HTMLCanvasElement = await this.renderImage(width, height);
+        const viewer = await this.renderImage(width, height);
+        // Just an ugly hack everything else won't work
+        await new Promise((r) => setTimeout(r, 500));
         console.log("returning canvas to download");
-        return canvas;
+        childViewer = viewer;
+        return viewer.drawer.canvas as HTMLCanvasElement;
       } catch (e) {
         if (this.statusContainer !== null) {
           this.statusContainer.innerHTML = e as string;
         }
-        return undefined;
+        throw new Error(e);
       }
-      /*
-      return new Promise<HTMLCanvasElement | undefined>((resolve, reject) => {
-        this.renderImage(width, height).then(
-          (canvas: HTMLCanvasElement) => {
-            resolve(canvas);
-          },
-          (msg: string) => {
-            if (this.statusContainer !== null) {
-              this.statusContainer.innerHTML = msg;
-            }
-            reject(undefined);
-          }
-        );
-      });
-      */
     };
-
     if (this._download) {
       customElements.define("offscreencanvas-download", CanvasDownloadButton);
       this.downloadButton = document.createElement("offscreencanvas-download") as CanvasDownloadButton;
       const suffix = type.split("/")[1];
       this.downloadButton.format = suffix;
       this.downloadButton.renderCallback = renderCallback.bind(this); //this.renderImage.bind(this);
+      this.downloadButton.addEventListener("download-end", () => {
+        if (childViewer !== null && childViewer.container !== undefined) {
+          let debugElement = document.querySelector<HTMLElement>("#debug");
+          let childViewerContainer = childViewer.container;
+          childViewer.destroy();
+          childViewerContainer.remove();
+          if (debugElement !== null) {
+            debugElement.remove();
+          } else {
+            document.querySelector("body > div:last-of-type").remove();
+          }
+          childViewer = null;
+        }
+      });
       this.downloadButton.fileName = `wallpaper`;
       this.downloadButton.width = width;
       this.downloadButton.height = height;
@@ -1057,5 +1064,11 @@ export class Renderer {
 
   static cloneRect(rect: OpenSeadragon.Rect): OpenSeadragon.Rect {
     return new OpenSeadragon.Rect(rect.x, rect.y, rect.width, rect.height);
+  }
+
+  static blockUntilViewerEvent(viewer: OpenSeadragon.Viewer, event: string, callback: () => void) {
+    return new Promise((resolve) => {
+      viewer.addOnceHandler(event, resolve);
+    });
   }
 }

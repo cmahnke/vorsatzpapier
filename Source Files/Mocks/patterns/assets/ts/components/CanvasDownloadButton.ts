@@ -11,9 +11,7 @@ export class CanvasDownloadButton extends HTMLElement {
   private _height: number | null = null; // Required for renderCallback
   private _width: number | null = null; // Required for renderCallback
   // Callback to dynamically generate a canvas for download
-  private _renderCallback:
-    | ((width: number, height: number) => Promise<HTMLCanvasElement | undefined> | HTMLCanvasElement | undefined)
-    | null = null;
+  private _renderCallback?: (width: number, height: number) => Promise<HTMLCanvasElement>;
   private shadow: ShadowRoot;
 
   // --- Constructor and Core Lifecycle ---
@@ -239,16 +237,16 @@ export class CanvasDownloadButton extends HTMLElement {
    * If this is set, it takes precedence over the `canvas` property during download initiation,
    * but only if `width` and `height` are also provided.
    */
-  set renderCallback(
-    callback: ((width: number, height: number) => Promise<HTMLCanvasElement | undefined> | HTMLCanvasElement | undefined) | null
-  ) {
+  set renderCallback(callback: (width: number, height: number) => Promise<HTMLCanvasElement>) {
     this._renderCallback = callback;
     this._updateButtonState();
   }
 
+  /*
   get renderCallback(): ((width: number, height: number) => Promise<HTMLCanvasElement | undefined> | HTMLCanvasElement | undefined) | null {
     return this._renderCallback;
   }
+  */
 
   // --- Private Methods ---
 
@@ -288,7 +286,7 @@ export class CanvasDownloadButton extends HTMLElement {
         // Execute the callback to generate the canvas
         const result = this._renderCallback(this._width, this._height);
         // Check if the result is a promise or a direct value
-        canvasToDownload = result instanceof Promise ? await result : result;
+        canvasToDownload = await result;
 
         if (!canvasToDownload) {
           // Check if callback returned a canvas

@@ -1,5 +1,5 @@
 diff --git a/node_modules/@types/openseadragon/index.d.ts b/node_modules/@types/openseadragon/index.d.ts
-index 4958ca5..0aa1c62 100644
+index 4958ca5..da90fff 100644
 --- a/node_modules/@types/openseadragon/index.d.ts
 +++ b/node_modules/@types/openseadragon/index.d.ts
 @@ -281,6 +281,7 @@ declare namespace OpenSeadragon {
@@ -55,3 +55,24 @@ index 4958ca5..0aa1c62 100644
      }
  
      class TileSource extends EventSource {
+@@ -1191,6 +1200,12 @@ declare namespace OpenSeadragon {
+             homeFillsViewer?: boolean | undefined;
+         });
+ 
++        _contentBoundsNoRotate: Rect;
++        _contentBounds: Rect;
++        _contentSize: Rect;
++        _contentSizeNoRotate: Rect;
++        _contentAspectRatio: number;
++        _setContentBounds(bounds: OpenSeadragon.Rect, contentFactor:number): void;
+         applyConstraints(immediately?: boolean): Viewport;
+         deltaPixelsFromPoints(deltaPoints: Point, current?: boolean): Point;
+         deltaPixelsFromPointsNoRotate(deltaPoints: Point, current?: boolean): Point;
+@@ -1244,6 +1259,7 @@ declare namespace OpenSeadragon {
+         setRotation(degrees: number): Viewport;
+         toggleFlip(): Viewport;
+         update(): boolean;
++        viewer: Viewer;
+         viewerElementToImageCoordinates(pixel: Point): Point;
+         viewerElementToViewportCoordinates(pixel: Point): Point;
+         viewerElementToViewportRectangle(rectangle: Rect): Rect;

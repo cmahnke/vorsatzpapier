@@ -11,6 +11,7 @@ import { resolve as resolvePath } from "path";
 import postcss from "rollup-plugin-postcss";
 import url from "postcss-url";
 import path from "path";
+import copy from "rollup-plugin-copy";
 
 // External configs
 import typescriptOptions from "./tsconfig.json" with { type: "json" };
@@ -117,6 +118,19 @@ const config = [
         ]
       }),
       commonjs(),
+      copy({
+        targets: [
+          {
+            src: "patterns/index.html",
+            dest: "build",
+            transform: (contents, filename) =>
+              contents
+                .toString()
+                .replace("./assets/ts/main.ts", `${artifactName}-${artifactversion}-complete.es.min.js`)
+                .replace("</title>", `</title><link rel="stylesheet" crossorigin href="${artifactName}-${artifactversion}.css.css">`)
+          }
+        ]
+      }),
       typescript({ ...typescriptOptions, sourceMap: false, inlineSources: false }),
       nodeResolve(),
       json(),

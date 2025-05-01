@@ -134,9 +134,11 @@ export class GridSizeSelector extends HTMLElement {
 
       .container {
         display: flex;
-        align-items: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
         gap: var(--gap);
         font-family: var(--font-family);
+        justify-content: flex-end;
       }
 
       :host(.disabled) .container {
@@ -191,6 +193,39 @@ export class GridSizeSelector extends HTMLElement {
         display: inline-block;
       }
 
+      .trigger-button {
+        padding: 8px 16px;
+        background-color: var(--btn-bg-color);
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      .trigger-button:hover {
+        background-color: #367c39;
+      }
+
+      @media (min-width: 720px) {
+        .trigger-button {
+          order: 1;
+        }
+        .width-label {
+          order: 2;
+        }
+        .width-input {
+          order: 3;
+        }
+        .height-label {
+          order: 4;
+        }
+        .height-input {
+          order: 5;
+        }
+        .update-button {
+          order: 6;
+        }
+      }
+
       .grid-area {
         display: none;
         grid-template-columns: repeat(${GridSizeSelector.initialMaxCols}, auto);
@@ -223,17 +258,6 @@ export class GridSizeSelector extends HTMLElement {
         background-color: rgba(0, 123, 255, 0.3);
         border: 1px solid rgba(0, 123, 255, 0.7);
       }
-      .trigger-button {
-        padding: 8px 16px;
-        background-color: var(--btn-bg-color);
-        border: none;
-        cursor: pointer;
-        font-size: 16px;
-      }
-
-      .trigger-button:hover {
-        background-color: #367c39;
-      }
     `;
   }
 
@@ -241,9 +265,9 @@ export class GridSizeSelector extends HTMLElement {
     this.shadowRoot!.innerHTML = `
         <style>${GridSizeSelector.styles}</style>
         <div class="container">
-          <button class="trigger-button" ${this.disabled ? "disabled" : ""}>${i18next.t("gridSizeSelector:selectSize")}</button>
-          <label for="widthInput">${i18next.t("generic:columns")}:</label>
+          <label class="width-label" for="widthInput">${i18next.t("generic:columns")}:</label>
           <input
+            class="width-input"
             id="widthInput"
             type="number"
             min="1"
@@ -251,8 +275,9 @@ export class GridSizeSelector extends HTMLElement {
             value="${this._width}"
             ${this.disabled ? "disabled" : ""}
           />
-          <label for="heightInput">${i18next.t("generic:rows")}:</label>
+          <label class="height-label" for="heightInput">${i18next.t("generic:rows")}:</label>
           <input
+            class="height-input"
             id="heightInput"
             type="number"
             min="1"
@@ -263,6 +288,7 @@ export class GridSizeSelector extends HTMLElement {
           <button class="update-button" ${
             this._disableSizeUpdate || this.disabled ? "disabled" : ""
           }>${i18next.t("gridSizeSelector:updateSize")}</button>
+          <button class="trigger-button" ${this.disabled ? "disabled" : ""}>${i18next.t("gridSizeSelector:selectSize")}</button>
         </div>
         <div class="grid-container">
           <div class="grid-area">

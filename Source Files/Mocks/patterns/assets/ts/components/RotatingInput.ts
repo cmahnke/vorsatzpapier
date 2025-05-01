@@ -47,13 +47,14 @@ export class RotatingInput extends HTMLElement {
       <style id="dynamic-styles">
         :host {
           --handle-color: ${this._disabled ? "#ccc" : "#007bff"};
+          --rotating-input-container-margin: 20px auto;
         }
 
         .rotating-input-container {
           position: relative;
           width: ${2 * this.radius}px;
           height: ${2 * this.radius}px;
-          margin: 20px auto;
+          margin: var(--rotating-input-container-margin);
           user-select: none;
         }
 

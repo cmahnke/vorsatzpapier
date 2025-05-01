@@ -12,28 +12,24 @@ import browserslistToEsbuild from "browserslist-to-esbuild";
 
 // External configs
 import svgoConfig from "./svgo.config.mjs";
+import packageJson from "./package.json";
+
+const artifactName = packageJson.name;
+const artifactversion = packageJson.version;
 
 // https://vitejs.dev/config/
 export default defineConfig({
   base: "./",
+  /*assetsInclude: ['assets/images/*.svg'],*/
   plugins: [
     nodePolyfills(),
     {
       apply: "build"
     },
-    stylelint({ build: true, dev: false, lintOnStart: true }),
     DynamicPublicDirectory(["patterns/public"], {
       ssr: false
     }),
     checker({ typescript: false }),
-    /*
-    topLevelAwait({
-      // The export name of top-level await promise for each chunk module
-      promiseExportName: "__tla",
-      // The function to generate import names of top-level await promise in each chunk module
-      promiseImportName: i => `__tla_${i}`
-    })
-    */
     svg(svgoConfig),
     viteStaticCopy({
       targets: [
@@ -42,11 +38,13 @@ export default defineConfig({
           dest: "images/"
         }
       ]
-    })
+    }),
+    stylelint({ build: true, dev: false, lintOnStart: true })
   ],
   build: {
     target: browserslistToEsbuild(),
     commonjsOptions: { transformMixedEsModules: true },
+    cssMinify: true,
     rollupOptions: {
       input: {
         main: resolve(__dirname, "patterns/index.html")
@@ -55,6 +53,14 @@ export default defineConfig({
         assetFileNames: `assets/[name].[ext]`
       }
     }
+    /*
+    lib: {
+      entry: ['patterns/assets/ts/CuttingTable.ts'],
+      formats: ['es', 'umd', 'iife'],
+      name: "PatternGenerator",
+      fileName: (format, entryName) => `${artifactName}-${artifactversion}.${format}.js`,
+      cssFileName: artifactName
+    }*/
   },
   resolve: {
     preserveSymlinks: true,
@@ -68,9 +74,6 @@ export default defineConfig({
         replacement: join(process.cwd(), "patterns", "assets", "$1")
       }
     ]
-  },
-  optimizeDeps: {
-    exclude: ["@monogrid/gainmap-js/libultrahdr", "three"]
   },
   css: {
     preprocessorOptions: {

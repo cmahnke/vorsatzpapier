@@ -23,3 +23,9 @@ Hier werden alte Tapeten teilweise auch zum Kauf angeboten:
 # Museen
 
 * [Deutsches Tapetenmuseum - Museum für Raumkunst](https://www.heritage-kassel.de/standorte/deutsches-tapetenmuseum)
+* [Victoria and Albert Museum: Wallpaper](https://www.vam.ac.uk/collections/wallpaper)
+
+# Sonstige
+
+* [Wallpaper History Society](https://www.wallpaperhistorysociety.org.uk/)
+* [Cooper Hewitt: Women Making Wallpaper](https://www.cooperhewitt.org/2023/03/31/women-making-wallpaper/)

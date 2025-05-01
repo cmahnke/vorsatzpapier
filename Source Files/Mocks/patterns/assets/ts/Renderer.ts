@@ -901,15 +901,11 @@ export class Renderer {
     const numTiles = childViewer.world.getItemCount();
 
     return new Promise<OpenSeadragon.Viewer>((resolve, reject) => {
-      let timer: number;
       let layoutFinished = false;
       let updateViewportFired = false;
       let tilesDrawn = 0;
-
       let fullWidthFired = false;
-      let tileDrawnHandler: OpenSeadragon.EventHandler<OpenSeadragon.ViewerEvent>;
-      let layoutFinishHandler: () => void;
-      let fullWidthHandler: OpenSeadragon.EventHandler<OpenSeadragon.ViewerEvent>;
+
       console.log(`Awaiting ${numTiles} tiles`);
 
       const checkReady = () => {
@@ -931,13 +927,13 @@ export class Renderer {
         }
       };
 
-      tileDrawnHandler = (event: OpenSeadragon.ViewerEvent) => {
+      const tileDrawnHandler: OpenSeadragon.EventHandler<OpenSeadragon.ViewerEvent> = (event: OpenSeadragon.ViewerEvent) => {
         console.log(`tile-drawn event fired ${tilesDrawn}`, event);
         tilesDrawn++;
         checkReady();
       };
 
-      layoutFinishHandler = () => {
+      const layoutFinishHandler: () => void = () => {
         console.log("layout-finish event fired");
         layoutFinished = true;
         childViewer.addOnceHandler("full-width", fullWidthHandler);
@@ -945,7 +941,7 @@ export class Renderer {
         checkReady();
       };
 
-      fullWidthHandler = (event: OpenSeadragon.ViewerEvent) => {
+      const fullWidthHandler: OpenSeadragon.EventHandler<OpenSeadragon.ViewerEvent> = (event: OpenSeadragon.ViewerEvent) => {
         console.log("full-width event fired", event);
         fullWidthFired = true;
         checkReady();
@@ -969,7 +965,7 @@ export class Renderer {
       };
       childViewer.addHandler("tile-drawn", waitForTiles);
 
-      timer = setTimeout(() => {
+      const timer = setTimeout(() => {
         reject(new Error(`Render not finished after ${this.renderTimeout}ms`));
         if (tileDrawnHandler) childViewer.removeHandler("tile-drawn", tileDrawnHandler);
         if (layoutFinishHandler) childViewer.removeHandler("layout-finish", layoutFinishHandler);
@@ -1003,14 +999,16 @@ export class Renderer {
       this.downloadButton.renderCallback = renderCallback.bind(this); //this.renderImage.bind(this);
       this.downloadButton.addEventListener("download-end", () => {
         if (childViewer !== null && childViewer.container !== undefined) {
-          let debugElement = document.querySelector<HTMLElement>("#debug");
-          let childViewerContainer = childViewer.container;
+          const childViewerContainer = childViewer.container;
           childViewer.destroy();
           childViewerContainer.remove();
-          if (debugElement !== null) {
-            debugElement.remove();
-          } else {
-            document.querySelector("body > div:last-of-type").remove();
+          if (this._debug !== undefined && this._debug) {
+            const debugElement = document.querySelector<HTMLElement>("#debug");
+            if (debugElement !== null) {
+              debugElement.remove();
+            } else {
+              document.querySelector("body > div:last-of-type")?.remove();
+            }
           }
           childViewer = null;
         }
@@ -1066,9 +1064,11 @@ export class Renderer {
     return new OpenSeadragon.Rect(rect.x, rect.y, rect.width, rect.height);
   }
 
+  /*
   static blockUntilViewerEvent(viewer: OpenSeadragon.Viewer, event: string, callback: () => void) {
     return new Promise((resolve) => {
       viewer.addOnceHandler(event, resolve);
     });
   }
+  */
 }

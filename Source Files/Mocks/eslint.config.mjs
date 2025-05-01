@@ -13,7 +13,7 @@ export default [
       "@typescript-eslint/no-namespace": ["warn", {}],
       "no-warning-comments": ["warn", {}],
       "no-irregular-whitespace": ["warn", {}],
-      "no-console": ["warn", { allow: ["warn", "error"] }],
+      "no-console": ["warn", { allow: ["warn", "error", "assert"] }],
       "@typescript-eslint/ban-ts-comment": ["warn", { "ts-ignore": "allow-with-description" }]
     }
   },

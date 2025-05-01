@@ -90,28 +90,28 @@ $active-color: #007bff;
       }
 
       &.fullscreen {
-        content: url("/images/fullscreen.svg");
+        content: url("../images/fullscreen.svg?inline");
         left: 6.2em;
       }
 
       &.fullwidth {
-        content: url("/images/fullwidth.svg");
+        content: url("../images/fullwidth.svg?inline");
         left: 8.6em;
       }
 
       &.zoomin {
-        content: url("/images/zoomin.svg");
+        content: url("../images/zoomin.svg?inline");
         left: 1em;
       }
 
       &.zoomout {
-        content: url("/images/zoomout.svg");
+        content: url("../images/zoomout.svg?inline");
         left: 3.6em;
       }
 
       &.square {
         right: 1em;
-        content: url("/images/square.svg");
+        content: url("../images/square.svg?inline");
       }
     }
   }

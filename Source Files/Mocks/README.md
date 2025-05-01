@@ -1,4 +1,8 @@
-# Pattern generator
+# Lucienne - A IIIF pattern generator
+
+# Name
+
+The software is named after [Lucienne_Day](https://en.wikipedia.org/wiki/Lucienne_Day), a famous British textile and wallpaper designer.
 
 # TODO
 
@@ -12,6 +16,22 @@
 - Rotation rect changes size on rotation
 
 # Commands
+
+## Local development
+
+This package uses Vite for development.
+
+```
+npm run dev
+```
+
+## Packaging
+
+Vite is sadly not very flexible in regard of creating distributable artifacts, thus we use Rollup for that.
+
+```
+npm run bundle
+```
 
 ## Updating OpenSeadragon Types
 

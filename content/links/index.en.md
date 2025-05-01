@@ -23,3 +23,9 @@ Some old wallpapers are also offered for sale here:
 # Museums
 
 * [German Wallpaper Museum - Museum of Spatial Art](https://www.heritage-kassel.de/standorte/deutsches-tapetenmuseum)
+* [Victoria and Albert Museum: Tapeten](https://www.vam.ac.uk/collections/wallpaper)
+
+# Other
+
+* [Wallpaper History Society](https://www.wallpaperhistorysociety.org.uk/)
+* [Cooper Hewitt: Women Making Wallpaper](https://www.cooperhewitt.org/2023/03/31/women-making-wallpaper/)

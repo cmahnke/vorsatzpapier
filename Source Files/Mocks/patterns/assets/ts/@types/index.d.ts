@@ -4,6 +4,6 @@ declare module "*.scss" {
 }
 
 declare module "*/translations.json" {
-  const content: Record<string,Record<string, Record<string, string>>>;
+  const content: Record<string, Record<string, Record<string, string>>>;
   export default content;
 }

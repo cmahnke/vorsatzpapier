@@ -1,0 +1,5 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "entry": ["patterns/assets/ts/CuttingTable.ts", "patterns/assets/ts/main.ts"],
+  "project": ["**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}!"]
+}

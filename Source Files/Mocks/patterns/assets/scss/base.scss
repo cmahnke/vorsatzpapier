@@ -22,7 +22,7 @@ $active-color: #007bff;
   font-size: var(--btn-font-size);
   font-family: var(--font-family);
 
-  @media (min-width: 720px) {
+  @media (width >= 720px) {
     margin: 2rem;
   }
 
@@ -38,7 +38,7 @@ $active-color: #007bff;
     border-radius: 1em;
     box-sizing: border-box;
 
-    @media (min-width: 720px) {
+    @media (width >= 720px) {
       padding: 1em;
     }
 
@@ -129,8 +129,7 @@ $active-color: #007bff;
 
   .source-select {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     justify-content: center;
 
     .url-input {
@@ -161,7 +160,7 @@ $active-color: #007bff;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       min-height: 2.4rem;
-      margin: .8rem;
+      margin: 0.8rem;
 
       .select {
         vertical-align: middle;
@@ -294,7 +293,7 @@ $active-color: #007bff;
         right: 1em;
         margin-right: 1em;
 
-        @media (min-width: 720px) {
+        @media (width >= 720px) {
           top: 1em;
           right: 11em;
         }
@@ -308,7 +307,7 @@ $active-color: #007bff;
 
         --btn-margin: 0;
 
-        @media (min-width: 720px) {
+        @media (width >= 720px) {
           top: 1em;
           right: 1em;
         }
@@ -319,7 +318,7 @@ $active-color: #007bff;
         bottom: 1em;
         right: 1em;
 
-        @media (min-width: 720px) {
+        @media (width >= 720px) {
           top: 4em;
           right: 1em;
         }

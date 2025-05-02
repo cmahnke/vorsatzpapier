@@ -1,18 +1,3 @@
-import type { Lang } from "./types";
-
-export function getLang(): Lang {
-  let lang = "en";
-  try {
-    lang = navigator.language;
-    lang = lang.split("-")[0];
-  } catch {
-    if (document.documentElement.lang !== undefined) {
-      lang = document.documentElement.lang.split("-")[0];
-    }
-  }
-  return lang as Lang;
-}
-
 export function equals(obj1: unknown, obj2: unknown): boolean {
   function isObject(object: unknown): object is Record<string, unknown> {
     return object != null && typeof object === "object";

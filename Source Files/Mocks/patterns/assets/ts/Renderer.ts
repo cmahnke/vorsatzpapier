@@ -4,6 +4,7 @@ import { CanvasDownloadButton } from "./components/CanvasDownloadButton";
 import { GridSizeSelector } from "./components/GridSizeSelector";
 import { CutPosition } from "./types";
 import { OffsetRect } from "./openseadragon/OffsetRect";
+import { RotateableRect } from "./openseadragon/RotateableRect";
 import type { CutNotification, IIIFImageStub } from "./types";
 import { equals } from "./util";
 
@@ -19,7 +20,7 @@ export class Renderer {
   _gridSelector: boolean;
   _download: boolean;
   _controls: boolean;
-  clipRect: OpenSeadragon.Rect | undefined;
+  clipRect: OpenSeadragon.Rect | RotateableRect | undefined;
   _offsets: { [key in CutPosition]?: number } | undefined;
   _rotations: { [key in CutPosition]?: number } | undefined;
   _rows: number;
@@ -35,8 +36,7 @@ export class Renderer {
   _debug: boolean = false;
   statusContainer: HTMLDivElement | null;
   _debugOverlays: Map<OpenSeadragon.TiledImage, { element: HTMLElement; location: OpenSeadragon.Rect }[]>;
-  renderTimeout: number = 150000;
-  //_image
+  renderTimeout: number = 1500;
 
   constructor(
     element: HTMLElement,
@@ -110,7 +110,7 @@ export class Renderer {
         }
       }
 
-      let allTilesLoaded = false;
+      //let allTilesLoaded = false;
       const errorHandler: OpenSeadragon.EventHandler<OpenSeadragon.TileLoadFailedEvent> = (error) => {
         reject(`Failed to load TiledImage: ${error.message}`);
       };
@@ -123,7 +123,7 @@ export class Renderer {
         if (tilesLoaded === sources.length) {
           viewer.removeHandler("tile-load-failed", errorHandler);
           viewer.removeHandler("tile-loaded", tileLoadedHandler);
-          allTilesLoaded = true;
+          //allTilesLoaded = true;
           resolve(true); // Resolve the Promise when all tiles are loaded
         }
       };
@@ -142,7 +142,7 @@ export class Renderer {
     this._loaded = false;
 
     if (this.clipRect === undefined) {
-      this.clipRect = new OpenSeadragon.Rect(0, 0, json.width, json.height);
+      this.clipRect = new RotateableRect(0, 0, json.width, json.height);
     }
 
     const columns = this._columns;
@@ -230,13 +230,12 @@ export class Renderer {
 
   setSize(columns: number, rows: number, callback?: () => void): void {
     if (this._margins) {
-      /*
       if (columns > rows) {
         this._marginWidth = Math.floor(columns / 2);
       } else {
         this._marginWidth = Math.floor(rows / 2);
       }
-      */
+
       columns = columns + this._marginWidth * 2;
       rows = rows + this._marginWidth * 2;
     }
@@ -491,7 +490,7 @@ export class Renderer {
     }
     this.viewer?.raiseEvent("start-layout", { eventSource: this.viewer });
     let pos = -1;
-    let expectedSize: OpenSeadragon.Rect;
+    //let expectedSize: OpenSeadragon.Rect;
     if (this.clipRect === undefined || this.viewer === undefined) {
       throw new Error("Clip rect or viewer is not defined");
     }
@@ -526,7 +525,7 @@ export class Renderer {
           throw new Error("Required variables are not defined");
         }
 
-        expectedSize = new OpenSeadragon.Rect(0, 0, transformedClipRect.width * visibleColumns, transformedClipRect.height * visibleRows);
+        //expectedSize = new OpenSeadragon.Rect(0, 0, transformedClipRect.width * visibleColumns, transformedClipRect.height * visibleRows);
         let offsetRect;
         if (this._offsets != undefined) {
           offsetRect = Renderer.createOffsetRect(this._offsets, tiledImage);
@@ -542,22 +541,22 @@ export class Renderer {
         if (transformedClipRect.y > 0) {
           height = height - transformedClipRect.y;
         }
+
+        const hideRect = new OpenSeadragon.Rect(
+          tiledImage.getContentSize().x,
+          tiledImage.getContentSize().y,
+          0,
+          0,
+          tiledImage.getRotation()
+        );
         /*
          * Margins might be more then 1 tile in with or height see `marginWidth`
          * c < marginWidth or r < marginWidth are the first margin rows or columns
          * c >= columns - marginWidth or r >= rows - marginWidth are the last margin rows or columns
          */
         if (margins) {
-          const hideRect = new OpenSeadragon.Rect(
-            tiledImage.getContentSize().x,
-            tiledImage.getContentSize().y,
-            0,
-            0,
-            tiledImage.getRotation()
-          );
-
           if (c < marginWidth || c >= columns - marginWidth || r < marginWidth || r >= rows - marginWidth) {
-            tiledImage.setClip(Renderer.cloneRect(hideRect));
+            tiledImage.setClip(RotateableRect.clone(hideRect));
           }
           column = c - marginWidth;
           row = r - marginWidth;
@@ -583,19 +582,30 @@ export class Renderer {
 
           const clipRotationPoint = this.clipRect.getCenter();
 
-          console.log("Rotation", `${c},${r}`, tiledImage.getBounds(), clipRotationPoint);
+          console.log("Before Rotation", `${c},${r}`, tiledImage.getBounds(), tiledImage.getClip(), clipRotationPoint);
 
+          //Bottom knob
           if (CutPosition.Right in this._rotations && this._rotations[CutPosition.Right] !== undefined && rowEven && !columnEven) {
             const rotate = this._rotations[CutPosition.Right];
-            //tiledImage.getClip()!.rotate(rotate)
+            //tiledImage.getClip()!.rotate(rotate);
+            tiledImage.setClip(tiledImage.getClip()!.rotate(rotate, clipRotationPoint));
             tiledImage.setRotationPoint(clipRotationPoint);
             tiledImage.setRotation(rotate, immediately);
+            if (rotate == 0 || rotate == 180) {
+              tiledImage.setWidth(referenceImage.getBounds().width, true);
+            }
           }
+          //Right knob
           if (CutPosition.Bottom in this._rotations && this._rotations[CutPosition.Bottom] !== undefined && columnEven && !rowEven) {
             const rotate = this._rotations[CutPosition.Bottom];
-            //tiledImage.getClip()!.rotate(rotate)
+            //tiledImage.getClip()!.rotate(rotate);
+            tiledImage.setClip(tiledImage.getClip()!.rotate(rotate, clipRotationPoint));
             tiledImage.setRotationPoint(clipRotationPoint);
             tiledImage.setRotation(rotate, immediately);
+
+            if (rotate == 0 || rotate == 180) {
+              tiledImage.setWidth(referenceImage.getBounds().width, true);
+            }
           }
           if (
             CutPosition.Right in this._rotations &&
@@ -605,13 +615,18 @@ export class Renderer {
           ) {
             if (rowEven && !columnEven && columnEven && !rowEven) {
               const rotate = this._rotations[CutPosition.Right] + this._rotations[CutPosition.Bottom];
-              //tiledImage.getClip()!.rotate(rotate)
+              //tiledImage.getClip()!.rotate(rotate);
+              tiledImage.setClip(tiledImage.getClip()!.rotate(rotate, clipRotationPoint));
               tiledImage.setRotationPoint(clipRotationPoint);
               tiledImage.setRotation(rotate, immediately);
+
+              if (rotate == 0 || rotate == 180) {
+                tiledImage.setWidth(referenceImage.getBounds().width, true);
+              }
             }
           }
 
-          console.log("Bounds after rotation", `${r},${c}`, tiledImage.getBounds(), tiledImage.getClip());
+          console.log("Bounds after rotation", `${c},${r}`, tiledImage.getBounds(), tiledImage.getClip());
         }
 
         if (offsetRect !== undefined) {
@@ -625,14 +640,14 @@ export class Renderer {
           }
           //Vertical overlaps
           if (column == 0 && offsetRect.width < 0) {
-            const borderClip = Renderer.cloneRect(tiledImage.getClip()!);
+            const borderClip = RotateableRect.clone(tiledImage.getClip()!);
             const imageCoordShift = offsetRect.width * row * -1;
             borderClip.width = borderClip.width - imageCoordShift;
             borderClip.x = borderClip.x + imageCoordShift;
             tiledImage.setClip(borderClip);
           }
           if (column == visibleColumns - 1 && offsetRect.width > 0) {
-            const borderClip = Renderer.cloneRect(tiledImage.getClip()!);
+            const borderClip = RotateableRect.clone(tiledImage.getClip()!);
             const imageCoordShift = offsetRect.width * row;
             borderClip.width = borderClip.width - imageCoordShift;
             tiledImage.setClip(borderClip);
@@ -648,23 +663,20 @@ export class Renderer {
           // Horizontal overlaps
           if (row == 0 && offsetRect.height < 0) {
             //column > 0 &&
-            const borderClip = Renderer.cloneRect(tiledImage.getClip()!);
+            const borderClip = RotateableRect.clone(tiledImage.getClip()!);
             const imageCoordShift = offsetRect.height * column * -1;
             borderClip.height = borderClip.height - imageCoordShift;
             borderClip.y = borderClip.y + imageCoordShift;
             tiledImage.setClip(borderClip);
           }
           if (row == visibleRows - 1 && offsetRect.height > 0) {
-            const borderClip = Renderer.cloneRect(tiledImage.getClip()!);
+            const borderClip = RotateableRect.clone(tiledImage.getClip()!);
             const imageCoordShift = offsetRect.height * column;
             borderClip.height = borderClip.height - imageCoordShift;
             tiledImage.setClip(borderClip);
           }
 
-          if (margins) {
-            if (marginWidth > 1) {
-              console.warn("Larger margin size are known to break");
-            }
+          if (margins && (c < marginWidth || c >= columns - marginWidth || r < marginWidth || r >= rows - marginWidth)) {
             const checkModifiedClip: (tiledImage: OpenSeadragon.TiledImage) => OpenSeadragon.Rect = (
               tiledImage: OpenSeadragon.TiledImage
             ) => {
@@ -674,46 +686,133 @@ export class Renderer {
                 tiledImage.getContentSize().y == tiledImage.getClip()!.y &&
                 this.clipRect !== undefined
               ) {
-                return Renderer.cloneRect(this.clipRect);
+                return RotateableRect.clone(this.clipRect);
               } else {
                 return tiledImage.getClip()!;
               }
             };
 
+            const marginPos: (curPos: number, dimension: number) => number = (curPos, dimension) => {
+              if (curPos < marginWidth) {
+                return marginWidth - curPos;
+              } else if (curPos >= dimension + marginWidth) {
+                return curPos - (marginWidth + dimension) + 1;
+              }
+              return NaN;
+            };
+            console.log(`${c},${r}`, marginPos(c, visibleColumns), marginPos(r, visibleRows));
+
+            const imageCoordShiftX = offsetRect.width * row;
+            const imageCoordShiftY = offsetRect.height * column;
+
+            //const borderClip = checkModifiedClip(tiledImage);
             // TODO Check if shift is covering the current margin tile
             if (c < marginWidth && offsetRect.width > 0) {
+              // Bottom slider right
               const borderClip = checkModifiedClip(tiledImage);
-              const imageCoordShift = offsetRect.width * row;
-              borderClip.x = borderClip.width - imageCoordShift;
-              borderClip.width = borderClip.width + imageCoordShift;
-              //if (Math.floor(offsetRect.width*marginWidth /))
-              //for (let i = 0; i < marginWidth; i++) {
 
-              //}
-              tiledImage.setClip(borderClip);
-            }
-
-            if (r < marginWidth && offsetRect.height > 0) {
-              const borderClip = checkModifiedClip(tiledImage);
-              const imageCoordShift = offsetRect.height * column;
-              borderClip.y = borderClip.height - imageCoordShift;
-              borderClip.height = imageCoordShift;
+              //shift in current tile
+              if (
+                marginPos(c, visibleColumns) * this.clipRect.width > imageCoordShiftX &&
+                (marginPos(c, visibleColumns) - 1) * this.clipRect.width < imageCoordShiftX
+              ) {
+                borderClip.x = borderClip.width + (marginPos(c, visibleColumns) - 1) * borderClip.width - imageCoordShiftX;
+                borderClip.width = borderClip.width - (marginPos(c, visibleColumns) - 1) * borderClip.width + imageCoordShiftX;
+                // shift smaller the current tile
+              } else if (marginPos(c, visibleColumns) * this.clipRect.width > imageCoordShiftX) {
+                borderClip.width = hideRect.width;
+                borderClip.x = hideRect.x;
+                //shift larger
+              } else {
+                borderClip.width = this.clipRect.width;
+                borderClip.x = this.clipRect.x;
+              }
               tiledImage.setClip(borderClip);
             }
 
             if (c >= columns - marginWidth && offsetRect.width < 0) {
+              // Bottom slider left
               const borderClip = checkModifiedClip(tiledImage);
-              const imageCoordShift = offsetRect.width * row;
-              borderClip.width = imageCoordShift * -1;
+
+              //shift in current tile
+              if (
+                marginPos(c, visibleColumns) * this.clipRect.width > imageCoordShiftX * -1 &&
+                (marginPos(c, visibleColumns) - 1) * this.clipRect.width < imageCoordShiftX * -1
+              ) {
+                borderClip.width = (imageCoordShiftX + (marginPos(c, visibleColumns) - 1) * borderClip.width) * -1;
+                // shift smaller the current tile
+              } else if (marginPos(c, visibleColumns) * this.clipRect.width > imageCoordShiftX * -1) {
+                borderClip.width = hideRect.width;
+                //shift larger
+              } else {
+                borderClip.width = this.clipRect.width;
+              }
+              tiledImage.setClip(borderClip);
+            }
+
+            /*
+            if ((r < marginWidth||r >= rows - marginWidth)&& offsetRect.width != 0) {
+              const borderClip = checkModifiedClip(tiledImage);
+              borderClip.y = borderClip.height + (marginPos(r, visibleRows) - 1) * borderClip.height - imageCoordShiftY;
+              tiledImage.setClip(borderClip);
+            }
+            */
+
+            if (r < marginWidth && offsetRect.height > 0) {
+              //right slider down
+              const borderClip = checkModifiedClip(tiledImage);
+
+              //shift in current tile
+              if (
+                marginPos(r, visibleRows) * this.clipRect.height > imageCoordShiftY &&
+                (marginPos(r, visibleRows) - 1) * this.clipRect.height < imageCoordShiftY
+              ) {
+                //borderClip.y = borderClip.height + (marginPos(r, visibleRows) - 1) * borderClip.height - imageCoordShiftY;
+                borderClip.y = borderClip.height + (marginPos(r, visibleRows) - 1) * borderClip.height - imageCoordShiftY;
+                borderClip.height = borderClip.height - (marginPos(r, visibleRows) - 1) * borderClip.height + imageCoordShiftY;
+                // shift smaller the current tile
+              } else if (marginPos(r, visibleRows) * this.clipRect.height > imageCoordShiftY) {
+                borderClip.height = hideRect.height;
+                borderClip.y = hideRect.y;
+                //shift larger
+              } else {
+                borderClip.height = this.clipRect.height;
+                borderClip.y = this.clipRect.y;
+              }
+
               tiledImage.setClip(borderClip);
             }
 
             if (r >= rows - marginWidth && offsetRect.height < 0) {
+              //right slider up
               const borderClip = checkModifiedClip(tiledImage);
-              const imageCoordShift = offsetRect.height * column;
-              borderClip.height = imageCoordShift * -1;
+
+              //shift in current tile
+              if (
+                marginPos(r, visibleRows) * this.clipRect.height > imageCoordShiftY * -1 &&
+                (marginPos(r, visibleRows) - 1) * this.clipRect.height < imageCoordShiftY * -1
+              ) {
+                borderClip.height = (imageCoordShiftY + (marginPos(r, visibleRows) - 1) * borderClip.height) * -1;
+                // shift smaller the current tile
+              } else if (marginPos(r, visibleRows) * this.clipRect.height > imageCoordShiftY * -1) {
+                borderClip.height = hideRect.height;
+                //shift larger
+              } else {
+                borderClip.height = this.clipRect.height;
+              }
+
               tiledImage.setClip(borderClip);
             }
+
+            /*
+            if ((c < marginWidth||c >= rows - marginWidth)&& offsetRect.height != 0) {
+              const borderClip = checkModifiedClip(tiledImage);
+              borderClip.x = borderClip.width + (marginPos(c, visibleColumns) - 1) * borderClip.width - imageCoordShiftX;
+              tiledImage.setClip(borderClip);
+            }
+            */
+
+            //tiledImage.setClip(borderClip);
           }
         }
 
@@ -748,7 +847,7 @@ export class Renderer {
         this.viewer?.getOverlayById(overlays[1].element).update(image.imageToViewportRectangle(image.getClip()!), undefined);
       }
     } else {
-      const position = image.getBounds(true);
+      //const position = image.getBounds(true);
       const labelElem = document.createElement("div");
       labelElem.id = "debug-overlay" + Math.random().toString(16).slice(2);
       labelElem.className = "debug-overlay";
@@ -947,7 +1046,6 @@ export class Renderer {
         checkReady();
       };
 
-      // Add tile-drawn handler immediately
       childViewer.addHandler("tile-drawn", tileDrawnHandler);
 
       const updateViewportHandler: OpenSeadragon.EventHandler<OpenSeadragon.ViewerEvent> = (event: OpenSeadragon.ViewerEvent) => {
@@ -958,7 +1056,7 @@ export class Renderer {
 
       const waitForTiles = () => {
         if (tilesDrawn >= numTiles) {
-          childViewer.removeHandler("tile-drawn", waitForTiles); // Remove this temporary handler
+          childViewer.removeHandler("tile-drawn", waitForTiles);
           childViewer.addOnceHandler("layout-finish", layoutFinishHandler);
           renderer.notify([clip, offsets, rotations] as CutNotification, true);
         }
@@ -1059,16 +1157,4 @@ export class Renderer {
       element.appendChild(this.gridSizeSelect);
     }
   }
-
-  static cloneRect(rect: OpenSeadragon.Rect): OpenSeadragon.Rect {
-    return new OpenSeadragon.Rect(rect.x, rect.y, rect.width, rect.height);
-  }
-
-  /*
-  static blockUntilViewerEvent(viewer: OpenSeadragon.Viewer, event: string, callback: () => void) {
-    return new Promise((resolve) => {
-      viewer.addOnceHandler(event, resolve);
-    });
-  }
-  */
 }

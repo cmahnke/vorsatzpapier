@@ -11,9 +11,9 @@ The software is named after [Lucienne_Day](https://en.wikipedia.org/wiki/Lucienn
 - CSS for cutting table
 - Preview icon in collections, implemented but parser doesn't support it
 
-- Changing height from top or width from left break overlaps with margins
-- Margin size needs to be set dynamically depending on size, implemented but not active yet
-- Rotation rect changes size on rotation
+- Dynamic margins not clipped correctly at edges
+  - Margin inset not yet implemented
+- Resizing rotated not working correctly - rotation point seems wrong
 
 # Commands
 

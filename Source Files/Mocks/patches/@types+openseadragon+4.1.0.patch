@@ -1,5 +1,5 @@
 diff --git a/node_modules/@types/openseadragon/index.d.ts b/node_modules/@types/openseadragon/index.d.ts
-index 4958ca5..da90fff 100644
+index 4958ca5..c8c50e7 100644
 --- a/node_modules/@types/openseadragon/index.d.ts
 +++ b/node_modules/@types/openseadragon/index.d.ts
 @@ -281,6 +281,7 @@ declare namespace OpenSeadragon {
@@ -19,6 +19,15 @@ index 4958ca5..da90fff 100644
      }
  
      class Point {
+@@ -815,7 +816,7 @@ declare namespace OpenSeadragon {
+         getTopLeft(): Point;
+         getTopRight(): Point;
+         intersection(rect: Rect): Rect;
+-        rotate(degrees: number, pivot?: Rect): Rect;
++        rotate(degrees: number, pivot?: Point): Rect;
+         times(factor: number): Rect;
+         toString(): string;
+         translate(delta: Point): Rect;
 @@ -955,6 +956,10 @@ declare namespace OpenSeadragon {
              ajaxHeaders?: object | undefined;
          });

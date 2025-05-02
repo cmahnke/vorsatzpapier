@@ -11,9 +11,8 @@ import type { IIIFImageStub, CutJSON, CutJSONLD } from "./types";
 import { loadInfoJson } from "./util";
 import i18next from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
-// @ts-ignore Avoid type errors with JSON import
 import translations from "@/json/translations.json";
-import '../scss/base.scss';
+import "../scss/base.scss";
 
 i18next.use(LanguageDetector).init({
   debug: false,

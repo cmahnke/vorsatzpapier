@@ -16,7 +16,7 @@ export type IIIFEntry = {
   thumbnail?: URL;
 };
 
-export type Dimensions = {
+type Dimensions = {
   height: number;
   width: number;
   aspectRatio?: number;
@@ -89,10 +89,3 @@ export type CutJSONLD = {
     };
   };
 };
-
-export type Translation = {
-  de: string;
-  en: string;
-};
-
-export type Lang = keyof Translation;

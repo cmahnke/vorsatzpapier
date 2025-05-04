@@ -1,6 +1,6 @@
 ---
-title: "Muster"
-description: "Diese Seite listet alle Beiträge mit grossflächigen Mustern auf."
+title: "Eigene Muster erstellen"
+description: "Auf dieser Seite können eigene Muster erstellt werden."
 metaPage: true
 displayinlist: false
 layout: generator

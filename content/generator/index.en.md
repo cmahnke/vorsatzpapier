@@ -1,6 +1,6 @@
 ---
-title: "Patterns"
-description : "This page lists all entries with full page patterns."
+title: "Create your own patterns"
+description : "You can create your own patterns on this page."
 metaPage: true
 displayinlist: false
 layout: generator

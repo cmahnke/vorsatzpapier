@@ -497,3 +497,12 @@ p.small {
     font-size: smaller;
     text-align: end;
 }
+
+@media (max-width: 56.25em) {
+    #menu-toggle:checked+label+ul {
+        visibility: visible;
+        opacity: 1;
+        max-height: 100rem;
+        display: block;
+    }
+}

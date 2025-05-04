@@ -8,6 +8,7 @@
 
 {{- partial "html/head/style.html" (dict "context" . "css" "css/style.css" "includes" (slice "static/css")) -}}
 {{- partial "html/head/script.html" (dict "js" (partial "html/head/iiif-js.html" .)) -}}
+{{- partial "html/head/page-scripts.html" . -}}
 
 {{/* External Styles - Fonts etc */}}
 {{- range .Site.Params.stylesheets -}}

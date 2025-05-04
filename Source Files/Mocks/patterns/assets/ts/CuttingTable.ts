@@ -87,6 +87,7 @@ export class CuttingTable {
     } else {
       this.container = document.querySelector<HTMLDivElement>(`.${CuttingTable.defaultId}`)!;
     }
+    this.container.classList.add("lucienne");
 
     if (this.container === undefined) {
       throw new Error("Couldn't setup element");
@@ -101,7 +102,7 @@ export class CuttingTable {
       urlInput = element.dataset.urlInput === "true";
     }
     this._urlInput = urlInput;
-    // Enable resite option?
+    // Enable resize option?
     if ("gridSelector" in element.dataset && element.dataset.gridSelector !== undefined && element.dataset.gridSelector !== "") {
       gridSelector = element.dataset.gridSelector === "true";
     }

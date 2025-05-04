@@ -40,13 +40,20 @@ copyright = '<a href="https://projektemacher.org/" target="_blank">Projektemache
                 url = "patterns/"
 
             [[languages.de.menu.main]]
-                name = "Links"
+                name = "Eigene Muster"
                 weight = 4
+                url = "generator/"
+                [[languages.de.menu.main.params]]
+                  draft = true
+
+            [[languages.de.menu.main]]
+                name = "Links"
+                weight = 5
                 url = "links/"
 
             [[languages.de.menu.main]]
                 name = "Über"
-                weight = 5
+                weight = 6
                 url = "about/"
 
     [languages.en]
@@ -72,14 +79,21 @@ copyright = '<a href="https://projektemacher.org/" target="_blank">Projektemache
                 weight = 3
                 url = "patterns/"
 
+            [[languages.de.menu.main]]
+                name = "Mustergenerator"
+                weight = 4
+                url = "generator/"
+                [[languages.de.menu.main.params]]
+                  draft = true
+
             [[languages.en.menu.main]]
                 name = "Links"
-                weight = 4
+                weight = 5
                 url = "links/"
 
             [[languages.en.menu.main]]
                 name = "About"
-                weight = 5
+                weight = 6
                 url = "about/"
 
 [module]

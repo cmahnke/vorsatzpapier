@@ -12,7 +12,7 @@ The software is named after [Lucienne_Day](https://en.wikipedia.org/wiki/Lucienn
 - Preview icon in collections, implemented but parser doesn't support it
 
 - Dynamic margins not clipped correctly at edges
-  - Margin inset not yet implemented
+  - check margins wit offsets in two dimensions
 - Resizing rotated not working correctly - rotation point seems wrong
 
 # Commands

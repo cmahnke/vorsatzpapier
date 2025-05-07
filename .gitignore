@@ -23,3 +23,6 @@ static/fonts/
 package.json
 yarn.lock
 data/stats.json
+
+assets/js/lucienne/lucienne-*.js
+assets/scss/lucienne/lucienne-*.css

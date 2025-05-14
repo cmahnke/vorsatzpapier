@@ -12,8 +12,9 @@ The software is named after [Lucienne_Day](https://en.wikipedia.org/wiki/Lucienn
 - Preview icon in collections, implemented but parser doesn't support it
 
 - Dynamic margins not clipped correctly at edges
+  - insets nor working with clippings
   - check margins wit offsets in two dimensions
-- Resizing rotated not working correctly - rotation point seems wrong
+- Rotation not working with offsets
 
 # Commands
 
@@ -24,6 +25,10 @@ This package uses Vite for development.
 ```
 npm run dev
 ```
+
+### Test URL
+
+[http://localhost:5173/patterns/?url=https://static.projektemacher.org/vorsatzpapier/post/tapete-47/front](http://localhost:5173/patterns/?url=https://static.projektemacher.org/vorsatzpapier/post/tapete-47/front)
 
 ## Packaging
 
@@ -38,3 +43,15 @@ npm run bundle
 ```
  npx patch-package @types/openseadragon
 ```
+
+# Experiences with OpenSeadragon
+
+## Coordinate system
+
+One of the biggest show stopper has been the coordinate system, especiually the fact that the required transformations (image to viewport coordinates) are throwing warnings when one tries to do them on the `world` level while working with multiple images. Even thou I came later to the conclusion that those might be ignored most of the code tries wo work around them.
+
+From my point of view a there should be a (maybe plugable) coordinate system that would work with image coordinates and shouldn't been limited to positive coordinates. This would span the complete world regardless of the number of items in the world. I would to transaltion to the underlaying viewport coordinate system transparenty
+
+## Asserts / Warnings
+
+Some of the assert statements seem to be either way to restrictive or even outright bogus: By that I mean, failed assertation of a programm state, that doesn't let either the program crash or lead to unexpected results is certainly to restrictive or misplaced.

@@ -54,6 +54,7 @@ export class CuttingTable {
   _gridSelector: boolean;
   _download: boolean;
   _debug: boolean = true;
+  _autoLoad: boolean;
   //Elements of Contols and children
   viewerElement: HTMLDivElement;
   cutY: DualRangeSlider;
@@ -80,6 +81,7 @@ export class CuttingTable {
     urlInput: boolean = true,
     gridSelector: boolean = true,
     download: boolean = true,
+    autoLoad: boolean = true,
     urls?: URL | { url: string; label: string }[]
   ) {
     if (element !== undefined) {
@@ -112,6 +114,8 @@ export class CuttingTable {
       download = element.dataset.download === "true";
     }
     this._download = download;
+    this._autoLoad = autoLoad;
+
     //get preconfigured URL
     if ("urls" in element.dataset && element.dataset.urls !== undefined && element.dataset.urls !== "") {
       urls = new URL(element.dataset.urls);
@@ -136,7 +140,7 @@ export class CuttingTable {
     //Input form
     const selectContainer = this.container.querySelector<HTMLDivElement>(`.${CuttingTable.selectContainerClass}`)!;
     this.statusContainer = this.container.querySelector<HTMLDivElement>(`.${CuttingTable.statusContainerClass}`)!;
-    this.form = new IIIFForm(this, selectContainer, this.statusContainer);
+    this.form = new IIIFForm(this, selectContainer, this.statusContainer, this._urlInput, this._autoLoad);
     //Result renderer
     const renderElement = this.container.querySelector<HTMLDivElement>(`.${CuttingTable.rendererElementClass}`)!;
     this.renderer = new Renderer(renderElement, this._columns, this._rows, this._gridSelector, this._download);
@@ -623,6 +627,15 @@ export class CuttingTable {
       const bounds = this.getBounds(current);
       return new OpenSeadragon.Point(bounds.x, bounds.y);
     };
+
+    Object.defineProperty(OpenSeadragon.TiledImage.prototype, "clip", {
+      get() {
+        return this._clip;
+      },
+      set(clip: OpenSeadragon.Rect) {
+        this._clip = clip;
+      }
+    });
 
     OpenSeadragon.TileSource.prototype.getTileAtPoint = function (level: number, point: OpenSeadragon.Point) {
       const validPoint = point.x >= 0 && point.x <= 1 && point.y >= 0 && point.y <= 1 / this.aspectRatio;

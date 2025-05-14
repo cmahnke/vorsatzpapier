@@ -23,8 +23,15 @@ export class IIIFForm {
   initial: { string: string };
   _imageAPIUrl: URL;
   _urlInput: boolean;
+  _autoLoad: boolean = false;
 
-  constructor(cuttingTable: CuttingTable, element: HTMLDivElement, statusContainer: HTMLDivElement | null, urlInput: boolean = true) {
+  constructor(
+    cuttingTable: CuttingTable,
+    element: HTMLDivElement,
+    statusContainer: HTMLDivElement | null,
+    urlInput: boolean = true,
+    autoLoad?: boolean
+  ) {
     this.cuttingTable = cuttingTable;
     customElements.define("icon-dropdown-select", IconDropdownSelect);
     this.inputField = this.cuttingTable.container.querySelector<HTMLInputElement>(`.${this.inputFieldClass}`)!;
@@ -34,6 +41,9 @@ export class IIIFForm {
       this.selectContainer = element;
     }
     this._urlInput = urlInput;
+    if (autoLoad !== undefined) {
+      this._autoLoad = autoLoad;
+    }
     //this.statusContainer = this.cuttingTable.container.querySelector<HTMLDivElement>(`.${CuttingTable.statusContainerClass}`)!;
     this.statusContainer = statusContainer;
     this.button = this.cuttingTable.container.querySelector<HTMLButtonElement>(`.${this.buttonClass}`)!;
@@ -42,6 +52,12 @@ export class IIIFForm {
   }
 
   setup() {
+    const loader: (url: string) => void = (url) => {
+      this.loadUrl(new URL(url), undefined).then((options: IIIFSelect) => {
+        this.createForm(options);
+      });
+    };
+
     if (this._urlInput) {
       this.button?.addEventListener("click", () => {
         if (this.inputField !== null) {
@@ -50,12 +66,18 @@ export class IIIFForm {
           if (url !== undefined && url !== "" && this.statusContainer !== null) {
             this.statusContainer.innerHTML = "";
             this.selectContainer.innerHTML = "";
+            loader(url);
+            /*
             this.loadUrl(new URL(url), undefined).then((options: IIIFSelect) => {
               this.createForm(options);
             });
+            */
           }
         }
       });
+      if (this._autoLoad) {
+        this.button?.click();
+      }
     } else if (this.cuttingTable.url !== undefined) {
       this.loadUrl(new URL(this.cuttingTable.url), undefined).then((options: IIIFSelect) => {
         this.createForm(options);

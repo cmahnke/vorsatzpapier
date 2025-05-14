@@ -5,6 +5,7 @@ import { GridSizeSelector } from "./components/GridSizeSelector";
 import { CutPosition } from "./types";
 import { OffsetRect } from "./openseadragon/OffsetRect";
 import { RotateableRect } from "./openseadragon/RotateableRect";
+import { HideRect } from "./openseadragon/HideRect";
 import type { CutNotification, IIIFImageStub } from "./types";
 import { equals } from "./util";
 
@@ -20,7 +21,7 @@ export class Renderer {
   _gridSelector: boolean;
   _download: boolean;
   _controls: boolean;
-  clipRect: OpenSeadragon.Rect | RotateableRect | undefined;
+  clipRect: OpenSeadragon.Rect | undefined;
   _offsets: { [key in CutPosition]?: number } | undefined;
   _rotations: { [key in CutPosition]?: number } | undefined;
   _rows: number;
@@ -142,7 +143,7 @@ export class Renderer {
     this._loaded = false;
 
     if (this.clipRect === undefined) {
-      this.clipRect = new RotateableRect(0, 0, json.width, json.height);
+      this.clipRect = new OpenSeadragon.Rect(0, 0, json.width, json.height);
     }
 
     const columns = this._columns;
@@ -385,8 +386,8 @@ export class Renderer {
   preview(
     left: number = 0,
     top: number = 0,
-    width?: number,
-    height?: number,
+    right?: number,
+    bottom?: number,
     immediately: boolean = true,
     offsets?: { [key in CutPosition]?: number },
     rotations?: { [key in CutPosition]?: number }
@@ -395,15 +396,15 @@ export class Renderer {
       throw new Error("Result viewer not initialized");
     }
 
-    if (width === undefined && height === undefined) {
-      width = this.width;
-      height = this.height;
+    if (right === undefined && bottom === undefined) {
+      right = this.width;
+      bottom = this.height;
     }
     if (
       left === undefined ||
       top === undefined ||
-      width == undefined ||
-      height === undefined ||
+      right == undefined ||
+      bottom === undefined ||
       this.viewer.world.getItemCount() === undefined
     ) {
       throw new Error("Can't clip image, some dimensions aren't defined");
@@ -418,8 +419,8 @@ export class Renderer {
         } else {
           this.clipRect.x = left;
           this.clipRect.y = top;
-          this.clipRect.width = width;
-          this.clipRect.height = height;
+          this.clipRect.width = right - left;
+          this.clipRect.height = bottom - top;
         }
         tiledImage.setClip(RotateableRect.fromRect(this.clipRect));
       } else {
@@ -519,9 +520,12 @@ export class Renderer {
           height = 0;
         const tiledImage: OpenSeadragon.TiledImage | undefined = this.viewer.world.getItemAt(pos);
 
+        //const hideRect = new RotateableRect(tiledImage.getContentSize().x, tiledImage.getContentSize().y, 0, 0, tiledImage.getRotation());
+        const hideRect = new HideRect(tiledImage);
+
         //Sanity checks
-        if (tiledImage === undefined || referenceImage === undefined || tiledImage.getClip() === null) {
-          console.warn(tiledImage, referenceImage);
+        if (tiledImage === undefined || referenceImage === undefined || tiledImage.getClip() === null || this.clipRect === undefined) {
+          //console.warn(tiledImage, referenceImage);
           throw new Error("Required variables are not defined");
         }
 
@@ -535,14 +539,6 @@ export class Renderer {
         width = transformedClipRect.width;
         height = transformedClipRect.height;
 
-        if (transformedClipRect.x > 0) {
-          width = width - transformedClipRect.x;
-        }
-        if (transformedClipRect.y > 0) {
-          height = height - transformedClipRect.y;
-        }
-
-        const hideRect = new RotateableRect(tiledImage.getContentSize().x, tiledImage.getContentSize().y, 0, 0, tiledImage.getRotation());
         /*
          * Margins might be more then 1 tile in with or height see `marginWidth`
          * c < marginWidth or r < marginWidth are the first margin rows or columns
@@ -550,17 +546,22 @@ export class Renderer {
          */
         if (margins) {
           if (c < marginWidth || c >= columns - marginWidth || r < marginWidth || r >= rows - marginWidth) {
-            tiledImage.setClip(RotateableRect.clone(hideRect));
+            tiledImage.setClip(hideRect.clone());
           }
           column = c - marginWidth;
           row = r - marginWidth;
         }
         x = (c - marginWidth) * width;
         y = (r - marginWidth) * height;
-        console.log(`${c},${r}`, tiledImage.getClip());
+        //console.log(`${c},${r}`, tiledImage.getClip());
 
         // Rotations
         if (this._rotations !== undefined && Object.keys(this._rotations).length) {
+          const imageCenter: (image: OpenSeadragon.TiledImage) => OpenSeadragon.Point = (image: OpenSeadragon.TiledImage) => {
+            const dimensions = image.getContentSize();
+            return new OpenSeadragon.Rect(0, 0, dimensions.x, dimensions.y).getCenter();
+          };
+
           //TODO: Rotating back results in wrong width and height
           let rowEven = false,
             columnEven = false;
@@ -577,22 +578,14 @@ export class Renderer {
 
           const clipRotationPoint = this.clipRect.getCenter();
 
-          console.log("Before Rotation", `${c},${r}`, tiledImage.getBounds(), tiledImage.getClip(), clipRotationPoint);
-
           let rotation = NaN;
           //Bottom knob
           if (CutPosition.Right in this._rotations && this._rotations[CutPosition.Right] !== undefined && rowEven && !columnEven) {
             rotation = this._rotations[CutPosition.Right];
-            //tiledImage.getClip()!.rotate(rotate);
-            tiledImage.setClip(tiledImage.getClip()!.rotate(rotation, clipRotationPoint));
-            tiledImage.setRotation(rotation, immediately);
           }
           //Right knob
           if (CutPosition.Bottom in this._rotations && this._rotations[CutPosition.Bottom] !== undefined && columnEven && !rowEven) {
             rotation = this._rotations[CutPosition.Bottom];
-            //tiledImage.getClip()!.rotate(rotate);
-            tiledImage.setClip(tiledImage.getClip()!.rotate(rotation, clipRotationPoint));
-            tiledImage.setRotation(rotation, immediately);
           }
           if (
             CutPosition.Right in this._rotations &&
@@ -602,26 +595,88 @@ export class Renderer {
           ) {
             if (rowEven && !columnEven && columnEven && !rowEven) {
               rotation = this._rotations[CutPosition.Right] + this._rotations[CutPosition.Bottom];
-              //tiledImage.getClip()!.rotate(rotate);
-              tiledImage.setClip(tiledImage.getClip()!.rotate(rotation, clipRotationPoint));
-              tiledImage.setRotation(rotation, immediately);
             }
           }
-
-          //TODO: Rotation breaks size since it's computed relative from clip to the image
-          if (!isNaN(rotation)) {
-            tiledImage.setRotationPoint(clipRotationPoint);
-            (tiledImage.getClip() as RotateableRect).rotationPoint = clipRotationPoint;
-            (tiledImage.getClip() as RotateableRect).degrees = rotation;
-
-            if (rotation == 0 || rotation == 180) {
-              tiledImage.setWidth(referenceImage.getBounds().width, true);
-            } /* else {
-              tiledImage.setWidth(referenceImage.getBounds().height, true);
-            }*/
+          if (rotation == 360) {
+            rotation = NaN;
           }
 
-          console.log("Bounds after rotation", `${c},${r}`, tiledImage.getBounds(), tiledImage.getClip());
+          if (!isNaN(rotation) && !HideRect.isHidden(tiledImage)) {
+            const initialClip = tiledImage.getClip();
+            const rotatedClip = tiledImage.getClip();
+            if (initialClip === null || rotatedClip === null) {
+              throw new Error("tiled image has no clip for rotation");
+            }
+
+            rotatedClip.rotate(rotation, clipRotationPoint);
+            //This is just a ugly hack
+            if (rotation == 0 || rotation == 180) {
+              tiledImage.setWidth(referenceImage.getBounds().width, true);
+            } else {
+              tiledImage.setHeight(referenceImage.getBounds().height, true);
+              const ratio = tiledImage._worldWidthCurrent / tiledImage.source.dimensions.x;
+
+              const clipCenterX = this.clipRect.x + this.clipRect.width / 2;
+              const clipCenterY = this.clipRect.y + this.clipRect.height / 2;
+              const imageCenterX = tiledImage.source.dimensions.x / 2;
+              const imageCenterY = tiledImage.source.dimensions.y / 2;
+              const imageMarginLeft = this.clipRect.x;
+              const imageMarginRight = tiledImage.source.dimensions.x - (this.clipRect.x + this.clipRect.width);
+              const imageMarginTop = this.clipRect.y;
+              const imageMarginBottom = tiledImage.source.dimensions.y - (this.clipRect.y + this.clipRect.height);
+              const topClip = clipCenterY - clipCenterX;
+
+              rotatedClip.y = rotatedClip.y / 2 + (this.clipRect.height - this.clipRect.y) / 2 - rotatedClip.width / 2;
+              //rotatedClip.height = Math.min(this.clipRect.width, rotatedClip.height - rotatedClip.y);
+              rotatedClip.height = Math.min(this.clipRect.width, this.clipRect.height - rotatedClip.y);
+              if (this.clipRect.height - this.clipRect.y< this.clipRect.width) {
+                rotatedClip.width = this.clipRect.height
+              }
+              //rotatedClip.width = Math.min(this.clipRect.width, this.clipRect.height - this.clipRect.y);
+
+              let rotatedMarginBottom;
+              let rotatedMarginTop;
+
+              if (rotation == 90) {
+                rotatedMarginBottom = tiledImage.source.dimensions.x - (this.clipRect.x + this.clipRect.width);
+                rotatedMarginTop = this.clipRect.x;
+              } else if (rotation == 270) {
+                rotatedMarginTop = tiledImage.source.dimensions.x - (this.clipRect.x + this.clipRect.width);
+                rotatedMarginBottom = this.clipRect.x;
+              }
+
+              console.log(
+                `Margins left ${imageMarginLeft} right ${imageMarginRight} top ${imageMarginTop} bottom ${imageMarginBottom} : ${ imageMarginTop *.5 +imageMarginBottom*.5} `
+              );
+
+              //Working for changing X
+              //let rotationOffsetX = clipCenterY - imageCenterY - imageMarginLeft * 0.5 + imageMarginRight * 0.5;
+              //let rotationOffsetY = clipCenterX - imageCenterX - imageMarginTop * 0.5 + imageMarginBottom * 0.5;
+
+              //TODO: rotatedClip.y need to be accounted for as well
+
+              let rotationOffsetX = clipCenterY - imageCenterY - imageMarginLeft * 0.5 + imageMarginRight * 0.5 + imageMarginBottom;
+              let rotationOffsetY = clipCenterX - imageCenterX - imageMarginTop * 0.5 + imageMarginBottom * 0.5 + imageMarginTop *.5 +imageMarginBottom*.5
+              console.log(`offset Y ${rotationOffsetY} X ${rotationOffsetX}`);
+   
+              x = x - ratio * rotationOffsetX;
+              y = y - ratio * rotationOffsetY;
+
+              console.log("Rotations", `${c},${r}`, `source width ${tiledImage.source.dimensions.x} clip width ${this.clipRect.width}`);
+
+              const offsetPoint = new OpenSeadragon.Point(
+                initialClip.width / 2 - rotatedClip.width / 2,
+                initialClip.height / 2 - rotatedClip.height / 2
+              );
+              //console.log(x);
+            }
+            //tiledImage.setClip(null);
+            tiledImage.setRotationPoint(
+              new OpenSeadragon.Rect(0, 0, tiledImage.getContentSize().x, tiledImage.getContentSize().y).getCenter()
+            );
+            tiledImage.setRotation(rotation, immediately);
+            tiledImage.setClip(rotatedClip);
+          }
         }
 
         if (offsetRect !== undefined) {
@@ -635,14 +690,14 @@ export class Renderer {
           }
           //Vertical overlaps
           if (column == 0 && offsetRect.width < 0) {
-            const borderClip = RotateableRect.clone(tiledImage.getClip()!);
+            const borderClip = tiledImage.getClip()!.clone();
             const imageCoordShift = offsetRect.width * row * -1;
             borderClip.width = borderClip.width - imageCoordShift;
             borderClip.x = borderClip.x + imageCoordShift;
             tiledImage.setClip(borderClip);
           }
           if (column == visibleColumns - 1 && offsetRect.width > 0) {
-            const borderClip = RotateableRect.clone(tiledImage.getClip()!);
+            const borderClip = tiledImage.getClip()!.clone();
             const imageCoordShift = offsetRect.width * row;
             borderClip.width = borderClip.width - imageCoordShift;
             tiledImage.setClip(borderClip);
@@ -658,14 +713,14 @@ export class Renderer {
           // Horizontal overlaps
           if (row == 0 && offsetRect.height < 0) {
             //column > 0 &&
-            const borderClip = RotateableRect.clone(tiledImage.getClip()!);
+            const borderClip = tiledImage.getClip()!.clone();
             const imageCoordShift = offsetRect.height * column * -1;
             borderClip.height = borderClip.height - imageCoordShift;
             borderClip.y = borderClip.y + imageCoordShift;
             tiledImage.setClip(borderClip);
           }
           if (row == visibleRows - 1 && offsetRect.height > 0) {
-            const borderClip = RotateableRect.clone(tiledImage.getClip()!);
+            const borderClip = tiledImage.getClip()!.clone();
             const imageCoordShift = offsetRect.height * column;
             borderClip.height = borderClip.height - imageCoordShift;
             tiledImage.setClip(borderClip);
@@ -674,14 +729,17 @@ export class Renderer {
           const imageCoordShiftX = offsetRect.width * row;
           const imageCoordShiftY = offsetRect.height * column;
 
-          const checkModifiedClip: (tiledImage: OpenSeadragon.TiledImage) => RotateableRect = (tiledImage: OpenSeadragon.TiledImage) => {
+          const checkModifiedClip: (tiledImage: OpenSeadragon.TiledImage) => OpenSeadragon.Rect | RotateableRect | HideRect = (
+            tiledImage: OpenSeadragon.TiledImage
+          ) => {
             if (
-              tiledImage.getClip() !== null &&
-              tiledImage.getContentSize().x == tiledImage.getClip()!.x &&
-              tiledImage.getContentSize().y == tiledImage.getClip()!.y &&
-              this.clipRect !== undefined
+              HideRect.isHidden(tiledImage)
+              // tiledImage.getClip() !== null &&
+              // tiledImage.getContentSize().x == tiledImage.getClip()!.x &&
+              // tiledImage.getContentSize().y == tiledImage.getClip()!.y &&
+              // this.clipRect !== undefined
             ) {
-              return RotateableRect.clone(this.clipRect);
+              return this.clipRect!.clone();
             } else {
               return tiledImage.getClip()! as RotateableRect;
             }
@@ -694,6 +752,17 @@ export class Renderer {
               return curPos - (marginWidth + dimension) + 1;
             }
             return NaN;
+          };
+
+          const generateArray: (num: number) => number[] = (num: number) => {
+            if (typeof num !== "number" || !Number.isInteger(num) || num <= 0) {
+              return [];
+            }
+            const result: number[] = [];
+            for (let i = num; i >= 1; i--) {
+              result.push(i);
+            }
+            return result;
           };
 
           if (margins && (c < marginWidth || c >= columns - marginWidth || r < marginWidth || r >= rows - marginWidth)) {
@@ -737,12 +806,6 @@ export class Renderer {
               } else {
                 borderClip.width = this.clipRect.width;
               }
-              tiledImage.setClip(borderClip);
-            }
-
-            if ((r < marginWidth || r >= rows - marginWidth) && offsetRect.width != 0) {
-              const borderClip = checkModifiedClip(tiledImage);
-              borderClip.y = borderClip.height + (marginPos(r, visibleRows) - 1) * borderClip.height - imageCoordShiftY;
               tiledImage.setClip(borderClip);
             }
 
@@ -792,18 +855,42 @@ export class Renderer {
               tiledImage.setClip(borderClip);
             }
 
-            //TODO This should fix issues at the edges when using the right offset slider
-            /*
-            if ((c < marginWidth||c >= rows - marginWidth)&& offsetRect.height != 0) {
+            //Fix clippins at the edges, each for offest postions
+            if ((r < marginWidth || r >= rows - marginWidth) && offsetRect.width != 0 && offsetRect.height == 0) {
+              const borderClip = checkModifiedClip(tiledImage);
+              borderClip.y = borderClip.height + (marginPos(r, visibleRows) - 1) * borderClip.height - imageCoordShiftY;
+              tiledImage.setClip(borderClip);
+            } else if ((c < marginWidth || c >= rows - marginWidth) && offsetRect.height != 0 && offsetRect.width == 0) {
               const borderClip = checkModifiedClip(tiledImage);
               borderClip.x = borderClip.width + (marginPos(c, visibleColumns) - 1) * borderClip.width - imageCoordShiftX;
               tiledImage.setClip(borderClip);
             }
-            */
+
+            //TODO: Finish this
+            if (offsetRect.width != 0 && offsetRect.height != 0) {
+              //TODO Fix issues at the edges when using both offset directions
+              if ((c < marginWidth || c >= rows - marginWidth) && (r < marginWidth || r >= rows - marginWidth)) {
+                const borderClip = checkModifiedClip(tiledImage);
+                /*
+                borderClip.x = this.clipRect.x
+                borderClip.y = this.clipRect.y
+                borderClip.width
+                borderClip.height
+                */
+                borderClip.y = borderClip.height + (marginPos(r, visibleRows) - 1) * borderClip.height - imageCoordShiftY;
+                borderClip.x = borderClip.width + (marginPos(c, visibleColumns) - 1) * borderClip.width - imageCoordShiftX;
+
+                borderClip.width = (imageCoordShiftX + (marginPos(c, visibleColumns) - 1) * borderClip.width) * -1;
+                borderClip.height = borderClip.height - (marginPos(r, visibleRows) - 1) * borderClip.height + imageCoordShiftY;
+
+                tiledImage.setClip(borderClip);
+              }
+            }
 
             //tiledImage.setClip(borderClip);
           }
 
+          // TODO: Inset clipping not working with cuts yet, if inset can cover more then one tile
           const shiftTilesX = Math.ceil(
             ((marginWidth + visibleColumns) * offsetRect.width * Math.sign(offsetRect.width)) / this.clipRect.width
           );
@@ -811,9 +898,10 @@ export class Renderer {
             if (c == shiftTilesX && imageCoordShiftX * -1 > this.clipRect.width) {
               const borderClip = checkModifiedClip(tiledImage);
               borderClip.width = borderClip.width - (this.clipRect.width + imageCoordShiftX) * -1;
-              borderClip.x = (this.clipRect.width + imageCoordShiftX) * -1;
+              borderClip.x = borderClip.x + (this.clipRect.width + imageCoordShiftX) * -1;
               tiledImage.setClip(borderClip);
-            } else if (c == columns - shiftTilesX - 1 && imageCoordShiftX > this.clipRect.width) {
+            }
+            if (c == columns - shiftTilesX - 1 && imageCoordShiftX > this.clipRect.width) {
               const borderClip = checkModifiedClip(tiledImage);
               borderClip.width = this.clipRect.width - (imageCoordShiftX - this.clipRect.width);
               tiledImage.setClip(borderClip);
@@ -827,7 +915,7 @@ export class Renderer {
             if (r == shiftTilesY && imageCoordShiftY * -1 > this.clipRect.height) {
               const borderClip = checkModifiedClip(tiledImage);
               borderClip.height = borderClip.height - (this.clipRect.height + imageCoordShiftX) * -1;
-              borderClip.y = (this.clipRect.height + imageCoordShiftY) * -1;
+              borderClip.y = borderClip.y + (this.clipRect.height + imageCoordShiftY) * -1;
               tiledImage.setClip(borderClip);
             } else if (r == rows - shiftTilesY - 1 && imageCoordShiftY > this.clipRect.height) {
               const borderClip = checkModifiedClip(tiledImage);
@@ -835,10 +923,11 @@ export class Renderer {
               tiledImage.setClip(borderClip);
             }
           }
+          //console.log(`${c},${r}`, generateArray(shiftTilesX - marginWidth), generateArray(shiftTilesY - marginWidth));
         }
 
         tiledImage.setPosition(new OpenSeadragon.Point(x, y), immediately);
-        console.log("final rotation point", `${c}, ${r}`, tiledImage._getRotationPoint(true), tiledImage.getBounds());
+        //console.log("final rotation point", `${c}, ${r}`, tiledImage._getRotationPoint(true), tiledImage.getBounds());
 
         let debugText = `${c}, ${r} (${column}, ${row})`;
         if (tiledImage === referenceImage) {
@@ -872,6 +961,7 @@ export class Renderer {
       labelElem.id = "debug-overlay" + Math.random().toString(16).slice(2);
       labelElem.className = "debug-overlay";
       labelElem.innerHTML = content;
+      labelElem.dataset.content = content;
       labelElem.style.fontSize = "2em";
       labelElem.style.color = "red";
       labelElem.style.alignItems = "center";
@@ -890,6 +980,8 @@ export class Renderer {
         const clipElem = document.createElement("div");
         clipElem.id = "debug-overlay" + Math.random().toString(16).slice(2);
         clipElem.className = "debug-overlay";
+        clipElem.classList.add("clip");
+        clipElem.dataset.content = content;
         clipElem.style.border = "1px dashed green";
         clipOverlay = {
           element: clipElem,
@@ -1024,7 +1116,7 @@ export class Renderer {
       let tilesDrawn = 0;
       let fullWidthFired = false;
 
-      console.log(`Awaiting ${numTiles} tiles`);
+      //console.log(`Awaiting ${numTiles} tiles`);
 
       const checkReady = () => {
         if (layoutFinished && tilesDrawn >= numTiles && fullWidthFired) {
@@ -1046,13 +1138,13 @@ export class Renderer {
       };
 
       const tileDrawnHandler: OpenSeadragon.EventHandler<OpenSeadragon.ViewerEvent> = (event: OpenSeadragon.ViewerEvent) => {
-        console.log(`tile-drawn event fired ${tilesDrawn}`, event);
+        //console.log(`tile-drawn event fired ${tilesDrawn}`, event);
         tilesDrawn++;
         checkReady();
       };
 
       const layoutFinishHandler: () => void = () => {
-        console.log("layout-finish event fired");
+        //console.log("layout-finish event fired");
         layoutFinished = true;
         childViewer.addOnceHandler("full-width", fullWidthHandler);
         Renderer.fitToWidth(childViewer, true, undefined, true);
@@ -1060,7 +1152,7 @@ export class Renderer {
       };
 
       const fullWidthHandler: OpenSeadragon.EventHandler<OpenSeadragon.ViewerEvent> = (event: OpenSeadragon.ViewerEvent) => {
-        console.log("full-width event fired", event);
+        //console.log("full-width event fired", event);
         fullWidthFired = true;
         checkReady();
       };
@@ -1068,7 +1160,7 @@ export class Renderer {
       childViewer.addHandler("tile-drawn", tileDrawnHandler);
 
       const updateViewportHandler: OpenSeadragon.EventHandler<OpenSeadragon.ViewerEvent> = (event: OpenSeadragon.ViewerEvent) => {
-        console.log("update viewport event fired", event);
+        //console.log("update viewport event fired", event);
         updateViewportFired = true;
       };
       childViewer.addHandler("update-viewport", updateViewportHandler);
@@ -1098,7 +1190,7 @@ export class Renderer {
         const viewer = await this.renderImage(width, height);
         // Just an ugly hack everything else won't work
         await new Promise((r) => setTimeout(r, 500));
-        console.log("returning canvas to download");
+        //console.log("returning canvas to download");
         childViewer = viewer;
         return viewer.drawer.canvas as HTMLCanvasElement;
       } catch (e) {

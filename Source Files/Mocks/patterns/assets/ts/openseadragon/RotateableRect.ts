@@ -103,6 +103,18 @@ export class RotateableRect extends OpenSeadragon.Rect {
     }
   }
 
+  clone() {
+    const clone = new RotateableRect(this.x, this.y, this.width, this.height, this.degrees);
+    clone._xNoRotate = this._xNoRotate;
+    clone._yNoRotate = this._yNoRotate;
+    clone._widthNoRotate = this._widthNoRotate;
+    clone._heightNoRotate = this._heightNoRotate;
+    clone._degreesNoRotate = this._degreesNoRotate;
+    clone._rotationPoint = this._rotationPoint;
+
+    return clone;
+  }
+
   static _isRotated(degree: number, tolerance: number = 45): boolean {
     const isVertical = Math.abs(degree - 90) <= tolerance || Math.abs(degree - 270) <= tolerance;
     return !isVertical;
@@ -112,16 +124,4 @@ export class RotateableRect extends OpenSeadragon.Rect {
     return new RotateableRect(rect.x, rect.y, rect.width, rect.height, rect.degrees);
   }
 
-  static clone(rect: RotateableRect | OpenSeadragon.Rect): RotateableRect {
-    const clone = new RotateableRect(rect.x, rect.y, rect.width, rect.height, rect.degrees);
-    if (rect instanceof RotateableRect) {
-      clone._xNoRotate = rect._xNoRotate;
-      clone._yNoRotate = rect._yNoRotate;
-      clone._widthNoRotate = rect._widthNoRotate;
-      clone._heightNoRotate = rect._heightNoRotate;
-      clone._degreesNoRotate = rect._degreesNoRotate;
-      clone._rotationPoint = rect._rotationPoint;
-    }
-    return clone;
-  }
 }

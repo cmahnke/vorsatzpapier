@@ -1,0 +1,207 @@
+{"@context": "http://iiif.io/api/presentation/3/context.json",
+"type": "Manifest",
+"id": "https://vorsatzpapier.projektemacher.org/post/tanzstunden-buechlein/manifest.json",
+"viewingDirection": "left-to-right","behavior":["paged"],"requiredStatement": {
+  "label": { "en": [ "Attribution" ],
+    "de": [ "Namensnennung" ]
+  },
+  "value": {"en": ["Provided by Projektemacher"],"de": ["Bereitgestellt von Projektemacher"]}
+}
+,"thumbnail": [{
+    "id": "https://vorsatzpapier.projektemacher.org/post/tanzstunden-buechlein/end-verso_hu_eb6dcc57f81c5633.jpg",
+    "format": "image/jpeg",
+    "type":"Image",
+    "height": 486,
+    "width": 300
+  },{
+        "id": "https://static.projektemacher.org/vorsatzpapier/post/tanzstunden-buechlein/end-verso/full/full/0/default.jpg",
+        "format": "image/jpeg",
+        "type":"Image",
+        "height": 4141,
+        "width": 2554,
+        "service": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/tanzstunden-buechlein/end-verso",
+          "type": "ImageService2",
+          "profile":"level0"
+        }]
+      }],"provider": [
+  {
+    "id": "https://projektemacher.org/",
+    "type": "Agent",
+    "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+    "homepage": [
+      {
+        "id": "https://projektemacher.org/",
+        "type": "Text",
+        "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+        "format": "text/html"
+    }
+  ],
+  "logo": [
+    {"id": "https://projektemacher.org/images/logo.png",
+        "type": "Image",
+        "format": "image/png",
+        "height": 1024,
+        "width": 1024}
+  ],
+  "seeAlso": [
+    {
+      "id": "https://projektemacher.org/projektemacher.json",
+      "type": "Dataset",
+      "format": "application/ld+json",
+      "profile": "https://schema.org/"
+    }
+  ]
+  }
+]
+,
+
+"homepage": [
+  {
+    "id": "https://vorsatzpapier.projektemacher.org/post/tanzstunden-buechlein/manifest.json",
+    "type": "Text",
+    "format": "text/html",
+
+    "label": {
+        "de": [
+          "Vorsatzpapier: Tanzstunden Büchlein"
+        ],
+          "en": [
+            "Vorsatzpapier: Tanzstunden Büchlein"
+          ]
+        }
+  }
+],"label": {
+    "de": [
+      "Tanzstunden Büchlein"
+    ],
+      "en": [
+        "Tanzstunden Büchlein"
+      ]
+    }
+,"items": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/tanzstunden-buechlein/canvas/preview",
+          "type": "Canvas","label": {"de":["Letze Seite"],"en":["Last page"]},"height": 4141,
+            "width": 2554,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/tanzstunden-buechlein/end-verso_hu_eb6dcc57f81c5633.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 486,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/tanzstunden-buechlein/annotation/end-verso",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/tanzstunden-buechlein/annotation/end-verso/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/tanzstunden-buechlein/end-verso/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 4141,
+                  "width": 2554,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/tanzstunden-buechlein/end-verso",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/tanzstunden-buechlein/canvas/preview"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/tanzstunden-buechlein/canvas/page",
+          "type": "Canvas","label": {"de":["Letze Seite"],"en":["Last page"]},"height": 4220,
+            "width": 2630,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/tanzstunden-buechlein/end-recto_hu_56a4c325c47a3779.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 481,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/tanzstunden-buechlein/annotation/end-recto",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/tanzstunden-buechlein/annotation/end-recto/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/tanzstunden-buechlein/end-recto/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 4220,
+                  "width": 2630,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/tanzstunden-buechlein/end-recto",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/tanzstunden-buechlein/canvas/page"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/tanzstunden-buechlein/canvas/title",
+          "type": "Canvas","label": {"de":["Titelseite"],"en":["Title"]},"height": 4113,
+            "width": 2566,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/tanzstunden-buechlein/title_hu_fb676536737989bf.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 481,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/tanzstunden-buechlein/annotation/title",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/tanzstunden-buechlein/annotation/title/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/tanzstunden-buechlein/title/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 4113,
+                  "width": 2566,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/tanzstunden-buechlein/title",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/tanzstunden-buechlein/canvas/title"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/tanzstunden-buechlein/canvas/front",
+          "type": "Canvas","label": {"de":["Vorderansicht"],"en":["Front"]},"height": 4222,
+            "width": 2699,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/tanzstunden-buechlein/front_hu_9657ee6485481bdc.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 469,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/tanzstunden-buechlein/annotation/front",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/tanzstunden-buechlein/annotation/front/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/tanzstunden-buechlein/front/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 4222,
+                  "width": 2699,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/tanzstunden-buechlein/front",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/tanzstunden-buechlein/canvas/front"
+            }]
+          }]
+       }]
+}

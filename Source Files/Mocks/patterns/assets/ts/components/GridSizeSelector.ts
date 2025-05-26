@@ -28,8 +28,14 @@ export class GridSizeSelector extends HTMLElement {
   triggerButton: HTMLButtonElement | null = null;
   updateButton: HTMLButtonElement | null = null;
 
-  constructor() {
+  constructor(maxCols?: number, maxRows?: number) {
     super();
+    if (maxCols !== undefined) {
+      this.maxcols = maxCols;
+    }
+    if (maxRows !== undefined) {
+      this.maxrows = maxRows;
+    }
     this.attachShadow({ mode: "open" });
     this.render();
   }

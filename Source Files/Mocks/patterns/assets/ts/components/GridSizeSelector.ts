@@ -113,6 +113,7 @@ export class GridSizeSelector extends HTMLElement {
         --btn-bg-color: #66afff;
         --btn-disabled-bg-color: #cccccc;
         --btn-disabled-text-color: #666666;
+        --btn-text-color: white;
         --btn-hover-bg-color: #007bff;
         --btn-hover-tansition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
         --btn-padding: 8px 16px;
@@ -125,6 +126,11 @@ export class GridSizeSelector extends HTMLElement {
         --input-border: 1px solid #ccc;
         --grid-width: 15em;
         --grid-height: 15em;
+        --disabled-opacity: .6;
+        --cell-background-color: #ddd;
+        --cell-selected-background-color: rgba(0, 123, 255, 0.3);
+        --cell-selected-border: 1px solid rgba(0, 123, 255, 0.7);
+        --grid-box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 
         display: block;
         font-family: var(--font-family);
@@ -176,12 +182,13 @@ export class GridSizeSelector extends HTMLElement {
       button {
         padding: var(--btn-padding);
         background-color: var(--btn-bg-color);
-        color: white;
+        color: var(--btn-text-color);
         border: none;
         border-radius: var(--btn-border-radius);
         cursor: pointer;
         transition: var(--btn-hover-tansition);
         font-size: var(--btn-font-size);
+        font-family: var(--font-family);
       }
 
       button:hover:not(:disabled) {
@@ -247,7 +254,7 @@ export class GridSizeSelector extends HTMLElement {
         left: 0;
         z-index: 10;
         margin-top: 10px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        box-shadow: var(--grid-box-shadow);
         background-color: #ffffff;
         gap: 2px;
         padding: 2px;
@@ -255,14 +262,14 @@ export class GridSizeSelector extends HTMLElement {
       }
 
       .grid-cell {
-        background-color: #ddd;
+        background-color: var(--cell-background-color);
         border: 1px solid transparent;
         box-sizing: border-box;
       }
 
       .selected-cell {
-        background-color: rgba(0, 123, 255, 0.3);
-        border: 1px solid rgba(0, 123, 255, 0.7);
+        background-color: var(--cell-selected-background-color);
+        border: var(--cell-selected-border);
       }
     `;
   }

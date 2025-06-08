@@ -24,6 +24,9 @@
   "devDependencies": {
     "@allmaps/types": "^1.0.0-beta.15",
     "@eslint/js": "^9.28.0",
+    "@fontsource-utils/scss": "^0.2.1",
+    "@fontsource-variable/league-spartan": "^5.2.5",
+    "@fontsource-variable/raleway": "^5.2.5",
     "@rollup/plugin-alias": "^5.1.1",
     "@rollup/plugin-commonjs": "^28.0.3",
     "@rollup/plugin-json": "^6.1.0",

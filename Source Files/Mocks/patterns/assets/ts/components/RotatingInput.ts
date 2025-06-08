@@ -46,8 +46,15 @@ export class RotatingInput extends HTMLElement {
     this.shadow.innerHTML = `
       <style id="dynamic-styles">
         :host {
-          --handle-color: ${this._disabled ? "#ccc" : "#007bff"};
+          --control-handle-color: #007bff;
+          --handle-color: ${this._disabled ? "#ccc" : "var(--control-handle-color)"};
           --rotating-input-container-margin: 20px auto;
+          --disabled-opacity: .6;
+        }
+
+        :host(.disabled) {
+          opacity: var(--disabled-opacity);
+          pointer-events: none;
         }
 
         .rotating-input-container {

@@ -3,7 +3,8 @@
     "cuttingTable": {
       "linksJson": "Download as JSON",
       "uploadError": "JSON could not be loaded",
-      "loadUrl": "Load URL"
+      "loadUrl": "Load URL",
+      "rulerToggle": "Show rulers"
     },
     "iiifForm": {
       "collectionChoose": "Select manifest from the collection",
@@ -19,8 +20,9 @@
       "download": "Download",
       "downloadFailed": "Download failed."
     },
-    "mageResolutionSelect": {
-      "custom": "Custom resolution"
+    "imageResolutionSelect": {
+      "custom": "Custom resolution",
+      "confirmButton": "Confirm"
     },
     "gridSizeSelector": {
       "selectSize": "Select Size",
@@ -35,7 +37,8 @@
     "cuttingTable": {
       "linksJson": "Als JSON herunterladen",
       "uploadError": "JSON konnte nicht geladen werden",
-      "loadUrl": "URL laden"
+      "loadUrl": "URL laden",
+      "rulerToggle": "Lineale anzeigen"
     },
     "iiifForm": {
       "collectionChoose": "Manifest aus der Sammlung auswählen",
@@ -52,7 +55,8 @@
       "downloadFailed": "Download fehlgeschlagen."
     },
     "imageResolutionSelect": {
-      "custom": "Eigene Auflösung"
+      "custom": "Eigene Auflösung",
+      "confirmButton": "Bestätigen"
     },
     "gridSizeSelector": {
       "selectSize": "Größe wählen",

@@ -32,6 +32,7 @@ export class CuttingTable {
   static viewerElementClass: string = "cutting-table-viewer";
   static dropZoneElementClass: string = "input-area";
   static rendererElementClass = "texture-container";
+  static shiftClass = "shifts";
   static rulerElementSelector = ".box.rulers";
   static squareButtonSelector = ".square";
   static controlSelectors: { [key in CutType]: { x: string; y: string } } = {
@@ -55,6 +56,7 @@ export class CuttingTable {
   _download: boolean;
   _debug: boolean = true;
   _autoLoad: boolean;
+  _shifts: boolean = true;
   //Elements of Contols and children
   viewerElement: HTMLDivElement;
   cutY: DualRangeSlider;
@@ -82,7 +84,8 @@ export class CuttingTable {
     gridSelector: boolean = true,
     download: boolean = true,
     autoLoad: boolean = true,
-    urls?: URL | { url: string; label: string }[]
+    urls?: URL | { url: string; label: string }[],
+    shifts: boolean = false,
   ) {
     if (element !== undefined) {
       this.container = element;
@@ -115,6 +118,7 @@ export class CuttingTable {
     }
     this._download = download;
     this._autoLoad = autoLoad;
+    this._shifts = shifts;
 
     //get preconfigured URL
     if ("urls" in element.dataset && element.dataset.urls !== undefined && element.dataset.urls !== "") {
@@ -130,6 +134,10 @@ export class CuttingTable {
     }
     if ("rows" in element.dataset && element.dataset.rows !== undefined && element.dataset.rows !== "") {
       this._rows = parseInt(element.dataset.rows);
+    }
+
+    if (this._shifts) {
+      this.container.classList.add(CuttingTable.shiftClass);
     }
 
     //Components
@@ -418,22 +426,26 @@ export class CuttingTable {
     this.cutX.setAttribute("value-min", "0");
     this.cutX.setAttribute("value-max", String(width));
     this.cutX.disabled = false;
-    this.offsetX.min = String(Math.ceil(0 - width / 2));
-    this.offsetX.max = String(Math.floor(width / 2));
-    this.offsetX.setAttribute("value", "0");
-    this.offsetX.value = "0";
-    this.offsetX.disabled = false;
+
+
     this.rotationX.disabled = false;
     this.rotationX.value = 0;
     this.cutY.setAttribute("max", String(height));
     this.cutY.setAttribute("value-min", "0");
     this.cutY.setAttribute("value-max", String(height));
     this.cutY.disabled = false;
-    this.offsetY.min = String(Math.ceil(0 - height / 2));
-    this.offsetY.max = String(Math.floor(height / 2));
-    this.offsetY.setAttribute("value", "0");
-    this.offsetY.value = "0";
-    this.offsetY.disabled = false;
+    if (this._shifts) {
+      this.offsetY.min = String(Math.ceil(0 - height / 2));
+      this.offsetY.max = String(Math.floor(height / 2));
+      this.offsetY.setAttribute("value", "0");
+      this.offsetY.value = "0";
+      this.offsetY.disabled = false;
+      this.offsetX.min = String(Math.ceil(0 - width / 2));
+      this.offsetX.max = String(Math.floor(width / 2));
+      this.offsetX.setAttribute("value", "0");
+      this.offsetX.value = "0";
+      this.offsetX.disabled = false;
+    }
     this.rotationY.disabled = false;
     this.rotationY.value = 0;
     this.rulerCheckbox.disabled = false;
@@ -565,8 +577,11 @@ export class CuttingTable {
       this.cuts.rotateY = event.detail.degree;
     });
 
+    
+
     //Options
     this.rulerCheckbox = this.container.querySelector<HTMLInputElement>(CuttingTable.rulerElementSelector)!;
+    this.rulerCheckbox.title = i18next.t("cuttingTable:toggleRuler")
     this.rulerCheckbox?.addEventListener("change", (e: Event) => {
       const value = Boolean((e.target as HTMLInputElement).checked);
       this.cuts.setVisibility(value);

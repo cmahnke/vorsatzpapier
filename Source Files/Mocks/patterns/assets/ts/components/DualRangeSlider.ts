@@ -193,7 +193,14 @@ export class DualRangeSlider extends HTMLElement {
           --thumb-color: ${this._disabled ? "#ccc" : "#007bff"};
           --thumb-hover-color: ${this._disabled ? "#ccc" : "#0056b3"};
           --thumb-active-color: ${this._disabled ? "#ccc" : "#004085"};
+          --disabled-opacity: .6;
         }
+
+        :host(.disabled) {
+          opacity: var(--disabled-opacity);
+          pointer-events: none;
+        }
+
         .wrapper {
           position: relative;
         }

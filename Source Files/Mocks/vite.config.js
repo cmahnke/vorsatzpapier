@@ -9,6 +9,7 @@ import { checker } from "vite-plugin-checker";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 import svg from "vite-plugin-svgo";
 import browserslistToEsbuild from "browserslist-to-esbuild";
+import { NodePackageImporter } from 'sass';
 
 // External configs
 import svgoConfig from "./svgo.config.mjs";
@@ -78,9 +79,10 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        api: "modern-compiler"
-      }
-    }
+        api: "modern-compiler",
+        importers: [new NodePackageImporter()],
+      },
+    },
   },
   server: {
     cors: true

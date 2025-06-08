@@ -1,0 +1,28 @@
+.lucienne,
+dual-range-slider,
+rotating-input,
+grid-size-selector,
+offscreencanvas-download,
+image-resolution-select {
+  --btn-bg-color: #66afff;
+  --btn-text-color: white;
+  --btn-hover-bg-color: #007bff;
+  --btn-hover-tansition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  --btn-disabled-bg-color: #ccc;
+  --btn-disabled-text-color: #666;
+  --btn-padding: 8px 16px;
+  --btn-border-radius: 0.4rem;
+  --btn-font-size: 1em;
+  --btn-cursor: pointer;
+  --btn-disabled-cursor: not-allowed;
+  --btn-margin: 0 2em;
+  --disabled-opacity: 0.6;
+  --font-family: sans-serif;
+  --control-handle-color: #007bff;
+  --control-fill-color: #007bff;
+  --control-thumb-color: #007bff;
+  --input-border: 1px solid #ccc;
+  --rotating-input-container-margin: 20px auto;
+  --link-color: #66afff;
+  --link-color-hover: #007bff;
+}

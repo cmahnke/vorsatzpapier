@@ -402,7 +402,7 @@ export class CanvasDownloadButton extends HTMLElement {
     const style = document.createElement("style");
     style.textContent = `
             :host {
-              display: inline-block; /* Default display */
+              display: inline-block; 
               vertical-align: middle;
               /* Variables for easier theming */
               --btn-bg-color: #66afff;

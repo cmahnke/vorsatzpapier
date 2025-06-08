@@ -1,0 +1,65 @@
+/* @use "pkg:@fontsource-variable/raleway/index.css"; */
+
+@use "pkg:@fontsource-utils/scss" as fontsource;
+@use "pkg:@fontsource-variable/raleway/scss" as ralewayVariabale;
+
+@include fontsource.faces($metadata: ralewayVariabale.$metadata, $weights: 400);
+
+$inactive-color: rgb(170, 170, 170);
+$active-color: rgb(77, 77, 77);
+$font: "Raleway Variable";
+
+.lucienne,
+dual-range-slider,
+rotating-input,
+grid-size-selector,
+offscreencanvas-download,
+image-resolution-select {
+  --btn-bg-color: #d1cac8;
+  --btn-text-color: #{$active-color};
+  --btn-hover-bg-color: #d1cac8;
+  --btn-hover-tansition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  --btn-disabled-bg-color: #{$inactive-color};
+  --btn-disabled-text-color: #666;
+  --btn-padding: 8px 16px;
+  --btn-border-radius: 0;
+  --btn-font-size: 1em;
+  --btn-cursor: pointer;
+  --btn-disabled-cursor: not-allowed;
+  --btn-margin: 0 2em;
+  --disabled-opacity: 0.6;
+  --font-family: #{$font};
+  --control-handle-color: #007bff;
+  --control-fill-color: #007bff;
+  --control-thumb-color: #007bff;
+  --input-border: 1px solid #ccc;
+  --rotating-input-container-margin: 20px auto;
+  --link-color: #d1cac8;
+  --link-color-hover: #d1cac8;
+}
+
+body {
+  background-color: #38312f;
+  color: rgb(77, 77, 77);
+  font-family: $font;
+
+.lucienne {
+    .output-area,
+    .input-area {
+      background-color: rgb(255 255 255);
+      opacity: .8;
+      border-radius: unset;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    .cutting-table-viewer,
+    .output-viewer {
+      .controls.button {
+        filter: drop-shadow(0px 0px 2px black) drop-shadow(0px 0px 2px black);
+      }
+    }
+  }
+}

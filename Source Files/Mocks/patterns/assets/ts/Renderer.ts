@@ -626,17 +626,23 @@ export class Renderer {
               const imageMarginBottom = tiledImage.source.dimensions.y - (this.clipRect.y + this.clipRect.height);
               const topClip = clipCenterY - clipCenterX;
 
-              rotatedClip.y = rotatedClip.y / 2 + (this.clipRect.height - this.clipRect.y) / 2 - rotatedClip.width / 2;
-              //rotatedClip.height = Math.min(this.clipRect.width, rotatedClip.height - rotatedClip.y);
-              rotatedClip.height = Math.min(this.clipRect.width, this.clipRect.height - rotatedClip.y);
-              if (this.clipRect.height - this.clipRect.y< this.clipRect.width) {
-                rotatedClip.width = this.clipRect.height
+              if (this.clipRect.height - this.clipRect.y > this.clipRect.width - this.clipRect.x) {
+                rotatedClip.y = rotatedClip.y / 2 + (this.clipRect.height - this.clipRect.y) / 2 - rotatedClip.width / 2;
               }
+              //rotatedClip.height = Math.min(this.clipRect.width, rotatedClip.height - rotatedClip.y);
+              rotatedClip.height = this.clipRect.width;
+              //rotatedClip.width = Math.min(this.clipRect.width, this.clipRect.height - rotatedClip.y);
+              /*
+              if (this.clipRect.height - this.clipRect.y < this.clipRect.width) {
+                rotatedClip.width = this.clipRect.height;
+              }
+              */
               //rotatedClip.width = Math.min(this.clipRect.width, this.clipRect.height - this.clipRect.y);
 
               let rotatedMarginBottom;
               let rotatedMarginTop;
 
+              //TODO: Check if this is still needed
               if (rotation == 90) {
                 rotatedMarginBottom = tiledImage.source.dimensions.x - (this.clipRect.x + this.clipRect.width);
                 rotatedMarginTop = this.clipRect.x;
@@ -646,7 +652,7 @@ export class Renderer {
               }
 
               console.log(
-                `Margins left ${imageMarginLeft} right ${imageMarginRight} top ${imageMarginTop} bottom ${imageMarginBottom} : ${ imageMarginTop *.5 +imageMarginBottom*.5} `
+                `Margins left ${imageMarginLeft} right ${imageMarginRight} top ${imageMarginTop} bottom ${imageMarginBottom} : ${imageMarginTop * 0.5 + imageMarginBottom * 0.5} `
               );
 
               //Working for changing X
@@ -656,9 +662,19 @@ export class Renderer {
               //TODO: rotatedClip.y need to be accounted for as well
 
               let rotationOffsetX = clipCenterY - imageCenterY - imageMarginLeft * 0.5 + imageMarginRight * 0.5 + imageMarginBottom;
-              let rotationOffsetY = clipCenterX - imageCenterX - imageMarginTop * 0.5 + imageMarginBottom * 0.5 + imageMarginTop *.5 +imageMarginBottom*.5
+              let rotationOffsetY = clipCenterX - imageCenterX - imageMarginTop * 0.5 + imageMarginBottom * 0.5; // +
+              
+              if (this.clipRect.height - this.clipRect.y < this.clipRect.width - this.clipRect.x) {
+                // hight is smaller then width, use hight to set max width of rotated tile
+                const correctionY = (this.clipRect.width - this.clipRect.x) - (this.clipRect.height - this.clipRect.y)
+                rotatedClip.width = this.clipRect.height - this.clipRect.y;
+                rotationOffsetY = rotationOffsetY - correctionY /2
+                console.log(`Less height (${this.clipRect.height - this.clipRect.y}) then width (${this.clipRect.width - this.clipRect.x}), using ${this.clipRect.height - this.clipRect.y}`)
+              }
+              
+              //imageMarginLeft * 0.5 + imageMarginRight * 0.5;
               console.log(`offset Y ${rotationOffsetY} X ${rotationOffsetX}`);
-   
+
               x = x - ratio * rotationOffsetX;
               y = y - ratio * rotationOffsetY;
 
@@ -668,7 +684,6 @@ export class Renderer {
                 initialClip.width / 2 - rotatedClip.width / 2,
                 initialClip.height / 2 - rotatedClip.height / 2
               );
-              //console.log(x);
             }
             //tiledImage.setClip(null);
             tiledImage.setRotationPoint(
@@ -754,6 +769,7 @@ export class Renderer {
             return NaN;
           };
 
+          /*
           const generateArray: (num: number) => number[] = (num: number) => {
             if (typeof num !== "number" || !Number.isInteger(num) || num <= 0) {
               return [];
@@ -764,6 +780,7 @@ export class Renderer {
             }
             return result;
           };
+          */
 
           if (margins && (c < marginWidth || c >= columns - marginWidth || r < marginWidth || r >= rows - marginWidth)) {
             if (c < marginWidth && offsetRect.width > 0) {
@@ -1112,7 +1129,7 @@ export class Renderer {
 
     return new Promise<OpenSeadragon.Viewer>((resolve, reject) => {
       let layoutFinished = false;
-      let updateViewportFired = false;
+      //let updateViewportFired = false;
       let tilesDrawn = 0;
       let fullWidthFired = false;
 
@@ -1137,7 +1154,7 @@ export class Renderer {
         }
       };
 
-      const tileDrawnHandler: OpenSeadragon.EventHandler<OpenSeadragon.ViewerEvent> = (event: OpenSeadragon.ViewerEvent) => {
+      const tileDrawnHandler: OpenSeadragon.EventHandler<OpenSeadragon.ViewerEvent> = () => { //event: OpenSeadragon.ViewerEvent
         //console.log(`tile-drawn event fired ${tilesDrawn}`, event);
         tilesDrawn++;
         checkReady();
@@ -1151,7 +1168,7 @@ export class Renderer {
         checkReady();
       };
 
-      const fullWidthHandler: OpenSeadragon.EventHandler<OpenSeadragon.ViewerEvent> = (event: OpenSeadragon.ViewerEvent) => {
+      const fullWidthHandler: OpenSeadragon.EventHandler<OpenSeadragon.ViewerEvent> = () => { //event: OpenSeadragon.ViewerEvent
         //console.log("full-width event fired", event);
         fullWidthFired = true;
         checkReady();
@@ -1159,9 +1176,9 @@ export class Renderer {
 
       childViewer.addHandler("tile-drawn", tileDrawnHandler);
 
-      const updateViewportHandler: OpenSeadragon.EventHandler<OpenSeadragon.ViewerEvent> = (event: OpenSeadragon.ViewerEvent) => {
+      const updateViewportHandler: OpenSeadragon.EventHandler<OpenSeadragon.ViewerEvent> = () => { //event: OpenSeadragon.ViewerEvent
         //console.log("update viewport event fired", event);
-        updateViewportFired = true;
+        //updateViewportFired = true;
       };
       childViewer.addHandler("update-viewport", updateViewportHandler);
 

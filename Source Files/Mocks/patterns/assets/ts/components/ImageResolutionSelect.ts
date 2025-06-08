@@ -181,6 +181,12 @@ export class ImageResolutionSelect extends HTMLElement {
         --btn-hover-bg-color: #007bff;
         --btn-border-radius: 0.4rem;
         --btn-padding: 8px 16px;
+        --disabled-opacity: .6;
+      }
+
+      :host(.disabled) {
+        opacity: var(--disabled-opacity);
+        pointer-events: none;
       }
 
       .wrapper {
@@ -199,7 +205,7 @@ export class ImageResolutionSelect extends HTMLElement {
         align-items: center;
         background: white;
         width: 100%;
-        border-radius: .4rem;
+        border-radius: var(--btn-border-radius);
       }
 
       .display.disabled {
@@ -218,7 +224,7 @@ export class ImageResolutionSelect extends HTMLElement {
         border: 1px solid #ccc;
         background-color: white;
         z-index: 10;
-        border-radius: .4rem;
+        border-radius: var(--btn-border-radius);
       }
 
       .options-container.open {
@@ -240,7 +246,6 @@ export class ImageResolutionSelect extends HTMLElement {
       .custom-inputs {
         display: flex;
         align-items: center;
-        /* margin-left: 8px; */
       }
 
       .custom-inputs input {
@@ -254,9 +259,10 @@ export class ImageResolutionSelect extends HTMLElement {
         border-radius: var(--btn-border-radius);
         background-color: var(--btn-bg-color);
         font-size: var(--btn-font-size);
-        color: white;
+        color: var(--btn-text-color);
         border: none;
         padding: var(--btn-padding);
+        font-family: var(--font-family)
       }
 
       .custom-inputs button:hover:not(:disabled) {
@@ -428,7 +434,7 @@ export class ImageResolutionSelect extends HTMLElement {
 
       if (this.hasAttribute("confirm-button")) {
         this.confirmButton = document.createElement("button");
-        this.confirmButton.textContent = "Confirm";
+        this.confirmButton.textContent = i18next.t("imageResolutionSelect:confirmButton");;
         this.confirmButton.addEventListener("click", (event) => {
           event.stopPropagation();
           this.confirmCustomSelection();

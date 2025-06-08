@@ -69,6 +69,12 @@ export class IconDropdownSelect extends HTMLElement {
     style.textContent = `
       :host {
           display: inline-block;
+          --disabled-opacity: .6;
+      }
+
+      :host(.disabled) {
+        opacity: var(--disabled-opacity);
+        pointer-events: none;
       }
 
       .wrapper {

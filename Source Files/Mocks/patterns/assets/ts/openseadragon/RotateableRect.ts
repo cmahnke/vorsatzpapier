@@ -123,5 +123,4 @@ export class RotateableRect extends OpenSeadragon.Rect {
   static fromRect(rect: OpenSeadragon.Rect): RotateableRect {
     return new RotateableRect(rect.x, rect.y, rect.width, rect.height, rect.degrees);
   }
-
 }

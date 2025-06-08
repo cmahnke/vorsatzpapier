@@ -1,29 +1,20 @@
 $active-color: #007bff;
 
-.lucienne {
-  --btn-bg-color: #66afff;
-  --btn-text-color: white;
-  --btn-hover-bg-color: #007bff;
-  --btn-hover-tansition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-  --btn-disabled-bg-color: #ccc;
-  --btn-disabled-text-color: #666;
-  --btn-padding: 8px 16px;
-  --btn-border-radius: 0.4rem;
-  --btn-font-size: 1em;
-  --btn-cursor: pointer;
-  --btn-disabled-cursor: not-allowed;
-  --btn-margin: 0 2em;
-  --disabled-opacity: 0.6;
-  --font-family: sans-serif;
-  --input-border: 1px solid #ccc;
-  --rotating-input-container-margin: 20px auto;
+@use "vorsatzpapier";
 
+.lucienne {
   transition: all 200ms;
   font-size: var(--btn-font-size);
   font-family: var(--font-family);
 
   @media (width >= 720px) {
     margin: 2rem;
+  }
+
+  &.shifts {
+    .slider.offset {
+      display: unset !important;
+    }
   }
 
   input {
@@ -58,12 +49,17 @@ $active-color: #007bff;
   a {
     cursor: pointer;
     text-decoration: none;
+    color: var(--link-color);
 
-    &::before,
-    &::after,
+    &:before,
+    &:after,
     &:hover {
       text-decoration: none;
       color: unset;
+    }
+    
+    &:hover {
+      color: var(--link-color-hover);
     }
   }
 
@@ -80,6 +76,8 @@ $active-color: #007bff;
       top: 1em;
       z-index: 10;
       cursor: pointer;
+      font-family: var(--font-family);
+      filter: drop-shadow(0px 0px 1px black) drop-shadow(0px 0px 1px black);
 
       &:hover {
         transform: scale(1.1);
@@ -142,12 +140,13 @@ $active-color: #007bff;
       margin-left: 1em;
       padding: var(--btn-padding);
       background-color: var(--btn-bg-color);
-      color: white;
+      color: var(--btn-text-color);
       border: none;
       border-radius: var(--btn-border-radius);
       cursor: pointer;
       transition: var(--btn-hover-tansition);
       font-size: var(--btn-font-size);
+      font-family: var(--font-family);
 
       &:hover:not(:disabled) {
         background-color: var(--btn-hover-bg-color);
@@ -209,6 +208,10 @@ $active-color: #007bff;
         }
       }
 
+      &.offset {
+        display: none;
+      }
+
       &.horizontal {
         grid-column: span 3 / span 3;
         grid-column-start: 1;
@@ -246,8 +249,11 @@ $active-color: #007bff;
 
     .box {
       &.rulers {
-        grid-column-start: 4;
-        grid-row-start: 4;
+        grid-column-start: 3;
+        grid-row-start: 3;
+        z-index: 10;
+        height: 1.4rem;
+        align-self: center;
       }
     }
 
@@ -273,7 +279,17 @@ $active-color: #007bff;
     &.json {
       max-width: min-content;
       margin: 0 0.6em;
-      text-align: center;
+      text-align: right;
+      grid-column-start: 2;
+      grid-row-start: 3;
+      z-index: 10;
+      height: 1.4rem;
+      align-self: center;
+      color: var(--link-color);
+    }
+
+    &:hover {
+      color: var(--link-color-hover);
     }
   }
 
@@ -304,6 +320,8 @@ $active-color: #007bff;
         position: absolute;
         top: 7em;
         right: 1em;
+        color: var(--btn-text-color);
+        font-family: var(--font-family);
 
         --btn-margin: 0;
 
@@ -326,43 +344,4 @@ $active-color: #007bff;
     }
   }
 
-  // .control.slider
-  /*
-  input[type="range"] {
-    -webkit-appearance: none;
-    appearance: none;
-
-    &::-moz-range-track {
-      background: transparent;
-      border: none;
-    }
-
-    &:hover {
-      &::-webkit-slider-thumb,
-      &::-moz-range-thumb {
-        background-color: #0056b3;
-      }
-    }
-
-    &:active {
-      &::-webkit-slider-thumb,
-      &::-moz-range-thumb {
-        background-color: #004085;
-      }
-    }
-
-    &::-webkit-slider-thumb,
-    &::-moz-range-thumb {
-      background-color: #007bff;
-    }
-
-    &.disabled {
-      &::-webkit-slider-thumb,
-      &::-moz-range-thumb {
-        pointer-events: none;
-        background-color: #ccc;
-      }
-    }
-  }
-  */
 }

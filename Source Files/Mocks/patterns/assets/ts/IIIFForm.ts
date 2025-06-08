@@ -94,6 +94,10 @@ export class IIIFForm {
   }
 
   createForm(options: IIIFSelect) {
+    // Might happen on timeouts etc
+    if (options === undefined) {
+      return;
+    }
     if (options.type === "Image") {
       return;
     }

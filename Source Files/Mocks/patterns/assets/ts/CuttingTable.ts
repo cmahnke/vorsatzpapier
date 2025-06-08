@@ -638,7 +638,7 @@ export class CuttingTable {
     });
 
     OpenSeadragon.TileSource.prototype.getTileAtPoint = function (level: number, point: OpenSeadragon.Point) {
-      const validPoint = point.x >= 0 && point.x <= 1 && point.y >= 0 && point.y <= 1 / this.aspectRatio;
+      //const validPoint = point.x >= 0 && point.x <= 1 && point.y >= 0 && point.y <= 1 / this.aspectRatio;
       //console.assert(validPoint, "[TileSource.getTileAtPoint] must be called with a valid point.");
 
       const widthScaled = this.dimensions.x * this.getLevelScale(level);

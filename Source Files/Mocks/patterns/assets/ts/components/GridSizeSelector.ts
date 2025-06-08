@@ -126,10 +126,9 @@ export class GridSizeSelector extends HTMLElement {
         --input-border: 1px solid #ccc;
         --grid-width: 15em;
         --grid-height: 15em;
-        --disabled-opacity: .6;
         --cell-background-color: #ddd;
-        --cell-selected-background-color: rgba(0, 123, 255, 0.3);
-        --cell-selected-border: 1px solid rgba(0, 123, 255, 0.7);
+        --cell-selected-background-color: #66afff;
+        --cell-selected-border: 1px solid color-mix(in srgb, var(--cell-selected-background-color) 90%, black);
         --grid-box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 
         display: block;
@@ -195,6 +194,7 @@ export class GridSizeSelector extends HTMLElement {
         background-color: var(--btn-hover-bg-color);
       }
 
+      :host(.disabled) button,    
       button:disabled {
         background-color: var(--btn-disabled-bg-color);
         color: var(--btn-disabled-text-color);
@@ -253,7 +253,7 @@ export class GridSizeSelector extends HTMLElement {
         top: 100%;
         left: 0;
         z-index: 10;
-        margin-top: 10px;
+        /* margin-top: 10px; */
         box-shadow: var(--grid-box-shadow);
         background-color: #ffffff;
         gap: 2px;

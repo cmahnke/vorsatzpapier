@@ -47,9 +47,11 @@ export class RotatingInput extends HTMLElement {
       <style id="dynamic-styles">
         :host {
           --control-handle-color: #007bff;
-          --handle-color: ${this._disabled ? "#ccc" : "var(--control-handle-color)"};
+          --handle-color: ${this._disabled ? "var(--control-disabled-color)" : "var(--control-handle-color)"};
           --rotating-input-container-margin: 20px auto;
           --disabled-opacity: .6;
+          --control-circle-color: #ccc;
+          --control-circle-border: 2px solid var(--control-circle-color);
         }
 
         :host(.disabled) {
@@ -69,7 +71,7 @@ export class RotatingInput extends HTMLElement {
           width: ${2 * this.radius}px;
           height: ${2 * this.radius}px;
           border-radius: 50%;
-          border: 2px solid #ccc;
+          border: var(--control-circle-border);
           position: relative;
           opacity: ${this._disabled ? "0.6" : "1"};
           cursor: ${this._disabled ? "not-allowed" : "default"};

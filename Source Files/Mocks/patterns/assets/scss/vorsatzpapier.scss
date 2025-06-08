@@ -32,10 +32,21 @@ image-resolution-select {
   --control-handle-color: #007bff;
   --control-fill-color: #007bff;
   --control-thumb-color: #007bff;
+  --control-track-color: #ddd;
+  --control-disabled-color: #ccc;
+  --control-thumb-hover-color: var(--control-thumb-color);
+  --control-thumb-active-color: var(--control-thumb-color);
+  --control-circle-color: var(--control-track-color);
   --input-border: 1px solid #ccc;
   --rotating-input-container-margin: 20px auto;
   --link-color: #d1cac8;
   --link-color-hover: #d1cac8;
+  --grid-width: 15em;
+  --grid-height: 15em;
+  --cell-background-color: #ddd;
+  --cell-selected-background-color: #66afff;
+  --cell-selected-border: 1px solid color-mix(in srgb, var(--cell-selected-background-color) 70%, black);
+  --grid-box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 body {
@@ -44,6 +55,11 @@ body {
   font-family: $font;
 
 .lucienne {
+    *:focus-visible {
+      outline-offset: 1px;
+      outline-style: solid;
+    }
+
     .output-area,
     .input-area {
       background-color: rgb(255 255 255);

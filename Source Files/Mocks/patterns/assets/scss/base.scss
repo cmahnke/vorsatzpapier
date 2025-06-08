@@ -18,6 +18,8 @@ $active-color: #007bff;
   }
 
   input {
+    font-family: var(--font-family);
+
     &:focus,
     &:focus-visible,
     &:active {

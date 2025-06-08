@@ -21,8 +21,19 @@ image-resolution-select {
   --control-handle-color: #007bff;
   --control-fill-color: #007bff;
   --control-thumb-color: #007bff;
+  --control-track-color: #ddd;
+  --control-disabled-color: #ccc;
+  --control-thumb-hover-color: #0056b3;
+  --control-thumb-active-color: #004085;
+  --control-circle-color: var(--control-track-color);
   --input-border: 1px solid #ccc;
   --rotating-input-container-margin: 20px auto;
   --link-color: #66afff;
   --link-color-hover: #007bff;
+  --grid-width: 15em;
+  --grid-height: 15em;
+  --cell-background-color: #ddd;
+  --cell-selected-background-color: #66afff;
+  --cell-selected-border: 1px solid color-mix(in srgb, var(--cell-selected-background-color) 70%, black);
+  --grid-box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }

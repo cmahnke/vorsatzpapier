@@ -1,7 +1,5 @@
 import { resolve, join } from "path";
 import { defineConfig } from "vite";
-import eslint from "vite-plugin-eslint";
-import { viteSingleFile } from "vite-plugin-singlefile";
 import stylelint from "vite-plugin-stylelint";
 import { nodePolyfills } from "vite-plugin-node-polyfills";
 import { DynamicPublicDirectory } from "vite-multiple-assets";

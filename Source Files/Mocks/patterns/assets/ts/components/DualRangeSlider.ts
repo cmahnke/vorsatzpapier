@@ -188,11 +188,11 @@ export class DualRangeSlider extends HTMLElement {
           padding: 5px 0;
           --track-height: 6px;
           --thumb-size: 16px;
-          --fill-color: ${this._disabled ? "#ccc" : "#007bff"};
-          --track-color: #ddd;
-          --thumb-color: ${this._disabled ? "#ccc" : "#007bff"};
-          --thumb-hover-color: ${this._disabled ? "#ccc" : "#0056b3"};
-          --thumb-active-color: ${this._disabled ? "#ccc" : "#004085"};
+          --fill-color: ${this._disabled ? "var(--control-disabled-color)" : "var(--control-fill-color)"};
+          --control-track-color: #ddd;
+          --thumb-color: ${this._disabled ? "var(--control-disabled-color)" : "var(--control-thumb-color)"};
+          --thumb-hover-color: ${this._disabled ? "var(--control-disabled-color)" : "var(--control-thumb-hover-color)"};
+          --thumb-active-color: ${this._disabled ? "var(--control-disabled-color)" : "var(--control-thumb-active-color)"};
           --disabled-opacity: .6;
         }
 
@@ -222,7 +222,7 @@ export class DualRangeSlider extends HTMLElement {
           transform: ${this.isVertical() ? "translateX(-50%)" : "translateY(-50%)"};
           width: ${this.isVertical() ? "var(--track-height)" : "100%"};
           height: ${this.isVertical() ? "100%" : "var(--track-height)"};
-          background-color: var(--track-color);
+          background-color: var(--control-track-color);
           border-radius: calc(var(--track-height) / 2);
           z-index: 1;
           pointer-events: none;

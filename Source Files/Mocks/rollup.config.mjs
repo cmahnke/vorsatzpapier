@@ -1,13 +1,11 @@
 import typescript from "@rollup/plugin-typescript";
 import { dts } from "rollup-plugin-dts";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
-import resolve from "@rollup/plugin-node-resolve";
 import terser from "@rollup/plugin-terser";
 import commonjs from "@rollup/plugin-commonjs";
 import alias from "@rollup/plugin-alias";
 import json from "@rollup/plugin-json";
 import scss from "rollup-plugin-scss";
-import { resolve as resolvePath } from "path";
 import postcss from "rollup-plugin-postcss";
 import url from "postcss-url";
 import path from "path";

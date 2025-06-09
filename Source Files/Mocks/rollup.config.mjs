@@ -5,11 +5,12 @@ import terser from "@rollup/plugin-terser";
 import commonjs from "@rollup/plugin-commonjs";
 import alias from "@rollup/plugin-alias";
 import json from "@rollup/plugin-json";
-import scss from "rollup-plugin-scss";
 import postcss from "rollup-plugin-postcss";
 import url from "postcss-url";
 import path from "path";
+import fs from "fs";
 import copy from "rollup-plugin-copy";
+import { NodePackageImporter } from "sass";
 
 // External configs
 import typescriptOptions from "./tsconfig.json" with { type: "json" };
@@ -18,10 +19,47 @@ import packageJson from "./package.json" with { type: "json" };
 const artifactName = packageJson.name;
 const artifactversion = packageJson.version;
 
-const scssConfig = {
-  api: "modern-compiler",
-  sourceMapEmbed: true,
-  fileName: `${artifactName}.css`
+const fontPath = "patterns/assets/fonts";
+
+const postcssConfig = {
+  sourceMap: false,
+  use: [
+    [
+      "sass",
+      {
+        pkgImporter: new NodePackageImporter()
+      }
+    ]
+  ],
+  plugins: [
+    url([
+      {
+        url: "inline",
+        maxSize: 10,
+        fallback: "copy",
+        basePath: path.resolve("patterns/assets/scss"),
+        assetsPath: path.resolve("patterns/assets/images")
+      },
+      {
+        filter: "@fontsource-*/**/*.*",
+        basePath: path.resolve("node_module"),
+        assetsPath: path.resolve("patterns/assets/fonts")
+      },
+      {
+        filter: "@**/**/*.woff2",
+        url: "rebase"
+      }
+    ])
+  ]
+};
+
+const aliasConfig = {
+  entries: [
+    {
+      find: "@",
+      replacement: path.resolve("patterns/assets")
+    }
+  ]
 };
 
 const config = [
@@ -33,7 +71,13 @@ const config = [
         format: "es"
       }
     ],
-    plugins: [scss({ output: false, ...scssConfig }), dts()]
+    plugins: [
+      postcss({
+        extract: false,
+        ...postcssConfig
+      }),
+      dts()
+    ]
   },
   {
     input: "patterns/assets/ts/CuttingTable.ts",
@@ -47,28 +91,52 @@ const config = [
     ],
     external: ["openseadragon", "openseadragon-fabric", "fabric", "@allmaps/iiif-parser", "i18next", "i18next-browser-languagedetector"],
     plugins: [
-      //scss(scssConfig),
+      alias(aliasConfig),
       postcss({
         extract: `${artifactName}-${artifactversion}.css`,
+
         sourceMap: true,
+        use: [
+          [
+            "sass",
+            {
+              pkgImporter: new NodePackageImporter()
+            }
+          ]
+        ],
         plugins: [
-          url({
-            url: "inline",
-            maxSize: 10,
-            fallback: "copy",
-            basePath: path.resolve("patterns/assets/scss"),
-            assetsPath: path.resolve("patterns/assets/images")
-          })
+          url([
+            {
+              //filter: "@fontsource*/**/*.woff2",
+              filter: "@fontsource**",
+              url: (asset) => {
+                
+                if (asset.pathname.startsWith("@fontsource")) {
+                  const src = path.resolve(path.join("node_modules", asset.pathname))
+                  const dest = path.join(fontPath, path.basename(asset.pathname))
+                  /*
+                  if (!fs.pathExistsSync(dest)) {
+                     fs.copySync(src, dest)
+                  }
+                  */
+                  console.log("=>", asset, src)
+                  return src
+                }
+              },
+              multi: true
+            },
+            {
+              url: "inline",
+              maxSize: 10,
+              fallback: "copy",
+              basePath: path.resolve("patterns/assets/scss"),
+              assetsPath: path.resolve("patterns/assets/images")
+            },
+
+          ])
         ]
       }),
-      alias({
-        entries: [
-          {
-            find: "@",
-            replacement: path.resolve("patterns/assets")
-          }
-        ]
-      }),
+
       commonjs(),
       typescript(typescriptOptions),
       nodeResolve(),
@@ -93,28 +161,40 @@ const config = [
       }
     ],
     plugins: [
-      //scss(scssConfig),
+      alias(aliasConfig),
       postcss({
         extract: `${artifactName}-${artifactversion}.css`,
         sourceMap: true,
+        use: [
+          [
+            "sass",
+            {
+              pkgImporter: new NodePackageImporter()
+            }
+          ]
+        ],
         plugins: [
-          url({
-            url: "inline",
-            maxSize: 10,
-            fallback: "copy",
-            basePath: path.resolve("patterns/assets/scss"),
-            assetsPath: path.resolve("patterns/assets/images")
-          })
+          url([
+            {
+              url: "inline",
+              maxSize: 10,
+              fallback: "copy",
+              basePath: path.resolve("patterns/assets/scss"),
+              assetsPath: path.resolve("patterns/assets/images")
+            },
+            {
+              filter: "@fontsource-*/**/*.*",
+              basePath: path.resolve("node_module"),
+              assetsPath: path.resolve("patterns/assets/fonts")
+            },
+            {
+              filter: "@**/**/*.woff2",
+              url: "rebase"
+            }
+          ])
         ]
       }),
-      alias({
-        entries: [
-          {
-            find: "@",
-            replacement: "patterns/assets"
-          }
-        ]
-      }),
+
       commonjs(),
       copy({
         targets: [

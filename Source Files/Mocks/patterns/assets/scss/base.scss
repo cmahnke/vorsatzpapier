@@ -1,6 +1,6 @@
 $active-color: #007bff;
 
-@use "vorsatzpapier";
+@use "christianmahnke";
 
 .lucienne {
   transition: all 200ms;
@@ -53,13 +53,13 @@ $active-color: #007bff;
     text-decoration: none;
     color: var(--link-color);
 
-    &:before,
-    &:after,
+    &::before,
+    &::after,
     &:hover {
       text-decoration: none;
       color: unset;
     }
-    
+
     &:hover {
       color: var(--link-color-hover);
     }
@@ -79,7 +79,7 @@ $active-color: #007bff;
       z-index: 10;
       cursor: pointer;
       font-family: var(--font-family);
-      filter: drop-shadow(0px 0px 1px black) drop-shadow(0px 0px 1px black);
+      filter: drop-shadow(0 0 1px black) drop-shadow(0 0 1px black);
 
       &:hover {
         transform: scale(1.1);
@@ -256,7 +256,7 @@ $active-color: #007bff;
         z-index: 10;
         height: 1.4rem;
         align-self: center;
-        color: currentColor;
+        color: currentcolor;
         background-color: var(--btn-bg-color);
       }
     }
@@ -347,5 +347,4 @@ $active-color: #007bff;
       }
     }
   }
-
 }

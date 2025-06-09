@@ -661,17 +661,19 @@ export class Renderer {
 
               //TODO: rotatedClip.y need to be accounted for as well
 
-              let rotationOffsetX = clipCenterY - imageCenterY - imageMarginLeft * 0.5 + imageMarginRight * 0.5 + imageMarginBottom;
+              const rotationOffsetX = clipCenterY - imageCenterY - imageMarginLeft * 0.5 + imageMarginRight * 0.5 + imageMarginBottom;
               let rotationOffsetY = clipCenterX - imageCenterX - imageMarginTop * 0.5 + imageMarginBottom * 0.5; // +
-              
+
               if (this.clipRect.height - this.clipRect.y < this.clipRect.width - this.clipRect.x) {
                 // hight is smaller then width, use hight to set max width of rotated tile
-                const correctionY = (this.clipRect.width - this.clipRect.x) - (this.clipRect.height - this.clipRect.y)
+                const correctionY = this.clipRect.width - this.clipRect.x - (this.clipRect.height - this.clipRect.y);
                 rotatedClip.width = this.clipRect.height - this.clipRect.y;
-                rotationOffsetY = rotationOffsetY - correctionY /2
-                console.log(`Less height (${this.clipRect.height - this.clipRect.y}) then width (${this.clipRect.width - this.clipRect.x}), using ${this.clipRect.height - this.clipRect.y}`)
+                rotationOffsetY = rotationOffsetY - correctionY / 2;
+                console.log(
+                  `Less height (${this.clipRect.height - this.clipRect.y}) then width (${this.clipRect.width - this.clipRect.x}), using ${this.clipRect.height - this.clipRect.y}`
+                );
               }
-              
+
               //imageMarginLeft * 0.5 + imageMarginRight * 0.5;
               console.log(`offset Y ${rotationOffsetY} X ${rotationOffsetX}`);
 
@@ -1154,7 +1156,8 @@ export class Renderer {
         }
       };
 
-      const tileDrawnHandler: OpenSeadragon.EventHandler<OpenSeadragon.ViewerEvent> = () => { //event: OpenSeadragon.ViewerEvent
+      const tileDrawnHandler: OpenSeadragon.EventHandler<OpenSeadragon.ViewerEvent> = () => {
+        //event: OpenSeadragon.ViewerEvent
         //console.log(`tile-drawn event fired ${tilesDrawn}`, event);
         tilesDrawn++;
         checkReady();
@@ -1168,7 +1171,8 @@ export class Renderer {
         checkReady();
       };
 
-      const fullWidthHandler: OpenSeadragon.EventHandler<OpenSeadragon.ViewerEvent> = () => { //event: OpenSeadragon.ViewerEvent
+      const fullWidthHandler: OpenSeadragon.EventHandler<OpenSeadragon.ViewerEvent> = () => {
+        //event: OpenSeadragon.ViewerEvent
         //console.log("full-width event fired", event);
         fullWidthFired = true;
         checkReady();
@@ -1176,7 +1180,8 @@ export class Renderer {
 
       childViewer.addHandler("tile-drawn", tileDrawnHandler);
 
-      const updateViewportHandler: OpenSeadragon.EventHandler<OpenSeadragon.ViewerEvent> = () => { //event: OpenSeadragon.ViewerEvent
+      const updateViewportHandler: OpenSeadragon.EventHandler<OpenSeadragon.ViewerEvent> = () => {
+        //event: OpenSeadragon.ViewerEvent
         //console.log("update viewport event fired", event);
         //updateViewportFired = true;
       };

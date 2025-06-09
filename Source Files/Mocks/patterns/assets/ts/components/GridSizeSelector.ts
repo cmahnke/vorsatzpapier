@@ -120,6 +120,7 @@ export class GridSizeSelector extends HTMLElement {
         --btn-border-radius: 0.4rem;
         --btn-disabled-cursor: not-allowed;
         --btn-font-size: 1em;
+        --btn-line-height: 1.2;
         --font-family: sans-serif;
         --gap: .8em;
         --disabled-opacity: .6;
@@ -188,6 +189,7 @@ export class GridSizeSelector extends HTMLElement {
         transition: var(--btn-hover-tansition);
         font-size: var(--btn-font-size);
         font-family: var(--font-family);
+        line-height: var(--btn-line-height);
       }
 
       button:hover:not(:disabled) {
@@ -207,11 +209,9 @@ export class GridSizeSelector extends HTMLElement {
       }
 
       .trigger-button {
-        padding: 8px 16px;
         background-color: var(--btn-bg-color);
         border: none;
         cursor: pointer;
-        font-size: 16px;
       }
 
       .trigger-button:hover {
@@ -438,7 +438,7 @@ export class GridSizeSelector extends HTMLElement {
     if (!gridArea) return;
 
     gridArea.style.display = this._isOpen ? "grid" : "none";
-    
+
     gridArea.style.gridTemplateColumns = `repeat(${this.maxcols}, auto)`;
     gridArea.style.gridTemplateRows = `repeat(${this.maxrows}, auto)`;
 

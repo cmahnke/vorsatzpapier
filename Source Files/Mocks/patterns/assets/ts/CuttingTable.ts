@@ -85,7 +85,7 @@ export class CuttingTable {
     download: boolean = true,
     autoLoad: boolean = true,
     urls?: URL | { url: string; label: string }[],
-    shifts: boolean = false,
+    shifts: boolean = false
   ) {
     if (element !== undefined) {
       this.container = element;
@@ -427,7 +427,6 @@ export class CuttingTable {
     this.cutX.setAttribute("value-max", String(width));
     this.cutX.disabled = false;
 
-
     this.rotationX.disabled = false;
     this.rotationX.value = 0;
     this.cutY.setAttribute("max", String(height));
@@ -577,11 +576,9 @@ export class CuttingTable {
       this.cuts.rotateY = event.detail.degree;
     });
 
-    
-
     //Options
     this.rulerCheckbox = this.container.querySelector<HTMLInputElement>(CuttingTable.rulerElementSelector)!;
-    this.rulerCheckbox.title = i18next.t("cuttingTable:toggleRuler")
+    this.rulerCheckbox.title = i18next.t("cuttingTable:toggleRuler");
     this.rulerCheckbox?.addEventListener("change", (e: Event) => {
       const value = Boolean((e.target as HTMLInputElement).checked);
       this.cuts.setVisibility(value);

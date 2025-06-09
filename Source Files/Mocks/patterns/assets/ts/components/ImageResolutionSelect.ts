@@ -433,7 +433,7 @@ export class ImageResolutionSelect extends HTMLElement {
 
       if (this.hasAttribute("confirm-button")) {
         this.confirmButton = document.createElement("button");
-        this.confirmButton.textContent = i18next.t("imageResolutionSelect:confirmButton");;
+        this.confirmButton.textContent = i18next.t("imageResolutionSelect:confirmButton");
         this.confirmButton.addEventListener("click", (event) => {
           event.stopPropagation();
           this.confirmCustomSelection();

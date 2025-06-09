@@ -176,9 +176,8 @@ export class ImageResolutionSelect extends HTMLElement {
         --btn-disabled-bg-color: #cccccc;
         --btn-disabled-text-color: #666666;
         --btn-disabled-cursor: not-allowed;
-        --btn-hover-bg-color: #45a049;
-        --btn-hover-tansition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
         --btn-hover-bg-color: #007bff;
+        --btn-hover-tansition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
         --btn-border-radius: 0.4rem;
         --btn-padding: 8px 16px;
         --disabled-opacity: .6;

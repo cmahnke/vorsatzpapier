@@ -1,4 +1,4 @@
-/* @use "pkg:@fontsource-variable/raleway/index.css"; */
+@use 'sass:color';
 
 @use "pkg:@fontsource-utils/scss" as fontsource;
 @use "pkg:@fontsource-variable/raleway/scss" as ralewayVariabale;
@@ -7,6 +7,7 @@
 
 $inactive-color: rgb(170, 170, 170);
 $active-color: rgb(77, 77, 77);
+$control-color: color.adjust(rgb(56, 49, 47), $lightness: 30%);
 $font: "Raleway Variable";
 
 .lucienne,
@@ -29,9 +30,9 @@ image-resolution-select {
   --btn-margin: 0 2em;
   --disabled-opacity: 0.6;
   --font-family: #{$font};
-  --control-handle-color: #007bff;
-  --control-fill-color: #007bff;
-  --control-thumb-color: #007bff;
+  --control-handle-color: #{color.adjust($control-color, $red: 15%)};
+  --control-fill-color: #{$control-color};
+  --control-thumb-color: #{color.adjust($control-color, $red: 15%)};
   --control-track-color: #ddd;
   --control-disabled-color: #ccc;
   --control-thumb-hover-color: var(--control-thumb-color);

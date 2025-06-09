@@ -256,6 +256,8 @@ $active-color: #007bff;
         z-index: 10;
         height: 1.4rem;
         align-self: center;
+        color: currentColor;
+        background-color: var(--btn-bg-color);
       }
     }
 

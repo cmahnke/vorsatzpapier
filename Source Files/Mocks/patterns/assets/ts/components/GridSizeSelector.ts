@@ -3,8 +3,8 @@ import i18next from "i18next";
 export class GridSizeSelector extends HTMLElement {
   static observedAttributes = ["width", "height", "maxrows", "maxcols", "disabled"];
 
-  static initialMaxRows = 20;
-  static initialMaxCols = 20;
+  static initialMaxRows = 10;
+  static initialMaxCols = 10;
 
   width = 10;
   height = 10;
@@ -241,8 +241,10 @@ export class GridSizeSelector extends HTMLElement {
 
       .grid-area {
         display: none;
+        /*
         grid-template-columns: repeat(${GridSizeSelector.initialMaxCols}, auto);
         grid-template-rows: repeat(${GridSizeSelector.initialMaxRows}, auto);
+        */
         width: var(--grid-width, 200px);
         height: var(--grid-height, 200px);
         border: 1px solid #aaa;
@@ -253,7 +255,6 @@ export class GridSizeSelector extends HTMLElement {
         top: 100%;
         left: 0;
         z-index: 10;
-        /* margin-top: 10px; */
         box-shadow: var(--grid-box-shadow);
         background-color: #ffffff;
         gap: 2px;
@@ -317,8 +318,9 @@ export class GridSizeSelector extends HTMLElement {
 
   _renderGrid(): string {
     let cellsHtml = "";
-    for (let i = 0; i < 20; i++) {
-      for (let j = 0; j < 20; j++) {
+    // Use the component's maxrows and maxcols properties
+    for (let i = 0; i < this.maxrows; i++) {
+      for (let j = 0; j < this.maxcols; j++) {
         const isSelected = i < this._height && j < this._width;
         cellsHtml += `
           <div
@@ -330,14 +332,6 @@ export class GridSizeSelector extends HTMLElement {
       }
     }
     return cellsHtml;
-  }
-
-  _getGridStyle(): string {
-    return `
-      display: ${this._isOpen ? "grid" : "none"};
-      grid-template-columns: repeat(${this.maxcols}, auto);
-      grid-template-rows: repeat(${this.maxrows}, auto);
-    `;
   }
 
   handleMouseDown(event: MouseEvent) {
@@ -442,9 +436,13 @@ export class GridSizeSelector extends HTMLElement {
   updateGrid() {
     const gridArea = this.shadowRoot?.querySelector<HTMLElement>(".grid-area");
     if (!gridArea) return;
-    gridArea.innerHTML = this._renderGrid();
+
     gridArea.style.display = this._isOpen ? "grid" : "none";
-    gridArea.style.cssText = this._getGridStyle();
+    
+    gridArea.style.gridTemplateColumns = `repeat(${this.maxcols}, auto)`;
+    gridArea.style.gridTemplateRows = `repeat(${this.maxrows}, auto)`;
+
+    gridArea.innerHTML = this._renderGrid();
   }
 
   updateInputs() {

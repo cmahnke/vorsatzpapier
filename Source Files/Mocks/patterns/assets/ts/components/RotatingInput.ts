@@ -73,7 +73,7 @@ export class RotatingInput extends HTMLElement {
           border-radius: 50%;
           border: var(--control-circle-border);
           position: relative;
-          opacity: ${this._disabled ? "0.6" : "1"};
+          opacity: ${this._disabled ? "0.6" : "var(--disabled-opacity)"};
           cursor: ${this._disabled ? "not-allowed" : "default"};
         }
 
@@ -220,8 +220,14 @@ export class RotatingInput extends HTMLElement {
     if (this.styleElement) {
       this.styleElement.textContent = `
         :host {
-          --handle-color: ${this._disabled ? "#ccc" : "#007bff"};
+          --control-handle-color: #007bff;
+          --handle-color: ${this._disabled ? "var(--control-disabled-color)" : "var(--control-handle-color)"};
+          --rotating-input-container-margin: 20px auto;
+          --disabled-opacity: .6;
+          --control-circle-color: #ccc;
+          --control-circle-border: 2px solid var(--control-circle-color);
         }
+
         .rotating-input-container {
           position: relative;
           width: ${2 * this.radius}px;
@@ -234,9 +240,9 @@ export class RotatingInput extends HTMLElement {
           width: ${2 * this.radius}px;
           height: ${2 * this.radius}px;
           border-radius: 50%;
-          border: 2px solid #ccc;
+          border: var(--control-circle-border);
           position: relative;
-          opacity: ${this._disabled ? "0.6" : "1"};
+          opacity: ${this._disabled ? "var(--disabled-opacity)" : "1"};
           cursor: ${this._disabled ? "not-allowed" : "default"};
         }
 

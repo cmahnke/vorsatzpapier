@@ -11,6 +11,7 @@ import path from "path";
 import fs from "fs";
 import copy from "rollup-plugin-copy";
 import { NodePackageImporter } from "sass";
+import replace from "@rollup/plugin-replace";
 
 // External configs
 import typescriptOptions from "./tsconfig.json" with { type: "json" };
@@ -20,38 +21,10 @@ const artifactName = packageJson.name;
 const artifactversion = packageJson.version;
 
 const fontPath = "patterns/assets/fonts";
-
-const postcssConfig = {
-  sourceMap: false,
-  use: [
-    [
-      "sass",
-      {
-        pkgImporter: new NodePackageImporter()
-      }
-    ]
-  ],
-  plugins: [
-    url([
-      {
-        url: "inline",
-        maxSize: 10,
-        fallback: "copy",
-        basePath: path.resolve("patterns/assets/scss"),
-        assetsPath: path.resolve("patterns/assets/images")
-      },
-      {
-        filter: "@fontsource-*/**/*.*",
-        basePath: path.resolve("node_module"),
-        assetsPath: path.resolve("patterns/assets/fonts")
-      },
-      {
-        filter: "@**/**/*.woff2",
-        url: "rebase"
-      }
-    ])
-  ]
-};
+const fontURLPath = "/fonts/";
+if (!fs.existsSync(fontPath)) {
+  fs.mkdirSync(fontPath);
+}
 
 const aliasConfig = {
   entries: [
@@ -73,10 +46,142 @@ const config = [
     ],
     plugins: [
       postcss({
-        extract: false,
-        ...postcssConfig
+        use: [
+          [
+            "sass",
+            {
+              pkgImporter: new NodePackageImporter()
+            }
+          ]
+        ]
       }),
       dts()
+    ]
+  },
+
+  {
+    input: "patterns/assets/scss/base.scss",
+    output: [
+      {
+        file: `build/dist/${artifactName}-vorsatzpapier-${artifactversion}.css`,
+        format: "es"
+      }
+    ],
+    plugins: [
+      replace({
+        preventAssignment: true,
+        values: {
+          defaults: "vorsatzpapier"
+        }
+      }),
+      postcss({
+        extract: true,
+        sourceMap: true,
+        use: [
+          [
+            "sass",
+            {
+              pkgImporter: new NodePackageImporter(),
+              includePaths: [path.resolve("node_modules")]
+            }
+          ]
+        ],
+        plugins: [
+          url([
+            {
+              url: "inline",
+              maxSize: 100,
+              fallback: "copy",
+              basePath: path.resolve("patterns/assets/scss"),
+              assetsPath: path.resolve("patterns/assets/images")
+            }
+          ]),
+          url([
+            {
+              url: (asset) => {
+                if (asset.pathname === null || (asset.url !== undefined && asset.url.startsWith("data:"))) {
+                  return;
+                }
+                if (asset.pathname !== null && asset.pathname.startsWith("@fontsource")) {
+                  const src = path.resolve(path.join("node_modules", asset.pathname));
+                  const fontFile = path.basename(asset.pathname);
+                  const dest = path.join(fontPath, fontFile);
+                  if (!fs.existsSync(dest)) {
+                    fs.cpSync(src, dest);
+                  }
+                  const urlPath = path.join(fontURLPath, fontFile);
+                  return urlPath;
+                }
+              },
+              multi: true
+            }
+          ])
+        ]
+      }),
+      nodeResolve({
+        extensions: [".css"]
+      })
+    ]
+  },
+  {
+    input: "patterns/assets/scss/base.scss",
+    output: [
+      {
+        file: `build/dist/${artifactName}-christianmahnke-${artifactversion}.css`,
+        format: "es"
+      }
+    ],
+    plugins: [
+      replace({
+        preventAssignment: true,
+        values: {
+          defaults: "christianmahnke"
+        }
+      }),
+      alias(aliasConfig),
+      postcss({
+        extract: true,
+        sourceMap: true,
+        use: [
+          [
+            "sass",
+            {
+              pkgImporter: new NodePackageImporter()
+            }
+          ]
+        ],
+        plugins: [
+          url([
+            {
+              url: "inline",
+              maxSize: 100,
+              fallback: "copy",
+              basePath: path.resolve("patterns/assets/scss"),
+              assetsPath: path.resolve("patterns/assets/images")
+            }
+          ]),
+          url([
+            {
+              url: (asset) => {
+                if (asset.pathname === null || (asset.url !== undefined && asset.url.startsWith("data:"))) {
+                  return;
+                }
+                if (asset.pathname !== null && asset.pathname.startsWith("@fontsource")) {
+                  const src = path.resolve(path.join("node_modules", asset.pathname));
+                  const fontFile = path.basename(asset.pathname);
+                  const dest = path.join(fontPath, fontFile);
+                  if (!fs.existsSync(dest)) {
+                    fs.cpSync(src, dest);
+                  }
+                  const urlPath = path.join(fontURLPath, fontFile);
+                  return urlPath;
+                }
+              },
+              multi: true
+            }
+          ])
+        ]
+      })
     ]
   },
   {
@@ -92,9 +197,9 @@ const config = [
     external: ["openseadragon", "openseadragon-fabric", "fabric", "@allmaps/iiif-parser", "i18next", "i18next-browser-languagedetector"],
     plugins: [
       alias(aliasConfig),
+      json({ preferConst: true }),
       postcss({
         extract: `${artifactName}-${artifactversion}.css`,
-
         sourceMap: true,
         use: [
           [
@@ -107,43 +212,49 @@ const config = [
         plugins: [
           url([
             {
-              //filter: "@fontsource*/**/*.woff2",
-              filter: "@fontsource**",
-              url: (asset) => {
-                
-                if (asset.pathname.startsWith("@fontsource")) {
-                  const src = path.resolve(path.join("node_modules", asset.pathname))
-                  const dest = path.join(fontPath, path.basename(asset.pathname))
-                  /*
-                  if (!fs.pathExistsSync(dest)) {
-                     fs.copySync(src, dest)
-                  }
-                  */
-                  console.log("=>", asset, src)
-                  return src
-                }
-              },
-              multi: true
-            },
-            {
               url: "inline",
-              maxSize: 10,
+              maxSize: 100,
               fallback: "copy",
               basePath: path.resolve("patterns/assets/scss"),
               assetsPath: path.resolve("patterns/assets/images")
-            },
-
+            }
+          ]),
+          url([
+            {
+              url: (asset) => {
+                if (asset.pathname === null || (asset.url !== undefined && asset.url.startsWith("data:"))) {
+                  return;
+                }
+                if (asset.pathname !== null && asset.pathname.startsWith("@fontsource")) {
+                  const src = path.resolve(path.join("node_modules", asset.pathname));
+                  const fontFile = path.basename(asset.pathname);
+                  const dest = path.join(fontPath, fontFile);
+                  if (!fs.existsSync(dest)) {
+                    fs.cpSync(src, dest);
+                  }
+                  const urlPath = path.join(fontURLPath, fontFile);
+                  return urlPath;
+                }
+              },
+              multi: true
+            }
           ])
         ]
       }),
-
-      commonjs(),
       typescript(typescriptOptions),
-      nodeResolve(),
-      json()
+      commonjs(),
+      copy({
+        targets: [
+          {
+            src: `${fontPath}/*`,
+            dest: path.join("build", fontURLPath)
+          }
+        ]
+      }),
+
+      nodeResolve()
     ]
   },
-
   {
     input: "patterns/assets/ts/CuttingTable.ts",
     output: [
@@ -162,6 +273,7 @@ const config = [
     ],
     plugins: [
       alias(aliasConfig),
+      json({ preferConst: true }),
       postcss({
         extract: `${artifactName}-${artifactversion}.css`,
         sourceMap: true,
@@ -177,24 +289,34 @@ const config = [
           url([
             {
               url: "inline",
-              maxSize: 10,
+              maxSize: 100,
               fallback: "copy",
               basePath: path.resolve("patterns/assets/scss"),
               assetsPath: path.resolve("patterns/assets/images")
-            },
+            }
+          ]),
+          url([
             {
-              filter: "@fontsource-*/**/*.*",
-              basePath: path.resolve("node_module"),
-              assetsPath: path.resolve("patterns/assets/fonts")
-            },
-            {
-              filter: "@**/**/*.woff2",
-              url: "rebase"
+              url: (asset) => {
+                if (asset.pathname === null || (asset.url !== undefined && asset.url.startsWith("data:"))) {
+                  return;
+                }
+                if (asset.pathname !== null && asset.pathname.startsWith("@fontsource")) {
+                  const src = path.resolve(path.join("node_modules", asset.pathname));
+                  const fontFile = path.basename(asset.pathname);
+                  const dest = path.join(fontPath, fontFile);
+                  if (!fs.existsSync(dest)) {
+                    fs.cpSync(src, dest);
+                  }
+                  const urlPath = path.join(fontURLPath, fontFile);
+                  return urlPath;
+                }
+              },
+              multi: true
             }
           ])
         ]
       }),
-
       commonjs(),
       copy({
         targets: [
@@ -205,13 +327,12 @@ const config = [
               contents
                 .toString()
                 .replace("./assets/ts/main.ts", `${artifactName}-${artifactversion}-complete.es.min.js`)
-                .replace("</title>", `</title><link rel="stylesheet" crossorigin href="${artifactName}-${artifactversion}.css.css">`)
+                .replace("</title>", `</title><link rel="stylesheet" crossorigin href="${artifactName}-${artifactversion}.css">`)
           }
         ]
       }),
       typescript({ ...typescriptOptions, sourceMap: false, inlineSources: false }),
       nodeResolve(),
-      json(),
       terser()
     ]
   }

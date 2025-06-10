@@ -46,8 +46,10 @@ export class IIIFForm {
     }
     //this.statusContainer = this.cuttingTable.container.querySelector<HTMLDivElement>(`.${CuttingTable.statusContainerClass}`)!;
     this.statusContainer = statusContainer;
-    this.button = this.cuttingTable.container.querySelector<HTMLButtonElement>(`.${this.buttonClass}`)!;
-    this.button.innerText = i18next.t("iiifForm:loadButton");
+    if (urlInput) {
+      this.button = this.cuttingTable.container.querySelector<HTMLButtonElement>(`.${this.buttonClass}`)!;
+      this.button.innerText = i18next.t("iiifForm:loadButton");
+    }
     this.setup();
   }
 

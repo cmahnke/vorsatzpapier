@@ -11,7 +11,7 @@ import type { IIIFImageStub, CutJSON, CutJSONLD } from "./types";
 import { loadInfoJson } from "./util";
 import i18next from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
-import translations from "@/json/translations.json";
+import translations from "../json/translations.json";
 import "../scss/base.scss";
 
 i18next.use(LanguageDetector).init({
@@ -97,11 +97,11 @@ export class CuttingTable {
     if (this.container === undefined) {
       throw new Error("Couldn't setup element");
     }
+
     //Debug?
     if ("debug" in element.dataset && element.dataset.debug !== undefined && element.dataset.debug !== "") {
       this._debug = element.dataset.debug === "true";
     }
-
     // URL input field?
     if ("urlInput" in element.dataset && element.dataset.urlInput !== undefined && element.dataset.urlInput !== "") {
       urlInput = element.dataset.urlInput === "true";
@@ -121,14 +121,21 @@ export class CuttingTable {
     this._shifts = shifts;
 
     //get preconfigured URL
-    if ("urls" in element.dataset && element.dataset.urls !== undefined && element.dataset.urls !== "") {
-      urls = new URL(element.dataset.urls);
+    if ("url" in element.dataset && element.dataset.url !== undefined && element.dataset.url !== "") {
+      this._url = new URL(element.dataset.url);
+    } else {
+      if (urls !== undefined && urls instanceof URL) {
+        this._url = urls;
+      } else if (urls !== undefined && Array.isArray(urls)) {
+        this._initialUrls = urls;
+      } else if (typeof urls === 'string') {
+        this._url = new URL(urls);
+      }
+      if (this._autoLoad && Array.isArray(this._initialUrls)) {
+        this._url = new URL(this._initialUrls[0]["url"])
+      }
     }
-    if (urls !== undefined && urls instanceof URL) {
-      this._url = urls;
-    } else if (urls !== undefined && Array.isArray(urls)) {
-      this._initialUrls = urls;
-    }
+
     if ("columns" in element.dataset && element.dataset.columns !== undefined && element.dataset.columns !== "") {
       this._columns = parseInt(element.dataset.columns);
     }
@@ -138,6 +145,10 @@ export class CuttingTable {
 
     if (this._shifts) {
       this.container.classList.add(CuttingTable.shiftClass);
+    }
+
+    if(!this._urlInput && this._url === undefined) {
+      throw new Error("No initial URL set")
     }
 
     //Components

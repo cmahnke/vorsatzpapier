@@ -1,17 +1,17 @@
 import path from "path";
 import url from "postcss-url";
-import { NodePackageImporter } from 'sass';
+import { NodePackageImporter } from "sass";
 //import scss from "postcss-scss";
 
 export default {
   syntax: "postcss-scss",
   use: [
     [
-      'sass',
+      "sass",
       {
-        pkgImporter: new NodePackageImporter(),
-      },
-    ],
+        pkgImporter: new NodePackageImporter()
+      }
+    ]
   ],
   plugins: {
     "postcss-url": {

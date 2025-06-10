@@ -6,7 +6,7 @@ on:
       - main
   workflow_dispatch:
   schedule:
-    - cron:  '0 7 * * 3'
+    - cron: "0 7 * * 3"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -20,7 +20,6 @@ jobs:
   deploy:
     runs-on: ubuntu-24.04
     steps:
-
       - name: Free some disk space
         run: |
           sudo rm -rf /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL /usr/local/graalvm/ /usr/local/share/powershell /usr/local/lib/android /usr/local/.ghcup/ /usr/share/dotnet/ /opt/microsoft /usr/local/aws-* /usr/share/miniconda /opt/az /usr/share/kotlinc /usr/share/man /usr/share/sbt /usr/local/julia* /usr/share/az* /usr/share/apache-maven* /usr/share/gradle* /usr/share/swift
@@ -28,7 +27,7 @@ jobs:
 
       - uses: actions/checkout@v4
         with:
-          submodules: true  # Fetch Hugo themes (true OR recursive)
+          submodules: true # Fetch Hugo themes (true OR recursive)
 
       - name: Login to GitHub Packages Docker Registry
         uses: docker/login-action@v3.4.0
@@ -41,7 +40,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: "3.10"
 
       - name: Install required dependencies
         run: |
@@ -56,7 +55,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4.4.0
         with:
-          node-version-file: '.nvmrc'
+          node-version-file: ".nvmrc"
 
       - uses: pnpm/action-setup@v4
         with:
@@ -105,9 +104,9 @@ jobs:
 
       - name: Cleanup Build
         run: |
-           find docs -type f -size +5M -name '*.jpg' -exec rm {} \;
-           find docs -type f -name 'ogPreview-tmp*.jpg' -print -exec rm {} \;
-           rm -rf docs/plugins
+          find docs -type f -size +5M -name '*.jpg' -exec rm {} \;
+          find docs -type f -name 'ogPreview-tmp*.jpg' -print -exec rm {} \;
+          rm -rf docs/plugins
 
       - name: Validate JSON
         env:

@@ -249,6 +249,14 @@ body.about .loop-container .post {
     background-repeat: no-repeat;
 }
 
+body.generator .loop-container .entry-container {
+    padding: 0 5% !important;
+
+    .content {
+        padding-right: unset !important;
+    }
+}
+
 .tagcloud {
     margin: 1em;
     background-color: color.adjust($body-background, $lightness: 60%);

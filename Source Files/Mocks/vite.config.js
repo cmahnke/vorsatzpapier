@@ -5,12 +5,10 @@ import { nodePolyfills } from "vite-plugin-node-polyfills";
 import { DynamicPublicDirectory } from "vite-multiple-assets";
 import { checker } from "vite-plugin-checker";
 import { viteStaticCopy } from "vite-plugin-static-copy";
-import svg from "vite-plugin-svgo";
 import browserslistToEsbuild from "browserslist-to-esbuild";
 import { NodePackageImporter } from "sass";
 
 // External configs
-import svgoConfig from "./svgo.config.mjs";
 import packageJson from "./package.json";
 
 const artifactName = packageJson.name;
@@ -29,7 +27,6 @@ export default defineConfig({
       ssr: false
     }),
     checker({ typescript: false }),
-    svg(svgoConfig),
     viteStaticCopy({
       targets: [
         {

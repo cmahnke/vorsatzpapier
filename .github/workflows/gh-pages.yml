@@ -90,8 +90,8 @@ jobs:
           ./scripts/setup.sh
 
       - name: Generate Generator
-        working-directory: './Source Files/Mocks/scripts'
-        run: ./lucienne.sh
+        working-directory: './Source Files/Mocks'
+        run: ./scripts/lucienne.sh
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3.0.0

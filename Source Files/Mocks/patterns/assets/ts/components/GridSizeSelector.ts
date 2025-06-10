@@ -118,6 +118,7 @@ export class GridSizeSelector extends HTMLElement {
         --btn-hover-tansition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
         --btn-padding: 8px 16px;
         --btn-border-radius: 0.4rem;
+        --btn-border: none;
         --btn-disabled-cursor: not-allowed;
         --btn-font-size: 1em;
         --btn-line-height: 1.2;
@@ -183,7 +184,7 @@ export class GridSizeSelector extends HTMLElement {
         padding: var(--btn-padding);
         background-color: var(--btn-bg-color);
         color: var(--btn-text-color);
-        border: none;
+        border: var(--btn-border);
         border-radius: var(--btn-border-radius);
         cursor: pointer;
         transition: var(--btn-hover-tansition);
@@ -210,7 +211,7 @@ export class GridSizeSelector extends HTMLElement {
 
       .trigger-button {
         background-color: var(--btn-bg-color);
-        border: none;
+        var(--btn-border);
         cursor: pointer;
       }
 

@@ -54,7 +54,7 @@ export class CuttingTable {
   _urlInput: boolean;
   _gridSelector: boolean;
   _download: boolean;
-  _debug: boolean = true;
+  _debug: boolean = false;
   _autoLoad: boolean;
   _shifts: boolean = true;
   //Elements of Contols and children
@@ -128,11 +128,11 @@ export class CuttingTable {
         this._url = urls;
       } else if (urls !== undefined && Array.isArray(urls)) {
         this._initialUrls = urls;
-      } else if (typeof urls === 'string') {
+      } else if (typeof urls === "string") {
         this._url = new URL(urls);
       }
       if (this._autoLoad && Array.isArray(this._initialUrls)) {
-        this._url = new URL(this._initialUrls[0]["url"])
+        this._url = new URL(this._initialUrls[0]["url"]);
       }
     }
 
@@ -147,8 +147,8 @@ export class CuttingTable {
       this.container.classList.add(CuttingTable.shiftClass);
     }
 
-    if(!this._urlInput && this._url === undefined) {
-      throw new Error("No initial URL set")
+    if (!this._urlInput && this._url === undefined) {
+      throw new Error("No initial URL set");
     }
 
     //Components

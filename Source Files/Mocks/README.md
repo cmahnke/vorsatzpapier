@@ -8,7 +8,6 @@ The software is named after [Lucienne_Day](https://en.wikipedia.org/wiki/Lucienn
 
 ## Known issues
 
-- CSS for cutting table
 - Preview icon in collections, implemented but parser doesn't support it
 
 ### Next Version

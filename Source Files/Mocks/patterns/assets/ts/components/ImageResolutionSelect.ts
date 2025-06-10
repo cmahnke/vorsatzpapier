@@ -179,6 +179,7 @@ export class ImageResolutionSelect extends HTMLElement {
         --btn-hover-bg-color: #007bff;
         --btn-hover-tansition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
         --btn-border-radius: 0.4rem;
+        --btn-border: none;
         --btn-padding: 8px 16px;
         --disabled-opacity: .6;
       }
@@ -197,7 +198,7 @@ export class ImageResolutionSelect extends HTMLElement {
       }
 
       .display {
-        border: 1px solid #ccc;
+        border: var(--btn-border);
         padding: 8px;
         cursor: pointer;
         display: flex;
@@ -259,7 +260,7 @@ export class ImageResolutionSelect extends HTMLElement {
         background-color: var(--btn-bg-color);
         font-size: var(--btn-font-size);
         color: var(--btn-text-color);
-        border: none;
+        var(--btn-border);
         padding: var(--btn-padding);
         font-family: var(--font-family)
       }

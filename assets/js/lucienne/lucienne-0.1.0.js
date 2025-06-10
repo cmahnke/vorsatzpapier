@@ -1603,6 +1603,7 @@ class ImageResolutionSelect extends HTMLElement {
         --btn-hover-bg-color: #007bff;
         --btn-hover-tansition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
         --btn-border-radius: 0.4rem;
+        --btn-border: none;
         --btn-padding: 8px 16px;
         --disabled-opacity: .6;
       }
@@ -1621,7 +1622,7 @@ class ImageResolutionSelect extends HTMLElement {
       }
 
       .display {
-        border: 1px solid #ccc;
+        border: var(--btn-border);
         padding: 8px;
         cursor: pointer;
         display: flex;
@@ -1683,7 +1684,7 @@ class ImageResolutionSelect extends HTMLElement {
         background-color: var(--btn-bg-color);
         font-size: var(--btn-font-size);
         color: var(--btn-text-color);
-        border: none;
+        var(--btn-border);
         padding: var(--btn-padding);
         font-family: var(--font-family)
       }
@@ -2189,6 +2190,7 @@ class CanvasDownloadButton extends HTMLElement {
         --btn-disabled-text-color: #666666;
         --btn-padding: 8px 16px;
         --btn-border-radius: 0.4rem;
+        --btn-border: none;
         --btn-font-size: 1em;
         --btn-line-height: 1.2;
         --btn-cursor: pointer;
@@ -2206,7 +2208,7 @@ class CanvasDownloadButton extends HTMLElement {
       .download-button {
         font-family: var(--font-family);
         padding: var(--btn-padding);
-        border: none;
+        border: var(--btn-border);
         border-radius: var(--btn-border-radius);
         cursor: var(--btn-cursor);
         font-size: var(--btn-font-size);
@@ -2334,6 +2336,7 @@ class GridSizeSelector extends HTMLElement {
         --btn-hover-tansition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
         --btn-padding: 8px 16px;
         --btn-border-radius: 0.4rem;
+        --btn-border: none;
         --btn-disabled-cursor: not-allowed;
         --btn-font-size: 1em;
         --btn-line-height: 1.2;
@@ -2399,7 +2402,7 @@ class GridSizeSelector extends HTMLElement {
         padding: var(--btn-padding);
         background-color: var(--btn-bg-color);
         color: var(--btn-text-color);
-        border: none;
+        border: var(--btn-border);
         border-radius: var(--btn-border-radius);
         cursor: pointer;
         transition: var(--btn-hover-tansition);
@@ -2426,7 +2429,7 @@ class GridSizeSelector extends HTMLElement {
 
       .trigger-button {
         background-color: var(--btn-bg-color);
-        border: none;
+        var(--btn-border);
         cursor: pointer;
       }
 
@@ -2907,7 +2910,7 @@ class Renderer {
         this.defaultExportDimensions = [1920, 1080];
         this._notificationQueue = [];
         this._debug = false;
-        this.renderTimeout = 1500;
+        this.renderTimeout = 3000;
         if (element !== undefined) {
             this.element = element;
         }
@@ -3303,8 +3306,11 @@ class Renderer {
                 let width = 0, height = 0;
                 const tiledImage = this.viewer.world.getItemAt(pos);
                 const hideRect = new HideRect(tiledImage);
-                if (tiledImage === undefined || referenceImage === undefined || tiledImage.getClip() === null || this.clipRect === undefined) {
+                if (tiledImage === undefined || referenceImage === undefined || this.clipRect === undefined) {
                     throw new Error("Required variables are not defined");
+                }
+                if (tiledImage.getClip() === null) {
+                    throw new Error("TiledImage has no clipings!");
                 }
                 let offsetRect;
                 if (this._offsets != undefined) {
@@ -3793,7 +3799,8 @@ class Renderer {
             };
             childViewer.addHandler("tile-drawn", waitForTiles);
             const timer = setTimeout(() => {
-                reject(new Error(`Render not finished after ${this.renderTimeout}ms`));
+                const errMsg = i18next.t("renderer:renderTimeout");
+                reject(new Error(`${errMsg} ${this.renderTimeout}ms`));
                 if (tileDrawnHandler)
                     childViewer.removeHandler("tile-drawn", tileDrawnHandler);
                 if (layoutFinishHandler)
@@ -3814,7 +3821,8 @@ class Renderer {
             }
             catch (e) {
                 if (this.statusContainer !== null) {
-                    this.statusContainer.innerHTML = e;
+                    const errMsg = i18next.t("renderer:error") + ": " + e.message;
+                    this.statusContainer.innerHTML = errMsg;
                 }
                 throw new Error(e);
             }
@@ -4446,6 +4454,10 @@ const en = {
 		loadButton: "Load URL",
 		errorJson: "<b>IIIF file could not be loaded</b>"
 	},
+	renderer: {
+		error: "Error",
+		renderTimeout: "Render not finished after"
+	},
 	canvasDownloadButton: {
 		download: "Download",
 		downloadFailed: "Download failed."
@@ -4480,6 +4492,10 @@ const de = {
 		loadButton: "URL laden",
 		errorJson: "<b>IIIF Datei konnte nicht geladen werden</b>"
 	},
+	renderer: {
+		error: "Fehler",
+		renderTimeout: "Erzeugung nicht abgeschlossen nach"
+	},
 	canvasDownloadButton: {
 		download: "Herunterladen",
 		downloadFailed: "Download fehlgeschlagen."
@@ -4510,7 +4526,7 @@ i18next.use(LanguageDetector).init({
 class CuttingTable {
     constructor(element, urlInput = true, gridSelector = true, download = true, autoLoad = true, urls, shifts = false) {
         this.download = true;
-        this._debug = true;
+        this._debug = false;
         this._shifts = true;
         this._columns = 4;
         this._rows = 4;
@@ -4551,7 +4567,7 @@ class CuttingTable {
             else if (urls !== undefined && Array.isArray(urls)) {
                 this._initialUrls = urls;
             }
-            else if (typeof urls === 'string') {
+            else if (typeof urls === "string") {
                 this._url = new URL(urls);
             }
             if (this._autoLoad && Array.isArray(this._initialUrls)) {

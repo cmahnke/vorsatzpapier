@@ -8,6 +8,7 @@ import { RotateableRect } from "./openseadragon/RotateableRect";
 import { HideRect } from "./openseadragon/HideRect";
 import type { CutNotification, IIIFImageStub } from "./types";
 import { equals } from "./util";
+import i18next from "i18next";
 
 export class Renderer {
   //Element identifiers / classes / selectors
@@ -37,7 +38,7 @@ export class Renderer {
   _debug: boolean = false;
   statusContainer: HTMLDivElement | null;
   _debugOverlays: Map<OpenSeadragon.TiledImage, { element: HTMLElement; location: OpenSeadragon.Rect }[]>;
-  renderTimeout: number = 1500;
+  renderTimeout: number = 3000;
 
   constructor(
     element: HTMLElement,
@@ -524,9 +525,12 @@ export class Renderer {
         const hideRect = new HideRect(tiledImage);
 
         //Sanity checks
-        if (tiledImage === undefined || referenceImage === undefined || tiledImage.getClip() === null || this.clipRect === undefined) {
-          //console.warn(tiledImage, referenceImage);
+        if (tiledImage === undefined || referenceImage === undefined || this.clipRect === undefined) {
           throw new Error("Required variables are not defined");
+        }
+
+        if (tiledImage.getClip() === null) {
+          throw new Error("TiledImage has no clipings!");
         }
 
         //expectedSize = new OpenSeadragon.Rect(0, 0, transformedClipRect.width * visibleColumns, transformedClipRect.height * visibleRows);
@@ -1197,7 +1201,8 @@ export class Renderer {
       childViewer.addHandler("tile-drawn", waitForTiles);
 
       const timer = setTimeout(() => {
-        reject(new Error(`Render not finished after ${this.renderTimeout}ms`));
+        const errMsg = i18next.t("renderer:renderTimeout");
+        reject(new Error(`${errMsg} ${this.renderTimeout}ms`));
         if (tileDrawnHandler) childViewer.removeHandler("tile-drawn", tileDrawnHandler);
         if (layoutFinishHandler) childViewer.removeHandler("layout-finish", layoutFinishHandler);
         if (fullWidthHandler) childViewer.removeHandler("full-width", fullWidthHandler);
@@ -1217,7 +1222,8 @@ export class Renderer {
         return viewer.drawer.canvas as HTMLCanvasElement;
       } catch (e) {
         if (this.statusContainer !== null) {
-          this.statusContainer.innerHTML = e as string;
+          const errMsg = i18next.t("renderer:error") + ": " + e.message;
+          this.statusContainer.innerHTML = errMsg;
         }
         throw new Error(e);
       }

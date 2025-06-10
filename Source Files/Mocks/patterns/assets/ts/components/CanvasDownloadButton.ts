@@ -413,6 +413,7 @@ export class CanvasDownloadButton extends HTMLElement {
         --btn-disabled-text-color: #666666;
         --btn-padding: 8px 16px;
         --btn-border-radius: 0.4rem;
+        --btn-border: none;
         --btn-font-size: 1em;
         --btn-line-height: 1.2;
         --btn-cursor: pointer;
@@ -430,7 +431,7 @@ export class CanvasDownloadButton extends HTMLElement {
       .download-button {
         font-family: var(--font-family);
         padding: var(--btn-padding);
-        border: none;
+        border: var(--btn-border);
         border-radius: var(--btn-border-radius);
         cursor: var(--btn-cursor);
         font-size: var(--btn-font-size);

@@ -16,6 +16,10 @@
       "loadButton": "Load URL",
       "errorJson": "<b>IIIF file could not be loaded</b>"
     },
+    "renderer": {
+      "error": "Error",
+      "renderTimeout": "Render not finished after"
+    },
     "canvasDownloadButton": {
       "download": "Download",
       "downloadFailed": "Download failed."
@@ -49,6 +53,10 @@
       "imageButton": "Auswählen",
       "loadButton": "URL laden",
       "errorJson": "<b>IIIF Datei konnte nicht geladen werden</b>"
+    },
+    "renderer": {
+      "error": "Fehler",
+      "renderTimeout": "Erzeugung nicht abgeschlossen nach"
     },
     "canvasDownloadButton": {
       "download": "Herunterladen",

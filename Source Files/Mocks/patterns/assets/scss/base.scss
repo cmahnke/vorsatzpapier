@@ -7,10 +7,6 @@ $active-color: #007bff;
   font-size: var(--btn-font-size);
   font-family: var(--font-family);
 
-  @media (width >= 720px) {
-    margin: 2rem;
-  }
-
   &.shifts {
     .slider.offset {
       display: unset !important;

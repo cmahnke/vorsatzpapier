@@ -77,11 +77,6 @@ body .lucienne .output-viewer .controls.button {
   font-size: var(--btn-font-size);
   font-family: var(--font-family);
 }
-@media (width >= 720px) {
-  .lucienne {
-    margin: 2rem;
-  }
-}
 .lucienne.shifts .slider.offset {
   display: unset !important;
 }

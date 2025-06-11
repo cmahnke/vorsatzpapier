@@ -44,7 +44,7 @@ copyright = '<a href="https://projektemacher.org/" target="_blank">Projektemache
                 weight = 4
                 url = "generator/"
                 [[languages.de.menu.main.params]]
-                  draft = true
+#                  draft = true
 
             [[languages.de.menu.main]]
                 name = "Links"
@@ -84,7 +84,7 @@ copyright = '<a href="https://projektemacher.org/" target="_blank">Projektemache
                 weight = 4
                 url = "generator/"
                 [[languages.de.menu.main.params]]
-                  draft = true
+#                  draft = true
 
             [[languages.en.menu.main]]
                 name = "Links"

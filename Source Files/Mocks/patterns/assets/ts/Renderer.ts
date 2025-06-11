@@ -155,6 +155,8 @@ export class Renderer {
       if (typeof result === "boolean" && result) {
         this.viewer?.world.arrange({ rows: this._rows, columns: this._columns, tileMargin: 0, immediately: true });
         if (!this._notificationQueue.length) {
+          // Removing the call to this.preview() breaks the image downloader. Maybe hoth methods can be merged
+          this.preview();
           this.layout(true);
         } else {
           this._notificationQueue.forEach((notification: CutNotification) => {
@@ -438,6 +440,7 @@ export class Renderer {
     if (this.downloadButton !== undefined && this.downloadButton !== null) {
       this.downloadButton.disabled = false;
     }
+    Renderer.fitToWidth(this.viewer, true, undefined, false, true);
   }
 
   static createOffsetRect(offsets: { [key in CutPosition]?: number }, reference: OpenSeadragon.TiledImage): OffsetRect | undefined {
@@ -529,10 +532,6 @@ export class Renderer {
           throw new Error("Required variables are not defined");
         }
 
-        if (tiledImage.getClip() === null) {
-          throw new Error("TiledImage has no clipings!");
-        }
-
         //expectedSize = new OpenSeadragon.Rect(0, 0, transformedClipRect.width * visibleColumns, transformedClipRect.height * visibleRows);
         let offsetRect;
         if (this._offsets != undefined) {
@@ -555,6 +554,12 @@ export class Renderer {
           column = c - marginWidth;
           row = r - marginWidth;
         }
+
+        // This will be triggered, when called without calling this.preview() first
+        if (tiledImage.getClip() === null) {
+          throw new Error("TiledImage has no clipings!");
+        }
+
         x = (c - marginWidth) * width;
         y = (r - marginWidth) * height;
         //console.log(`${c},${r}`, tiledImage.getClip());
@@ -1018,7 +1023,13 @@ export class Renderer {
     }
   }
 
-  static fitToWidth(viewer: OpenSeadragon.Viewer, immediately: boolean = true, clipRect?: OffsetRect, fitTop: boolean = false) {
+  static fitToWidth(
+    viewer: OpenSeadragon.Viewer,
+    immediately: boolean = true,
+    clipRect?: OffsetRect,
+    fitTop: boolean = false,
+    fitHeight: boolean = false
+  ) {
     if (viewer !== undefined && viewer.world.getItemCount() > 0) {
       let minX = Infinity;
       let maxX = -Infinity;
@@ -1035,8 +1046,14 @@ export class Renderer {
           }
 
           minX = Math.min(minX, tiledImage.imageToViewportRectangle(tiledImage.getClip()!).x);
-          maxX = Math.max(maxX, bounds.x + tiledImage.imageToViewportRectangle(tiledImage.getClip()!).width);
-          maxY = Math.max(maxY, bounds.y + tiledImage.imageToViewportRectangle(tiledImage.getClip()!).height);
+          maxX = Math.max(
+            maxX,
+            tiledImage.imageToViewportRectangle(tiledImage.getClip()!).x + tiledImage.imageToViewportRectangle(tiledImage.getClip()!).width
+          );
+          maxY = Math.max(
+            maxY,
+            tiledImage.imageToViewportRectangle(tiledImage.getClip()!).y + tiledImage.imageToViewportRectangle(tiledImage.getClip()!).height
+          );
           minY = Math.min(minY, tiledImage.imageToViewportRectangle(tiledImage.getClip()!).y);
         } else {
           minX = Math.min(minX, bounds.x);
@@ -1047,25 +1064,46 @@ export class Renderer {
       }
 
       const combinedWidth = maxX - minX;
-      if (combinedWidth > 0) {
-        const targetZoom = 1.0 / combinedWidth;
-        viewer.viewport.zoomTo(targetZoom, undefined, immediately);
+      const combinedHeight = maxY - minY;
 
-        const combinedCenterX = minX + combinedWidth / 2;
+      if (combinedWidth > 0 || combinedHeight > 0) {
+        let targetZoom: number;
+        let combinedCenterX: number;
+        let combinedCenterY: number;
 
-        viewer.viewport.panTo(new OpenSeadragon.Point(combinedCenterX, viewer.viewport.getCenter().y), immediately);
+        if (fitHeight) {
+          if (combinedHeight === 0) {
+            throw new Error("Cannot fit to height when combined height is zero.");
+          }
+          const containerHeight = viewer.viewport.getContainerSize().y;
+          targetZoom = containerHeight / viewer.viewport.getContainerSize().x / combinedHeight;
 
-        const currentViewportBounds = viewer.viewport.getBounds();
-        if (currentViewportBounds.y < 0) {
-          viewer.viewport.panBy(new OpenSeadragon.Point(0, -currentViewportBounds.y), immediately);
-        }
-        if (currentViewportBounds.y > 0 && fitTop) {
-          viewer.viewport.panBy(new OpenSeadragon.Point(0, -currentViewportBounds.y), immediately);
+          combinedCenterX = minX + combinedWidth / 2;
+          combinedCenterY = minY + combinedHeight / 2;
+          viewer.viewport.zoomTo(targetZoom, undefined, immediately);
+          viewer.viewport.panTo(new OpenSeadragon.Point(combinedCenterX, combinedCenterY), immediately);
+        } else {
+          // Fit to width logic
+          if (combinedWidth === 0) {
+            throw new Error("Cannot fit to width when combined width is zero.");
+          }
+          targetZoom = 1.0 / combinedWidth;
+          combinedCenterX = minX + combinedWidth / 2;
+          viewer.viewport.zoomTo(targetZoom, undefined, immediately);
+          viewer.viewport.panTo(new OpenSeadragon.Point(combinedCenterX, viewer.viewport.getCenter().y), immediately);
+
+          const currentViewportBounds = viewer.viewport.getBounds();
+          if (currentViewportBounds.y < 0) {
+            viewer.viewport.panBy(new OpenSeadragon.Point(0, -currentViewportBounds.y), immediately);
+          }
+          if (currentViewportBounds.y > 0 && fitTop) {
+            viewer.viewport.panBy(new OpenSeadragon.Point(0, -currentViewportBounds.y), immediately);
+          }
         }
         viewer.raiseEvent("full-width", viewer);
       }
     } else {
-      throw new Error("Not a valid viewer");
+      throw new Error("Not a valid viewer or no items in the world.");
     }
   }
 
@@ -1138,8 +1176,6 @@ export class Renderer {
       //let updateViewportFired = false;
       let tilesDrawn = 0;
       let fullWidthFired = false;
-
-      //console.log(`Awaiting ${numTiles} tiles`);
 
       const checkReady = () => {
         if (layoutFinished && tilesDrawn >= numTiles && fullWidthFired) {
@@ -1235,7 +1271,8 @@ export class Renderer {
       this.downloadButton.format = suffix;
       this.downloadButton.renderCallback = renderCallback.bind(this); //this.renderImage.bind(this);
       this.downloadButton.addEventListener("download-end", () => {
-        if (childViewer !== null && childViewer.container !== undefined) {
+        // 'childViewer' shouldn't be undefined here, that is certainly related to a missing call to this.preview()
+        if (childViewer !== undefined && childViewer !== null && childViewer.container !== undefined) {
           const childViewerContainer = childViewer.container;
           childViewer.destroy();
           childViewerContainer.remove();

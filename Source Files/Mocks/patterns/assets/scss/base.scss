@@ -331,6 +331,12 @@ $active-color: #007bff;
         }
       }
 
+      @media (max-width: 35em) {
+        offscreencanvas-download {
+          display: none;
+        }
+      }
+
       .grid-select {
         position: absolute;
         bottom: 1em;

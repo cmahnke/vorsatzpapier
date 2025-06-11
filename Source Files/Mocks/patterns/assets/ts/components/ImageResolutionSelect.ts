@@ -199,13 +199,14 @@ export class ImageResolutionSelect extends HTMLElement {
 
       .display {
         border: var(--btn-border);
-        padding: 8px;
+        padding: var(--btn-padding);
+        background-color: var(--btn-bg-color);
         cursor: pointer;
         display: flex;
         align-items: center;
-        background: white;
         width: 100%;
         border-radius: var(--btn-border-radius);
+        color: var(--btn-text-color);
       }
 
       .display.disabled {

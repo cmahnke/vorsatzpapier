@@ -14,6 +14,8 @@ export class Renderer {
   //Element identifiers / classes / selectors
   static defaultSelector: string = ".texture-container";
   static rendererViewerSelector = ".output-viewer";
+  static _debugId = "debug";
+  static _rendererContainer = "hidden-renderer-container";
 
   element: HTMLElement;
   _source: IIIFImageStub | undefined;
@@ -1132,13 +1134,23 @@ export class Renderer {
 
   async renderImage(width: number = 1920, height: number = 1080): Promise<OpenSeadragon.Viewer> {
     const container = document.createElement("div");
+    let debugElement: HTMLElement | undefined | null;
+    container.id = Renderer._rendererContainer;
+    container.style.width = `${width}px`;
+    container.style.height = `${height}px`;
 
     if (this._debug !== undefined && this._debug) {
-      let debugElement = document.querySelector<HTMLElement>("#debug");
+      debugElement = document.querySelector<HTMLElement>(`#${Renderer._debugId}`);
       if (debugElement === null) {
         debugElement = document.querySelector<HTMLElement>("body");
       }
       debugElement!.insertAdjacentElement("beforeend", container);
+    } else {
+      container.style.position = "absolute";
+      container.style.left = "-9999px";
+      container.style.top = "-9999px";
+      container.style.overflow = "hidden";
+      document.querySelector<HTMLElement>("body")!.insertAdjacentElement("beforeend", container);
     }
 
     const renderer: Renderer = new Renderer(container, this.columns, this.rows, false, false, false, undefined, width, height);
@@ -1277,12 +1289,16 @@ export class Renderer {
           childViewer.destroy();
           childViewerContainer.remove();
           if (this._debug !== undefined && this._debug) {
-            const debugElement = document.querySelector<HTMLElement>("#debug");
+            const debugElement = document.querySelector<HTMLElement>(`#${Renderer._debugId}`);
             if (debugElement !== null) {
               debugElement.remove();
             } else {
               document.querySelector("body > div:last-of-type")?.remove();
             }
+          }
+          const downloadRenderer = document.querySelector(`#${Renderer._rendererContainer}`);
+          if (downloadRenderer !== null) {
+            downloadRenderer.remove();
           }
           childViewer = null;
         }

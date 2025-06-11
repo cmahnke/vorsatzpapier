@@ -7,9 +7,11 @@ import { checker } from "vite-plugin-checker";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 import browserslistToEsbuild from "browserslist-to-esbuild";
 import { NodePackageImporter } from "sass";
+import svg from "vite-plugin-svgo";
 
 // External configs
 import packageJson from "./package.json";
+import svgoConfig from "./svgo.config.mjs";
 
 const artifactName = packageJson.name;
 const artifactversion = packageJson.version;
@@ -27,6 +29,7 @@ export default defineConfig({
       ssr: false
     }),
     checker({ typescript: false }),
+    svg(svgoConfig),
     viteStaticCopy({
       targets: [
         {

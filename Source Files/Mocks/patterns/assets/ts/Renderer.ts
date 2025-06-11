@@ -38,6 +38,7 @@ export class Renderer {
   defaultExportDimensions: [number, number] = [1920, 1080];
   _notificationQueue: CutNotification[] = [];
   _debug: boolean = false;
+  fitPreview: boolean = true;
   statusContainer: HTMLDivElement | null;
   _debugOverlays: Map<OpenSeadragon.TiledImage, { element: HTMLElement; location: OpenSeadragon.Rect }[]>;
   renderTimeout: number = 3000;
@@ -442,7 +443,9 @@ export class Renderer {
     if (this.downloadButton !== undefined && this.downloadButton !== null) {
       this.downloadButton.disabled = false;
     }
-    Renderer.fitToWidth(this.viewer, true, undefined, false, true);
+    if (this.fitPreview) {
+      Renderer.fitToWidth(this.viewer, true, undefined, false, true);
+    }
   }
 
   static createOffsetRect(offsets: { [key in CutPosition]?: number }, reference: OpenSeadragon.TiledImage): OffsetRect | undefined {
@@ -1154,6 +1157,7 @@ export class Renderer {
     }
 
     const renderer: Renderer = new Renderer(container, this.columns, this.rows, false, false, false, undefined, width, height);
+    renderer.fitPreview = false;
     const childViewer = renderer.viewer;
 
     if (!childViewer) {

@@ -10,7 +10,7 @@ The software is named after [Lucienne_Day](https://en.wikipedia.org/wiki/Lucienn
 
 - Preview icon in collections, implemented but parser doesn't support it
 
-### Next Version
+## Next Version
 
 - Shifts / offsets
   - Dynamic margins not clipped correctly at edges

@@ -104,7 +104,7 @@ jobs:
           ./themes/projektemacher-base/scripts/stat.sh
 
       - name: Build Hugo site
-        run: hugo --printI18nWarnings
+        run: hugo --printI18nWarnings --environment production
 
       - name: Cleanup Build
         run: |

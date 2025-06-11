@@ -179,7 +179,7 @@ export class IIIFForm {
       console.warn(error);
     }
 
-    if (json === undefined) {
+    if (json === undefined || loadedUrl === undefined) {
       this.displayMessage(i18next.t("iiifForm:errorJson"));
       return;
     }

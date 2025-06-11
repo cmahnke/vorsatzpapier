@@ -55,9 +55,14 @@ export class IIIFForm {
 
   setup() {
     const loader: (url: string) => void = (url) => {
-      this.loadUrl(new URL(url), undefined).then((options: IIIFSelect) => {
-        this.createForm(options);
-      });
+      try {
+        this.loadUrl(new URL(url), undefined).then((options: IIIFSelect) => {
+          this.createForm(options);
+        });
+      } catch (error) {
+        this.displayMessage(i18next.t("iiifForm:errorURL"));
+        return;
+      }
     };
 
     if (this._urlInput) {
@@ -164,9 +169,15 @@ export class IIIFForm {
     } else {
       trySuffix = IIIFForm.typeHierarchy[type];
     }
-    const loaded = await this.safeLoadIIIF(url, trySuffix);
-    const json = await loaded.json;
-    const loadedUrl = loaded.url;
+    let json, loadedUrl;
+
+    try {
+      const loaded = await this.safeLoadIIIF(url, trySuffix);
+      json = await loaded.json;
+      loadedUrl = loaded.url;
+    } catch (error) {
+      console.warn(error);
+    }
 
     if (json === undefined) {
       this.displayMessage(i18next.t("iiifForm:errorJson"));

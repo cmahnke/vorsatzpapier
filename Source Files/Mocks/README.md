@@ -17,6 +17,7 @@ The software is named after [Lucienne_Day](https://en.wikipedia.org/wiki/Lucienn
     - insets nor working with clippings
     - check margins wit offsets in two dimensions
   - Rotation not working with offsets
+- Select download area from result viewer
 - Make sure everything is reset when changing the size - NTH
 
 # Commands

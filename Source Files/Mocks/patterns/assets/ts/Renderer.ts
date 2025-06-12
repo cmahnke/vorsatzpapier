@@ -1051,6 +1051,8 @@ export class Renderer {
           }
 
           minX = Math.min(minX, tiledImage.imageToViewportRectangle(tiledImage.getClip()!).x);
+          //maxX = Math.max(maxX, bounds.x + tiledImage.imageToViewportRectangle(tiledImage.getClip()!).width);
+          //maxY = Math.max(maxY, bounds.y + tiledImage.imageToViewportRectangle(tiledImage.getClip()!).height);
           maxX = Math.max(
             maxX,
             tiledImage.imageToViewportRectangle(tiledImage.getClip()!).x + tiledImage.imageToViewportRectangle(tiledImage.getClip()!).width
@@ -1078,7 +1080,8 @@ export class Renderer {
 
         if (fitHeight) {
           if (combinedHeight === 0) {
-            throw new Error("Cannot fit to height when combined height is zero.");
+            console.warn("Cannot fit to height when combined height is zero.");
+            return;
           }
           const containerHeight = viewer.viewport.getContainerSize().y;
           targetZoom = containerHeight / viewer.viewport.getContainerSize().x / combinedHeight;
@@ -1175,8 +1178,8 @@ export class Renderer {
     if (this.clipRect !== undefined) {
       clip[CutPosition.Top] = this.clipRect.y;
       clip[CutPosition.Left] = this.clipRect.x;
-      clip[CutPosition.Right] = this.clipRect.width;
-      clip[CutPosition.Bottom] = this.clipRect.height;
+      clip[CutPosition.Right] = this.clipRect.x + this.clipRect.width;
+      clip[CutPosition.Bottom] = this.clipRect.y + this.clipRect.height;
     } else {
       clip[CutPosition.Top] = 0;
       clip[CutPosition.Left] = 0;

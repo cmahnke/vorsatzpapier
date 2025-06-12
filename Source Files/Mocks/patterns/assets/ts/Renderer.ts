@@ -1051,8 +1051,6 @@ export class Renderer {
           }
 
           minX = Math.min(minX, tiledImage.imageToViewportRectangle(tiledImage.getClip()!).x);
-          //maxX = Math.max(maxX, bounds.x + tiledImage.imageToViewportRectangle(tiledImage.getClip()!).width);
-          //maxY = Math.max(maxY, bounds.y + tiledImage.imageToViewportRectangle(tiledImage.getClip()!).height);
           maxX = Math.max(
             maxX,
             tiledImage.imageToViewportRectangle(tiledImage.getClip()!).x + tiledImage.imageToViewportRectangle(tiledImage.getClip()!).width
@@ -1061,6 +1059,8 @@ export class Renderer {
             maxY,
             tiledImage.imageToViewportRectangle(tiledImage.getClip()!).y + tiledImage.imageToViewportRectangle(tiledImage.getClip()!).height
           );
+          //maxX = Math.max(maxX, bounds.x + tiledImage.imageToViewportRectangle(tiledImage.getClip()!).width);
+          //maxY = Math.max(maxY, bounds.y + tiledImage.imageToViewportRectangle(tiledImage.getClip()!).height);
           minY = Math.min(minY, tiledImage.imageToViewportRectangle(tiledImage.getClip()!).y);
         } else {
           minX = Math.min(minX, bounds.x);
@@ -1093,7 +1093,7 @@ export class Renderer {
         } else {
           // Fit to width logic
           if (combinedWidth === 0) {
-            throw new Error("Cannot fit to width when combined width is zero.");
+            console.warn("Cannot fit to width when combined width is zero.");
           }
           targetZoom = 1.0 / combinedWidth;
           combinedCenterX = minX + combinedWidth / 2;
@@ -1105,7 +1105,7 @@ export class Renderer {
             viewer.viewport.panBy(new OpenSeadragon.Point(0, -currentViewportBounds.y), immediately);
           }
           if (currentViewportBounds.y > 0 && fitTop) {
-            viewer.viewport.panBy(new OpenSeadragon.Point(0, -currentViewportBounds.y), immediately);
+            viewer.viewport.panBy(new OpenSeadragon.Point(0, -currentViewportBounds.y + minY), immediately);
           }
         }
         viewer.raiseEvent("full-width", viewer);

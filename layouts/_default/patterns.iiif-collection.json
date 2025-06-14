@@ -33,6 +33,7 @@
     {{- continue -}}
   {{- end -}}
 {{- end -}}
+{{- $iiif = ($iiif | uniq).ByDate.Reverse  -}}
 
 {
   "@context": "http://iiif.io/api/presentation/3/context.json",

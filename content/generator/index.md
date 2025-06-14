@@ -8,7 +8,7 @@ outputs:
   - html
 ---
 
-Auf dieser Seite können die Vorsatzpapiere und Tapeten zu eignen großflächigen Mustern arrangiert werden, um sie z.B. als Bildschirmhintergründe zu benutzen.
+Auf dieser Seite können die [Vorsatzpapiere und Tapeten](/patterns/) zu eignen großflächigen Mustern arrangiert werden, um sie z.B. als Bildschirmhintergründe zu benutzen.
 
 {{< lucienne src=/patterns/collection.json urlinput=false resize=true download=true >}}
 

@@ -8,7 +8,7 @@ outputs:
   - html
 ---
 
-On this page, the endpapers and wallpapers can be arranged into large-scale patterns to be used as screen backgrounds, for example.
+On this page, the [endpapers and wallpapers](/patterns/) can be arranged into large-scale patterns to be used as screen backgrounds, for example.
 
 {{< lucienne src=/patterns/collection.json urlinput=false resize=true download=true >}}
 

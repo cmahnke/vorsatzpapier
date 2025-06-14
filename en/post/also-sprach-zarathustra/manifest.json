@@ -1,0 +1,207 @@
+{"@context": "http://iiif.io/api/presentation/3/context.json",
+"type": "Manifest",
+"id": "https://vorsatzpapier.projektemacher.org/en/post/also-sprach-zarathustra/manifest.json",
+"viewingDirection": "left-to-right","behavior":["paged"],"requiredStatement": {
+  "label": { "en": [ "Attribution" ],
+    "de": [ "Namensnennung" ]
+  },
+  "value": {"en": ["Provided by Projektemacher"],"de": ["Bereitgestellt von Projektemacher"]}
+}
+,"thumbnail": [{
+    "id": "https://vorsatzpapier.projektemacher.org/post/also-sprach-zarathustra/end-verso_hu_7a1900643d186eba.jpg",
+    "format": "image/jpeg",
+    "type":"Image",
+    "height": 435,
+    "width": 300
+  },{
+        "id": "https://static.projektemacher.org/vorsatzpapier/en/post/also-sprach-zarathustra/end-verso/full/full/0/default.jpg",
+        "format": "image/jpeg",
+        "type":"Image",
+        "height": 3600,
+        "width": 2482,
+        "service": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/en/post/also-sprach-zarathustra/end-verso",
+          "type": "ImageService2",
+          "profile":"level0"
+        }]
+      }],"provider": [
+  {
+    "id": "https://projektemacher.org/",
+    "type": "Agent",
+    "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+    "homepage": [
+      {
+        "id": "https://projektemacher.org/",
+        "type": "Text",
+        "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+        "format": "text/html"
+    }
+  ],
+  "logo": [
+    {"id": "https://projektemacher.org/images/logo.png",
+        "type": "Image",
+        "format": "image/png",
+        "height": 1024,
+        "width": 1024}
+  ],
+  "seeAlso": [
+    {
+      "id": "https://projektemacher.org/projektemacher.json",
+      "type": "Dataset",
+      "format": "application/ld+json",
+      "profile": "https://schema.org/"
+    }
+  ]
+  }
+]
+,
+
+"homepage": [
+  {
+    "id": "https://vorsatzpapier.projektemacher.org/en/post/also-sprach-zarathustra/manifest.json",
+    "type": "Text",
+    "format": "text/html",
+
+    "label": {
+        "en": [
+          "Vorsatzpapier: Also sprach Zarathustra"
+        ],
+          "de": [
+            "Vorsatzpapier: Also sprach Zarathustra"
+          ]
+        }
+  }
+],"label": {
+    "en": [
+      "Also sprach Zarathustra"
+    ],
+      "de": [
+        "Also sprach Zarathustra"
+      ]
+    }
+,"items": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/also-sprach-zarathustra/canvas/front",
+          "type": "Canvas","label": {"de":["Vorderansicht"],"en":["Front"]},"height": 3702,
+            "width": 2492,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/also-sprach-zarathustra/front_hu_eadfb617acc1b933.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 446,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/also-sprach-zarathustra/annotation/front",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/also-sprach-zarathustra/annotation/front/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/also-sprach-zarathustra/front/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3702,
+                  "width": 2492,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/also-sprach-zarathustra/front",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/also-sprach-zarathustra/canvas/front"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/also-sprach-zarathustra/canvas/title",
+          "type": "Canvas","label": {"de":["Titelseite"],"en":["Title"]},"height": 3610,
+            "width": 2434,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/also-sprach-zarathustra/title_hu_75343c6be9e41847.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 445,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/also-sprach-zarathustra/annotation/title",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/also-sprach-zarathustra/annotation/title/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/also-sprach-zarathustra/title/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3610,
+                  "width": 2434,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/also-sprach-zarathustra/title",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/also-sprach-zarathustra/canvas/title"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/also-sprach-zarathustra/canvas/preview",
+          "type": "Canvas","label": {"de":["Letze Seite"],"en":["Last page"]},"height": 3600,
+            "width": 2482,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/also-sprach-zarathustra/end-verso_hu_7a1900643d186eba.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 435,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/also-sprach-zarathustra/annotation/end-verso",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/also-sprach-zarathustra/annotation/end-verso/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/also-sprach-zarathustra/end-verso/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3600,
+                  "width": 2482,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/also-sprach-zarathustra/end-verso",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/also-sprach-zarathustra/canvas/preview"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/also-sprach-zarathustra/canvas/end-recto",
+          "type": "Canvas","label": {"de":["Letze Seite"],"en":["Last page"]},"height": 3703,
+            "width": 2513,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/also-sprach-zarathustra/end-recto_hu_241efa46b978526f.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 442,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/also-sprach-zarathustra/annotation/end-recto",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/also-sprach-zarathustra/annotation/end-recto/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/also-sprach-zarathustra/end-recto/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3703,
+                  "width": 2513,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/also-sprach-zarathustra/end-recto",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/also-sprach-zarathustra/canvas/end-recto"
+            }]
+          }]
+       }]
+}

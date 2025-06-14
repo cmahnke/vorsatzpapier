@@ -1,0 +1,2625 @@
+{"@context": "http://iiif.io/api/presentation/3/context.json",
+"type": "Manifest",
+"id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/manifest.json",
+"viewingDirection": "left-to-right","behavior":["paged"],"requiredStatement": {
+  "label": { "en": [ "Attribution" ],
+    "de": [ "Namensnennung" ]
+  },
+  "value": {"en": ["Provided by Projektemacher"],"de": ["Bereitgestellt von Projektemacher"]}
+}
+,"thumbnail": [{
+    "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/front_hu_4e3afa21de7c3e20.jpg",
+    "format": "image/jpeg",
+    "type":"Image",
+    "height": 214,
+    "width": 300
+  },{
+        "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/front/full/full/0/default.jpg",
+        "format": "image/jpeg",
+        "type":"Image",
+        "height": 4002,
+        "width": 5619,
+        "service": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/front",
+          "type": "ImageService2",
+          "profile":"level0"
+        }]
+      }],"provider": [
+  {
+    "id": "https://projektemacher.org/",
+    "type": "Agent",
+    "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+    "homepage": [
+      {
+        "id": "https://projektemacher.org/",
+        "type": "Text",
+        "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+        "format": "text/html"
+    }
+  ],
+  "logo": [
+    {"id": "https://projektemacher.org/images/logo.png",
+        "type": "Image",
+        "format": "image/png",
+        "height": 1024,
+        "width": 1024}
+  ],
+  "seeAlso": [
+    {
+      "id": "https://projektemacher.org/projektemacher.json",
+      "type": "Dataset",
+      "format": "application/ld+json",
+      "profile": "https://schema.org/"
+    }
+  ]
+  }
+]
+,
+
+"homepage": [
+  {
+    "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/manifest.json",
+    "type": "Text",
+    "format": "text/html",
+
+    "label": {
+        "de": [
+          "Vorsatzpapier: 1x1 des Tapezierens - Versuch's mal selber"
+        ],
+          "en": [
+            "Vorsatzpapier: 1x1 des Tapezierens - Versuch's mal selber"
+          ]
+        }
+  }
+],"label": {
+    "de": [
+      "1x1 des Tapezierens - Versuch's mal selber"
+    ],
+      "en": [
+        "1x1 des Tapezierens - Versuch's mal selber"
+      ]
+    }
+,"items": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/front",
+          "type": "Canvas","label": {"de":["Vorderansicht"],"en":["Front"]},"height": 4002,
+            "width": 5619,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/front_hu_4e3afa21de7c3e20.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 214,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/front",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/front/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/front/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 4002,
+                  "width": 5619,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/front",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/front"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/title",
+          "type": "Canvas","label": {"none":["page001"]},"height": 3853,
+            "width": 5319,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page001_hu_9926647885c30b8a.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 217,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page001",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page001/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page001/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3853,
+                  "width": 5319,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page001",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/title"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page002",
+          "type": "Canvas","label": {"none":["page002"]},"height": 3864,
+            "width": 5502,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page002_hu_7d8b518e1bb4be5.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 211,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page002",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page002/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page002/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3864,
+                  "width": 5502,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page002",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page002"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page003",
+          "type": "Canvas","label": {"none":["page003"]},"height": 3828,
+            "width": 5491,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page003_hu_20309d12811ca7fa.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 209,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page003",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page003/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page003/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3828,
+                  "width": 5491,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page003",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page003"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page004",
+          "type": "Canvas","label": {"none":["page004"]},"height": 3834,
+            "width": 5499,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page004_hu_5828272c6b76f897.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 209,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page004",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page004/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page004/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3834,
+                  "width": 5499,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page004",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page004"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page005",
+          "type": "Canvas","label": {"none":["page005"]},"height": 3854,
+            "width": 5508,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page005_hu_39f5d3d58b2a0332.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 210,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page005",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page005/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page005/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3854,
+                  "width": 5508,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page005",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page005"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page006",
+          "type": "Canvas","label": {"none":["page006"]},"height": 3836,
+            "width": 5493,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page006_hu_14396134ce348a00.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 210,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page006",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page006/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page006/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3836,
+                  "width": 5493,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page006",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page006"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page007",
+          "type": "Canvas","label": {"none":[7]},"height": 3846,
+            "width": 5496,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page007_hu_65b8096909b6586f.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 210,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page007",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page007/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page007/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3846,
+                  "width": 5496,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page007",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page007"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page008",
+          "type": "Canvas","label": {"none":[8]},"height": 3847,
+            "width": 5471,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page008_hu_4d0ed67ec0517520.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 211,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page008",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page008/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page008/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3847,
+                  "width": 5471,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page008",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page008"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page009",
+          "type": "Canvas","label": {"none":[9]},"height": 3862,
+            "width": 5495,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page009_hu_cfe73c4686a6694f.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 211,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page009",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page009/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page009/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3862,
+                  "width": 5495,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page009",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page009"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page010",
+          "type": "Canvas","label": {"none":[10]},"height": 3872,
+            "width": 5461,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page010_hu_6d100aaa58f19033.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 213,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page010",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page010/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page010/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3872,
+                  "width": 5461,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page010",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page010"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page011",
+          "type": "Canvas","label": {"none":[11]},"height": 3842,
+            "width": 5471,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page011_hu_c6c6f9cd1637ef83.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 211,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page011",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page011/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page011/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3842,
+                  "width": 5471,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page011",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page011"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page012",
+          "type": "Canvas","label": {"none":[12]},"height": 3849,
+            "width": 5454,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page012_hu_2634717e9dd06455.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 212,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page012",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page012/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page012/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3849,
+                  "width": 5454,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page012",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page012"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page013",
+          "type": "Canvas","label": {"none":[13]},"height": 3872,
+            "width": 5480,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page013_hu_9c3c1483423d6923.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 212,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page013",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page013/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page013/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3872,
+                  "width": 5480,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page013",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page013"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page014",
+          "type": "Canvas","label": {"none":[14]},"height": 3865,
+            "width": 5440,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page014_hu_4812056faadc102e.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 213,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page014",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page014/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page014/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3865,
+                  "width": 5440,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page014",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page014"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page015",
+          "type": "Canvas","label": {"none":[15]},"height": 3857,
+            "width": 5436,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page015_hu_dcc561ae05228b51.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 213,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page015",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page015/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page015/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3857,
+                  "width": 5436,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page015",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page015"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page016",
+          "type": "Canvas","label": {"none":[16]},"height": 3855,
+            "width": 5425,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page016_hu_e9c949f95f4d973.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 213,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page016",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page016/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page016/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3855,
+                  "width": 5425,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page016",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page016"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page017",
+          "type": "Canvas","label": {"none":[17]},"height": 3853,
+            "width": 5430,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page017_hu_fee8638504ad2910.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 213,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page017",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page017/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page017/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3853,
+                  "width": 5430,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page017",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page017"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page018",
+          "type": "Canvas","label": {"none":[18]},"height": 3866,
+            "width": 5425,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page018_hu_4fd5b1ef05823453.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 214,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page018",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page018/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page018/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3866,
+                  "width": 5425,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page018",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page018"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page019",
+          "type": "Canvas","label": {"none":[19]},"height": 3842,
+            "width": 5430,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page019_hu_11751cf2b824f07e.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 212,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page019",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page019/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page019/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3842,
+                  "width": 5430,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page019",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page019"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page020",
+          "type": "Canvas","label": {"none":[20]},"height": 3860,
+            "width": 5414,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page020_hu_8d80ce6968ed2460.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 214,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page020",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page020/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page020/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3860,
+                  "width": 5414,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page020",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page020"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page021",
+          "type": "Canvas","label": {"none":[21]},"height": 3850,
+            "width": 5421,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page021_hu_c11d215d8b2b8062.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 213,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page021",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page021/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page021/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3850,
+                  "width": 5421,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page021",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page021"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page022",
+          "type": "Canvas","label": {"none":[22]},"height": 3867,
+            "width": 5412,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page022_hu_bdc97657f3df5b38.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 214,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page022",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page022/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page022/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3867,
+                  "width": 5412,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page022",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page022"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page023",
+          "type": "Canvas","label": {"none":[23]},"height": 3844,
+            "width": 5413,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page023_hu_56a34068a1a19c47.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 213,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page023",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page023/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page023/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3844,
+                  "width": 5413,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page023",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page023"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page024",
+          "type": "Canvas","label": {"none":[24]},"height": 3867,
+            "width": 5404,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page024_hu_88487c20bc121bea.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 215,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page024",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page024/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page024/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3867,
+                  "width": 5404,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page024",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page024"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page025",
+          "type": "Canvas","label": {"none":[25]},"height": 3849,
+            "width": 5417,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page025_hu_72901648d1986671.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 213,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page025",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page025/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page025/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3849,
+                  "width": 5417,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page025",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page025"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page026",
+          "type": "Canvas","label": {"none":[26]},"height": 3855,
+            "width": 5401,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page026_hu_602fe8e44975542a.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 214,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page026",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page026/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page026/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3855,
+                  "width": 5401,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page026",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page026"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page027",
+          "type": "Canvas","label": {"none":[27]},"height": 3839,
+            "width": 5406,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page027_hu_976d0bbbdb5e6be4.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 213,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page027",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page027/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page027/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3839,
+                  "width": 5406,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page027",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page027"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page028",
+          "type": "Canvas","label": {"none":[28]},"height": 3883,
+            "width": 5404,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page028_hu_35986914af24abf2.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 216,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page028",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page028/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page028/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3883,
+                  "width": 5404,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page028",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page028"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page029",
+          "type": "Canvas","label": {"none":[29]},"height": 3853,
+            "width": 5402,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page029_hu_a02e3d1f90141197.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 214,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page029",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page029/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page029/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3853,
+                  "width": 5402,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page029",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page029"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page030",
+          "type": "Canvas","label": {"none":[30]},"height": 3880,
+            "width": 5403,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page030_hu_eed53f512b2da938.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 215,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page030",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page030/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page030/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3880,
+                  "width": 5403,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page030",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page030"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page031",
+          "type": "Canvas","label": {"none":[31]},"height": 3864,
+            "width": 5376,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page031_hu_6449885b0da8275e.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 216,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page031",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page031/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page031/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3864,
+                  "width": 5376,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page031",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page031"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page032",
+          "type": "Canvas","label": {"none":[32]},"height": 3881,
+            "width": 5384,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page032_hu_1c47e692e3ac6967.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 216,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page032",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page032/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page032/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3881,
+                  "width": 5384,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page032",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page032"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page033",
+          "type": "Canvas","label": {"none":[33]},"height": 3853,
+            "width": 5392,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page033_hu_7506e3f0cba129c3.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 214,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page033",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page033/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page033/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3853,
+                  "width": 5392,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page033",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page033"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page034",
+          "type": "Canvas","label": {"none":[34]},"height": 3868,
+            "width": 5388,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page034_hu_ee93b3feaebe4a9a.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 215,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page034",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page034/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page034/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3868,
+                  "width": 5388,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page034",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page034"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page035",
+          "type": "Canvas","label": {"none":[35]},"height": 3854,
+            "width": 5406,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page035_hu_c33dd63631817713.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 214,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page035",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page035/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page035/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3854,
+                  "width": 5406,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page035",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page035"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page036",
+          "type": "Canvas","label": {"none":[36]},"height": 3852,
+            "width": 5374,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page036_hu_3ae2ed1cf9056dc8.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 215,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page036",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page036/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page036/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3852,
+                  "width": 5374,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page036",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page036"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page037",
+          "type": "Canvas","label": {"none":[37]},"height": 3864,
+            "width": 5421,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page037_hu_7698490ac1efb5e0.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 214,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page037",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page037/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page037/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3864,
+                  "width": 5421,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page037",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page037"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page038",
+          "type": "Canvas","label": {"none":[38]},"height": 3881,
+            "width": 5392,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page038_hu_339c2a8f0f13ffe3.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 216,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page038",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page038/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page038/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3881,
+                  "width": 5392,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page038",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page038"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page039",
+          "type": "Canvas","label": {"none":[39]},"height": 3883,
+            "width": 5442,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page039_hu_8e753d995f6beca6.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 214,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page039",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page039/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page039/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3883,
+                  "width": 5442,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page039",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page039"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page040",
+          "type": "Canvas","label": {"none":[40]},"height": 3884,
+            "width": 5394,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page040_hu_1ee7f064c569c35c.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 216,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page040",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page040/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page040/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3884,
+                  "width": 5394,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page040",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page040"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page041",
+          "type": "Canvas","label": {"none":[41]},"height": 3867,
+            "width": 5428,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page041_hu_2dc8db6025c2d945.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 214,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page041",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page041/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page041/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3867,
+                  "width": 5428,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page041",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page041"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page042",
+          "type": "Canvas","label": {"none":[42]},"height": 3881,
+            "width": 5385,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page042_hu_79097ca600eba235.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 216,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page042",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page042/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page042/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3881,
+                  "width": 5385,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page042",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page042"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page043",
+          "type": "Canvas","label": {"none":[43]},"height": 3880,
+            "width": 5440,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page043_hu_d57552632a302a.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 214,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page043",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page043/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page043/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3880,
+                  "width": 5440,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page043",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page043"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page044",
+          "type": "Canvas","label": {"none":[44]},"height": 3837,
+            "width": 5351,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page044_hu_eab92b190d1639a7.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 215,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page044",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page044/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page044/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3837,
+                  "width": 5351,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page044",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page044"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page045",
+          "type": "Canvas","label": {"none":[45]},"height": 3873,
+            "width": 5434,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page045_hu_35b1a52f9021a64a.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 214,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page045",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page045/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page045/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3873,
+                  "width": 5434,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page045",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page045"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page046",
+          "type": "Canvas","label": {"none":[46]},"height": 3885,
+            "width": 5400,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page046_hu_f46dee4d01b6f751.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 216,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page046",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page046/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page046/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3885,
+                  "width": 5400,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page046",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page046"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page047",
+          "type": "Canvas","label": {"none":[47]},"height": 3861,
+            "width": 5385,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page047_hu_ab7b74191ff34501.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 215,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page047",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page047/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page047/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3861,
+                  "width": 5385,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page047",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page047"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page048",
+          "type": "Canvas","label": {"none":[48]},"height": 3841,
+            "width": 5356,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page048_hu_e3451cddb827d453.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 215,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page048",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page048/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page048/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3841,
+                  "width": 5356,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page048",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page048"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page049",
+          "type": "Canvas","label": {"none":[49]},"height": 3870,
+            "width": 5432,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page049_hu_59962d80505d21be.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 214,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page049",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page049/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page049/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3870,
+                  "width": 5432,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page049",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page049"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page050",
+          "type": "Canvas","label": {"none":[50]},"height": 3862,
+            "width": 5387,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page050_hu_221995d15df595a9.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 215,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page050",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page050/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page050/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3862,
+                  "width": 5387,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page050",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page050"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page051",
+          "type": "Canvas","label": {"none":[51]},"height": 3862,
+            "width": 5452,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page051_hu_683c9f532e611f7e.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 213,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page051",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page051/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page051/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3862,
+                  "width": 5452,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page051",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page051"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page052",
+          "type": "Canvas","label": {"none":[52]},"height": 3849,
+            "width": 5401,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page052_hu_e6b57428946ddf68.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 214,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page052",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page052/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page052/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3849,
+                  "width": 5401,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page052",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page052"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page053",
+          "type": "Canvas","label": {"none":[53]},"height": 3860,
+            "width": 5449,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page053_hu_3601aa60d0e50cc8.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 213,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page053",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page053/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page053/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3860,
+                  "width": 5449,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page053",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page053"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page054",
+          "type": "Canvas","label": {"none":[54]},"height": 3863,
+            "width": 5427,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page054_hu_fbfccbb189a3c67b.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 214,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page054",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page054/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page054/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3863,
+                  "width": 5427,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page054",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page054"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page055",
+          "type": "Canvas","label": {"none":[55]},"height": 3863,
+            "width": 5477,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page055_hu_b71769676c672f41.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 212,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page055",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page055/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page055/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3863,
+                  "width": 5477,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page055",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page055"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page056",
+          "type": "Canvas","label": {"none":[56]},"height": 3851,
+            "width": 5451,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page056_hu_dddb41ce4b077777.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 212,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page056",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page056/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page056/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3851,
+                  "width": 5451,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page056",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page056"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page057",
+          "type": "Canvas","label": {"none":[57]},"height": 3867,
+            "width": 5489,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page057_hu_64459a4611e28fa4.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 211,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page057",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page057/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page057/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3867,
+                  "width": 5489,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page057",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page057"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page058",
+          "type": "Canvas","label": {"none":[58]},"height": 3875,
+            "width": 5445,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page058_hu_cb1e4e2f7e714a01.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 213,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page058",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page058/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page058/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3875,
+                  "width": 5445,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page058",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page058"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page059",
+          "type": "Canvas","label": {"none":[59]},"height": 3844,
+            "width": 5471,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page059_hu_2dba0c3e2e49f876.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 211,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page059",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page059/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page059/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3844,
+                  "width": 5471,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page059",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page059"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page060",
+          "type": "Canvas","label": {"none":[60]},"height": 3864,
+            "width": 5464,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page060_hu_cf7d66276475f9bd.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 212,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page060",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page060/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page060/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3864,
+                  "width": 5464,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page060",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page060"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page061",
+          "type": "Canvas","label": {"none":[61]},"height": 3877,
+            "width": 5502,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page061_hu_27e7f6ed939cfcbc.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 211,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page061",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page061/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page061/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3877,
+                  "width": 5502,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page061",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page061"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page062",
+          "type": "Canvas","label": {"none":[62]},"height": 3872,
+            "width": 5484,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page062_hu_56c4c0628b134939.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 212,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page062",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page062/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page062/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3872,
+                  "width": 5484,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page062",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page062"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page063",
+          "type": "Canvas","label": {"none":[63]},"height": 3863,
+            "width": 5484,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page063_hu_b15d9eb34b38cf58.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 211,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page063",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page063/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page063/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3863,
+                  "width": 5484,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page063",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page063"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page064",
+          "type": "Canvas","label": {"none":[64]},"height": 3881,
+            "width": 5457,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page064_hu_938662d64f60cc64.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 213,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page064",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page064/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page064/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3881,
+                  "width": 5457,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page064",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page064"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page065",
+          "type": "Canvas","label": {"none":[65]},"height": 3846,
+            "width": 5472,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page065_hu_ccc915fbb02a28b2.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 211,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page065",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page065/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page065/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3846,
+                  "width": 5472,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page065",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page065"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page066",
+          "type": "Canvas","label": {"none":[66]},"height": 3867,
+            "width": 5475,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page066_hu_fdb6bf61f45d7bed.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 212,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page066",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page066/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page066/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3867,
+                  "width": 5475,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page066",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page066"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page067",
+          "type": "Canvas","label": {"none":[67]},"height": 3876,
+            "width": 5478,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page067_hu_bb5ab8bbbc4a5e2a.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 212,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page067",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page067/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page067/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3876,
+                  "width": 5478,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page067",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page067"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page068",
+          "type": "Canvas","label": {"none":[68]},"height": 3866,
+            "width": 5464,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page068_hu_c26f9a8ada2fdf71.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 212,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page068",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page068/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page068/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3866,
+                  "width": 5464,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page068",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page068"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page069",
+          "type": "Canvas","label": {"none":[69]},"height": 3870,
+            "width": 5484,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page069_hu_e9677a05ad1ae3b3.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 212,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page069",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page069/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page069/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3870,
+                  "width": 5484,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page069",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page069"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page070",
+          "type": "Canvas","label": {"none":[70]},"height": 3877,
+            "width": 5462,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page070_hu_c79162f4ca9a155.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 213,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page070",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page070/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page070/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3877,
+                  "width": 5462,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page070",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page070"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page071",
+          "type": "Canvas","label": {"none":[71]},"height": 3874,
+            "width": 5485,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page071_hu_2ae0e7be3728ca93.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 212,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page071",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page071/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page071/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3874,
+                  "width": 5485,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page071",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page071"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page072",
+          "type": "Canvas","label": {"none":[72]},"height": 3885,
+            "width": 5458,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page072_hu_c23db7d212cbb459.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 214,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page072",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page072/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page072/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3885,
+                  "width": 5458,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page072",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page072"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page073",
+          "type": "Canvas","label": {"none":[73]},"height": 3875,
+            "width": 5460,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page073_hu_61d5590d22163d76.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 213,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page073",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page073/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page073/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3875,
+                  "width": 5460,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page073",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page073"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page074",
+          "type": "Canvas","label": {"none":[74]},"height": 3864,
+            "width": 5447,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page074_hu_857bda6c9cac5f1e.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 213,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page074",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page074/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page074/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3864,
+                  "width": 5447,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page074",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page074"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page075",
+          "type": "Canvas","label": {"none":[75]},"height": 3858,
+            "width": 5478,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page075_hu_cfd8c61bab4f758a.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 211,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page075",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page075/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page075/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3858,
+                  "width": 5478,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page075",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page075"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page076",
+          "type": "Canvas","label": {"none":[76]},"height": 3864,
+            "width": 5453,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page076_hu_2e75c4d18904327e.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 213,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page076",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page076/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page076/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3864,
+                  "width": 5453,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page076",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page076"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page077",
+          "type": "Canvas","label": {"none":[77]},"height": 3853,
+            "width": 5476,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page077_hu_ce072b9a47f8ac21.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 211,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page077",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page077/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page077/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3853,
+                  "width": 5476,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page077",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page077"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page078",
+          "type": "Canvas","label": {"none":[78]},"height": 3861,
+            "width": 5378,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page078_hu_f9f59c19d3e70b86.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 215,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page078",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page078/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page078/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3861,
+                  "width": 5378,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page078",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page078"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page079",
+          "type": "Canvas","label": {"none":[79]},"height": 3864,
+            "width": 5413,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page079_hu_fe2e52c2e88b5504.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 214,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page079",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page079/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page079/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3864,
+                  "width": 5413,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page079",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page079"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page080",
+          "type": "Canvas","label": {"none":[80]},"height": 3877,
+            "width": 5344,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/page080_hu_2610a444ac9ac018.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 218,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page080",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/page080/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page080/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3877,
+                  "width": 5344,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/page080",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page080"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/back",
+          "type": "Canvas","label": {"de":["Rückansicht"],"en":["Back"]},"height": 3975,
+            "width": 5553,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/1x1-des-tapezierens/back_hu_35f46ca46527da27.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 215,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/back",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/annotation/back/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/back/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 3975,
+                  "width": 5553,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/back",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/back"
+            }]
+          }]
+       }]
+}

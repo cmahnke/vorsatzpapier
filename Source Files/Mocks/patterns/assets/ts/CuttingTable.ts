@@ -18,9 +18,6 @@ i18next.use(LanguageDetector).init({
   debug: false,
   fallbackLng: "en",
   resources: translations,
-  whitelist: [
-    'en', 'de'
-  ],
   supportedLngs: [
     'en', 'de'
   ]

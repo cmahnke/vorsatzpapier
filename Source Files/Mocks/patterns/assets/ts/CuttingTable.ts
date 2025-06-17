@@ -17,7 +17,13 @@ import "../scss/base.scss";
 i18next.use(LanguageDetector).init({
   debug: false,
   fallbackLng: "en",
-  resources: translations
+  resources: translations,
+  whitelist: [
+    'en', 'de'
+  ],
+  supportedLngs: [
+    'en', 'de'
+  ]
 });
 
 export class CuttingTable {

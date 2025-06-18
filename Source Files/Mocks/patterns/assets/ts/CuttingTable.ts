@@ -18,9 +18,7 @@ i18next.use(LanguageDetector).init({
   debug: false,
   fallbackLng: "en",
   resources: translations,
-  supportedLngs: [
-    'en', 'de'
-  ]
+  supportedLngs: ["en", "de"]
 });
 
 export class CuttingTable {

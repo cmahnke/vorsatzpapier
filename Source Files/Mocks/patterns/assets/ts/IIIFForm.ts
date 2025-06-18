@@ -66,7 +66,7 @@ export class IIIFForm {
     };
 
     if (this._urlInput) {
-      this.button?.addEventListener("click", () => {
+      const handleLoad = () => {
         if (this.inputField !== null) {
           const url = this.inputField?.value;
 
@@ -81,7 +81,15 @@ export class IIIFForm {
             */
           }
         }
-      });
+      };
+      if (this.inputField !== null) {
+        this.inputField.addEventListener("keyup", ({ key }) => {
+          if (key === "Enter") {
+            handleLoad();
+          }
+        });
+      }
+      this.button?.addEventListener("click", handleLoad);
       if (this._autoLoad) {
         this.button?.click();
       }

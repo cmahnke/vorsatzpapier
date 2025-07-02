@@ -1,0 +1,40 @@
+{
+    "@context": "http://iiif.io/api/presentation/3/context.json",
+    "id": "https://vorsatzpapier.projektemacher.org/collection.json",
+    "type": "Collection",
+    "label": {
+        "en": [
+          "Vorsatzpapier"
+        ],
+          "de": [
+            ""
+          ]
+        },
+    "items": [{
+          "id": "https://vorsatzpapier.projektemacher.org/post/rasselbande-8-1956/manifest.json",
+          "type": "Manifest","thumbnail": [{
+    "id": "https://vorsatzpapier.projektemacher.org/post/rasselbande-8-1956/front_hu_fc0088614b58acaa.jpg",
+    "format": "image/jpeg",
+    "type":"Image",
+    "height": 434,
+    "width": 300
+  },{
+        "id": "https://static.projektemacher.org/vorsatzpapier/en/post/rasselbande-8-1956/front/full/full/0/default.jpg",
+        "format": "image/jpeg",
+        "type":"Image",
+        "height": 6276,
+        "width": 4343,
+        "service": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/en/post/rasselbande-8-1956/front",
+          "type": "ImageService2",
+          "profile":"level0"
+        }]
+      }],"label": {
+            "en": [
+              "Rasselbande 8 1956"
+            ],
+                  "de": [
+                    "Rasselbande 8 1956"
+                  ]}
+        }]
+  }

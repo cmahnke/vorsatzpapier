@@ -180,3 +180,7 @@ copyright = '<a href="https://projektemacher.org/" target="_blank">Projektemache
   [cascade._target]
     kind = "term"
     path = "/tags/**"
+
+[security]
+  [security.http]
+    mediaTypes = ['^application/json$', '^application/json;\s?charset=[uU][tT][fF]-8$', '^application/sparql-results\+json;\s?charset=[uU][tT][fF]-8$']

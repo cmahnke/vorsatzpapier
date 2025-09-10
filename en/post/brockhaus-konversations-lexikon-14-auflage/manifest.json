@@ -1,0 +1,145 @@
+{"@context": "http://iiif.io/api/presentation/3/context.json",
+"type": "Manifest",
+"id": "https://vorsatzpapier.projektemacher.org/en/post/brockhaus-konversations-lexikon-14-auflage/manifest.json",
+"viewingDirection": "left-to-right","behavior":["paged"],"requiredStatement": {
+  "label": { "en": [ "Attribution" ],
+    "de": [ "Namensnennung" ]
+  },
+  "value": {"de": ["Bereitgestellt von Projektemacher"],"en": ["Provided by Projektemacher"]}
+}
+,"thumbnail": [{
+    "id": "https://vorsatzpapier.projektemacher.org/post/brockhaus-konversations-lexikon-14-auflage/img001_hu_841773795f959575.jpg",
+    "format": "image/jpeg",
+    "type":"Image",
+    "height": 473,
+    "width": 300
+  },{
+        "id": "https://static.projektemacher.org/vorsatzpapier/en/post/brockhaus-konversations-lexikon-14-auflage/img001/full/full/0/default.jpg",
+        "format": "image/jpeg",
+        "type":"Image",
+        "height": 5868,
+        "width": 3719,
+        "service": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/en/post/brockhaus-konversations-lexikon-14-auflage/img001",
+          "type": "ImageService2",
+          "profile":"level0"
+        }]
+      }],"provider": [
+  {
+    "id": "https://projektemacher.org/",
+    "type": "Agent",
+    "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+    "homepage": [
+      {
+        "id": "https://projektemacher.org/",
+        "type": "Text",
+        "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+        "format": "text/html"
+    }
+  ],
+  "logo": [
+    {"id": "https://projektemacher.org/images/logo.png",
+        "type": "Image",
+        "format": "image/png",
+        "height": 1024,
+        "width": 1024}
+  ],
+  "seeAlso": [
+    {
+      "id": "https://projektemacher.org/projektemacher.json",
+      "type": "Dataset",
+      "format": "application/ld+json",
+      "profile": "https://schema.org/"
+    }
+  ]
+  }
+]
+,
+
+"homepage": [
+  {
+    "id": "https://vorsatzpapier.projektemacher.org/en/post/brockhaus-konversations-lexikon-14-auflage/manifest.json",
+    "type": "Text",
+    "format": "text/html",
+
+    "label": {
+        "en": [
+          "Vorsatzpapier: Brockhaus Konversations Lexikon 14. edition"
+        ],
+          "de": [
+            "Vorsatzpapier: Brockhaus Konversations Lexikon 14. Auflage"
+          ]
+        }
+  }
+],"label": {
+    "en": [
+      "Brockhaus Konversations Lexikon 14. edition"
+    ],
+      "de": [
+        "Brockhaus Konversations Lexikon 14. Auflage"
+      ]
+    }
+,"items": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/brockhaus-konversations-lexikon-14-auflage/canvas/preview",
+          "type": "Canvas","label": {"de":["ungezählt"],"en":["uncounted"]},"height": 5868,
+            "width": 3719,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/brockhaus-konversations-lexikon-14-auflage/img001_hu_841773795f959575.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 473,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/brockhaus-konversations-lexikon-14-auflage/annotation/img001",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/brockhaus-konversations-lexikon-14-auflage/annotation/img001/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/brockhaus-konversations-lexikon-14-auflage/img001/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 5868,
+                  "width": 3719,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/brockhaus-konversations-lexikon-14-auflage/img001",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/brockhaus-konversations-lexikon-14-auflage/canvas/preview"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/brockhaus-konversations-lexikon-14-auflage/canvas/img002",
+          "type": "Canvas","label": {"de":["ungezählt"],"en":["uncounted"]},"height": 5856,
+            "width": 3723,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/brockhaus-konversations-lexikon-14-auflage/img002_hu_d72eba4b37e9bb5e.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 472,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/brockhaus-konversations-lexikon-14-auflage/annotation/img002",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/brockhaus-konversations-lexikon-14-auflage/annotation/img002/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/brockhaus-konversations-lexikon-14-auflage/img002/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 5856,
+                  "width": 3723,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/brockhaus-konversations-lexikon-14-auflage/img002",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/brockhaus-konversations-lexikon-14-auflage/canvas/img002"
+            }]
+          }]
+       }]
+}

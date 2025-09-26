@@ -16,6 +16,10 @@ $link-color: #42a5f5 !default;
 /* @import "ol"; */
 @import "ol-iiif";
 
+@import "tify";
+@import "iiif/tify";
+
+
 .fa-plus:before {
     display: inline-block;
     width: 1em;
@@ -123,6 +127,15 @@ $link-color: #42a5f5 !default;
     .book-description-images,
     .description-images,
     .iiif {
+
+      .presentation-api {
+        padding-right: 1rem;
+
+        @media (max-width: 37.5em) {
+          padding-right: unset;
+        }
+      }
+
         .viewer {
             width: 100%;
             display: block;

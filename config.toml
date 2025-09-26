@@ -109,6 +109,10 @@ copyright = '<a href="https://projektemacher.org/" target="_blank">Projektemache
     source = "assets/js"
     target = "assets/js"
 
+  [[module.mounts]]
+    source = "node_modules/tify/dist/"
+    target = "static/tify"
+
 #[outputs]
 #    page = ["HTML"]
 

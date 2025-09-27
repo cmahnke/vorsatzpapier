@@ -12,12 +12,6 @@
   wikidata = true
   debug = true
 
-  [params.iiif]
-    presentationViewer = "js/iiif/tify.js"
-
-  [params.css]
-    includeDirs = ["node_modules/tify/dist/"]
-
   [params.preview]
     outputPrefix = "ogPreview"
     outputSuffix = ".png"

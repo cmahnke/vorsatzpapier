@@ -47,16 +47,10 @@
     {{- $orientation = "landscape" -}}
 {{- end -}}
 
-<div id="iiif-presentation" class="viewer presentation-api {{ $orientation }}"></div>
+{{- $id := printf "_iiif-presentation-%s" (md5 (printf "%s-%s" $manifestUrl now.UnixNano)) -}}
+
+<div id="{{ $id }}" class="viewer presentation-api {{ $orientation }}"></div>
 
 <script type="text/javascript">
-  /*
-  const linkElement = document.createElement('link');
-  linkElement.rel = 'stylesheet';
-  linkElement.type = 'text/css';
-  linkElement.href = '/tify/tify.css';
-  document.head.appendChild(linkElement);
-  */
-
-  var viewer = iiifPresentationViewer('iiif-presentation', '{{ $manifestUrl }}');
+  var viewer = iiifPresentationViewer('#{{ $id | safeJS }}', '{{ $manifestUrl }}');
 </script>

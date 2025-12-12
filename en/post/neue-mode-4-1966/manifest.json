@@ -1,0 +1,269 @@
+{"@context": "http://iiif.io/api/presentation/3/context.json",
+"type": "Manifest",
+"id": "https://vorsatzpapier.projektemacher.org/en/post/neue-mode-4-1966/manifest.json",
+"viewingDirection": "left-to-right","behavior":["paged"],"requiredStatement": {
+  "label": { "en": [ "Attribution" ],
+    "de": [ "Namensnennung" ]
+  },
+  "value": {"en": ["Provided by Projektemacher"],"de": ["Bereitgestellt von Projektemacher"]}
+}
+,"thumbnail": [{
+    "id": "https://vorsatzpapier.projektemacher.org/post/neue-mode-4-1966/front/full/full/0/default_hu_22aaac9dabda889c.jpg",
+    "format": "image/jpeg",
+    "type":"Image",
+    "height": 393,
+    "width": 300
+  },{
+        "id": "https://static.projektemacher.org/vorsatzpapier/en/post/neue-mode-4-1966/front/full/full/0/default.jpg",
+        "format": "image/jpeg",
+        "type":"Image",
+        "height": 7646,
+        "width": 5843,
+        "service": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/en/post/neue-mode-4-1966/front",
+          "type": "ImageService2",
+          "profile":"level0"
+        }]
+      }],"provider": [
+  {
+    "id": "https://projektemacher.org/",
+    "type": "Agent",
+    "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+    "homepage": [
+      {
+        "id": "https://projektemacher.org/",
+        "type": "Text",
+        "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+        "format": "text/html"
+    }
+  ],
+  "logo": [
+    {"id": "https://projektemacher.org/images/logo.png",
+        "type": "Image",
+        "format": "image/png",
+        "height": 1024,
+        "width": 1024}
+  ],
+  "seeAlso": [
+    {
+      "id": "https://projektemacher.org/projektemacher.json",
+      "type": "Dataset",
+      "format": "application/ld+json",
+      "profile": "https://schema.org/"
+    }
+  ]
+  }
+]
+,
+
+"homepage": [
+  {
+    "id": "https://vorsatzpapier.projektemacher.org/en/post/neue-mode-4-1966/manifest.json",
+    "type": "Text",
+    "format": "text/html",
+
+    "label": {
+        "en": [
+          "Vorsatzpapier: Neue Mode April 1966"
+        ],
+          "de": [
+            "Vorsatzpapier: Neue Mode April 1966"
+          ]
+        }
+  }
+],"label": {
+    "en": [
+      "Neue Mode April 1966"
+    ],
+      "de": [
+        "Neue Mode April 1966"
+      ]
+    }
+,"items": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/neue-mode-4-1966/canvas/front",
+          "type": "Canvas","label": {"de":["Vorderansicht"],"en":["Front"]},"height": 7646,
+            "width": 5843,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/neue-mode-4-1966/front/full/full/0/default_hu_22aaac9dabda889c.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 393,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/neue-mode-4-1966/annotation/front",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/neue-mode-4-1966/annotation/front/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/neue-mode-4-1966/front/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 7646,
+                  "width": 5843,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/neue-mode-4-1966/front",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/neue-mode-4-1966/canvas/front"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/neue-mode-4-1966/canvas/page070",
+          "type": "Canvas","label": {"none":[70]},"height": 7638,
+            "width": 5684,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/neue-mode-4-1966/page070/full/full/0/default_hu_d9f31629e3a63c8c.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 403,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/neue-mode-4-1966/annotation/page070",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/neue-mode-4-1966/annotation/page070/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/neue-mode-4-1966/page070/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 7638,
+                  "width": 5684,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/neue-mode-4-1966/page070",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/neue-mode-4-1966/canvas/page070"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/neue-mode-4-1966/canvas/page071",
+          "type": "Canvas","label": {"none":[71]},"height": 7636,
+            "width": 5694,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/neue-mode-4-1966/page071/full/full/0/default_hu_2de9dfe9022260f4.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 402,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/neue-mode-4-1966/annotation/page071",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/neue-mode-4-1966/annotation/page071/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/neue-mode-4-1966/page071/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 7636,
+                  "width": 5694,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/neue-mode-4-1966/page071",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/neue-mode-4-1966/canvas/page071"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/neue-mode-4-1966/canvas/page072",
+          "type": "Canvas","label": {"none":[72]},"height": 7634,
+            "width": 5681,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/neue-mode-4-1966/page072/full/full/0/default_hu_2e35a56d03961d79.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 403,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/neue-mode-4-1966/annotation/page072",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/neue-mode-4-1966/annotation/page072/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/neue-mode-4-1966/page072/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 7634,
+                  "width": 5681,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/neue-mode-4-1966/page072",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/neue-mode-4-1966/canvas/page072"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/neue-mode-4-1966/canvas/page073",
+          "type": "Canvas","label": {"none":[73]},"height": 7646,
+            "width": 5714,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/neue-mode-4-1966/page073/full/full/0/default_hu_9feaee24fa1a185.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 401,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/neue-mode-4-1966/annotation/page073",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/neue-mode-4-1966/annotation/page073/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/neue-mode-4-1966/page073/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 7646,
+                  "width": 5714,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/neue-mode-4-1966/page073",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/neue-mode-4-1966/canvas/page073"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/neue-mode-4-1966/canvas/page074",
+          "type": "Canvas","label": {"none":[74]},"height": 7645,
+            "width": 5701,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/neue-mode-4-1966/page074/full/full/0/default_hu_c2e343a290503d7e.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 402,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/neue-mode-4-1966/annotation/page074",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/neue-mode-4-1966/annotation/page074/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/neue-mode-4-1966/page074/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 7645,
+                  "width": 5701,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/neue-mode-4-1966/page074",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/neue-mode-4-1966/canvas/page074"
+            }]
+          }]
+       }]
+}

@@ -1,0 +1,579 @@
+{"@context": "http://iiif.io/api/presentation/3/context.json",
+"type": "Manifest",
+"id": "https://vorsatzpapier.projektemacher.org/en/post/die-kunst-25/manifest.json",
+"viewingDirection": "left-to-right","behavior":["paged"],"requiredStatement": {
+  "label": { "en": [ "Attribution" ],
+    "de": [ "Namensnennung" ]
+  },
+  "value": {"en": ["Provided by Projektemacher"],"de": ["Bereitgestellt von Projektemacher"]}
+}
+,"thumbnail": [{
+    "id": "https://vorsatzpapier.projektemacher.org/post/die-kunst-25/end-verso_hu_3b1636e8ab739e24.jpg",
+    "format": "image/jpeg",
+    "type":"Image",
+    "height": 442,
+    "width": 300
+  },{
+        "id": "https://static.projektemacher.org/vorsatzpapier/en/post/die-kunst-25/end-verso/full/full/0/default.jpg",
+        "format": "image/jpeg",
+        "type":"Image",
+        "height": 6593,
+        "width": 4472,
+        "service": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/en/post/die-kunst-25/end-verso",
+          "type": "ImageService2",
+          "profile":"level0"
+        }]
+      }],"provider": [
+  {
+    "id": "https://projektemacher.org/",
+    "type": "Agent",
+    "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+    "homepage": [
+      {
+        "id": "https://projektemacher.org/",
+        "type": "Text",
+        "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+        "format": "text/html"
+    }
+  ],
+  "logo": [
+    {"id": "https://projektemacher.org/images/logo.png",
+        "type": "Image",
+        "format": "image/png",
+        "height": 1024,
+        "width": 1024}
+  ],
+  "seeAlso": [
+    {
+      "id": "https://projektemacher.org/projektemacher.json",
+      "type": "Dataset",
+      "format": "application/ld+json",
+      "profile": "https://schema.org/"
+    }
+  ]
+  }
+]
+,
+
+"homepage": [
+  {
+    "id": "https://vorsatzpapier.projektemacher.org/en/post/die-kunst-25/manifest.json",
+    "type": "Text",
+    "format": "text/html",
+
+    "label": {
+        "en": [
+          "Vorsatzpapier: Die Kunst"
+        ],
+          "de": [
+            "Vorsatzpapier: Die Kunst"
+          ]
+        }
+  }
+],"label": {
+    "en": [
+      "Die Kunst"
+    ],
+      "de": [
+        "Die Kunst"
+      ]
+    }
+,"items": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/canvas/front",
+          "type": "Canvas","label": {"de":["Vorderansicht"],"en":["Front"]},"height": 6926,
+            "width": 4873,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/die-kunst-25/front_hu_7ec7df4ef0a9d3c2.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 426,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/annotation/front",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/annotation/front/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/front/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 6926,
+                  "width": 4873,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/front",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/canvas/front"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/canvas/title",
+          "type": "Canvas","label": {"de":["Titelseite"],"en":["Title"]},"height": 6665,
+            "width": 4762,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/die-kunst-25/title_hu_14d41a2e06b2dde5.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 420,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/annotation/title",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/annotation/title/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/title/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 6665,
+                  "width": 4762,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/title",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/canvas/title"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/canvas/preview",
+          "type": "Canvas","label": {"de":["Letze Seite"],"en":["Last page"]},"height": 6593,
+            "width": 4472,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/die-kunst-25/end-verso_hu_3b1636e8ab739e24.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 442,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/annotation/end-verso",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/annotation/end-verso/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/end-verso/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 6593,
+                  "width": 4472,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/end-verso",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/canvas/preview"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/canvas/end-recto",
+          "type": "Canvas","label": {"de":["Letze Seite"],"en":["Last page"]},"height": 6674,
+            "width": 4706,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/die-kunst-25/end-recto_hu_62fb6ef8b3dc574d.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 425,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/annotation/end-recto",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/annotation/end-recto/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/end-recto/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 6674,
+                  "width": 4706,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/end-recto",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/canvas/end-recto"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/canvas/page244",
+          "type": "Canvas","label": {"none":["page244"]},"height": 6614,
+            "width": 4675,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/die-kunst-25/page244_hu_796388a6f0b22172.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 424,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/annotation/page244",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/annotation/page244/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/page244/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 6614,
+                  "width": 4675,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/page244",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/canvas/page244"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/canvas/page573",
+          "type": "Canvas","label": {"none":["page573"]},"height": 6648,
+            "width": 4576,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/die-kunst-25/page573_hu_d5f3a9b7db0cf0ce.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 436,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/annotation/page573",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/annotation/page573/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/page573/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 6648,
+                  "width": 4576,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/page573",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/canvas/page573"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/canvas/page574",
+          "type": "Canvas","label": {"none":["page574"]},"height": 6661,
+            "width": 4637,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/die-kunst-25/page574_hu_72fc0fbd1aabaf1f.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 431,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/annotation/page574",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/annotation/page574/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/page574/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 6661,
+                  "width": 4637,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/page574",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/canvas/page574"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/canvas/page575",
+          "type": "Canvas","label": {"none":["page575"]},"height": 6665,
+            "width": 4609,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/die-kunst-25/page575_hu_d7ec1db09c7137c7.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 434,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/annotation/page575",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/annotation/page575/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/page575/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 6665,
+                  "width": 4609,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/page575",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/canvas/page575"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/canvas/page576",
+          "type": "Canvas","label": {"none":["page576"]},"height": 6673,
+            "width": 4642,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/die-kunst-25/page576_hu_4fda786236d6726c.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 431,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/annotation/page576",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/annotation/page576/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/page576/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 6673,
+                  "width": 4642,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/page576",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/canvas/page576"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/canvas/page577",
+          "type": "Canvas","label": {"none":["page577"]},"height": 6665,
+            "width": 4660,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/die-kunst-25/page577_hu_aa47c478d2d540f1.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 429,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/annotation/page577",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/annotation/page577/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/page577/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 6665,
+                  "width": 4660,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/page577",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/canvas/page577"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/canvas/page578",
+          "type": "Canvas","label": {"none":["page578"]},"height": 6663,
+            "width": 4716,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/die-kunst-25/page578_hu_d7c13a30599e0ff.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 424,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/annotation/page578",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/annotation/page578/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/page578/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 6663,
+                  "width": 4716,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/page578",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/canvas/page578"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/canvas/page579",
+          "type": "Canvas","label": {"none":["page579"]},"height": 6646,
+            "width": 4707,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/die-kunst-25/page579_hu_1d7b7c5e2dcaa58a.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 424,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/annotation/page579",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/annotation/page579/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/page579/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 6646,
+                  "width": 4707,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/page579",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/canvas/page579"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/canvas/page580",
+          "type": "Canvas","label": {"none":["page580"]},"height": 6658,
+            "width": 4707,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/die-kunst-25/page580_hu_28a77452c50a20.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 424,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/annotation/page580",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/annotation/page580/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/page580/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 6658,
+                  "width": 4707,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/page580",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/canvas/page580"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/canvas/page581",
+          "type": "Canvas","label": {"none":["page581"]},"height": 6650,
+            "width": 4658,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/die-kunst-25/page581_hu_f8a315ce3bfb642f.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 428,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/annotation/page581",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/annotation/page581/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/page581/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 6650,
+                  "width": 4658,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/page581",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/canvas/page581"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/canvas/page582",
+          "type": "Canvas","label": {"none":["page582"]},"height": 6593,
+            "width": 4694,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/die-kunst-25/page582_hu_1504074546cc20fb.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 421,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/annotation/page582",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/annotation/page582/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/page582/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 6593,
+                  "width": 4694,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/page582",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/canvas/page582"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/canvas/page583",
+          "type": "Canvas","label": {"none":["page583"]},"height": 6640,
+            "width": 4655,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/die-kunst-25/page583_hu_ec5fc30187c87fd7.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 428,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/annotation/page583",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/annotation/page583/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/page583/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 6640,
+                  "width": 4655,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/page583",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/die-kunst-25/canvas/page583"
+            }]
+          }]
+       }]
+}

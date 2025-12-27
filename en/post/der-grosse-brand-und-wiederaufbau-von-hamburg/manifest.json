@@ -1,0 +1,207 @@
+{"@context": "http://iiif.io/api/presentation/3/context.json",
+"type": "Manifest",
+"id": "https://vorsatzpapier.projektemacher.org/en/post/der-grosse-brand-und-wiederaufbau-von-hamburg/manifest.json",
+"viewingDirection": "left-to-right","behavior":["paged"],"requiredStatement": {
+  "label": { "en": [ "Attribution" ],
+    "de": [ "Namensnennung" ]
+  },
+  "value": {"en": ["Provided by Projektemacher"],"de": ["Bereitgestellt von Projektemacher"]}
+}
+,"thumbnail": [{
+    "id": "https://vorsatzpapier.projektemacher.org/post/der-grosse-brand-und-wiederaufbau-von-hamburg/end-verso_hu_579fbe2656d85d73.jpg",
+    "format": "image/jpeg",
+    "type":"Image",
+    "height": 434,
+    "width": 300
+  },{
+        "id": "https://static.projektemacher.org/vorsatzpapier/en/post/der-grosse-brand-und-wiederaufbau-von-hamburg/end-verso/full/full/0/default.jpg",
+        "format": "image/jpeg",
+        "type":"Image",
+        "height": 5732,
+        "width": 3962,
+        "service": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/en/post/der-grosse-brand-und-wiederaufbau-von-hamburg/end-verso",
+          "type": "ImageService2",
+          "profile":"level0"
+        }]
+      }],"provider": [
+  {
+    "id": "https://projektemacher.org/",
+    "type": "Agent",
+    "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+    "homepage": [
+      {
+        "id": "https://projektemacher.org/",
+        "type": "Text",
+        "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+        "format": "text/html"
+    }
+  ],
+  "logo": [
+    {"id": "https://projektemacher.org/images/logo.png",
+        "type": "Image",
+        "format": "image/png",
+        "height": 1024,
+        "width": 1024}
+  ],
+  "seeAlso": [
+    {
+      "id": "https://projektemacher.org/projektemacher.json",
+      "type": "Dataset",
+      "format": "application/ld+json",
+      "profile": "https://schema.org/"
+    }
+  ]
+  }
+]
+,
+
+"homepage": [
+  {
+    "id": "https://vorsatzpapier.projektemacher.org/en/post/der-grosse-brand-und-wiederaufbau-von-hamburg/manifest.json",
+    "type": "Text",
+    "format": "text/html",
+
+    "label": {
+        "en": [
+          "Vorsatzpapier: Der grosse Brand und Wiederaufbau von Hamburg"
+        ],
+          "de": [
+            "Vorsatzpapier: Der grosse Brand und Wiederaufbau von Hamburg"
+          ]
+        }
+  }
+],"label": {
+    "en": [
+      "Der grosse Brand und Wiederaufbau von Hamburg"
+    ],
+      "de": [
+        "Der grosse Brand und Wiederaufbau von Hamburg"
+      ]
+    }
+,"items": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/der-grosse-brand-und-wiederaufbau-von-hamburg/canvas/front",
+          "type": "Canvas","label": {"de":["Vorderansicht"],"en":["Front"]},"height": 5923,
+            "width": 4067,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/der-grosse-brand-und-wiederaufbau-von-hamburg/front_hu_10af3a9ac033a05a.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 437,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/der-grosse-brand-und-wiederaufbau-von-hamburg/annotation/front",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/der-grosse-brand-und-wiederaufbau-von-hamburg/annotation/front/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/der-grosse-brand-und-wiederaufbau-von-hamburg/front/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 5923,
+                  "width": 4067,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/der-grosse-brand-und-wiederaufbau-von-hamburg/front",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/der-grosse-brand-und-wiederaufbau-von-hamburg/canvas/front"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/der-grosse-brand-und-wiederaufbau-von-hamburg/canvas/title",
+          "type": "Canvas","label": {"de":["Titelseite"],"en":["Title"]},"height": 5730,
+            "width": 3916,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/der-grosse-brand-und-wiederaufbau-von-hamburg/title_hu_c9d61fd6c6e34859.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 439,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/der-grosse-brand-und-wiederaufbau-von-hamburg/annotation/title",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/der-grosse-brand-und-wiederaufbau-von-hamburg/annotation/title/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/der-grosse-brand-und-wiederaufbau-von-hamburg/title/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 5730,
+                  "width": 3916,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/der-grosse-brand-und-wiederaufbau-von-hamburg/title",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/der-grosse-brand-und-wiederaufbau-von-hamburg/canvas/title"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/der-grosse-brand-und-wiederaufbau-von-hamburg/canvas/preview",
+          "type": "Canvas","label": {"de":["Letze Seite"],"en":["Last page"]},"height": 5732,
+            "width": 3962,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/der-grosse-brand-und-wiederaufbau-von-hamburg/end-verso_hu_579fbe2656d85d73.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 434,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/der-grosse-brand-und-wiederaufbau-von-hamburg/annotation/end-verso",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/der-grosse-brand-und-wiederaufbau-von-hamburg/annotation/end-verso/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/der-grosse-brand-und-wiederaufbau-von-hamburg/end-verso/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 5732,
+                  "width": 3962,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/der-grosse-brand-und-wiederaufbau-von-hamburg/end-verso",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/der-grosse-brand-und-wiederaufbau-von-hamburg/canvas/preview"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/der-grosse-brand-und-wiederaufbau-von-hamburg/canvas/end-recto",
+          "type": "Canvas","label": {"de":["Letze Seite"],"en":["Last page"]},"height": 5852,
+            "width": 4084,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/der-grosse-brand-und-wiederaufbau-von-hamburg/end-recto_hu_5d11c591af0a6cf6.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 430,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/der-grosse-brand-und-wiederaufbau-von-hamburg/annotation/end-recto",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/der-grosse-brand-und-wiederaufbau-von-hamburg/annotation/end-recto/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/der-grosse-brand-und-wiederaufbau-von-hamburg/end-recto/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 5852,
+                  "width": 4084,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/der-grosse-brand-und-wiederaufbau-von-hamburg/end-recto",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/der-grosse-brand-und-wiederaufbau-von-hamburg/canvas/end-recto"
+            }]
+          }]
+       }]
+}

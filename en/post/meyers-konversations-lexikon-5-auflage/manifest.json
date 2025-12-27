@@ -1,0 +1,207 @@
+{"@context": "http://iiif.io/api/presentation/3/context.json",
+"type": "Manifest",
+"id": "https://vorsatzpapier.projektemacher.org/en/post/meyers-konversations-lexikon-5-auflage/manifest.json",
+"viewingDirection": "left-to-right","behavior":["paged"],"requiredStatement": {
+  "label": { "en": [ "Attribution" ],
+    "de": [ "Namensnennung" ]
+  },
+  "value": {"de": ["Bereitgestellt von Projektemacher"],"en": ["Provided by Projektemacher"]}
+}
+,"thumbnail": [{
+    "id": "https://vorsatzpapier.projektemacher.org/post/meyers-konversations-lexikon-5-auflage/img003_hu_ea51a3adbaf723e4.jpg",
+    "format": "image/jpeg",
+    "type":"Image",
+    "height": 238,
+    "width": 300
+  },{
+        "id": "https://static.projektemacher.org/vorsatzpapier/en/post/meyers-konversations-lexikon-5-auflage/img003/full/full/0/default.jpg",
+        "format": "image/jpeg",
+        "type":"Image",
+        "height": 5678,
+        "width": 7168,
+        "service": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/en/post/meyers-konversations-lexikon-5-auflage/img003",
+          "type": "ImageService2",
+          "profile":"level0"
+        }]
+      }],"provider": [
+  {
+    "id": "https://projektemacher.org/",
+    "type": "Agent",
+    "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+    "homepage": [
+      {
+        "id": "https://projektemacher.org/",
+        "type": "Text",
+        "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+        "format": "text/html"
+    }
+  ],
+  "logo": [
+    {"id": "https://projektemacher.org/images/logo.png",
+        "type": "Image",
+        "format": "image/png",
+        "height": 1024,
+        "width": 1024}
+  ],
+  "seeAlso": [
+    {
+      "id": "https://projektemacher.org/projektemacher.json",
+      "type": "Dataset",
+      "format": "application/ld+json",
+      "profile": "https://schema.org/"
+    }
+  ]
+  }
+]
+,
+
+"homepage": [
+  {
+    "id": "https://vorsatzpapier.projektemacher.org/en/post/meyers-konversations-lexikon-5-auflage/manifest.json",
+    "type": "Text",
+    "format": "text/html",
+
+    "label": {
+        "en": [
+          "Vorsatzpapier: Meyers Konversations Lexikon 5. edition"
+        ],
+          "de": [
+            "Vorsatzpapier: Meyers Konversations Lexikon 5. Auflage"
+          ]
+        }
+  }
+],"label": {
+    "en": [
+      "Meyers Konversations Lexikon 5. edition"
+    ],
+      "de": [
+        "Meyers Konversations Lexikon 5. Auflage"
+      ]
+    }
+,"items": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/meyers-konversations-lexikon-5-auflage/canvas/page",
+          "type": "Canvas","label": {"de":["ungezählt"],"en":["uncounted"]},"height": 5678,
+            "width": 7168,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/meyers-konversations-lexikon-5-auflage/img003_hu_ea51a3adbaf723e4.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 238,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/meyers-konversations-lexikon-5-auflage/annotation/img003",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/meyers-konversations-lexikon-5-auflage/annotation/img003/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/meyers-konversations-lexikon-5-auflage/img003/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 5678,
+                  "width": 7168,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/meyers-konversations-lexikon-5-auflage/img003",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/meyers-konversations-lexikon-5-auflage/canvas/page"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/meyers-konversations-lexikon-5-auflage/canvas/page",
+          "type": "Canvas","label": {"de":["ungezählt"],"en":["uncounted"]},"height": 5696,
+            "width": 7160,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/meyers-konversations-lexikon-5-auflage/img004_hu_e78570230e6317fc.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 239,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/meyers-konversations-lexikon-5-auflage/annotation/img004",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/meyers-konversations-lexikon-5-auflage/annotation/img004/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/meyers-konversations-lexikon-5-auflage/img004/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 5696,
+                  "width": 7160,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/meyers-konversations-lexikon-5-auflage/img004",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/meyers-konversations-lexikon-5-auflage/canvas/page"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/meyers-konversations-lexikon-5-auflage/canvas/page",
+          "type": "Canvas","label": {"de":["ungezählt"],"en":["uncounted"]},"height": 5699,
+            "width": 7076,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/meyers-konversations-lexikon-5-auflage/img005_hu_6c821e96ff250469.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 242,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/meyers-konversations-lexikon-5-auflage/annotation/img005",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/meyers-konversations-lexikon-5-auflage/annotation/img005/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/meyers-konversations-lexikon-5-auflage/img005/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 5699,
+                  "width": 7076,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/meyers-konversations-lexikon-5-auflage/img005",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/meyers-konversations-lexikon-5-auflage/canvas/page"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/meyers-konversations-lexikon-5-auflage/canvas/page",
+          "type": "Canvas","label": {"de":["ungezählt"],"en":["uncounted"]},"height": 5704,
+            "width": 7162,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/meyers-konversations-lexikon-5-auflage/img006_hu_4598338e6ae268ea.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 239,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/meyers-konversations-lexikon-5-auflage/annotation/img006",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/meyers-konversations-lexikon-5-auflage/annotation/img006/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/meyers-konversations-lexikon-5-auflage/img006/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 5704,
+                  "width": 7162,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/meyers-konversations-lexikon-5-auflage/img006",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/meyers-konversations-lexikon-5-auflage/canvas/page"
+            }]
+          }]
+       }]
+}

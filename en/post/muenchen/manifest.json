@@ -1,0 +1,207 @@
+{"@context": "http://iiif.io/api/presentation/3/context.json",
+"type": "Manifest",
+"id": "https://vorsatzpapier.projektemacher.org/en/post/muenchen/manifest.json",
+"viewingDirection": "left-to-right","behavior":["paged"],"requiredStatement": {
+  "label": { "en": [ "Attribution" ],
+    "de": [ "Namensnennung" ]
+  },
+  "value": {"en": ["Provided by Projektemacher"],"de": ["Bereitgestellt von Projektemacher"]}
+}
+,"thumbnail": [{
+    "id": "https://vorsatzpapier.projektemacher.org/post/muenchen/front-recto_hu_94f4a95965c6eb3.jpg",
+    "format": "image/jpeg",
+    "type":"Image",
+    "height": 246,
+    "width": 300
+  },{
+        "id": "https://static.projektemacher.org/vorsatzpapier/en/post/muenchen/front-recto/full/full/0/default.jpg",
+        "format": "image/jpeg",
+        "type":"Image",
+        "height": 4256,
+        "width": 5186,
+        "service": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/en/post/muenchen/front-recto",
+          "type": "ImageService2",
+          "profile":"level0"
+        }]
+      }],"provider": [
+  {
+    "id": "https://projektemacher.org/",
+    "type": "Agent",
+    "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+    "homepage": [
+      {
+        "id": "https://projektemacher.org/",
+        "type": "Text",
+        "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+        "format": "text/html"
+    }
+  ],
+  "logo": [
+    {"id": "https://projektemacher.org/images/logo.png",
+        "type": "Image",
+        "format": "image/png",
+        "height": 1024,
+        "width": 1024}
+  ],
+  "seeAlso": [
+    {
+      "id": "https://projektemacher.org/projektemacher.json",
+      "type": "Dataset",
+      "format": "application/ld+json",
+      "profile": "https://schema.org/"
+    }
+  ]
+  }
+]
+,
+
+"homepage": [
+  {
+    "id": "https://vorsatzpapier.projektemacher.org/en/post/muenchen/manifest.json",
+    "type": "Text",
+    "format": "text/html",
+
+    "label": {
+        "en": [
+          "Vorsatzpapier: München und Umgebung"
+        ],
+          "de": [
+            "Vorsatzpapier: München und Umgebung"
+          ]
+        }
+  }
+],"label": {
+    "en": [
+      "München und Umgebung"
+    ],
+      "de": [
+        "München und Umgebung"
+      ]
+    }
+,"items": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/muenchen/canvas/front",
+          "type": "Canvas","label": {"de":["Vorderansicht"],"en":["Front"]},"height": 4374,
+            "width": 5307,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/muenchen/front_hu_33a2475fc84d8976.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 247,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/muenchen/annotation/front",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/muenchen/annotation/front/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/muenchen/front/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 4374,
+                  "width": 5307,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/muenchen/front",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/muenchen/canvas/front"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/muenchen/canvas/title",
+          "type": "Canvas","label": {"de":["Titelseite"],"en":["Title"]},"height": 4254,
+            "width": 5171,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/muenchen/title_hu_3af24283a8243027.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 247,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/muenchen/annotation/title",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/muenchen/annotation/title/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/muenchen/title/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 4254,
+                  "width": 5171,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/muenchen/title",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/muenchen/canvas/title"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/muenchen/canvas/front-verso",
+          "type": "Canvas","label": {"de":["Vorderansicht"],"en":["Front"]},"height": 4368,
+            "width": 5179,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/muenchen/front-verso_hu_85dd6db531286379.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 253,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/muenchen/annotation/front-verso",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/muenchen/annotation/front-verso/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/muenchen/front-verso/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 4368,
+                  "width": 5179,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/muenchen/front-verso",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/muenchen/canvas/front-verso"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/muenchen/canvas/preview",
+          "type": "Canvas","label": {"de":["Vorderansicht"],"en":["Front"]},"height": 4256,
+            "width": 5186,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/muenchen/front-recto_hu_94f4a95965c6eb3.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 246,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/muenchen/annotation/front-recto",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/muenchen/annotation/front-recto/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/muenchen/front-recto/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 4256,
+                  "width": 5186,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/muenchen/front-recto",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/muenchen/canvas/preview"
+            }]
+          }]
+       }]
+}

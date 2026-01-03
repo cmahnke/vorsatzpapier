@@ -1,0 +1,176 @@
+{"@context": "http://iiif.io/api/presentation/3/context.json",
+"type": "Manifest",
+"id": "https://vorsatzpapier.projektemacher.org/post/album-1/manifest.json",
+"viewingDirection": "left-to-right","behavior":["paged"],"requiredStatement": {
+  "label": { "en": [ "Attribution" ],
+    "de": [ "Namensnennung" ]
+  },
+  "value": {"de": ["Bereitgestellt von Projektemacher"],"en": ["Provided by Projektemacher"]}
+}
+,"thumbnail": [{
+    "id": "https://vorsatzpapier.projektemacher.org/post/album-1/front-recto_hu_7aa3741c0e914544.jpg",
+    "format": "image/jpeg",
+    "type":"Image",
+    "height": 444,
+    "width": 300
+  },{
+        "id": "https://static.projektemacher.org/vorsatzpapier/post/album-1/front-recto/full/full/0/default.jpg",
+        "format": "image/jpeg",
+        "type":"Image",
+        "height": 4629,
+        "width": 3127,
+        "service": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/album-1/front-recto",
+          "type": "ImageService2",
+          "profile":"level0"
+        }]
+      }],"provider": [
+  {
+    "id": "https://projektemacher.org/",
+    "type": "Agent",
+    "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+    "homepage": [
+      {
+        "id": "https://projektemacher.org/",
+        "type": "Text",
+        "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+        "format": "text/html"
+    }
+  ],
+  "logo": [
+    {"id": "https://projektemacher.org/images/logo.png",
+        "type": "Image",
+        "format": "image/png",
+        "height": 1024,
+        "width": 1024}
+  ],
+  "seeAlso": [
+    {
+      "id": "https://projektemacher.org/projektemacher.json",
+      "type": "Dataset",
+      "format": "application/ld+json",
+      "profile": "https://schema.org/"
+    }
+  ]
+  }
+]
+,
+
+"homepage": [
+  {
+    "id": "https://vorsatzpapier.projektemacher.org/post/album-1/manifest.json",
+    "type": "Text",
+    "format": "text/html",
+
+    "label": {
+        "de": [
+          "Vorsatzpapier: Album"
+        ],
+          "en": [
+            "Vorsatzpapier: album"
+          ]
+        }
+  }
+],"label": {
+    "de": [
+      "Album"
+    ],
+      "en": [
+        "album"
+      ]
+    }
+,"items": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/album-1/canvas/front",
+          "type": "Canvas","label": {"de":["Vorderansicht"],"en":["Front"]},"height": 4651,
+            "width": 3077,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/album-1/front_hu_1603416193f0d22c.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 453,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/album-1/annotation/front",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/album-1/annotation/front/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/album-1/front/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 4651,
+                  "width": 3077,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/album-1/front",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/album-1/canvas/front"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/album-1/canvas/preview",
+          "type": "Canvas","label": {"de":["Vorderansicht"],"en":["Front"]},"height": 4629,
+            "width": 3127,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/album-1/front-recto_hu_7aa3741c0e914544.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 444,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/album-1/annotation/front-recto",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/album-1/annotation/front-recto/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/album-1/front-recto/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 4629,
+                  "width": 3127,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/album-1/front-recto",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/album-1/canvas/preview"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/album-1/canvas/front-verso",
+          "type": "Canvas","label": {"de":["Vorderansicht"],"en":["Front"]},"height": 4664,
+            "width": 3021,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/album-1/front-verso_hu_9f5b918f0dee8004.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 463,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/album-1/annotation/front-verso",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/album-1/annotation/front-verso/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/album-1/front-verso/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 4664,
+                  "width": 3021,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/album-1/front-verso",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/album-1/canvas/front-verso"
+            }]
+          }]
+       }]
+}

@@ -1,0 +1,207 @@
+{"@context": "http://iiif.io/api/presentation/3/context.json",
+"type": "Manifest",
+"id": "https://vorsatzpapier.projektemacher.org/post/niedersachsens-sagenborn/manifest.json",
+"viewingDirection": "left-to-right","behavior":["paged"],"requiredStatement": {
+  "label": { "en": [ "Attribution" ],
+    "de": [ "Namensnennung" ]
+  },
+  "value": {"en": ["Provided by Projektemacher"],"de": ["Bereitgestellt von Projektemacher"]}
+}
+,"thumbnail": [{
+    "id": "https://vorsatzpapier.projektemacher.org/post/niedersachsens-sagenborn/end-verso_hu_4e6c0abfec601021.jpg",
+    "format": "image/jpeg",
+    "type":"Image",
+    "height": 372,
+    "width": 300
+  },{
+        "id": "https://static.projektemacher.org/vorsatzpapier/post/niedersachsens-sagenborn/end-verso/full/full/0/default.jpg",
+        "format": "image/jpeg",
+        "type":"Image",
+        "height": 4693,
+        "width": 3789,
+        "service": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/niedersachsens-sagenborn/end-verso",
+          "type": "ImageService2",
+          "profile":"level0"
+        }]
+      }],"provider": [
+  {
+    "id": "https://projektemacher.org/",
+    "type": "Agent",
+    "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+    "homepage": [
+      {
+        "id": "https://projektemacher.org/",
+        "type": "Text",
+        "label": { "en": [ "Projektemacher" ], "de": [ "Projektemacher" ] },
+        "format": "text/html"
+    }
+  ],
+  "logo": [
+    {"id": "https://projektemacher.org/images/logo.png",
+        "type": "Image",
+        "format": "image/png",
+        "height": 1024,
+        "width": 1024}
+  ],
+  "seeAlso": [
+    {
+      "id": "https://projektemacher.org/projektemacher.json",
+      "type": "Dataset",
+      "format": "application/ld+json",
+      "profile": "https://schema.org/"
+    }
+  ]
+  }
+]
+,
+
+"homepage": [
+  {
+    "id": "https://vorsatzpapier.projektemacher.org/post/niedersachsens-sagenborn/manifest.json",
+    "type": "Text",
+    "format": "text/html",
+
+    "label": {
+        "de": [
+          "Vorsatzpapier: Niedersachsens Sagenborn"
+        ],
+          "en": [
+            "Vorsatzpapier: Niedersachsens Sagenborn"
+          ]
+        }
+  }
+],"label": {
+    "de": [
+      "Niedersachsens Sagenborn"
+    ],
+      "en": [
+        "Niedersachsens Sagenborn"
+      ]
+    }
+,"items": [{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/niedersachsens-sagenborn/canvas/front",
+          "type": "Canvas","label": {"de":["Vorderansicht"],"en":["Front"]},"height": 4928,
+            "width": 3789,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/niedersachsens-sagenborn/front_hu_37a9acb2d367e7aa.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 390,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/niedersachsens-sagenborn/annotation/front",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/niedersachsens-sagenborn/annotation/front/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/niedersachsens-sagenborn/front/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 4928,
+                  "width": 3789,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/niedersachsens-sagenborn/front",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/niedersachsens-sagenborn/canvas/front"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/niedersachsens-sagenborn/canvas/title",
+          "type": "Canvas","label": {"de":["Titelseite"],"en":["Title"]},"height": 4694,
+            "width": 3616,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/niedersachsens-sagenborn/title_hu_ed4f121ee6103e45.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 389,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/niedersachsens-sagenborn/annotation/title",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/niedersachsens-sagenborn/annotation/title/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/niedersachsens-sagenborn/title/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 4694,
+                  "width": 3616,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/niedersachsens-sagenborn/title",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/niedersachsens-sagenborn/canvas/title"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/niedersachsens-sagenborn/canvas/preview",
+          "type": "Canvas","label": {"de":["Letze Seite"],"en":["Last page"]},"height": 4693,
+            "width": 3789,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/niedersachsens-sagenborn/end-verso_hu_4e6c0abfec601021.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 372,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/niedersachsens-sagenborn/annotation/end-verso",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/niedersachsens-sagenborn/annotation/end-verso/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/niedersachsens-sagenborn/end-verso/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 4693,
+                  "width": 3789,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/niedersachsens-sagenborn/end-verso",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/niedersachsens-sagenborn/canvas/preview"
+            }]
+          }]
+       },{
+          "id":"https://static.projektemacher.org/vorsatzpapier/post/niedersachsens-sagenborn/canvas/end-recto",
+          "type": "Canvas","label": {"de":["Letze Seite"],"en":["Last page"]},"height": 4732,
+            "width": 3714,
+            "thumbnail": [{
+                "id": "https://vorsatzpapier.projektemacher.org/post/niedersachsens-sagenborn/end-recto_hu_c30261f4cea40293.jpg",
+                "format": "image/jpeg",
+                "type":"Image",
+                "height": 382,
+                "width": 300
+              }
+            ],"items": [{
+            "id": "https://static.projektemacher.org/vorsatzpapier/post/niedersachsens-sagenborn/annotation/end-recto",
+            "type": "AnnotationPage",
+            "items":[{
+              "id": "https://static.projektemacher.org/vorsatzpapier/post/niedersachsens-sagenborn/annotation/end-recto/image",
+              "type": "Annotation",
+              "motivation":"painting",
+              "body":{"id": "https://static.projektemacher.org/vorsatzpapier/post/niedersachsens-sagenborn/end-recto/full/full/0/default.jpg",
+                  "type": "Image",
+                  "format": "image/jpeg",
+                  "height": 4732,
+                  "width": 3714,
+                  "service": [{
+                    "id":"https://static.projektemacher.org/vorsatzpapier/post/niedersachsens-sagenborn/end-recto",
+                    "type": "ImageService2",
+                    "profile":"level0"
+                  }]},
+              "target":"https://static.projektemacher.org/vorsatzpapier/post/niedersachsens-sagenborn/canvas/end-recto"
+            }]
+          }]
+       }]
+}

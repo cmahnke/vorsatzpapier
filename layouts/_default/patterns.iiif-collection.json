@@ -71,7 +71,6 @@
         {{- $thumbnails := partial "iiif/3/thumbnail.json" . -}}
         {{- if gt ($thumbnails | len) 0 -}}
           "thumbnail": {{ $thumbnails | jsonify }},
-          {{- $common = $common | merge (dict "thumbnail" $thumbnails) -}}
         {{- end -}}
 
         "label": {

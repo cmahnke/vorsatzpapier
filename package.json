@@ -1,6 +1,6 @@
 {
   "dependencies": {
     "jquery": "^4.0.0",
-    "jquery-migrate": "^4.0.1"
+    "jquery-migrate": "^4.0.2"
   }
 }

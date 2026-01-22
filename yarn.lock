@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-jquery-migrate@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/jquery-migrate/-/jquery-migrate-4.0.1.tgz#09902356a5032322292877c7cc28ce1a1e1a428b"
-  integrity sha512-0Q4PP6x+uPAnrqFDuy7cvi/5rjQyTxBu6SqJyui/UA1BZ7PM5mWBUWXcc4KO+CeJPf1D5ut641sdSnoG4+c5Bg==
+jquery-migrate@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/jquery-migrate/-/jquery-migrate-4.0.2.tgz#d296a64e05073017c54877462ac563f1927ee21f"
+  integrity sha512-J15ilpECoAsObLv2robklj0qf1qt9QCnZwwNcJAXkM7dIiOgcac2dqC3HgDtUF0fmRwKZa/ggTkxTj9S4Vk+HQ==
 
 jquery@^4.0.0:
   version "4.0.0"

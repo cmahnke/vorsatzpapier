@@ -12,6 +12,8 @@ content/post/*/title/
 content/post/*/cover/
 content/post/*/img*/
 content/post/*/page*/
+content/post/*/end_recto/
+content/post/*/end_verso/
 content/post/*/end-*/
 content/post/*/front-*/
 content/post/*/back/
@@ -28,3 +30,6 @@ assets/js/lucienne/lucienne-*.js
 assets/scss/lucienne/lucienne-*.css
 
 XXX-*
+
+assets/scss/flags
+assets/scss/npm-fonts

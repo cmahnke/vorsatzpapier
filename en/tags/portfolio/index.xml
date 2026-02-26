@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Portfolio on Vorsatzpapier</title>
+    <link>https://vorsatzpapier.projektemacher.org/en/tags/portfolio/</link>
+    <description>Recent content in Portfolio on Vorsatzpapier</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <managingEditor>mail@christianmahnke.de (Christian Mahnke)</managingEditor>
+    <webMaster>mail@christianmahnke.de (Christian Mahnke)</webMaster>
+    <copyright>&lt;a href=&#34;https://projektemacher.org/&#34; target=&#34;_blank&#34;&gt;Projektemacher&lt;/a&gt;</copyright>
+    <lastBuildDate>Thu, 26 Feb 2026 06:09:07 +0100</lastBuildDate>
+    <atom:link href="https://vorsatzpapier.projektemacher.org/en/tags/portfolio/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mappe</title>
+      <link>https://vorsatzpapier.projektemacher.org/en/post/mappe-2/manifest.json</link>
+      <pubDate>Mon, 17 May 2021 09:29:42 +0100</pubDate><author>mail@christianmahnke.de (Christian Mahnke)</author>
+      <guid>https://vorsatzpapier.projektemacher.org/en/post/mappe-2/manifest.json</guid>
+      <description>&lt;p&gt;This is the endpaper for a portfolio.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>album</title>
+      <link>https://vorsatzpapier.projektemacher.org/en/post/album-1/manifest.json</link>
+      <pubDate>Mon, 15 Mar 2021 16:29:42 +0200</pubDate><author>mail@christianmahnke.de (Christian Mahnke)</author>
+      <guid>https://vorsatzpapier.projektemacher.org/en/post/album-1/manifest.json</guid>
+      <description>&lt;p&gt;This end paper is from an album with entries from between 1922 and 1930. But it&amp;rsquo;s certainly a bit older.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Mappe</title>
+      <link>https://vorsatzpapier.projektemacher.org/en/post/mappe-1/manifest.json</link>
+      <pubDate>Thu, 21 Jan 2021 09:29:42 +0200</pubDate><author>mail@christianmahnke.de (Christian Mahnke)</author>
+      <guid>https://vorsatzpapier.projektemacher.org/en/post/mappe-1/manifest.json</guid>
+      <description>&lt;p&gt;This is the endpaper for a portfolio with pictures from Italy around 1900.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

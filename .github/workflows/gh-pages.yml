@@ -102,7 +102,7 @@ jobs:
 
       - name: Install Hugo
         run: |
-          ./themes/projektemacher-base/scripts/github/setup-hugo.sh ${{ env.HUGO_VERSION }}
+          ./themes/projektemacher-base/scripts/github/setup-hugo.sh https://github.com/cmahnke/projektemacher-hugo/releases/download/latest/hugo_esbuild_0.160.0_linux-amd64.tar.gz
 
       - name: Generate stats
         run: |

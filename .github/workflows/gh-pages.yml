@@ -94,11 +94,15 @@ jobs:
         working-directory: './Source Files/Mocks'
         run: ./scripts/lucienne.sh
 
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v3.0.0
-        with:
-          hugo-version: ${{ env.HUGO_VERSION }}
-          extended: true
+      # - name: Setup Hugo
+      #   uses: peaceiris/actions-hugo@v3.0.0
+      #   with:
+      #     hugo-version: ${{ env.HUGO_VERSION }}
+      #     extended: true
+
+      - name: Install Hugo
+        run: |
+          ./themes/projektemacher-base/scripts/github/setup-hugo.sh ${{ env.HUGO_VERSION }}
 
       - name: Generate stats
         run: |

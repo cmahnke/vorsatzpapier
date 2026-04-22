@@ -25,7 +25,7 @@
 <link rel="icon" href="{{ "img/favicon.ico" | absURL }}" type="image/x-icon">
 
 <link rel="canonical" href="{{ .Permalink }}">
-{{- partial "data/schema.org.html" . -}}
+{{- partial "metadata/schema.org/schema.org.html" . -}}
 
 {{ with .OutputFormats.Get "RSS" }}
   <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title | default "" }}" />

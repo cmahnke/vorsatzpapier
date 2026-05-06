@@ -1,7 +1,5 @@
 import { CuttingTable } from "./CuttingTable";
 
-//const patternCollection: URL = new URL("https://vorsatzpapier.projektemacher.org/patterns/collection.json");
-
 let urls: URL | { url: string; label: string }[] = [
   { url: "https://vorsatzpapier.projektemacher.org/patterns/collection.json", label: "Sammlung Vorsatzpapier" }
 ];

@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "ignoreDeprecations": "6.0",
     "noImplicitAny": true,
     "strictNullChecks": true,
     "removeComments": true,
@@ -17,8 +18,8 @@
     "target": "es2020",
     "skipLibCheck": true,
     "lib": ["dom", "es2020"],
-    "typeRoots": ["./node_modules/@types", "./patterns/assets/ts/@types"]
+    "typeRoots": ["./node_modules/@types", "./src/@types"]
   },
-  "include": ["patterns/assets/**/*"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "**/*.spec.ts"]
 }

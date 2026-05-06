@@ -1,17 +1,28 @@
 <!doctype html>
-<html lang="de" xml:lang="de">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lucienne - A IIIF pattern generator</title>
+    <style>
+      body {
+        margin: 0;
+      }
 
-    <title>Pages</title>
-    <link rel="stylesheet preload prefetch" as="style" href="./assets/scss/base.scss" crossorigin />
+      .content {
+        margin: 1em;
+      }
+    </style>
   </head>
 
-  <body class="index">
-    <ul>
-      <li><a href="./patterns/">Pattern Mock</a></li>
-    </ul>
+  <body style="font-family: sans-serif">
+    <div class="article-container">
+      <div class="content">
+        <h1>Lucienne - A IIIF pattern generator</h1>
+      </div>
+    </div>
+
+    <div class="generator" id="generator"></div>
+    <script type="module" src="./src/main.ts" type="text/javascript"></script>
   </body>
 </html>

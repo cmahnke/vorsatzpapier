@@ -20,7 +20,7 @@ import packageJson from "./package.json" with { type: "json" };
 const artifactName = packageJson.name;
 const artifactversion = packageJson.version;
 
-const fontPath = "patterns/assets/fonts";
+const fontPath = "src/assets/fonts";
 const fontURLPath = "/fonts/";
 if (!fs.existsSync(fontPath)) {
   fs.mkdirSync(fontPath);
@@ -30,14 +30,14 @@ const aliasConfig = {
   entries: [
     {
       find: "@",
-      replacement: path.resolve("patterns/assets")
+      replacement: path.resolve("src/assets")
     }
   ]
 };
 
 const config = [
   {
-    input: "patterns/assets/ts/CuttingTable.ts",
+    input: "src/CuttingTable.ts",
     output: [
       {
         file: `build/dist/${artifactName}-${artifactversion}.d.ts`,
@@ -60,7 +60,7 @@ const config = [
   },
 
   {
-    input: "patterns/assets/scss/base.scss",
+    input: "src/assets/scss/base.scss",
     output: [
       {
         file: `build/dist/${artifactName}-vorsatzpapier-${artifactversion}.css`,
@@ -92,8 +92,8 @@ const config = [
               url: "inline",
               maxSize: 100,
               fallback: "copy",
-              basePath: path.resolve("patterns/assets/scss"),
-              assetsPath: path.resolve("patterns/assets/images")
+              basePath: path.resolve("src/assets/scss"),
+              assetsPath: path.resolve("src/assets/images")
             }
           ]),
           url([
@@ -124,7 +124,7 @@ const config = [
     ]
   },
   {
-    input: "patterns/assets/scss/base.scss",
+    input: "src/assets/scss/base.scss",
     output: [
       {
         file: `build/dist/${artifactName}-christianmahnke-${artifactversion}.css`,
@@ -156,8 +156,8 @@ const config = [
               url: "inline",
               maxSize: 100,
               fallback: "copy",
-              basePath: path.resolve("patterns/assets/scss"),
-              assetsPath: path.resolve("patterns/assets/images")
+              basePath: path.resolve("src/assets/scss"),
+              assetsPath: path.resolve("src/assets/images")
             }
           ]),
           url([
@@ -185,7 +185,7 @@ const config = [
     ]
   },
   {
-    input: "patterns/assets/ts/CuttingTable.ts",
+    input: "src/CuttingTable.ts",
     output: [
       {
         file: `build/dist/${artifactName}-${artifactversion}.js`,
@@ -215,8 +215,8 @@ const config = [
               url: "inline",
               maxSize: 100,
               fallback: "copy",
-              basePath: path.resolve("patterns/assets/scss"),
-              assetsPath: path.resolve("patterns/assets/images")
+              basePath: path.resolve("src/assets/scss"),
+              assetsPath: path.resolve("src/assets/images")
             }
           ]),
           url([
@@ -256,7 +256,7 @@ const config = [
     ]
   },
   {
-    input: "patterns/assets/ts/CuttingTable.ts",
+    input: "src/CuttingTable.ts",
     output: [
       {
         file: `build/${artifactName}-${artifactversion}-complete.iife.min.js`,
@@ -291,8 +291,8 @@ const config = [
               url: "inline",
               maxSize: 100,
               fallback: "copy",
-              basePath: path.resolve("patterns/assets/scss"),
-              assetsPath: path.resolve("patterns/assets/images")
+              basePath: path.resolve("src/assets/scss"),
+              assetsPath: path.resolve("src/assets/images")
             }
           ]),
           url([
@@ -321,12 +321,12 @@ const config = [
       copy({
         targets: [
           {
-            src: "patterns/index.html",
+            src: "src/index.html",
             dest: "build",
             transform: (contents, filename) =>
               contents
                 .toString()
-                .replace("./assets/ts/main.ts", `${artifactName}-${artifactversion}-complete.es.min.js`)
+                .replace("./main.ts", `${artifactName}-${artifactversion}-complete.es.min.js`)
                 .replace("</title>", `</title><link rel="stylesheet" crossorigin href="${artifactName}-${artifactversion}.css">`)
           }
         ]

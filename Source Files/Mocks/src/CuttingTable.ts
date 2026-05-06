@@ -1,5 +1,5 @@
 import OpenSeadragon from "openseadragon";
-import { initOSDFabricJS, FabricOverlay } from "openseadragon-fabric";
+import { initOSDFabricOverlay, FabricOverlay } from "openseadragon-fabric-overlay";
 import { RotatingInput } from "./components/RotatingInput";
 import { DualRangeSlider } from "./components/DualRangeSlider";
 import { Cuts } from "./Cuts";
@@ -11,8 +11,8 @@ import type { IIIFImageStub, CutJSON, CutJSONLD } from "./types";
 import { loadInfoJson } from "./util";
 import i18next from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
-import translations from "../json/translations.json";
-import "../scss/base.scss";
+import translations from "./assets/json/translations.json";
+import "./assets/scss/base.scss";
 
 i18next.use(LanguageDetector).init({
   debug: false,
@@ -177,7 +177,6 @@ export class CuttingTable {
   }
 
   setupOSD(element: HTMLDivElement) {
-    initOSDFabricJS();
     const options: OpenSeadragon.Options = {
       zoomInButton: element.querySelector<Element>(".zoomin")!,
       zoomOutButton: element.querySelector<Element>(".zoomout")!,
@@ -190,7 +189,11 @@ export class CuttingTable {
       crossOriginPolicy: "Anonymous"
     };
     this.viewer = OpenSeadragon(options);
-    this.fabricOverlay = this.viewer.fabricOverlay({ fabricCanvasOptions: { selection: false } });
+    this.fabricOverlay = initOSDFabricOverlay(this.viewer, {
+      fabricCanvasOptions: {
+        selection: true,
+      },
+    });
   }
 
   addJSONLink(element: HTMLElement) {

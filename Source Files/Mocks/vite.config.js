@@ -1,8 +1,6 @@
 import { resolve, join } from "path";
 import { defineConfig } from "vite";
 import stylelint from "vite-plugin-stylelint";
-import { nodePolyfills } from "vite-plugin-node-polyfills";
-import { DynamicPublicDirectory } from "vite-multiple-assets";
 import { checker } from "vite-plugin-checker";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 import browserslistToEsbuild from "browserslist-to-esbuild";
@@ -21,13 +19,9 @@ export default defineConfig({
   base: "./",
   /*assetsInclude: ['assets/images/*.svg'],*/
   plugins: [
-    nodePolyfills(),
     {
       apply: "build"
     },
-    DynamicPublicDirectory(["patterns/public"], {
-      ssr: false
-    }),
     checker({ typescript: false }),
     svg(svgoConfig),
     viteStaticCopy({
@@ -46,20 +40,12 @@ export default defineConfig({
     cssMinify: true,
     rollupOptions: {
       input: {
-        main: resolve(__dirname, "patterns/index.html")
+        main: resolve(__dirname, "index.html")
       },
       output: {
         assetFileNames: `assets/[name].[ext]`
       }
     }
-    /*
-    lib: {
-      entry: ['patterns/assets/ts/CuttingTable.ts'],
-      formats: ['es', 'umd', 'iife'],
-      name: "PatternGenerator",
-      fileName: (format, entryName) => `${artifactName}-${artifactversion}.${format}.js`,
-      cssFileName: artifactName
-    }*/
   },
   resolve: {
     preserveSymlinks: true,
@@ -70,7 +56,7 @@ export default defineConfig({
       },
       {
         find: /@\/(.+)/,
-        replacement: join(process.cwd(), "patterns", "assets", "$1")
+        replacement: join(process.cwd(), "src", "assets", "$1")
       }
     ]
   },

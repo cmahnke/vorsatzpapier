@@ -4,3 +4,4 @@ node_modules/
 patterns/assets/fonts
 patterns/assets/static
 src/assets/fonts/
+public/**

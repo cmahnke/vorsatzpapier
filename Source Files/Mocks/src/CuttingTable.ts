@@ -82,6 +82,30 @@ export class CuttingTable {
   _initialUrls: { url: string; label: string }[];
   _url: URL;
 
+  /**
+   * Initializes a new CuttingTable instance for interactive image cutting and visualization.
+   *
+   * @param {HTMLDivElement} element - The container element where the CuttingTable interface will be rendered.
+   * @param {boolean} [urlInput=true] - Whether to display a URL input field for specifying image sources.
+   * @param {boolean} [gridSelector=true] - Whether to enable grid selection controls for layout configuration.
+   * @param {boolean} [download=true] - Whether to enable download functionality for exported JSON data.
+   * @param {boolean} [autoLoad=true] - Whether to automatically load the first configured URL upon initialization.
+   * @param {URL|Array<{url: string, label: string}>|string|undefined} [urls] - Optional initial URLs to load.
+   *   Can be a single URL, an array of URL objects with labels, or a string URL.
+   * @param {boolean} [shifts=false] - Whether to enable shift controls for offset adjustments.
+   *
+   * @throws {Error} If no valid element is provided or if no initial URL is set when urlInput is false.
+   *
+   * @example
+   * const container = document.getElementById("cutting-table");
+   * const cuttingTable = new CuttingTable(container, true, true, true, true, "https://example.com/iiif/image/info.json");
+   *
+   * @example
+   * const cuttingTable = new CuttingTable(container, false, true, true, true, [
+   *   { url: "https://example.com/iiif/image1/info.json", label: "Image 1" },
+   *   { url: "https://example.com/iiif/image2/info.json", label: "Image 2" }
+   * ]);
+   */
   constructor(
     element: HTMLDivElement,
     urlInput: boolean = true,

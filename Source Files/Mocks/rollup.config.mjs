@@ -17,7 +17,7 @@ import replace from "@rollup/plugin-replace";
 import typescriptOptions from "./tsconfig.json" with { type: "json" };
 import packageJson from "./package.json" with { type: "json" };
 
-const artifactName = packageJson.name;
+const artifactName = packageJson.name.split('/').pop();
 const artifactversion = packageJson.version;
 
 const fontPath = "src/assets/fonts";
@@ -40,7 +40,7 @@ const config = [
     input: "src/CuttingTable.ts",
     output: [
       {
-        file: `dist/${artifactName}-${artifactversion}.d.ts`,
+        file: `dist/index.d.ts`,
         format: "es"
       }
     ],
@@ -62,7 +62,7 @@ const config = [
     input: "src/assets/scss/base.scss",
     output: [
       {
-        file: `dist/${artifactName}-vorsatzpapier-${artifactversion}.css`,
+        file: `dist/${artifactName}-vorsatzpapier.css`,
         format: "es"
       }
     ],
@@ -126,7 +126,7 @@ const config = [
     input: "src/assets/scss/base.scss",
     output: [
       {
-        file: `dist/${artifactName}-christianmahnke-${artifactversion}.css`,
+        file: `dist/${artifactName}-christianmahnke.css`,
         format: "es"
       }
     ],
@@ -187,7 +187,7 @@ const config = [
     input: "src/CuttingTable.ts",
     output: [
       {
-        file: `dist/${artifactName}-${artifactversion}.js`,
+        file: `dist/${artifactName}.js`,
         format: "es",
         sourcemap: true,
         assetFileNames: "[name][extname]"
@@ -205,7 +205,7 @@ const config = [
       alias(aliasConfig),
       json({ preferConst: true }),
       postcss({
-        extract: `${artifactName}-${artifactversion}.css`,
+        extract: `${artifactName}.css`,
         sourceMap: true,
         use: [
           [
@@ -270,18 +270,13 @@ const config = [
         name: "PatternGenerator",
         sourcemap: true,
         assetFileNames: "[name][extname]"
-      },
-      {
-        file: `dist/${artifactName}-${artifactversion}-complete.es.min.js`,
-        format: "es",
-        sourcemap: true
       }
     ],
     plugins: [
       alias(aliasConfig),
       json({ preferConst: true }),
       postcss({
-        extract: `${artifactName}-${artifactversion}.css`,
+        extract: `${artifactName}.css`,
         sourceMap: true,
         use: [
           [
@@ -332,8 +327,8 @@ const config = [
             transform: (contents, filename) =>
               contents
                 .toString()
-                .replace("./main.ts", `${artifactName}-${artifactversion}-complete.es.min.js`)
-                .replace("</title>", `</title><link rel="stylesheet" crossorigin href="${artifactName}-${artifactversion}.css">`)
+                .replace("./main.ts", `${artifactName}-complete.es.min.js`)
+                .replace("</title>", `</title><link rel="stylesheet" crossorigin href="${artifactName}.css">`)
           }
         ]
       }),

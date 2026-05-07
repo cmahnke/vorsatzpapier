@@ -4,7 +4,7 @@
   "source": {
     "include": ["src"],
     "includePattern": "\\.(jsx|js|ts|tsx)$",
-    "exclude": ["node_modules", "site", "dist", "jsdoc"],
+    "exclude": ["node_modules", "site", "dist", "jsdoc", "public"],
     "excludePattern": "(out|node_modules|tests|test|dist|site|jsdoc)\\/.+"
   },
   "opts": {

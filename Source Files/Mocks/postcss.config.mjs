@@ -14,7 +14,7 @@ export default {
   plugins: {
     "postcss-url": {
       url: "inline",
-      maxSize: 10,
+      maxSize: 50,
       fallback: "copy",
       basePath: path.resolve("src/assets/scss"),
       assetsPath: path.resolve("src/assets/images")

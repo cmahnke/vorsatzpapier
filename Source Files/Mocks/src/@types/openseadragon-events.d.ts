@@ -1,5 +1,6 @@
 declare namespace OpenSeadragon {
   interface ViewerEventMap {
+    "start-layout": OpenSeadragon.ViewerEvent;
     "full-width": OpenSeadragon.ViewerEvent;
     "grid-size-changed": OpenSeadragon.ViewerEvent;
     "layout-start": OpenSeadragon.ViewerEvent;

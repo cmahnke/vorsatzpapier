@@ -6,8 +6,9 @@ import { CutPosition } from "./types";
 import { OffsetRect } from "./openseadragon/OffsetRect";
 import { RotateableRect } from "./openseadragon/RotateableRect";
 import { HideRect } from "./openseadragon/HideRect";
+import { IIIFTileSourceSpecifier } from "./openseadragon/IIIFTileSourceSpecifier";
 import type { CutNotification, IIIFImageStub } from "./types";
-import { equals } from "./util";
+import { equals } from "./util/util";
 import i18next from "i18next";
 
 export class Renderer {
@@ -135,7 +136,7 @@ export class Renderer {
 
       viewer.addHandler("tile-loaded", tileLoadedHandler);
       viewer.addHandler("tile-load-failed", errorHandler);
-      viewer.open(sources);
+      viewer.open(IIIFTileSourceSpecifier.wrap(sources));
     });
   }
 
@@ -498,9 +499,10 @@ export class Renderer {
     if (!immediately) {
       this.viewer?.addHandler("animation-finish", raiseFinished.bind(this));
     }
+    // TODO: Check if this event si still acted on.
     this.viewer?.raiseEvent("start-layout", { eventSource: this.viewer });
     let pos = -1;
-    //let expectedSize: OpenSeadragon.Rect;
+
     if (this.clipRect === undefined || this.viewer === undefined) {
       throw new Error("Clip rect or viewer is not defined");
     }
@@ -513,9 +515,6 @@ export class Renderer {
       throw new Error("Couldn't get first tiled image!");
     }
 
-    //this.debugOverlay(`Reference `, referenceImage, false);
-
-    //this.viewer.world.setAutoRefigureSizes(false);
     for (let r = 0; r < rows; r++) {
       for (let c = 0; c < columns; c++) {
         //Variables
@@ -1280,7 +1279,7 @@ export class Renderer {
           const errMsg = i18next.t("renderer:error") + ": " + e.message;
           this.statusContainer.innerHTML = errMsg;
         }
-        throw new Error(e);
+        throw new Error(e, { cause: e });
       }
     };
     if (this._download) {

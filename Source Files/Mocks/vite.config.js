@@ -37,6 +37,7 @@ export default defineConfig({
   build: {
     target: browserslistToEsbuild(),
     commonjsOptions: { transformMixedEsModules: true },
+    outDir: "public",
     cssMinify: true,
     rollupOptions: {
       input: {

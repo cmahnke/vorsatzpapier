@@ -1,5 +1,5 @@
 import { Line, Rect } from "fabric";
-import { FabricOverlay } from "openseadragon-fabric";
+import { FabricOverlay } from "openseadragon-fabric-overlay";
 
 import type { CutNotifyFunction, CutNotification, CutJSON, CutJSONLD } from "./types";
 import { CutPosition, CutPositionUtil } from "./types";

@@ -28,6 +28,7 @@ export type IIIFImageStub = {
   width: number;
   height: number;
   "@context": string;
+  //tileSource: string;
 };
 
 export enum CutPosition {

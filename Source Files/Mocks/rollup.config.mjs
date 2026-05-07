@@ -40,7 +40,7 @@ const config = [
     input: "src/CuttingTable.ts",
     output: [
       {
-        file: `build/dist/${artifactName}-${artifactversion}.d.ts`,
+        file: `dist/${artifactName}-${artifactversion}.d.ts`,
         format: "es"
       }
     ],
@@ -58,12 +58,11 @@ const config = [
       dts()
     ]
   },
-
   {
     input: "src/assets/scss/base.scss",
     output: [
       {
-        file: `build/dist/${artifactName}-vorsatzpapier-${artifactversion}.css`,
+        file: `dist/${artifactName}-vorsatzpapier-${artifactversion}.css`,
         format: "es"
       }
     ],
@@ -127,7 +126,7 @@ const config = [
     input: "src/assets/scss/base.scss",
     output: [
       {
-        file: `build/dist/${artifactName}-christianmahnke-${artifactversion}.css`,
+        file: `dist/${artifactName}-christianmahnke-${artifactversion}.css`,
         format: "es"
       }
     ],
@@ -188,13 +187,20 @@ const config = [
     input: "src/CuttingTable.ts",
     output: [
       {
-        file: `build/dist/${artifactName}-${artifactversion}.js`,
+        file: `dist/${artifactName}-${artifactversion}.js`,
         format: "es",
         sourcemap: true,
         assetFileNames: "[name][extname]"
       }
     ],
-    external: ["openseadragon", "openseadragon-fabric", "fabric", "@allmaps/iiif-parser", "i18next", "i18next-browser-languagedetector"],
+    external: [
+      "openseadragon",
+      "openseadragon-fabric-overlay",
+      "fabric",
+      "@allmaps/iiif-parser",
+      "i18next",
+      "i18next-browser-languagedetector"
+    ],
     plugins: [
       alias(aliasConfig),
       json({ preferConst: true }),
@@ -259,14 +265,14 @@ const config = [
     input: "src/CuttingTable.ts",
     output: [
       {
-        file: `build/${artifactName}-${artifactversion}-complete.iife.min.js`,
+        file: `dist/${artifactName}-${artifactversion}-complete.iife.min.js`,
         format: "iife",
         name: "PatternGenerator",
         sourcemap: true,
         assetFileNames: "[name][extname]"
       },
       {
-        file: `build/${artifactName}-${artifactversion}-complete.es.min.js`,
+        file: `dist/${artifactName}-${artifactversion}-complete.es.min.js`,
         format: "es",
         sourcemap: true
       }

@@ -2,7 +2,7 @@ import { IIIF, Collection, Manifest, Canvas, Image } from "@allmaps/iiif-parser"
 import { IconDropdownSelect } from "./components/IconDropdownSelect";
 import { CuttingTable } from "./CuttingTable";
 import type { IIIFSelect, IIIFEntry, IIIFImageEntry, IIIFType } from "./types";
-import { loadInfoJson } from "./util";
+import { loadInfoJson } from "./util/util";
 import i18next from "i18next";
 
 type ReturnJSON = { url: URL; json: object | undefined };
@@ -61,6 +61,7 @@ export class IIIFForm {
         });
       } catch (error) {
         this.displayMessage(i18next.t("iiifForm:errorURL"));
+        console.error("Exception", error);
         return;
       }
     };

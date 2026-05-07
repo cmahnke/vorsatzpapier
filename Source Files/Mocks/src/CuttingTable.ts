@@ -8,7 +8,8 @@ import { Renderer } from "./Renderer";
 import { IIIFForm } from "./IIIFForm";
 import { CutPosition } from "./types";
 import type { IIIFImageStub, CutJSON, CutJSONLD } from "./types";
-import { loadInfoJson } from "./util";
+import { loadInfoJson } from "./util/util";
+import { IIIFTileSourceSpecifier } from "./openseadragon/IIIFTileSourceSpecifier";
 import i18next from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import translations from "./assets/json/translations.json";
@@ -20,6 +21,8 @@ i18next.use(LanguageDetector).init({
   resources: translations,
   supportedLngs: ["en", "de"]
 });
+
+const appName = "lucienne";
 
 export class CuttingTable {
   static {
@@ -189,11 +192,15 @@ export class CuttingTable {
       crossOriginPolicy: "Anonymous"
     };
     this.viewer = OpenSeadragon(options);
-    this.fabricOverlay = initOSDFabricOverlay(this.viewer, {
-      fabricCanvasOptions: {
-        selection: true,
+    this.fabricOverlay = initOSDFabricOverlay(
+      this.viewer,
+      {
+        fabricCanvasOptions: {
+          selection: true
+        }
       },
-    });
+      appName
+    );
   }
 
   addJSONLink(element: HTMLElement) {
@@ -255,7 +262,7 @@ export class CuttingTable {
       });
       if (this.viewer.world.getItemCount()) {
         this.viewer.close();
-        this.viewer.open(endpointService);
+        this.viewer.open(IIIFTileSourceSpecifier.wrap(endpointService));
       } else {
         this.viewer.addTiledImage({ index: this.viewer.world.getItemCount(), tileSource: endpointService });
       }
@@ -693,15 +700,18 @@ export class CuttingTable {
         return;
       }
 
-      console.assert(bounds, "[Viewport._setContentBounds] bounds is required");
+      console.assert((bounds ?? null) !== null, "[Viewport._setContentBounds] bounds is required");
       console.assert(bounds instanceof OpenSeadragon.Rect, "[Viewport._setContentBounds] bounds must be an OpenSeadragon.Rect");
       console.assert(bounds.width > 0, "[Viewport._setContentBounds] bounds.width must be greater than 0");
       console.assert(bounds.height > 0, "[Viewport._setContentBounds] bounds.height must be greater than 0");
 
       this._contentBoundsNoRotate = bounds.clone();
+      // @ts-ignore: See https://github.com/openseadragon/openseadragon/blob/master/src/viewport.js#L210
       this._contentSizeNoRotate = this._contentBoundsNoRotate.getSize().times(contentFactor);
 
+      // @ts-ignore: See https://github.com/openseadragon/openseadragon/blob/master/src/viewport.js#L213
       this._contentBounds = bounds.rotate(this.getRotation()).getBoundingBox();
+      // @ts-ignore: See https://github.com/openseadragon/openseadragon/blob/master/src/viewport.js#L214
       this._contentSize = this._contentBounds.getSize().times(contentFactor);
       this._contentAspectRatio = this._contentSize.x / this._contentSize.y;
 

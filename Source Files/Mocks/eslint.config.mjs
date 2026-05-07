@@ -9,6 +9,7 @@ export default [
     languageOptions: { globals: globals.browser },
     rules: {
       "no-unused-vars": "off",
+      "no-useless-assignment": "warn",
       "@typescript-eslint/no-unused-vars": ["warn", { vars: "all", args: "after-used", ignoreRestSiblings: false }],
       "@typescript-eslint/no-namespace": ["warn", {}],
       "no-warning-comments": ["warn", {}],
@@ -18,6 +19,14 @@ export default [
     }
   },
   {
-    ignores: ["dist/", "build/", "eslint.config.mjs", "rollup.config.mjs", "vite.config.js", "postcss.config.js"]
+    ignores: [
+      "dist/",
+      "build/",
+      "eslint.config.mjs",
+      "rollup.config.mjs",
+      "vite.config.js",
+      "postcss.config.js",
+      "src/@types/openseadragon/index.d.ts"
+    ]
   }
 ];

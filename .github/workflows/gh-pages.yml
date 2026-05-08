@@ -90,10 +90,6 @@ jobs:
         run: |
           ./scripts/setup.sh
 
-      - name: Generate Generator
-        working-directory: './Source Files/Mocks'
-        run: ./scripts/lucienne.sh
-
       - name: Install Hugo
         run: |
           ./themes/projektemacher-base/scripts/github/setup-hugo.sh ${{ env.HUGO_VERSION }}

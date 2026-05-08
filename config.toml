@@ -113,6 +113,10 @@ copyright = '<a href="https://projektemacher.org/" target="_blank">Projektemache
     source = "node_modules/tify/dist/"
     target = "static/tify"
 
+  [[module.mounts]]
+    source = "node_modules/@projektemacher/lucienne/dist/lucienne-vorsatzpapier.css"
+    target = "assets/scss/lucienne/lucienne-0.1.0.css"
+
 #[outputs]
 #    page = ["HTML"]
 

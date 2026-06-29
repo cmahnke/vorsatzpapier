@@ -19,6 +19,8 @@ Some old wallpapers are also offered for sale here:
 * [Jonny Tapete](https://www.johnny-tapete.de/vintage_retro_tapete_cat95/)
 * [TeenageWasteland](http://www.teenagewasteland.de/dekorativ/tapete.html)
 * [Vintage Tapeten](https://vintage-tapeten.de/70er-Vintage-Tapeten-orignal-retro-60er-50er-80er)
+* [MEINEWAND – The blog for unique wall design](https://blog.meinewand.com/en)
+  * [Interview: Gallery owner Oliver Ahlers](https://blog.meinewand.com/de/oliver-ahlers-interview) (German) – The inspiration behind the presentation of the [art collection](https://christianmahnke.de/en/art-collection/).
 
 # Museums
 

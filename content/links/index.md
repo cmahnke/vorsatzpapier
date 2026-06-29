@@ -19,6 +19,8 @@ Hier werden alte Tapeten teilweise auch zum Kauf angeboten:
 * [Jonny Tapete](https://www.johnny-tapete.de/vintage_retro_tapete_cat95/)
 * [TeenageWasteland](http://www.teenagewasteland.de/dekorativ/tapete.html)
 * [Vintage Tapeten](https://vintage-tapeten.de/70er-Vintage-Tapeten-orignal-retro-60er-50er-80er)
+* [MEINEWAND - Der Blog für besondere Wandgestaltung](https://blog.meinewand.com/de)
+  * [Im Interview: Galerist Oliver Ahlers](https://blog.meinewand.com/de/oliver-ahlers-interview) - Die Inspiration für die Präsentation der [Kunstsammlung](https://christianmahnke.de/art-collection/).
 
 # Museen
 

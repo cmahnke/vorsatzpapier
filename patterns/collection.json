@@ -1,0 +1,960 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "id": "https://vorsatzpapier.projektemacher.org/collection.json",
+  "type": "Collection",
+  "label": {
+      "de": [
+        "Vorsatzpapier"
+      ],
+        "en": [
+          "Vorsatzpapier"
+        ]
+      },
+  "items": [{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-50/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":411,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-50/front/full/full/0/default_hu_2325fe565ff13064.jpg","type":"Image","width":300},{"format":"image/jpeg","height":17211,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-50/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-50/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12576}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-49/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":279,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-49/front/full/full/0/default_hu_6f12896cbb1ea392.jpg","type":"Image","width":300},{"format":"image/jpeg","height":11716,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-49/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-49/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12589}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-48/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":422,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-48/front/full/full/0/default_hu_c801971ac0db60c1.jpg","type":"Image","width":300},{"format":"image/jpeg","height":17737,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-48/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-48/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12597}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-47/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":440,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-47/front/full/full/0/default_hu_80194b942f719aea.jpg","type":"Image","width":300},{"format":"image/jpeg","height":18415,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-47/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-47/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12542}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-46/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":286,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-46/front/full/full/0/default_hu_494e5929b12d9197.jpg","type":"Image","width":300},{"format":"image/jpeg","height":11945,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-46/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-46/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12551}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-45/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":380,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-45/front/full/full/0/default_hu_42effcd936005a.jpg","type":"Image","width":300},{"format":"image/jpeg","height":15920,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-45/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-45/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12573}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-44/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":366,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-44/front/full/full/0/default_hu_da69a0b25b15ff53.jpg","type":"Image","width":300},{"format":"image/jpeg","height":15362,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-44/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-44/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12596}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-43/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":379,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-43/front/full/full/0/default_hu_aead424e4fb3ef15.jpg","type":"Image","width":300},{"format":"image/jpeg","height":15873,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-43/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-43/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12580}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-39/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":288,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-39/front/full/full/0/default_hu_bcf7914f3ee7bc68.jpg","type":"Image","width":300},{"format":"image/jpeg","height":12144,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-39/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-39/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12653}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-42/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":282,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-42/front/full/full/0/default_hu_ab60583c57b73353.jpg","type":"Image","width":300},{"format":"image/jpeg","height":11805,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-42/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-42/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12545}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-41/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":273,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-41/front/full/full/0/default_hu_f7531128c866cdea.jpg","type":"Image","width":300},{"format":"image/jpeg","height":11090,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-41/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-41/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12173}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-40/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":282,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-40/front/full/full/0/default_hu_6e13feac3a55058a.jpg","type":"Image","width":300},{"format":"image/jpeg","height":11869,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-40/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-40/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12612}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-36/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":220,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-36/front/full/full/0/default_hu_2347826a1d024af1.jpg","type":"Image","width":300},{"format":"image/jpeg","height":9230,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-36/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-36/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12596}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-37/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":291,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-37/front/full/full/0/default_hu_e87596fb63016f8d.jpg","type":"Image","width":300},{"format":"image/jpeg","height":12189,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-37/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-37/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12578}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-38/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":347,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-38/front/full/full/0/default_hu_f4add25f5b3aa65f.jpg","type":"Image","width":300},{"format":"image/jpeg","height":14535,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-38/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-38/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12583}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-35/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":282,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-35/front/full/full/0/default_hu_2f942cfacdda4571.jpg","type":"Image","width":300},{"format":"image/jpeg","height":11862,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-35/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-35/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12622}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-34/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":273,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-34/front/full/full/0/default_hu_ba484505371d7582.jpg","type":"Image","width":300},{"format":"image/jpeg","height":11475,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-34/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-34/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12629}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-33/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":284,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-33/front/full/full/0/default_hu_46e6118600bf9f45.jpg","type":"Image","width":300},{"format":"image/jpeg","height":11831,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-33/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-33/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12513}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-32/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":283,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-32/front/full/full/0/default_hu_7c95b974ba58bae1.jpg","type":"Image","width":300},{"format":"image/jpeg","height":11890,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-32/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-32/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12609}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-31/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":265,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-31/front/full/full/0/default_hu_21546566c7338b64.jpg","type":"Image","width":300},{"format":"image/jpeg","height":11215,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-31/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-31/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12692}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-30/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":283,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-30/front/full/full/0/default_hu_417becf5809e9411.jpg","type":"Image","width":300},{"format":"image/jpeg","height":11968,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-30/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-30/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12700}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-29/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":273,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-29/front/full/full/0/default_hu_de90e745451cec9e.jpg","type":"Image","width":300},{"format":"image/jpeg","height":11428,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-29/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-29/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12572}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-28/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":286,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-28/front/full/full/0/default_hu_eb2ec5101af126ea.jpg","type":"Image","width":300},{"format":"image/jpeg","height":12076,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-28/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-28/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12660}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-27/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":259,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-27/front/full/full/0/default_hu_44f9382af22b3b0e.jpg","type":"Image","width":300},{"format":"image/jpeg","height":10911,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-27/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-27/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12654}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-26/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":262,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-26/front/full/full/0/default_hu_fa5fc5615d3c166c.jpg","type":"Image","width":300},{"format":"image/jpeg","height":11022,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-26/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-26/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12623}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-25/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":250,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-25/front/full/full/0/default_hu_85e0cd59dcf877ae.jpg","type":"Image","width":300},{"format":"image/jpeg","height":10992,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-25/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-25/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":13168}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-24/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":262,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-24/front/full/full/0/default_hu_782b7b63862651ae.jpg","type":"Image","width":300},{"format":"image/jpeg","height":11084,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-24/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-24/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12707}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-23/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":269,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-23/front/full/full/0/default_hu_5e105aad6617fdcc.jpg","type":"Image","width":300},{"format":"image/jpeg","height":11307,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-23/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-23/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12612}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-22/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":260,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-22/front/full/full/0/default_hu_e14303cc3df03e02.jpg","type":"Image","width":300},{"format":"image/jpeg","height":10885,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-22/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-22/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12542}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-21/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":305,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-21/front/full/full/0/default_hu_267418300fcc9f45.jpg","type":"Image","width":300},{"format":"image/jpeg","height":12751,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-21/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-21/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12560}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-20/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":286,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-20/front/full/full/0/default_hu_54b57111e013b2ec.jpg","type":"Image","width":300},{"format":"image/jpeg","height":11944,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-20/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-20/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12545}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/hannover-1927/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":390,"id":"https://vorsatzpapier.projektemacher.org/post/hannover-1927/front-verso/full/full/0/default_hu_253e0bed3a70cc70.jpg","type":"Image","width":300},{"format":"image/jpeg","height":6556,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/hannover-1927/front-verso/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/hannover-1927/front-verso","profile":"level0","type":"ImageService2"}],"type":"Image","width":5044}],"label": {
+          "de": [
+            "Hannover die Großstadt im Grünen"
+          ],
+                "de": [
+                  "Hannover die Großstadt im Grünen"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/kochkunst-1906/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":440,"id":"https://vorsatzpapier.projektemacher.org/post/kochkunst-1906/end-verso/full/full/0/default_hu_f3d2c3d395b79c7c.jpg","type":"Image","width":300},{"format":"image/jpeg","height":5701,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/kochkunst-1906/end-verso/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/kochkunst-1906/end-verso","profile":"level0","type":"ImageService2"}],"type":"Image","width":3883}],"label": {
+          "de": [
+            "Kochkunst 1906"
+          ],
+                "de": [
+                  "Kochkunst 1906"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/das-gastmahl/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":415,"id":"https://vorsatzpapier.projektemacher.org/post/das-gastmahl/front-verso/full/full/0/default_hu_6ceb5e44338b0f82.jpg","type":"Image","width":300},{"format":"image/jpeg","height":4381,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/das-gastmahl/front-verso/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/das-gastmahl/front-verso","profile":"level0","type":"ImageService2"}],"type":"Image","width":3170}],"label": {
+          "de": [
+            "Das Gastmahl"
+          ],
+                "de": [
+                  "Das Gastmahl"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/die-geschichte-vom-braven-kasperl/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":220,"id":"https://vorsatzpapier.projektemacher.org/post/die-geschichte-vom-braven-kasperl/front-paper/full/full/0/default_hu_addf9dd032675b79.jpg","type":"Image","width":300},{"format":"image/jpeg","height":2593,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/die-geschichte-vom-braven-kasperl/front-paper/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/die-geschichte-vom-braven-kasperl/front-paper","profile":"level0","type":"ImageService2"}],"type":"Image","width":3532}],"label": {
+          "de": [
+            "Die Geschichte vom braven Kasperl"
+          ],
+                "de": [
+                  "Die Geschichte vom braven Kasperl"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-19/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":273,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-19/front/full/full/0/default_hu_b021dd284f1a89b4.jpg","type":"Image","width":300},{"format":"image/jpeg","height":11497,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-19/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-19/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12613}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-18/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":284,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-18/front/full/full/0/default_hu_ad6121dffcabe54a.jpg","type":"Image","width":300},{"format":"image/jpeg","height":11837,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-18/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-18/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12516}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tanzstunden-buechlein/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":486,"id":"https://vorsatzpapier.projektemacher.org/post/tanzstunden-buechlein/end-verso_hu_47f65c80b27aaf09.jpg","type":"Image","width":300},{"format":"image/jpeg","height":4141,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tanzstunden-buechlein/end-verso/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tanzstunden-buechlein/end-verso","profile":"level0","type":"ImageService2"}],"type":"Image","width":2554}],"label": {
+          "de": [
+            "Tanzstunden Büchlein"
+          ],
+                "de": [
+                  "Tanzstunden Büchlein"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/berlin-halb-und-halb/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":280,"id":"https://vorsatzpapier.projektemacher.org/post/berlin-halb-und-halb/end-verso/full/full/0/default_hu_69b278533a69fb71.jpg","type":"Image","width":300},{"format":"image/jpeg","height":4756,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/berlin-halb-und-halb/end-verso/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/berlin-halb-und-halb/end-verso","profile":"level0","type":"ImageService2"}],"type":"Image","width":5097}],"label": {
+          "de": [
+            "Berlin halb und halb"
+          ],
+                "de": [
+                  "Berlin halb und halb"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-17/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":248,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-17/front/full/full/0/default_hu_4b654691756efcd5.jpg","type":"Image","width":300},{"format":"image/jpeg","height":10334,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-17/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-17/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12507}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-16/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":301,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-16/front/full/full/0/default_hu_cda03c34d5b385d8.jpg","type":"Image","width":300},{"format":"image/jpeg","height":12636,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-16/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-16/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12574}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/turquie/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":361,"id":"https://vorsatzpapier.projektemacher.org/post/turquie/front-verso_hu_c4b05a956b2cc24f.jpg","type":"Image","width":300},{"format":"image/jpeg","height":6481,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/turquie/front-verso/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/turquie/front-verso","profile":"level0","type":"ImageService2"}],"type":"Image","width":5383}],"label": {
+          "de": [
+            "Turquie"
+          ],
+                "de": [
+                  "Turquie"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/kultur-kuriosa-2/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":457,"id":"https://vorsatzpapier.projektemacher.org/post/kultur-kuriosa-2/end-recto_hu_59077ba87259c7ad.jpg","type":"Image","width":300},{"format":"image/jpeg","height":4220,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/kultur-kuriosa-2/end-recto/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/kultur-kuriosa-2/end-recto","profile":"level0","type":"ImageService2"}],"type":"Image","width":2768}],"label": {
+          "de": [
+            "Kultur-Kuriosa - Second volume"
+          ],
+                "de": [
+                  "Kultur-Kuriosa - Zweiter Band"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/kultur-kuriosa-1/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":466,"id":"https://vorsatzpapier.projektemacher.org/post/kultur-kuriosa-1/end-recto_hu_364b2a660d5fa413.jpg","type":"Image","width":300},{"format":"image/jpeg","height":4217,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/kultur-kuriosa-1/end-recto/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/kultur-kuriosa-1/end-recto","profile":"level0","type":"ImageService2"}],"type":"Image","width":2714}],"label": {
+          "de": [
+            "Kultur-Kuriosa - First volume"
+          ],
+                "de": [
+                  "Kultur-Kuriosa - Erster Band"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/muenchen/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":246,"id":"https://vorsatzpapier.projektemacher.org/post/muenchen/front-recto_hu_94f4a95965c6eb3.jpg","type":"Image","width":300},{"format":"image/jpeg","height":4256,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/muenchen/front-recto/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/muenchen/front-recto","profile":"level0","type":"ImageService2"}],"type":"Image","width":5186}],"label": {
+          "de": [
+            "München und Umgebung"
+          ],
+                "de": [
+                  "München und Umgebung"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/das-fuellhorn-der-fee/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":387,"id":"https://vorsatzpapier.projektemacher.org/post/das-fuellhorn-der-fee/back_hu_bc01bdb229d24f70.jpg","type":"Image","width":300},{"format":"image/jpeg","height":5122,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/das-fuellhorn-der-fee/back/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/das-fuellhorn-der-fee/back","profile":"level0","type":"ImageService2"}],"type":"Image","width":3968}],"label": {
+          "de": [
+            "Das Füllhorn der Fee"
+          ],
+                "de": [
+                  "Das Füllhorn der Fee"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/almanach-1899/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":399,"id":"https://vorsatzpapier.projektemacher.org/post/almanach-1899/end-verso_hu_2bf8ec4fada85249.jpg","type":"Image","width":300},{"format":"image/jpeg","height":5010,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/almanach-1899/end-verso/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/almanach-1899/end-verso","profile":"level0","type":"ImageService2"}],"type":"Image","width":3771}],"label": {
+          "de": [
+            "Almanach 1899"
+          ],
+                "de": [
+                  "Almanach 1899"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-15/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":164,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-15/front_hu_f1457faec2eb4762.jpg","type":"Image","width":300},{"format":"image/jpeg","height":6907,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-15/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-15/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12604}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/mappe-2/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":395,"id":"https://vorsatzpapier.projektemacher.org/post/mappe-2/front-verso_hu_e4c9b33fb213beb0.jpg","type":"Image","width":300},{"format":"image/jpeg","height":6584,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/mappe-2/front-verso/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/mappe-2/front-verso","profile":"level0","type":"ImageService2"}],"type":"Image","width":4995}],"label": {
+          "de": [
+            "Mappe"
+          ],
+                "de": [
+                  "Mappe"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-14/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":419,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-14/front_hu_a9fdc41a42bf7bf8.jpg","type":"Image","width":300},{"format":"image/jpeg","height":17553,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-14/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-14/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12562}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-13/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":160,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-13/front_hu_e613442b51489089.jpg","type":"Image","width":300},{"format":"image/jpeg","height":6766,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-13/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-13/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12655}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-12/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":164,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-12/front_hu_cbe20a360f062d35.jpg","type":"Image","width":300},{"format":"image/jpeg","height":6889,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-12/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-12/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12600}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-11/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":162,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-11/front_hu_f9fe14d7a4622b5c.jpg","type":"Image","width":300},{"format":"image/jpeg","height":6773,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-11/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-11/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12567}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-10/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":163,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-10/front_hu_582b7f8e61361c9a.jpg","type":"Image","width":300},{"format":"image/jpeg","height":6714,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-10/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-10/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12381}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-9/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":159,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-9/front_hu_602f8845d5587de2.jpg","type":"Image","width":300},{"format":"image/jpeg","height":6696,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-9/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-9/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12621}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-8/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":147,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-8/front_hu_969387f34d6d7e6b.jpg","type":"Image","width":300},{"format":"image/jpeg","height":6108,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-8/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-8/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12483}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-7/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":165,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-7/front_hu_128ea8ffed406e34.jpg","type":"Image","width":300},{"format":"image/jpeg","height":6859,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-7/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-7/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":12453}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/album-1/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":444,"id":"https://vorsatzpapier.projektemacher.org/post/album-1/front-recto_hu_7aa3741c0e914544.jpg","type":"Image","width":300},{"format":"image/jpeg","height":4629,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/album-1/front-recto/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/album-1/front-recto","profile":"level0","type":"ImageService2"}],"type":"Image","width":3127}],"label": {
+          "de": [
+            "album"
+          ],
+                "de": [
+                  "Album"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/also-sprach-zarathustra/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":435,"id":"https://vorsatzpapier.projektemacher.org/post/also-sprach-zarathustra/end-verso_hu_f06aa2fb871d0740.jpg","type":"Image","width":300},{"format":"image/jpeg","height":3600,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/also-sprach-zarathustra/end-verso/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/also-sprach-zarathustra/end-verso","profile":"level0","type":"ImageService2"}],"type":"Image","width":2482}],"label": {
+          "de": [
+            "Also sprach Zarathustra"
+          ],
+                "de": [
+                  "Also sprach Zarathustra"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/das-praktische-frauenbuch/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":473,"id":"https://vorsatzpapier.projektemacher.org/post/das-praktische-frauenbuch/front-verso_hu_76d37b6e90b2e80d.jpg","type":"Image","width":300},{"format":"image/jpeg","height":5111,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/das-praktische-frauenbuch/front-verso/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/das-praktische-frauenbuch/front-verso","profile":"level0","type":"ImageService2"}],"type":"Image","width":3245}],"label": {
+          "de": [
+            "Das praktische Frauenbuch"
+          ],
+                "de": [
+                  "Das praktische Frauenbuch"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/fuer-junge-muetter/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":451,"id":"https://vorsatzpapier.projektemacher.org/post/fuer-junge-muetter/front-verso_hu_9a483b51edb31a83.jpg","type":"Image","width":300},{"format":"image/jpeg","height":5000,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/fuer-junge-muetter/front-verso/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/fuer-junge-muetter/front-verso","profile":"level0","type":"ImageService2"}],"type":"Image","width":3326}],"label": {
+          "de": [
+            "Für junge Mütter"
+          ],
+                "de": [
+                  "Für junge Mütter"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/mappe-1/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":245,"id":"https://vorsatzpapier.projektemacher.org/post/mappe-1/front-verso_hu_7e3466b1f4716fd1.jpg","type":"Image","width":300},{"format":"image/jpeg","height":5357,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/mappe-1/front-verso/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/mappe-1/front-verso","profile":"level0","type":"ImageService2"}],"type":"Image","width":6561}],"label": {
+          "de": [
+            "Mappe"
+          ],
+                "de": [
+                  "Mappe"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/der-jungfrau-leben/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":439,"id":"https://vorsatzpapier.projektemacher.org/post/der-jungfrau-leben/front-verso_hu_5c75c91adb91eea9.jpg","type":"Image","width":300},{"format":"image/jpeg","height":4145,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/der-jungfrau-leben/front-verso/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/der-jungfrau-leben/front-verso","profile":"level0","type":"ImageService2"}],"type":"Image","width":2833}],"label": {
+          "de": [
+            "Der Jungfrau Leben im Lichte von Zeit und Ewigkeit"
+          ],
+                "de": [
+                  "Der Jungfrau Leben im Lichte von Zeit und Ewigkeit"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-6/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":438,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-6/front_hu_f7ab8bf86e146fdd.jpg","type":"Image","width":300},{"format":"image/jpeg","height":9908,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-6/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-6/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":6787}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/universalbuch-der-reden-und-toaste-1/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":442,"id":"https://vorsatzpapier.projektemacher.org/post/universalbuch-der-reden-und-toaste-1/end-recto_hu_26a2b049c9d43180.jpg","type":"Image","width":300},{"format":"image/jpeg","height":4054,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/universalbuch-der-reden-und-toaste-1/end-recto/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/universalbuch-der-reden-und-toaste-1/end-recto","profile":"level0","type":"ImageService2"}],"type":"Image","width":2750}],"label": {
+          "de": [
+            "Universalbuch der Reden und Toaste"
+          ],
+                "de": [
+                  "Universalbuch der Reden und Toaste"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/100-schnurrpfeifereien-2/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":426,"id":"https://vorsatzpapier.projektemacher.org/post/100-schnurrpfeifereien-2/end-verso_hu_ec2ec3effe6b1a07.jpg","type":"Image","width":300},{"format":"image/jpeg","height":4738,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/100-schnurrpfeifereien-2/end-verso/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/100-schnurrpfeifereien-2/end-verso","profile":"level0","type":"ImageService2"}],"type":"Image","width":3338}],"label": {
+          "de": [
+            "Hundert Schnurrpfeifereinen"
+          ],
+                "de": [
+                  "Hundert Schnurrpfeifereinen"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/die-kunst-25/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":442,"id":"https://vorsatzpapier.projektemacher.org/post/die-kunst-25/end-verso_hu_3b1636e8ab739e24.jpg","type":"Image","width":300},{"format":"image/jpeg","height":6593,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/die-kunst-25/end-verso/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/die-kunst-25/end-verso","profile":"level0","type":"ImageService2"}],"type":"Image","width":4472}],"label": {
+          "de": [
+            "Die Kunst"
+          ],
+                "de": [
+                  "Die Kunst"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/kassel-wilhelmshoehe/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":415,"id":"https://vorsatzpapier.projektemacher.org/post/kassel-wilhelmshoehe/end-recto_hu_2a4993ad4613188a.jpg","type":"Image","width":300},{"format":"image/jpeg","height":5368,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/kassel-wilhelmshoehe/end-recto/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/kassel-wilhelmshoehe/end-recto","profile":"level0","type":"ImageService2"}],"type":"Image","width":3880}],"label": {
+          "de": [
+            "Kassel und Wilhelmshöhe."
+          ],
+                "de": [
+                  "Kassel und Wilhelmshöhe."
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/100-schnurrpfeifereien-1/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":426,"id":"https://vorsatzpapier.projektemacher.org/post/100-schnurrpfeifereien-1/end-verso_hu_484d920113dc6a84.jpg","type":"Image","width":300},{"format":"image/jpeg","height":4749,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/100-schnurrpfeifereien-1/end-verso/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/100-schnurrpfeifereien-1/end-verso","profile":"level0","type":"ImageService2"}],"type":"Image","width":3341}],"label": {
+          "de": [
+            "Hundert Schnurrpfeifereinen"
+          ],
+                "de": [
+                  "Hundert Schnurrpfeifereinen"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/die-kaiserstadt-berlin/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":190,"id":"https://vorsatzpapier.projektemacher.org/post/die-kaiserstadt-berlin/end-verso_hu_740606e486fefd80.jpg","type":"Image","width":300},{"format":"image/jpeg","height":3416,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/die-kaiserstadt-berlin/end-verso/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/die-kaiserstadt-berlin/end-verso","profile":"level0","type":"ImageService2"}],"type":"Image","width":5389}],"label": {
+          "de": [
+            "Die Kaiserstadt Berlin"
+          ],
+                "de": [
+                  "Die Kaiserstadt Berlin"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/vieilles-chansons-et-rondes/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":254,"id":"https://vorsatzpapier.projektemacher.org/post/vieilles-chansons-et-rondes/back_hu_4459465dfd82a2a2.jpg","type":"Image","width":300},{"format":"image/jpeg","height":5437,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/vieilles-chansons-et-rondes/back/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/vieilles-chansons-et-rondes/back","profile":"level0","type":"ImageService2"}],"type":"Image","width":6428}],"label": {
+          "de": [
+            "Vielles chansons pour les petits enfants"
+          ],
+                "de": [
+                  "Vielles chansons pour les petits enfants"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/universalbuch-der-reden-und-toaste-2/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":441,"id":"https://vorsatzpapier.projektemacher.org/post/universalbuch-der-reden-und-toaste-2/end-recto_hu_79268573a91382d1.jpg","type":"Image","width":300},{"format":"image/jpeg","height":3982,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/universalbuch-der-reden-und-toaste-2/end-recto/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/universalbuch-der-reden-und-toaste-2/end-recto","profile":"level0","type":"ImageService2"}],"type":"Image","width":2707}],"label": {
+          "de": [
+            "Universalbuch der Reden und Toaste"
+          ],
+                "de": [
+                  "Universalbuch der Reden und Toaste"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-5/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":437,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-5/front_hu_1665eed2b358d6e6.jpg","type":"Image","width":300},{"format":"image/jpeg","height":10174,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-5/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-5/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":6989}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-4/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":441,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-4/front_hu_52b023a097e39146.jpg","type":"Image","width":300},{"format":"image/jpeg","height":10089,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-4/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-4/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":6859}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-3/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":451,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-3/front_hu_305cb6418bf1b8f3.jpg","type":"Image","width":300},{"format":"image/jpeg","height":10083,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-3/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-3/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":6712}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapeten-ihre-geschichte-bis-zur-gegenwart/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":430,"id":"https://vorsatzpapier.projektemacher.org/post/tapeten-ihre-geschichte-bis-zur-gegenwart/page346_hu_7d78a6308bb11aab.jpg","type":"Image","width":300},{"format":"image/jpeg","height":6963,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapeten-ihre-geschichte-bis-zur-gegenwart/page346/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapeten-ihre-geschichte-bis-zur-gegenwart/page346","profile":"level0","type":"ImageService2"}],"type":"Image","width":4861}],"label": {
+          "de": [
+            "Tapeten: Ihre Geschichte bis zur Gegenwart 3 - Technik und wirtschaftliche Bedeutung"
+          ],
+                "de": [
+                  "Tapeten: Ihre Geschichte bis zur Gegenwart 3 - Technik und wirtschaftliche Bedeutung"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-1/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":212,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-1/front_hu_1eddb14aeb2ea7c2.jpg","type":"Image","width":300},{"format":"image/jpeg","height":6945,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-1/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-1/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":9847}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapete-2/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":181,"id":"https://vorsatzpapier.projektemacher.org/post/tapete-2/front_hu_2638cc4f7033c4fa.jpg","type":"Image","width":300},{"format":"image/jpeg","height":6068,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-2/front/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapete-2/front","profile":"level0","type":"ImageService2"}],"type":"Image","width":10065}],"label": {
+          "de": [
+            "Wallpaper"
+          ],
+                "de": [
+                  "Tapete"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/der-grosse-brand-und-wiederaufbau-von-hamburg/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":434,"id":"https://vorsatzpapier.projektemacher.org/post/der-grosse-brand-und-wiederaufbau-von-hamburg/end-verso_hu_579fbe2656d85d73.jpg","type":"Image","width":300},{"format":"image/jpeg","height":5732,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/der-grosse-brand-und-wiederaufbau-von-hamburg/end-verso/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/der-grosse-brand-und-wiederaufbau-von-hamburg/end-verso","profile":"level0","type":"ImageService2"}],"type":"Image","width":3962}],"label": {
+          "de": [
+            "Der grosse Brand und Wiederaufbau von Hamburg"
+          ],
+                "de": [
+                  "Der grosse Brand und Wiederaufbau von Hamburg"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/die-heilige-insel/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":384,"id":"https://vorsatzpapier.projektemacher.org/post/die-heilige-insel/front-verso_hu_c33c3053b75077dc.jpg","type":"Image","width":300},{"format":"image/jpeg","height":4854,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/die-heilige-insel/front-verso/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/die-heilige-insel/front-verso","profile":"level0","type":"ImageService2"}],"type":"Image","width":3792}],"label": {
+          "de": [
+            "Die Heilige Insel"
+          ],
+                "de": [
+                  "Die Heilige Insel"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/niedersachsens-sagenborn/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":372,"id":"https://vorsatzpapier.projektemacher.org/post/niedersachsens-sagenborn/end-verso_hu_4e6c0abfec601021.jpg","type":"Image","width":300},{"format":"image/jpeg","height":4693,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/niedersachsens-sagenborn/end-verso/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/niedersachsens-sagenborn/end-verso","profile":"level0","type":"ImageService2"}],"type":"Image","width":3789}],"label": {
+          "de": [
+            "Niedersachsens Sagenborn"
+          ],
+                "de": [
+                  "Niedersachsens Sagenborn"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/souvenir-d-anvers/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":221,"id":"https://vorsatzpapier.projektemacher.org/post/souvenir-d-anvers/end-verso_hu_fdcbe323a941e27.jpg","type":"Image","width":300},{"format":"image/jpeg","height":5516,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/souvenir-d-anvers/end-verso/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/souvenir-d-anvers/end-verso","profile":"level0","type":"ImageService2"}],"type":"Image","width":7474}],"label": {
+          "de": [
+            "Souvenir d'Anvers"
+          ],
+                "de": [
+                  "Souvenir d'Anvers"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/lehr-und-lesebuch-fuer-das-gastwirtschaftliche-gewerbe/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":447,"id":"https://vorsatzpapier.projektemacher.org/post/lehr-und-lesebuch-fuer-das-gastwirtschaftliche-gewerbe/end-verso_hu_7c8aa984bbb39468.jpg","type":"Image","width":300},{"format":"image/jpeg","height":5332,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/lehr-und-lesebuch-fuer-das-gastwirtschaftliche-gewerbe/end-verso/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/lehr-und-lesebuch-fuer-das-gastwirtschaftliche-gewerbe/end-verso","profile":"level0","type":"ImageService2"}],"type":"Image","width":3581}],"label": {
+          "de": [
+            "Lehr- und Lesebuch für das gastwirtschaftliche Gewerbe"
+          ],
+                "de": [
+                  "Lehr- und Lesebuch für das gastwirtschaftliche Gewerbe"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/glueckliche-kinderzeit/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":383,"id":"https://vorsatzpapier.projektemacher.org/post/glueckliche-kinderzeit/end-verso_hu_d26e3dd43bdd64d4.jpg","type":"Image","width":300},{"format":"image/jpeg","height":5792,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/glueckliche-kinderzeit/end-verso/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/glueckliche-kinderzeit/end-verso","profile":"level0","type":"ImageService2"}],"type":"Image","width":4542}],"label": {
+          "de": [
+            "Glückliche Kinderzeit"
+          ],
+                "de": [
+                  "Glückliche Kinderzeit"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/tapetenmuster/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":525,"id":"https://vorsatzpapier.projektemacher.org/post/tapetenmuster/img002_hu_58f86649080c0570.jpg","type":"Image","width":300},{"format":"image/jpeg","height":7732,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapetenmuster/img002/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/tapetenmuster/img002","profile":"level0","type":"ImageService2"}],"type":"Image","width":4418}],"label": {
+          "de": [
+            "Tapetenmuster"
+          ],
+                "de": [
+                  "Tapetenmuster"
+                ]}
+      },{
+        "id": "https://vorsatzpapier.projektemacher.org/post/deutsche-wiegenlieder/manifest.json",
+        "type": "Manifest",
+
+        "thumbnail": [{"format":"image/jpeg","height":329,"id":"https://vorsatzpapier.projektemacher.org/post/deutsche-wiegenlieder/end-verso_hu_1a7dec995373b0ac.jpg","type":"Image","width":300},{"format":"image/jpeg","height":1728,"id":"https://static.projektemacher.org/vorsatzpapier/en/post/deutsche-wiegenlieder/end-verso/full/full/0/default.jpg","service":[{"id":"https://static.projektemacher.org/vorsatzpapier/en/post/deutsche-wiegenlieder/end-verso","profile":"level0","type":"ImageService2"}],"type":"Image","width":1578}],"label": {
+          "de": [
+            "Deutsche Wiegenlieder"
+          ],
+                "de": [
+                  "Deutsche Wiegenlieder"
+                ]}
+      }]
+}

@@ -185,7 +185,7 @@ copyright = '<a href="https://projektemacher.org/" target="_blank">Projektemache
 
 [[cascade]]
   outputs = ['html','rss', 'iiif-collection']
-  [cascade._target]
+  [cascade.target]
     kind = "term"
     path = "/tags/**"
 

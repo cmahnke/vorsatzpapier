@@ -1,5 +1,5 @@
 baseURL = "https://vorsatzpapier.projektemacher.org/"
-languageCode = "de"
+locale= "de"
 title = "Vorsatzpapier"
 theme = ["projektemacher-base", "hugo-nederburg-theme"]
 publishDir = "docs"
@@ -18,7 +18,7 @@ copyright = '<a href="https://projektemacher.org/" target="_blank">Projektemache
 
 [languages]
     [languages.de]
-        languagename = "Deutsch"
+        label = "Deutsch"
 
         [languages.de.params]
 
@@ -57,7 +57,7 @@ copyright = '<a href="https://projektemacher.org/" target="_blank">Projektemache
                 url = "about/"
 
     [languages.en]
-        languagename = "English"
+        label = "English"
 
         [languages.en.params]
 

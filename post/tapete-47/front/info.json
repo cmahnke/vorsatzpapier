@@ -1,0 +1,31 @@
+{
+  "@context": "http://iiif.io/api/image/2/context.json",
+  "@id": "https://static.projektemacher.org/vorsatzpapier/post/tapete-47/front",
+  "profile": [
+    "http://iiif.io/api/image/2/level0.json",
+    {
+      "formats": [
+        "jpg"
+      ],
+      "qualities": [
+        "default"
+      ]
+    }
+  ],
+  "protocol": "http://iiif.io/api/image",
+  "tiles": [
+    {
+      "scaleFactors": [
+        1,
+        2,
+        4,
+        8,
+        16,
+        32
+      ],
+      "width": 512
+    }
+  ],
+  "width": 12542,
+  "height": 18415
+}

@@ -1,6 +1,4 @@
 <meta charset="utf-8">
-{{- partial "schema.html" . -}}
-
 {{ with .Title }} <title>{{ . }} {{if $.IsHome}}- {{ $.Site.Params.slogan | default "" | safeHTML }}{{ end }}</title>
 {{ end }}
 
@@ -30,3 +28,4 @@
   <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title | default "" }}" />
   <link href="{{ .RelPermalink }}" rel="feed" type="application/rss+xml" title="{{ $.Site.Title | default "" }}" />
 {{ end }}
+{- partial "metadata/schema.org/schema.org.html" . -}}

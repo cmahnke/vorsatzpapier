@@ -10,6 +10,7 @@
   description = "Old endpapers and wallpapers"
   wikidata = true
   debug = true
+  schemaPerson = "https://christianmahnke.de/person.jsonld"
 
   [params.preview]
     outputPrefix = "ogPreview"

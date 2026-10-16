@@ -234,6 +234,8 @@ $link-color: #42a5f5 !default;
         margin-top: .6em;
 
         .pdf-download {
+          margin-right: 1rem;
+
             &::after {
                 content: url($pdf-dark);
                 display: inline-block;

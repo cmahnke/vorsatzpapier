@@ -10,281 +10,124 @@ noPreview: true
 iiif:
   manifest: ./manifest.json
   structure:
-    - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/vorwort
-      type: Range
-      label: {de: ["Vorwort zur 5. Auflage"]}
-      items:
-        - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page003}
-    - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/inhaltsverzeichnis
-      type: Range
-      label: {de: ["Inhaltsverzeichnis"]}
-      items:
-        - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page004}
-    - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/womit-es-anfaengt
-      type: Range
-      label: {de: ["Womit es anfängt"]}
-      items:
-        - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page007}
-    - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/gab-es-schon-immer-tapete
-      type: Range
-      label: {de: ["1. Gab es schon immer Tapete?"]}
-      items:
-        - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page009}
-    - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/ueber-den-geschmack-laesst-sich-streiten
-      type: Range
-      label: {de: ["2. Über den Geschmack läßt sich streiten"]}
-      items:
-        - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page012}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/faustregeln-fuer-tapetenwahl
-          type: Range
-          label: {de: ["2.1. Faustregeln für Tapetenwahl"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page012}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/schauwand-ja-oder-nein
-          type: Range
-          label: {de: ["2.2. Schauwand – ja oder nein?"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page016}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/welche-farbe-welche-muster
-          type: Range
-          label: {de: ["2.3. Welche Farbe – welche Muster?"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page018}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/die-verschiedenen-tapetenmuster
-          type: Range
-          label: {de: ["2.4. Die verschiedenen Tapetenmuster"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page021}
-    - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/mit-der-decke-beginnen
-      type: Range
-      label: {de: ["3. Mit der Decke beginnen"]}
-      items:
-        - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page023}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/leimfarbenanstrich-selbst-zubereitet
-          type: Range
-          label: {de: ["3.1. Leimfarbenanstrich, selbst zubereitet"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page024}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/fertig-geleimte-farben
-          type: Range
-          label: {de: ["3.2. Fertig geleimte Farben"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page024}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/latexfarben
-          type: Range
-          label: {de: ["3.3. Latexfarben"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page026}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/das-streichen-lernen-wir-schnell
-          type: Range
-          label: {de: ["3.4. Das Streichen lernen wir schnell"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page027}
-    - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/mit-dem-zollstock-in-der-hand
-      type: Range
-      label: {de: ["4. Mit dem Zollstock in der Hand"]}
-      items:
-        - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page030}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/kein-rechenschieber-notwendig
-          type: Range
-          label: {de: ["4.1. Kein Rechenschieber notwendig"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page030}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/wieviel-tapete-brauchen-wir
-          type: Range
-          label: {de: ["4.2. Wieviel Tapete brauchen wir?"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page031}
-    - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/gut-vorbereitet-ist-halb-vollendet
-      type: Range
-      label: {de: ["5. Gut vorbereitet ist halb vollendet"]}
-      items:
-        - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page032}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/etwas-vom-kleister
-          type: Range
-          label: {de: ["5.1. Etwas vom Kleister"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page032}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/was-noch-gebraucht-wird
-          type: Range
-          label: {de: ["5.2. Was noch gebraucht wird"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page033}
-    - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/rund-um-die-wand
-      type: Range
-      label: {de: ["6. Rund um die Wand"]}
-      items:
-        - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page036}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/auf-feuchten-waenden-haelt-keine-tapete
-          type: Range
-          label: {de: ["6.1. Auf feuchten Wänden hält keine Tapete"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page036}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/decken-und-wandrisse-schliessen
-          type: Range
-          label: {de: ["6.2. Decken- und Wandrisse schließen"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page037}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/der-fleck-muss-vorher-weg
-          type: Range
-          label: {de: ["6.3. Der Fleck muß vorher weg"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page038}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/neue-tapete-nicht-auf-alte-kleben
-          type: Range
-          label: {de: ["6.4. Neue Tapete nicht auf alte kleben"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page040}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/keine-tapete-direkt-auf-holzwaende
-          type: Range
-          label: {de: ["6.5. Keine Tapete direkt auf Holzwände"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page042}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/nicht-auf-alte-leimfarbe-kleben
-          type: Range
-          label: {de: ["6.6. Nicht auf alte Leimfarbe kleben"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page042}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/und-nicht-auf-rauhe-betonwaende
-          type: Range
-          label: {de: ["6.7. …und nicht auf rauhe Betonwände"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page044}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/keine-hindernisse-fuer-tapeten
-          type: Range
-          label: {de: ["6.8. Keine Hindernisse für Tapeten"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page044}
-    - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/plastische-anstriche-und-tapete
-      type: Range
-      label: {de: ["7. Plastische Anstriche und Tapete"]}
-      items:
-        - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page046}
-    - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/vor-beginn
-      type: Range
-      label: {de: ["8. Vor Beginn"]}
-      items:
-        - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page048}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/erst-die-makulatur
-          type: Range
-          label: {de: ["8.1. Erst die Makulatur"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page048}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/auch-spachteln-hilft
-          type: Range
-          label: {de: ["8.2. Auch Spachteln hilft"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page050}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/etwas-vom-schnurschlag
-          type: Range
-          label: {de: ["8.3. Etwas vom Schnurschlag"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page050}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/tapetenabschluss-ja-oder-nein
-          type: Range
-          label: {de: ["8.4. Tapetenabschluß: ja oder nein?"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page052}
-    - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/und-nun-geht-das-tapezieren-los
-      type: Range
-      label: {de: ["9. Und nun geht das Tapezieren los"]}
-      items:
-        - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page055}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/rapport-und-was-dahintersteckt
-          type: Range
-          label: {de: ["9.1. Rapport und was dahintersteckt"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page055}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/das-zuschneiden-der-tapeten
-          type: Range
-          label: {de: ["9.2. Das Zuschneiden der Tapeten"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page057}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/das-einkleistern
-          type: Range
-          label: {de: ["9.3. Das Einkleistern"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page058}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/selfkante-beschneiden
-          type: Range
-          label: {de: ["9.4. Selfkante beschneiden"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page058}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/einweichen
-          type: Range
-          label: {de: ["9.5. Einweichen"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page060}
-    - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/das-ankleben-der-tapeten
-      type: Range
-      label: {de: ["10. Das Ankleben der Tapeten"]}
-      items:
-        - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page063}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/wo-beginnen
-          type: Range
-          label: {de: ["10.1. Wo beginnen?"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page063}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/etwas-vom-schnurlot
-          type: Range
-          label: {de: ["10.2. Etwas vom Schnurlot"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page063}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/tapete-richtig-anfassen
-          type: Range
-          label: {de: ["10.3. Tapete richtig anfassen"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page064}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/immer-schoen-andruecken
-          type: Range
-          label: {de: ["10.4. Immer schön andrücken"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page066}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/jetzt-kommt-die-fussleiste
-          type: Range
-          label: {de: ["10.5. Jetzt kommt die Fußleiste"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page067}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/weitere-hindernisse
-          type: Range
-          label: {de: ["10.6. Weitere Hindernisse"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page068}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/lichtleitungen-und-schalter
-          type: Range
-          label: {de: ["10.7. Lichtleitungen und Schalter"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page069}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/an-fenstern-und-tueren
-          type: Range
-          label: {de: ["10.8. An Fenstern und Türen"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page070}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/ueber-das-tapezieren-der-decke
-          type: Range
-          label: {de: ["10.9. Über das Tapezieren der Decke"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page071}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/tapezieren-einmal-anders-herum
-          type: Range
-          label: {de: ["10.10. Tapezieren – einmal anders herum"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page072}
-        - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/tapete-ueberstreichen
-          type: Range
-          label: {de: ["10.11. Tapete überstreichen"]}
-          items:
-            - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page073}
-    - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/fehler-ihre-ursachen-und-beseitigung
-      type: Range
-      label: {de: ["11. Fehler, ihre Ursachen und Beseitigung"]}
-      items:
-        - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page074}
-    - id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/range/verarbeiten-von-plastfolie
-      type: Range
-      label: {de: ["12. Verarbeiten von Plastfolie"]}
-      items:
-        - {type: Canvas, id: https://static.projektemacher.org/vorsatzpapier/post/1x1-des-tapezierens/canvas/page079}
+  - label: {de: [Vorwort zur 5. Auflage]}
+    page: page003
+  - label: {de: [Inhaltsverzeichnis]}
+    page: page004
+  - label: {de: [Womit es anfängt]}
+    page: page007
+  - label: {de: ['1. Gab es schon immer Tapete?']}
+    page: page009
+  - label: {de: [2. Über den Geschmack läßt sich streiten]}
+    page: page012
+    items:
+    - label: {de: [2.1. Faustregeln für Tapetenwahl]}
+      page: page012
+    - label: {de: ['2.2. Schauwand – ja oder nein?']}
+      page: page016
+    - label: {de: ['2.3. Welche Farbe – welche Muster?']}
+      page: page018
+    - label: {de: [2.4. Die verschiedenen Tapetenmuster]}
+      page: page021
+  - label: {de: [3. Mit der Decke beginnen]}
+    page: page023
+    items:
+    - label: {de: ['3.1. Leimfarbenanstrich, selbst zubereitet']}
+      page: page024
+    - label: {de: [3.2. Fertig geleimte Farben]}
+      page: page024
+    - label: {de: [3.3. Latexfarben]}
+      page: page026
+    - label: {de: [3.4. Das Streichen lernen wir schnell]}
+      page: page027
+  - label: {de: [4. Mit dem Zollstock in der Hand]}
+    page: page030
+    items:
+    - label: {de: [4.1. Kein Rechenschieber notwendig]}
+      page: page030
+    - label: {de: ['4.2. Wieviel Tapete brauchen wir?']}
+      page: page031
+  - label: {de: [5. Gut vorbereitet ist halb vollendet]}
+    page: page032
+    items:
+    - label: {de: [5.1. Etwas vom Kleister]}
+      page: page032
+    - label: {de: [5.2. Was noch gebraucht wird]}
+      page: page033
+  - label: {de: [6. Rund um die Wand]}
+    page: page036
+    items:
+    - label: {de: [6.1. Auf feuchten Wänden hält keine Tapete]}
+      page: page036
+    - label: {de: [6.2. Decken- und Wandrisse schließen]}
+      page: page037
+    - label: {de: [6.3. Der Fleck muß vorher weg]}
+      page: page038
+    - label: {de: [6.4. Neue Tapete nicht auf alte kleben]}
+      page: page040
+    - label: {de: [6.5. Keine Tapete direkt auf Holzwände]}
+      page: page042
+    - label: {de: [6.6. Nicht auf alte Leimfarbe kleben]}
+      page: page042
+    - label: {de: [6.7. …und nicht auf rauhe Betonwände]}
+      page: page044
+    - label: {de: [6.8. Keine Hindernisse für Tapeten]}
+      page: page044
+  - label: {de: [7. Plastische Anstriche und Tapete]}
+    page: page046
+  - label: {de: [8. Vor Beginn]}
+    page: page048
+    items:
+    - label: {de: [8.1. Erst die Makulatur]}
+      page: page048
+    - label: {de: [8.2. Auch Spachteln hilft]}
+      page: page050
+    - label: {de: [8.3. Etwas vom Schnurschlag]}
+      page: page050
+    - label: {de: ['8.4. Tapetenabschluß: ja oder nein?']}
+      page: page052
+  - label: {de: [9. Und nun geht das Tapezieren los]}
+    page: page055
+    items:
+    - label: {de: [9.1. Rapport und was dahintersteckt]}
+      page: page055
+    - label: {de: [9.2. Das Zuschneiden der Tapeten]}
+      page: page057
+    - label: {de: [9.3. Das Einkleistern]}
+      page: page058
+    - label: {de: [9.4. Selfkante beschneiden]}
+      page: page058
+    - label: {de: [9.5. Einweichen]}
+      page: page060
+  - label: {de: [10. Das Ankleben der Tapeten]}
+    page: page063
+    items:
+    - label: {de: ['10.1. Wo beginnen?']}
+      page: page063
+    - label: {de: [10.2. Etwas vom Schnurlot]}
+      page: page063
+    - label: {de: [10.3. Tapete richtig anfassen]}
+      page: page064
+    - label: {de: [10.4. Immer schön andrücken]}
+      page: page066
+    - label: {de: [10.5. Jetzt kommt die Fußleiste]}
+      page: page067
+    - label: {de: [10.6. Weitere Hindernisse]}
+      page: page068
+    - label: {de: [10.7. Lichtleitungen und Schalter]}
+      page: page069
+    - label: {de: [10.8. An Fenstern und Türen]}
+      page: page070
+    - label: {de: [10.9. Über das Tapezieren der Decke]}
+      page: page071
+    - label: {de: [10.10. Tapezieren – einmal anders herum]}
+      page: page072
+    - label: {de: [10.11. Tapete überstreichen]}
+      page: page073
+  - label: {de: ['11. Fehler, ihre Ursachen und Beseitigung']}
+    page: page074
+  - label: {de: [12. Verarbeiten von Plastfolie]}
+    page: page079
 outputs:
   - iiif-manifest
   - html

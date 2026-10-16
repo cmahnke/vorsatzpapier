@@ -67,6 +67,10 @@ jobs:
           echo "Running as ${UID}"
           docker run -e CHOWN_UID=${UID} -e URL_PREFIX="https://static.projektemacher.org/vorsatzpapier/" -v ${PWD}:${PWD} ghcr.io/cmahnke/iiif-action:latest-jxl-uploader sh -c "cd ${PWD} && ./scripts/iiif.sh"
 
+      - name: Create PDF
+        run: |
+          python themes/projektemacher-base/scripts/pdf.py --post content/post/1x1-des-tapezierens
+
       - name: IIIF directory upload and cleanup
         env:
           DEPLOY_SERVER: ${{ secrets.DEPLOY_SERVER }}
@@ -76,17 +80,20 @@ jobs:
         run: |
           cd content
           find post -name info.json -exec dirname {} \; > files.lst
+          find post -name "*.pdf" -exec echo "{}" \; >> files.lst
           cat files.lst | xargs chmod 775
           sshpass -e rsync -rlptoDi --size-only --delete --relative $(cat files.lst) $DEPLOY_USER@$DEPLOY_SERVER:$DEPLOY_PATH/vorsatzpapier/
           rm -f files.lst
           cd ..
           find content/post/ -name info.json -exec dirname {} \; | xargs -I {} find {} -mindepth 1 -type d -not -path '*/full*' | xargs rm -fr
+          find content/post/ -name '*.pdf' -exec rm -r {} \;
           #find content/post/ -name info.json -exec dirname {} \; | xargs rm -r
           #find content/post/ -name info.json -exec dirname {} \; | xargs -I{} find {} ! -ipath full/full/0/default.jpg | xargs rm -r
 
       - name: Generate Files
         env:
           SKIP_IIIF: yes
+          SKIP_PDF: yes
         run: |
           ./scripts/setup.sh
 

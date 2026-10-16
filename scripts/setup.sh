@@ -14,6 +14,11 @@ if [ -z "$SKIP_IIIF" ] ; then
     ./scripts/iiif.sh
 fi
 
+echo "Set SKIP_PDF to something to disable PDF generation"
+if [ -z "$SKIP_PDF" ] ; then
+    python themes/projektemacher-base/scripts/pdf.py --post content/post/1x1-des-tapezierens
+fi
+
 rm -f 'themes/projektemacher-base/patches/mirador+3.0.0.patch'
 
 echo "Calling theme scripts"

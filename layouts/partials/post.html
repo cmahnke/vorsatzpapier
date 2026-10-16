@@ -37,6 +37,9 @@
                   {{- partial "iiif/iiif-presentation.html" . -}}
                 {{- end -}}
               </div>
+              {{- if hasPrefix .Params.iiifcontext "http://iiif.io/api/presentation/" -}}
+                {{- partial "iiif/iiif-presentation-pdf.html" . -}}
+              {{- end -}}
 
               <article>
                 <div class="content">

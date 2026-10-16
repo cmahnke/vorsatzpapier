@@ -4,6 +4,7 @@ date: 2020-11-08T9:52:28+02:00
 iiifcontext: http://iiif.io/api/presentation/3/context.json
 view: book
 itemType: book
+description: 'Das Buch "1x1 des Tapezierens - Versuch''s mal selber" von Georg Waterstradt, 5. Auflage erschienen 1973 im Verlag für Bauwesen, Berlin.'
 cc: false
 noPreview: true
 iiif:

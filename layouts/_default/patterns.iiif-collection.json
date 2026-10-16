@@ -16,13 +16,10 @@
   {{- if not (isset .Params "outputs") -}}
     {{- continue -}}
   {{- else if reflect.IsSlice .Params.outputs -}}
-    {{- if or (in .Params.outputs "iiif") (in .Params.outputs "iiif-manifest") -}}
+    {{- if in .Params.outputs "iiif-manifest" -}}
       {{ $iiif = $iiif | append $page }}
     {{- end -}}
     {{ range .OutputFormats -}}
-      {{- if eq .Name "iiif" -}}
-        {{ $iiif = $iiif | append $page }}
-      {{- end -}}
       {{- if eq .Name "iiif-manifest" -}}
         {{ $iiif = $iiif | append $page }}
       {{- end -}}
@@ -55,7 +52,7 @@
   },
   "items": [
     {{- range $i, $item := $iiif -}}
-      {{- with $item.Params.iiifManifest -}}
+      {{- with or $item.Params.iiif.manifest $item.Params.iiifManifest -}}
         {{- $manifest = path.Base . -}}
       {{- end -}}
       {

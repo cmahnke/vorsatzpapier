@@ -131,13 +131,6 @@ copyright = '<a href="https://projektemacher.org/" target="_blank">Projektemache
     suffixes = ["jxl"]
 
 [outputFormats]
-  [outputFormats.iiif]
-    mediaType = "application/ld+json"
-    isPlainText = true
-    isHTML = false
-    baseName = "manifest"
-    notAlternative = true
-
   [outputFormats.iiif-manifest]
     mediaType = "application/ld+json"
     isPlainText = true

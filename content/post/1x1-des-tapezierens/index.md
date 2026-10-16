@@ -1,12 +1,13 @@
 ---
 title: 1x1 des Tapezierens - Versuch's mal selber
 date: 2020-11-08T9:52:28+02:00
-iiifContext: http://iiif.io/api/presentation/2/context.json
+iiifcontext: http://iiif.io/api/presentation/3/context.json
 view: book
 itemType: book
 cc: false
 noPreview: true
-iiifManifest: ./manifest.json
+iiif:
+  manifest: ./manifest.json
 outputs:
   - iiif-manifest
   - html

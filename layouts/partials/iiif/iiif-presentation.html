@@ -9,7 +9,8 @@
 {{/*
 {{- if or $isServer (not (isset .Site.Params "productioniiifurlprefix")) -}}
 */}}
-    {{- $manifestUrl = printf "%s/%s/%s" .Site.BaseURL $contextPath (replaceRE "^\\./(.*)$" "$1" .Params.iiifManifest) -}}
+    {{- $manifest := or .Params.iiif.manifest .Params.iiifManifest -}}
+    {{- $manifestUrl = printf "%s/%s/%s" .Site.BaseURL $contextPath (replaceRE "^\\./(.*)$" "$1" $manifest) -}}
 {{/*
 {{- else -}}
     {{- $manifestUrl = printf "%s%s/%s" .Site.Params.productionIIIFURLPrefix $contextPath (replaceRE "^\\./(.*)$" "$1" .Params.iiifManifest) -}}

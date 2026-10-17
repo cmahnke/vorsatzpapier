@@ -2,6 +2,7 @@ packages:
   - .
 allowBuilds:
   canvas: true
+  gl: true
   protobufjs: true
   puppeteer: true
   sharp: true

@@ -7,7 +7,7 @@ itemType: book
 outputs:
   - iiif-manifest
   - html
-itemDescription: 'Dieses Vorsatzpapier stamt aus dem Buch "Lehr- und Lesebuch für das gastwirtschaftliche Gewerbe" von Otto Hartmann, selbstverlegt 1895 in Berlin. <a class="worldcat" href="http://www.worldcat.org/oclc/250697635">&nbsp;</a>'
+itemDescription: 'Dieses Vorsatzpapier stamt aus dem Buch "Lehr- und Lesebuch für das gastwirtschaftliche Gewerbe" von Otto Hartmann, selbstverlegt 1895 in Berlin. <a class="worldcat" href="http://www.worldcat.org/oclc/250697635"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - Book
 - bookEndPaper

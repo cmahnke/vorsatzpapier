@@ -7,7 +7,7 @@ outputs:
   - iiif-manifest
   - html
 itemType: book
-itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Turquie", herausgegeben um 1950 vom Direction Générale de la Presse, de la Radiodiffusion et du Tourisme de Turquie in Ankara. <a class="worldcat" href="http://www.worldcat.org/oclc/62137467">&nbsp;</a>'
+itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Turquie", herausgegeben um 1950 vom Direction Générale de la Presse, de la Radiodiffusion et du Tourisme de Turquie in Ankara. <a class="worldcat" href="http://www.worldcat.org/oclc/62137467"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - Book
 - bookEndPaper

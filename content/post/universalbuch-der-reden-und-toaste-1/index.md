@@ -7,7 +7,7 @@ itemType: book
 outputs:
   - iiif-manifest
   - html
-itemDescription: 'Dieses Vorsatzpapier stammt aus dem dem Buch "Universalbuch der Reden und Toaste" von Justinus Abel, Auflage unbekannt, erschienen ca. 1890 bei Levy & Müller, Stuttgart. <a class="worldcat" href="http://www.worldcat.org/oclc/1072729133">&nbsp;</a>'
+itemDescription: 'Dieses Vorsatzpapier stammt aus dem dem Buch "Universalbuch der Reden und Toaste" von Justinus Abel, Auflage unbekannt, erschienen ca. 1890 bei Levy & Müller, Stuttgart. <a class="worldcat" href="http://www.worldcat.org/oclc/1072729133"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - Book
 - bookEndPaper

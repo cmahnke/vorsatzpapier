@@ -16,7 +16,7 @@
     <body class="home blog ct-body standard {{ $class }}">
 {{ end }}
   <div id="overflow-container" class="overflow-container">
-    <a class="skip-content" href="#main">Skip to content</a>
+    <a class="skip-content" href="#main">{{ i18n "skipToContent" }}</a>
     <header id="site-header" class="site-header" role="banner">
       <div class='top-navigation'>
         {{ partial "topnavigation.html" . }}
@@ -27,11 +27,11 @@
       </div>
     </header>
 
-    <div id="main" class="main" role="main">
+    <main id="main" class="main">
 
       {{ block "main" . }}
       {{ end }}
-    </div>
+    </main>
 
     {{ partial "footer.html" . }}
   </div>

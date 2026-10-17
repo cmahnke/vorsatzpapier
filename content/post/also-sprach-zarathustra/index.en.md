@@ -10,7 +10,7 @@ outputs:
   - iiif-manifest
   - html
 itemType: book
-itemDescription: 'This endpaper is taken from the book "Also sprach Zarathustra: ein Buch für Alle und Keinen" by Friedrich Nietzsche, published 1900 by C. G. Naumann, Leipzig. <a class="worldcat" href="http://www.worldcat.org/oclc/864264525">&nbsp;</a>'
+itemDescription: 'This endpaper is taken from the book "Also sprach Zarathustra: ein Buch für Alle und Keinen" by Friedrich Nietzsche, published 1900 by C. G. Naumann, Leipzig. <a class="worldcat" href="http://www.worldcat.org/oclc/864264525"><span class="screen-reader-text">WorldCat</span></a>'
 resources:
 - src: "front.jpg"
   name: front

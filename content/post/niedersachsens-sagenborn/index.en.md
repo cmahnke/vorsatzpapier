@@ -7,7 +7,7 @@ outputs:
   - iiif-manifest
   - html
 itemType: book
-itemDescription: 'This endpaper is taken from the book "Niedersachsens Sagenborn" by Karl Henniger, published 1907 by August Lax, Hildesheim. <a class="worldcat" href="http://www.worldcat.org/oclc/903072932">&nbsp;</a>'
+itemDescription: 'This endpaper is taken from the book "Niedersachsens Sagenborn" by Karl Henniger, published 1907 by August Lax, Hildesheim. <a class="worldcat" href="http://www.worldcat.org/oclc/903072932"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - Book
 - bookEndPaper

@@ -7,7 +7,7 @@ outputs:
   - iiif-manifest
   - html
 itemType: book
-itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Niedersachsens Sagenborn" von Karl Henniger, erschienen 1907 im Verlag August Lax, Hildesheim. <a class="worldcat" href="http://www.worldcat.org/oclc/903072932">&nbsp;</a>'
+itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Niedersachsens Sagenborn" von Karl Henniger, erschienen 1907 im Verlag August Lax, Hildesheim. <a class="worldcat" href="http://www.worldcat.org/oclc/903072932"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - Book
 - bookEndPaper

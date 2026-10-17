@@ -10,7 +10,7 @@ outputs:
   - iiif-manifest
   - html
 itemType: book
-itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Hundert Schnurrpfeifereinen" von Sophus Tromholt, 13. Auflage, erschienen 1906 bei Reclam, Leipzig. <a class="worldcat" href="http://www.worldcat.org/oclc/255740370">&nbsp;</a>'
+itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Hundert Schnurrpfeifereinen" von Sophus Tromholt, 13. Auflage, erschienen 1906 bei Reclam, Leipzig. <a class="worldcat" href="http://www.worldcat.org/oclc/255740370"><span class="screen-reader-text">WorldCat</span></a>'
 resources:
 - src: "front.jpg"
   name: front
@@ -33,4 +33,4 @@ resources:
     class: order-2
 ---
 
-Wieder ein Buch aus der eigenen Sammlung.<!--more--> Die 14. Auflage war [hier](/post/100-schnurrpfeifereien-1) bereits zusehen. Diesmal kann auch [das ganze Buch](https://xn--kinderbcher-zhb.projektemacher.org/post/100-schnurrpfeifereien-1) betrachtet werden.
+Wieder ein Buch aus der eigenen Sammlung.<!--more--> Die 14. Auflage war in [100 Schnurrpfeifereien 1](/post/100-schnurrpfeifereien-1) bereits zusehen. Diesmal kann auch [das ganze Buch](https://xn--kinderbcher-zhb.projektemacher.org/post/100-schnurrpfeifereien-1) betrachtet werden.

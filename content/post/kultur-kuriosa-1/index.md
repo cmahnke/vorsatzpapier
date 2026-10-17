@@ -10,7 +10,7 @@ itemType: book
 outputs:
   - iiif-manifest
   - html
-itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Kultur-Kuriosa", erster Band von Max Kemmerich, erschienen 1910 bei Albert Langen, München. <a class="worldcat" href="http://www.worldcat.org/oclc/923684466">&nbsp;</a>'
+itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Kultur-Kuriosa", erster Band von Max Kemmerich, erschienen 1910 bei Albert Langen, München. <a class="worldcat" href="http://www.worldcat.org/oclc/923684466"><span class="screen-reader-text">WorldCat</span></a>'
 resources:
 - src: "front.jpg"
   name: front

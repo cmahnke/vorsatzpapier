@@ -13,9 +13,9 @@ Tags with less then three occurrences aren't shown.
 
 {{< tags/cloud tag="i18n" >}}
 
-# Colophon
+## Colophon
 
-This page was generated with [Hugo] (https://gohugo.io/).
+This page was generated with [Hugo](https://gohugo.io/).
 
 An adapted version of [Nederburg](https://github.com/appernetic/hugo-nederburg-theme) is used as the theme. [Raleway](https://github.com/impallari/Raleway/) is used as the font.
 
@@ -25,11 +25,11 @@ The post-processing of the digitized images was carried out with [ScanTailor Adv
 
 The site is hosted by [GitHub](https://github.com/).
 
-# Privacy policy
+## Privacy policy
 
-The privacy policy is available [here](/privacy).
+The [privacy policy](/privacy) is available here.
 
-# Contact
+## Contact
 
 "Vorsatzpapier" is a project by **[Christian Mahnke](https://christianmahnke.de/)**.
 

@@ -8,7 +8,7 @@ itemType: book
 outputs:
   - iiif-manifest
   - html
-itemDescription: 'This endpaper is taken from the book "Der flammende Baum" by Frida Schanz,published 1916 by Ullstein, Berlin & Wien. <a class="worldcat" href="https://search.worldcat.org/de/title/643697142">&nbsp;</a>'
+itemDescription: 'This endpaper is taken from the book "Der flammende Baum" by Frida Schanz,published 1916 by Ullstein, Berlin & Wien. <a class="worldcat" href="https://search.worldcat.org/de/title/643697142"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - bookEndPaper
 - Book

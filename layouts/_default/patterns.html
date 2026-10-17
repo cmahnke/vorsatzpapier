@@ -42,7 +42,7 @@
           {{- if $previewImg -}}
       			{{- $style := printf "background-image: url(%s);" $previewImg.RelPermalink -}}
             {{- $class := "preview" -}}
-            <a class="pattern-link" href="{{ .Permalink }}">
+            <a class="pattern-link" href="{{ .Permalink }}" aria-label="{{ .Title }}">
               {{- with $previewImg -}}
                 <div style="{{ $style | safeCSS }}" class="pattern">
                 </div>

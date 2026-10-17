@@ -7,7 +7,7 @@ itemType: book
 outputs:
   - iiif-manifest
   - html
-itemDescription: 'Dieses Vorsatzpapier ist aus dem Buch "Deutsche Wiegenlieder" von Hans Fraungruber, erschienen ca. 1909 im Verlag Gerlach und Wiedling, Wien und Leipzig, entnommen.  <a class="worldcat" href="http://www.worldcat.org/oclc/256761549">&nbsp;</a>'
+itemDescription: 'Dieses Vorsatzpapier ist aus dem Buch "Deutsche Wiegenlieder" von Hans Fraungruber, erschienen ca. 1909 im Verlag Gerlach und Wiedling, Wien und Leipzig, entnommen.  <a class="worldcat" href="http://www.worldcat.org/oclc/256761549"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - Book
 - bookEndPaper
@@ -36,10 +36,10 @@ Die Digitalisierung dieses Vorsatzpapiers wurde durch eine freundliche Leihgabe 
 <!--more-->
 Es dient als Hintergrund für den [Krähenbeißer](https://krähenbeisser.de).
 
-# Update 25.9.2020
+## Update 25.9.2020
 
 Der Hintergrund des [Krähenbeißers](https://krähenbeisser.de) wurde [aktualisiert](/post/niedersachsens-sagenborn).
 
-# Update 19.11.2020
+## Update 19.11.2020
 
 Das Buch selbst ist nun auf [Kinderbücher](https://xn--kinderbcher-zhb.projektemacher.org/post/deutsche-wiegenlieder/) komplett einzusehen.

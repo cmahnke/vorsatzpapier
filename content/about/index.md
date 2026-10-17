@@ -13,7 +13,7 @@ Tags mit weniger als drei Vorkommen werden hier nicht angezeigt.
 
 {{< tags/cloud tag="i18n" >}}
 
-# Kolophon
+## Kolophon
 
 Diese Seite wurde mit [Hugo](https://gohugo.io/) generiert.
 
@@ -25,11 +25,11 @@ Für die Darstellung der Digitalisate von Einzelbildern wird [OpenLayers](https:
 
 Die Seite wird von [GitHub](https://github.com/) gehosted.
 
-# Datenschutzerklärung
+## Datenschutzerklärung
 
-Die Datenschutzerklärung ist [hier](/privacy) verfügbar.
+Die [Datenschutzerklärung](/privacy) ist hier verfügbar.
 
-# Kontakt
+## Kontakt
 
 "Vorsatzpapier" ist ein Projekt von **[Christian Mahnke](https://christianmahnke.de/)**.
 

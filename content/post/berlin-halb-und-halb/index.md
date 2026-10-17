@@ -10,7 +10,7 @@ outputs:
   - iiif-manifest
   - html
 itemType: book
-itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Berlin halb und halb" von Werner Kruse und Hans Rauschning, erschienen 1959 bei Lothar Blanvalet Verlag, Berlin. <a class="worldcat" href="https://search.worldcat.org/de/title/250786300">&nbsp;</a>'
+itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Berlin halb und halb" von Werner Kruse und Hans Rauschning, erschienen 1959 bei Lothar Blanvalet Verlag, Berlin. <a class="worldcat" href="https://search.worldcat.org/de/title/250786300"><span class="screen-reader-text">WorldCat</span></a>'
 resources:
 - src: "front.jxl"
   name: front

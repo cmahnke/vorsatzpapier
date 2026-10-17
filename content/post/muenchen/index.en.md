@@ -7,7 +7,7 @@ itemType: book
 outputs:
   - iiif-manifest
   - html
-itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "München und Umgebung" erschienen 1904 beim Verlag von Preuss'' Institut Graphik, Berlin und Leipzig. <a class="worldcat" href="http://www.worldcat.org/oclc/633142994">&nbsp;</a>'
+itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "München und Umgebung" erschienen 1904 beim Verlag von Preuss'' Institut Graphik, Berlin und Leipzig. <a class="worldcat" href="http://www.worldcat.org/oclc/633142994"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - Book
 - bookEndPaper

@@ -7,7 +7,7 @@ itemType: book
 outputs:
   - iiif-manifest
   - html
-itemDescription: 'This endpaper is taken from the book "Deutsche Wiegenlieder" by Hans Fraungruber, published around 1909 by Verlag Gerlach and Wiedling, Vienna and Leipzig. <a class="worldcat" href="http://www.worldcat.org/oclc/256761549">&nbsp;</a>'
+itemDescription: 'This endpaper is taken from the book "Deutsche Wiegenlieder" by Hans Fraungruber, published around 1909 by Verlag Gerlach and Wiedling, Vienna and Leipzig. <a class="worldcat" href="http://www.worldcat.org/oclc/256761549"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - Book
 - bookEndPaper
@@ -37,10 +37,10 @@ The digitization of this endpaper was supported by a friendly loan from the [Ant
 <!--more-->
 It serves as a background for the [Krähenbeißer](https://krähenbeisser.de).
 
-# Update 9/25/2020
+## Update 9/25/2020
 
 The background of the [Krähenbeißer](https://krähenbeisser.de) has been [updated](/post/niedersachsens-sagenborn).
 
-# Update 11/19/2020
+## Update 11/19/2020
 
 The book itself is now available on [Kinderbücher](https://xn--kinderbcher-zhb.projektemacher.org/post/deutsche-wiegenlieder/).

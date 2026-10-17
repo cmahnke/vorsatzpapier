@@ -6,7 +6,7 @@ itemType: book
 outputs:
   - iiif-manifest
   - html
-itemDescription: 'Diese Tapete ist aus dem Buch "Tapeten: Ihre Geschichte bis zur Gegenwart 3 - Technik und wirtschaftliche Bedeutung" von Heinrich Olligs, erschienen 1969 bei Klinkhardt & Biermann, Braunschweig. <a class="worldcat" href="http://www.worldcat.org/oclc/73890319">&nbsp;</a>'
+itemDescription: 'Diese Tapete ist aus dem Buch "Tapeten: Ihre Geschichte bis zur Gegenwart 3 - Technik und wirtschaftliche Bedeutung" von Heinrich Olligs, erschienen 1969 bei Klinkhardt & Biermann, Braunschweig. <a class="worldcat" href="http://www.worldcat.org/oclc/73890319"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - Book
 - Wallpaper

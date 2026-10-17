@@ -11,7 +11,7 @@ itemType: book
 outputs:
   - iiif-manifest
   - html
-itemDescription: 'This endpaper is taken from the bound journal "Die Kunst - Monatshefte für freie und angewandte Kunst", 25th volume, 27th year, published 1912 by Bruckmann, Munich. <a class="worldcat" href="http://www.worldcat.org/oclc/442388049">&nbsp;</a>'
+itemDescription: 'This endpaper is taken from the bound journal "Die Kunst - Monatshefte für freie und angewandte Kunst", 25th volume, 27th year, published 1912 by Bruckmann, Munich. <a class="worldcat" href="http://www.worldcat.org/oclc/442388049"><span class="screen-reader-text">WorldCat</span></a>'
 resources:
 - src: "front.jpg"
   name: front

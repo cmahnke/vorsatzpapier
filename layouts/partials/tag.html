@@ -6,7 +6,7 @@
 		{{- end -}}
 		Tag: {{ $title }}
 		{{ if .Site.Params.social.rss }}
-		<a href="{{ .RSSLink }}" data-animate-hover="pulse" class="in-page-rss" target="_blank">
+		<a href="{{ .RSSLink }}" data-animate-hover="pulse" class="in-page-rss" target="_blank" rel="noopener">
       <i class="fas fa-rss" title="rss"></i>
       <span class="screen-reader-text">rss</span>
 		</a>
@@ -14,7 +14,7 @@
 	</h1>
 </div>
 
-<h1 class="screen-reader-text">Posts</h1>
+<h2 class="screen-reader-text">Posts</h2>
 <div id="loop-container" class="loop-container">
 	{{- $pages := "" -}}
 	{{- if gt (len .Pages) 0 -}}
@@ -53,7 +53,7 @@
 			<div style="{{ $style | safeCSS }}" class="{{ $class | safeCSS }} post type-post status-publish format-standard hentry category-standard category-travel excerpt zoom full-without-featured odd excerpt">
 		{{- end -}}
 		{{- if $previewImg -}}
-			<a class="featured-image-link" href="{{ .Permalink }}">
+			<a class="featured-image-link" href="{{ .Permalink }}" aria-label="{{ .Title }}">
 				{{- with $previewImg -}}
 					<div class="featured-image lazy lazy-bg-image" data-background="{{ $previewImg.RelPermalink }}">
 					</div>
@@ -81,7 +81,7 @@
 			<div class='excerpt-content'>
 				<article>
 					{{ .Summary }}
-					<div class="more-link-wrapper"><a class="more-link" href="{{ .Permalink }}">{{ i18n "readPost" }}<span class="screen-reader-text">This is a Standard Post</span></a></div>
+					<div class="more-link-wrapper"><a class="more-link" href="{{ .Permalink }}" aria-label="{{ i18n "readPost" }}: {{ .Title }}">{{ i18n "readPost" }}</a></div>
 				</article>
 			</div>
 		</div>

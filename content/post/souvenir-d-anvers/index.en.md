@@ -7,7 +7,7 @@ itemType: book
 outputs:
   - iiif-manifest
   - html
-itemDescription: 'This endpaper is taken from the book "Souvenir d''Anvers", published around 1900 in Antwerp. <a class="worldcat" href="http://www.worldcat.org/oclc/647827191">&nbsp;</a>'
+itemDescription: 'This endpaper is taken from the book "Souvenir d''Anvers", published around 1900 in Antwerp. <a class="worldcat" href="http://www.worldcat.org/oclc/647827191"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - Book
 - bookEndPaper

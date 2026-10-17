@@ -7,7 +7,7 @@ itemType: book
 outputs:
   - iiif-manifest
   - html
-itemDescription: 'This endpaper is taken from the book "München und Umgebung" published 1904 by Verlag von Preuss'' Institut Graphik, Berlin and Leipzig. <a class="worldcat" href="http://www.worldcat.org/oclc/633142994">&nbsp;</a>'
+itemDescription: 'This endpaper is taken from the book "München und Umgebung" published 1904 by Verlag von Preuss'' Institut Graphik, Berlin and Leipzig. <a class="worldcat" href="http://www.worldcat.org/oclc/633142994"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - Book
 - bookEndPaper

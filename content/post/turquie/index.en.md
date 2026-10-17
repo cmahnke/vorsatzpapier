@@ -7,7 +7,7 @@ outputs:
   - iiif-manifest
   - html
 itemType: book
-itemDescription: 'This endpaper is taken from the book "Turquie", published around 1950 by Direction Générale de la Presse, de la Radiodiffusion et du Tourisme de Turquie in Ankara. <a class="worldcat" href="http://www.worldcat.org/oclc/62137467">&nbsp;</a>'
+itemDescription: 'This endpaper is taken from the book "Turquie", published around 1950 by Direction Générale de la Presse, de la Radiodiffusion et du Tourisme de Turquie in Ankara. <a class="worldcat" href="http://www.worldcat.org/oclc/62137467"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - Book
 - bookEndPaper

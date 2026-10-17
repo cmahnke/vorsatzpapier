@@ -4,7 +4,7 @@
 	         <p class="site-description">{{ . | default "" | safeHTML }}</p>
 	{{ end }}
 
-	<div id="menu-footer" class="menu-container menu-footer" role="navigation">
+	<div id="menu-footer" class="menu-container menu-footer" role="navigation" aria-label="{{ i18n "footerNavigation" }}">
 		<div class="menu">
 
           <ul id="menu-footer-items" class="menu-footer-items">
@@ -22,7 +22,7 @@
         </div>
     </div>
 
-   {{- .Scratch.Set "footer" `<p style="font-size: xx-small;">Based on Nederburg Hugo Theme by <a target="_blank" href="https://appernetic.io">Appernetic</a> - A port of Tracks by Compete Themes.</p>` -}}
+   {{- .Scratch.Set "footer" `<p style="font-size: xx-small;">Based on Nederburg Hugo Theme by <a target="_blank" rel="noopener" href="https://appernetic.io">Appernetic</a> - A port of Tracks by Compete Themes.</p>` -}}
    {{- partialCached "footer-content.html" . -}}
 
 </footer>

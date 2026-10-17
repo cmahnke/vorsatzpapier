@@ -8,7 +8,7 @@ itemType: book
 outputs:
   - iiif-manifest
   - html
-itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Der flammende Baum" von Frida Schanz, erschienen 1916 bei Ullstein, Berlin & Wien. <a class="worldcat" href="https://search.worldcat.org/de/title/643697142">&nbsp;</a>'
+itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Der flammende Baum" von Frida Schanz, erschienen 1916 bei Ullstein, Berlin & Wien. <a class="worldcat" href="https://search.worldcat.org/de/title/643697142"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - bookEndPaper
 - Book

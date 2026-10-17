@@ -10,7 +10,7 @@ outputs:
   - iiif-manifest
   - html
 itemType: book
-itemDescription: 'This endpaper is taken from the book "Das Gastmahl", von Xenophon, translated by Benno von Hagen, published 1911 by Eugen Diedrichs in Jena. <a class="worldcat" href="https://search.worldcat.org/de/title/230724161">&nbsp;</a>'
+itemDescription: 'This endpaper is taken from the book "Das Gastmahl", von Xenophon, translated by Benno von Hagen, published 1911 by Eugen Diedrichs in Jena. <a class="worldcat" href="https://search.worldcat.org/de/title/230724161"><span class="screen-reader-text">WorldCat</span></a>'
 resources:
 - src: "front.jxl"
   name: front

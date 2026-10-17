@@ -10,7 +10,7 @@ outputs:
   - iiif-manifest
   - html
 itemType: book
-itemDescription: 'Dieses Vorsatzpapier stammt aus dem Kalender "Almanach omnibus illustré", Ausgabe für 1899, erschienen ca. 1898 bei Sceaux, Paris. <a class="worldcat" href="http://www.worldcat.org/oclc/472041475">&nbsp;</a>'
+itemDescription: 'Dieses Vorsatzpapier stammt aus dem Kalender "Almanach omnibus illustré", Ausgabe für 1899, erschienen ca. 1898 bei Sceaux, Paris. <a class="worldcat" href="http://www.worldcat.org/oclc/472041475"><span class="screen-reader-text">WorldCat</span></a>'
 resources:
 - src: "front.jpg"
   name: front

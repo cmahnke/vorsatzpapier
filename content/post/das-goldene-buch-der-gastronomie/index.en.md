@@ -11,7 +11,7 @@ outputs:
   - iiif-manifest
   - html
 itemType: book
-itemDescription: 'This endpaper is taken from the book "Das goldene Buch der Gastronomie", by Günther Müller, self-published 1908 in Leipzig. <a class="worldcat" href="http://www.worldcat.org/oclc/1390124628">&nbsp;</a>'
+itemDescription: 'This endpaper is taken from the book "Das goldene Buch der Gastronomie", by Günther Müller, self-published 1908 in Leipzig. <a class="worldcat" href="http://www.worldcat.org/oclc/1390124628"><span class="screen-reader-text">WorldCat</span></a>'
 resources:
 - src: "front.jxl"
   name: front

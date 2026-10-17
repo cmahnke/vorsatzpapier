@@ -10,7 +10,7 @@ itemType: book
 outputs:
   - iiif-manifest
   - html
-itemDescription: 'This endpaper is taken from the book "Das praktische Frauenbuch", by Wilhelm Möller, published 1901 by Wilhelm Möller himself, Berlin. <a class="worldcat" href="http://www.worldcat.org/oclc/249946401">&nbsp;</a>'
+itemDescription: 'This endpaper is taken from the book "Das praktische Frauenbuch", by Wilhelm Möller, published 1901 by Wilhelm Möller himself, Berlin. <a class="worldcat" href="http://www.worldcat.org/oclc/249946401"><span class="screen-reader-text">WorldCat</span></a>'
 resources:
 - src: "front.jpg"
   name: front

@@ -7,7 +7,7 @@ itemType: book
 outputs:
   - iiif-manifest
   - html
-itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Souvenir d''Anvers", erschienen um 1900 in Antwerpen. <a class="worldcat" href="http://www.worldcat.org/oclc/647827191">&nbsp;</a>'
+itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Souvenir d''Anvers", erschienen um 1900 in Antwerpen. <a class="worldcat" href="http://www.worldcat.org/oclc/647827191"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - Book
 - bookEndPaper

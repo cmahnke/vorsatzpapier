@@ -7,7 +7,7 @@ itemType: book
 outputs:
   - iiif-manifest
   - html
-itemDescription: '"Vielles chansons pour les petits enfants" by Charles-Marie Widor and Louis Maurice Boutet de Monvel, published around 1884 by E. Plon, Nourrit et Cie., Paris. <a class="worldcat" href="http://www.worldcat.org/oclc/971014633">&nbsp;</a>'
+itemDescription: '"Vielles chansons pour les petits enfants" by Charles-Marie Widor and Louis Maurice Boutet de Monvel, published around 1884 by E. Plon, Nourrit et Cie., Paris. <a class="worldcat" href="http://www.worldcat.org/oclc/971014633"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - Book
 resources:

@@ -7,7 +7,7 @@ itemType: book
 outputs:
   - iiif-manifest
   - html
-itemDescription: 'This endpaper is taken from the book "Glückliche Kinderzeit" by Lely Kempin, 7th edition, published 1925 by Velhagen and Klasing,  Bielefeld. <a class="worldcat" href="http://www.worldcat.org/oclc/257379110">&nbsp;</a>'
+itemDescription: 'This endpaper is taken from the book "Glückliche Kinderzeit" by Lely Kempin, 7th edition, published 1925 by Velhagen and Klasing,  Bielefeld. <a class="worldcat" href="http://www.worldcat.org/oclc/257379110"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - Book
 - bookEndPaper
@@ -36,6 +36,6 @@ resources:
 An inexpensive gem from the 75¢ table of the [Antiquariat Pretzsch](https://antiquariat-pretzsch.de/) N°1.
 
 <!--more-->
-# Update 11/19/2020
+## Update 11/19/2020
 
 The book itself is now available on [Kinderbücher](https://xn--kinderbcher-zhb.projektemacher.org/post/glueckliche-kinderzeit/).

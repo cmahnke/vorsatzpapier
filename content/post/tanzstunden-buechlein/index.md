@@ -7,7 +7,7 @@ itemType: book
 outputs:
   - iiif-manifest
   - html
-itemDescription: 'Dieses Vorsatzpapier ist aus dem Buch "Tanzstunden Büchlein" von Rosemarie Schittenhelm, erschienen 1955 bei der Franckh''schen Verlagshandlung, Stuttgart. <a class="worldcat" href="http://www.worldcat.org/oclc/73736770">&nbsp;</a>'
+itemDescription: 'Dieses Vorsatzpapier ist aus dem Buch "Tanzstunden Büchlein" von Rosemarie Schittenhelm, erschienen 1955 bei der Franckh''schen Verlagshandlung, Stuttgart. <a class="worldcat" href="http://www.worldcat.org/oclc/73736770"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - bookEndPaper
 - Book

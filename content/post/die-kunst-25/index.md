@@ -11,7 +11,7 @@ outputs:
   - iiif-manifest
   - html
 itemType: book
-itemDescription: 'Dieses Vorsatzpapier stammt aus der gebundenen Zeitschrift "Die Kunst - Monatshefte für freie und angewandte Kunst", 25. Band, 27. Jahrgang, erschienen 1912 bei Bruckmann, München. <a class="worldcat" href="http://www.worldcat.org/oclc/442388049">&nbsp;</a>'
+itemDescription: 'Dieses Vorsatzpapier stammt aus der gebundenen Zeitschrift "Die Kunst - Monatshefte für freie und angewandte Kunst", 25. Band, 27. Jahrgang, erschienen 1912 bei Bruckmann, München. <a class="worldcat" href="http://www.worldcat.org/oclc/442388049"><span class="screen-reader-text">WorldCat</span></a>'
 resources:
 - src: "front.jpg"
   name: front

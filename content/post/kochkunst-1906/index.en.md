@@ -10,7 +10,7 @@ itemType: book
 outputs:
   - iiif-manifest
   - html
-itemDescription: 'This endpaper comes from a volume of the magazine "Kochkunst", published by the Internationaler Verband der Köche in Frankfurt am Main in 1906. <a class="worldcat" href="http://www.worldcat.org/oclc/277227987">&nbsp;</a>'
+itemDescription: 'This endpaper comes from a volume of the magazine "Kochkunst", published by the Internationaler Verband der Köche in Frankfurt am Main in 1906. <a class="worldcat" href="http://www.worldcat.org/oclc/277227987"><span class="screen-reader-text">WorldCat</span></a>'
 resources:
 - src: "front.jxl"
   name: front

@@ -10,7 +10,7 @@ noPreview: true
 outputs:
   - iiif-manifest
   - html
-itemDescription: 'This article is from the magazine "Deutsche Kunst und Dekoration Illustrierte Monatshefte für moderne Malerei, Plastik, Architektur, Wohnungs-Kunst und künstlerische Frauenarbeiten", 24th year, issue 11, published in August 1921 by Verlagsanstalt Alexander Koch, Darmstadt. <a class="worldcat" href="http://www.worldcat.org/oclc/442388049">&nbsp;</a>'
+itemDescription: 'This article is from the magazine "Deutsche Kunst und Dekoration Illustrierte Monatshefte für moderne Malerei, Plastik, Architektur, Wohnungs-Kunst und künstlerische Frauenarbeiten", 24th year, issue 11, published in August 1921 by Verlagsanstalt Alexander Koch, Darmstadt. <a class="worldcat" href="http://www.worldcat.org/oclc/442388049"><span class="screen-reader-text">WorldCat</span></a>'
 resources:
 - src: "front.jpg"
   name: front

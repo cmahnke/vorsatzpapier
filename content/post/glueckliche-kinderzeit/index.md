@@ -7,7 +7,7 @@ itemType: book
 outputs:
   - iiif-manifest
   - html
-itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Glückliche Kinderzeit" von Lely Kempin, 7. Auflage, erschienen 1925 bei Velhagen und Klasing in Bielefeld. <a class="worldcat" href="http://www.worldcat.org/oclc/257379110">&nbsp;</a>'
+itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Glückliche Kinderzeit" von Lely Kempin, 7. Auflage, erschienen 1925 bei Velhagen und Klasing in Bielefeld. <a class="worldcat" href="http://www.worldcat.org/oclc/257379110"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - Book
 - bookEndPaper
@@ -36,6 +36,6 @@ resources:
 Ein günstiges Fundstück vom 75¢ Tisch des [Antiquariats Pretzsch](https://antiquariat-pretzsch.de/) N°1.
 
 <!--more-->
-# Update 19.11.2020
+## Update 19.11.2020
 
 Das Buch selbst ist nun auf [Kinderbücher](https://xn--kinderbcher-zhb.projektemacher.org/post/glueckliche-kinderzeit/) komplett einzusehen.

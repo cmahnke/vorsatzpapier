@@ -31,7 +31,7 @@
 			<div style="{{ $style | safeCSS }}" class="{{ $class | safeCSS }} post type-post status-publish format-standard hentry category-standard category-travel excerpt zoom full-without-featured odd excerpt">
 		{{- end -}}
 		{{- if $previewImg -}}
-			<a class="featured-image-link" href="{{ .Permalink }}">
+			<a class="featured-image-link" href="{{ .Permalink }}" aria-label="{{ .Title }}">
 				{{- with $previewImg -}}
 					<div class="featured-image lazy lazy-bg-image" data-background="{{ $previewImg.RelPermalink }}">
 					</div>
@@ -62,7 +62,7 @@
 				<div class='excerpt-content'>
 					<article>
 						{{ .Summary }}
-						<div class="more-link-wrapper"><a class="more-link" href="{{ .Permalink }}">{{ i18n "readPost" }}<span class="screen-reader-text">This is a Standard Post</span></a></div>
+						<div class="more-link-wrapper"><a class="more-link" href="{{ .Permalink }}" aria-label="{{ i18n "readPost" }}: {{ .Title }}">{{ i18n "readPost" }}</a></div>
 					</article>
 				</div>
 			</div>

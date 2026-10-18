@@ -3,7 +3,7 @@
     {{ if and (isset .Params "image") .Params.image }}
     <div class="post type-post status-publish format-standard has-post-thumbnail hentry category-design tag-design tag-standard-2 tag-tagalicious tag-travel entry full-without-featured odd excerpt-1">
 
-      <div class='featured-image lazy lazy-bg-image' role="img" aria-label="{{ .Title }}" {{ if isset .Site.Params "usepostimgfolder" }} data-background="{{ .Permalink }}{{ .Params.image }}"{{ else }} data-background="{{ .Params.image | absURL }}"{{ end }}>
+      <div class='featured-image lazy lazy-bg-image' role="img" aria-label="{{ .Title }}" {{ if isset site.Params "usepostimgfolder" }} data-background="{{ .Permalink }}{{ .Params.image }}"{{ else }} data-background="{{ .Params.image | absURL }}"{{ end }}>
       </div>
       {{ else }}
 
@@ -29,7 +29,7 @@
                   {{- range .Params.resources -}}
                     {{- if or (and (ne $.Params.itemType "work") (ne $.Params.itemType "book")) (not (or (or (eq .name "front") (eq .name "title")) (eq .name "cover"))) -}}
                       {{- if .params.iiif -}}
-                        {{ partial "iiif/iiif-image.html" (dict "context" . "contextPath" $context "pageURL" .Permalink "pageContext" $page "site" $.Site) }}
+                        {{ partial "iiif/iiif-image.html" (dict "context" . "contextPath" $context "pageURL" .Permalink "pageContext" $page "site" site) }}
                       {{- end -}}
                     {{- end -}}
                   {{- end -}}

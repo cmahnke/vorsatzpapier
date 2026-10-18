@@ -3,6 +3,8 @@ node_modules
 docs
 patches
 static/images/favicon*
+static/images/apple-touch-icon.png
+static/map-styles/
 static/pdfjs/**
 resources
 .hugo_build.lock
@@ -31,3 +33,4 @@ XXX-*
 
 assets/scss/flags
 assets/scss/npm-fonts
+pnpm-lock.yaml

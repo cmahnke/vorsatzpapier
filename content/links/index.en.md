@@ -6,13 +6,13 @@ displayinlist: false
 
 On this page you will find some links to various (old) textured papers and walls. The respective owners have (partly) turned their hobby or perhaps their passion for collecting into their profession and offer suitable products.
 
-# Texture rollers
+## Texture rollers
 
 I also have a small collection of texture rollers, but it is not yet presented anywhere, until then I recommend:
 
 * [Strukturwalzen.de](https://www.strukturwalzen.de), where you can also find [examples of coloured paper with texture rollers](https://www.tapetenroller.de/buntpapier-mit-strukturwalzen.html)
 
-# Wallpapers
+## Wallpapers
 
 Some old wallpapers are also offered for sale here:
 
@@ -22,12 +22,12 @@ Some old wallpapers are also offered for sale here:
 * [MEINEWAND – The blog for unique wall design](https://blog.meinewand.com/en)
   * [Interview: Gallery owner Oliver Ahlers](https://blog.meinewand.com/de/oliver-ahlers-interview) (German) – The inspiration behind the presentation of the [art collection](https://christianmahnke.de/en/art-collection/).
 
-# Museums
+## Museums
 
 * [German Wallpaper Museum - Museum of Spatial Art](https://www.heritage-kassel.de/standorte/deutsches-tapetenmuseum)
 * [Victoria and Albert Museum: Tapeten](https://www.vam.ac.uk/collections/wallpaper)
 
-# Other
+## Other
 
 * [Wallpaper History Society](https://www.wallpaperhistorysociety.org.uk/)
 * [Cooper Hewitt: Women Making Wallpaper](https://www.cooperhewitt.org/2023/03/31/women-making-wallpaper/)

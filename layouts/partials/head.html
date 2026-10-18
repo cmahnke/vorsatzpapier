@@ -1,31 +1,16 @@
 <meta charset="utf-8">
-<title>{{ .Title | default .Site.Title }} {{if $.IsHome}}- {{ $.Site.Params.slogan | default "" | safeHTML }}{{ end }}</title>
+<title>{{ .Title | default site.Title }} {{if $.IsHome}}- {{ site.Params.slogan | default "" | safeHTML }}{{ end }}</title>
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
 
 {{ partial "html/head/meta.html" . }}
 
 {{- partial "html/head/style.html" (dict "context" . "css" "css/style.css" "includes" (slice "static/css")) -}}
 {{- partial "html/head/script.html" (dict "context" . "js" (partial "html/head/iiif-js.html" .)) -}}
 
-{{/* External Styles - Fonts etc */}}
-{{- range .Site.Params.stylesheets -}}
-    <link href="{{ . }}" rel="stylesheet">
-{{- end }}
-
-<link rel="icon" type="image/png" href="{{ .Site.Params.favicon_32 | default "/images/favicon-32.png" | absURL }}" sizes="32x32">
-<link rel="icon" type="image/png" href="{{ .Site.Params.favicon_16 | default "/images/favicon-16.png" | absURL }}" sizes="16x16">
-{{ if .Site.Params.favicon_svg }}
-  <link rel="icon" type="image/svg+xml" href="{{ .Site.Params.favicon_svg }}">
-{{ end }}
-
-<link rel="shortcut icon" href="{{ "img/favicon.ico" | absURL }}" type="image/x-icon">
-<link rel="icon" href="{{ "img/favicon.ico" | absURL }}" type="image/x-icon">
+{{- partial "html/head/links.html" . -}}
 
 <link rel="canonical" href="{{ .Permalink }}">
-
-{{ with .OutputFormats.Get "RSS" }}
-  <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title | default "" }}" />
-  <link href="{{ .RelPermalink }}" rel="feed" type="application/rss+xml" title="{{ $.Site.Title | default "" }}" />
-{{ end }}
 
 {{- range .AllTranslations }}
   <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">

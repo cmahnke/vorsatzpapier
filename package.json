@@ -25,7 +25,6 @@
     "normalize.css": "^8.0.1",
     "ol": "^10.11.0",
     "ol-mapbox-style": "^12.5.0",
-    "openseadragon": "^6.1.1",
     "pagefind": "1.5.2",
     "pdfjs-dist": "^6.4.299",
     "pdfobject": "^2.3.1",
@@ -88,11 +87,11 @@
     "xslt3": "^2.7.0"
   },
   "scripts": {
-    "lint-scss": "stylelint 'assets/scss/*'",
-    "lint-js": "eslint 'assets/js' 'assets/ts'",
-    "lint-toml": "eslint i18n",
+    "lint-scss": "stylelint 'assets/scss/**/*.scss' '!assets/scss/npm-fonts/**'",
+    "lint-js": "eslint 'assets/ts'",
+    "lint-md": "markdownlint 'content/**/*.md'",
     "typecheck": "tsc --noEmit",
-    "lint": "npm run lint-scss && npm run lint-js && npm run lint-toml",
+    "lint": "npm run lint-scss && npm run lint-js && npm run lint-md",
     "check-generated-css": "stylelint --config ./themes/projektemacher-base/.stylelintrc-postbuild.yaml 'docs/css/*.css'",
     "postbuild-lint": "npm run check-generated-css",
     "validate-iiif-gnu": "find docs -name manifest.json -print0 | xargs -r -0 -n1 npx eslint -c themes/projektemacher-base/eslint.config.mjs",

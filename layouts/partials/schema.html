@@ -4,7 +4,7 @@
         "@type" : "BlogPosting",
         "mainEntityOfPage": {
              "@type": "WebPage",
-             "@id": "{{ .Site.BaseURL }}"
+             "@id": "{{ site.BaseURL }}"
         },
         "articleSection" : "{{ .Section }}",
         "name" : "{{ .Title }}",
@@ -21,7 +21,7 @@
         "dateModified" : "{{ .Date }}",
         "url" : "{{ .Permalink }}",
         "wordCount" : "{{ .WordCount }}",
-        "image" : "{{ printf "%s%s" .Site.BaseURL .Page.Params.image }}",
+        "image" : "{{ printf "%s%s" site.BaseURL .Page.Params.image }}",
         "keywords" : [ {{ if isset .Params "tags" }}{{ range .Params.tags }}"{{ . }}",{{ end }}{{ end }}"Blog" ]
     }
     </script>

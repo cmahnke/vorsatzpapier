@@ -21,7 +21,7 @@ An adapted version of [Nederburg](https://github.com/appernetic/hugo-nederburg-t
 
 The post-processing of the digitized images was carried out with [ScanTailor Advanced](https://github.com/4lex4/scantailor-advanced).
 
-[OpenLayers](https://openlayers.org/) is used to display single high resolution images, for books [Mirador](https://projectmirador.org/) is used. The tiles were generated with [libvips](https://libvips.github.io/libvips/).
+[OpenLayers](https://openlayers.org/) is used to display single high resolution images, for books [TIFY](https://tify.rocks/) is used. The tiles were generated with [libvips](https://libvips.github.io/libvips/). The interactive patterns in the [generator](/generator/) are created with [Lucienne](https://github.com/projektemacher/lucienne).
 
 The site is hosted by [GitHub](https://github.com/).
 

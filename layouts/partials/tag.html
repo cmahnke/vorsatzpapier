@@ -5,7 +5,7 @@
 			{{- $title = i18n $title -}}
 		{{- end -}}
 		Tag: {{ $title }}
-		{{ if .Site.Params.social.rss }}
+        {{ if site.Params.social.rss }}
 		<a href="{{ .RSSLink }}" data-animate-hover="pulse" class="in-page-rss" target="_blank" rel="noopener">
       <i class="fas fa-rss" title="rss"></i>
       <span class="screen-reader-text">rss</span>
@@ -20,7 +20,7 @@
 	{{- if gt (len .Pages) 0 -}}
 		{{- $pages = .Pages -}}
 	{{- else -}}
-		{{- $pages = .Paginate (where (where $.Site.Pages "Params.tags" "intersect" (slice .LinkTitle)).ByDate.Reverse "IsPage" true) -}}
+                {{- $pages = .Paginate (where (where site.Pages "Params.tags" "intersect" (slice .LinkTitle)).ByDate.Reverse "IsPage" true) -}}
 	{{- end -}}
 
 	{{- $paginator := $pages -}}

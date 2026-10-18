@@ -33,7 +33,7 @@ resources:
     class: order-2
 ---
 
-The digitization of this endpaper was supported by a friendly loan from the [Antiquariat Pretzsch] (https://antiquariat-pretzsch.de/). Anyone interested in historical end papers can find a large selection there.
+The digitization of this endpaper was supported by a friendly loan from the [Antiquariat Pretzsch](https://antiquariat-pretzsch.de/). Anyone interested in historical end papers can find a large selection there.
 <!--more-->
 It serves as a background for the [Krähenbeißer](https://krähenbeisser.de).
 

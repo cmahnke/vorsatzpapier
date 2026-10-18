@@ -1,7 +1,7 @@
 {{- $manifest := "manifest.json" -}}
 {{- $pages := where site.Pages "Kind" "section" -}}
-  {{- range .Site.Home.Translations -}}
-  {{- $pages = $pages | lang.Merge .Site.RegularPages -}}
+  {{- range site.Home.Translations -}}
+  {{- $pages = $pages | lang.Merge site.RegularPages -}}
 {{- end -}}
 {{- $pages = where $pages "Params.displayinlist" "!=" false -}}
 {{- $pages = where $pages "Params.view" "in" (slice "endpaper" "wallpaper" "portfolio") -}}
@@ -34,14 +34,14 @@
 
 {
   "@context": "http://iiif.io/api/presentation/3/context.json",
-  "id": "{{ $.Site.BaseURL }}collection.json",
+  "id": "{{ site.BaseURL }}collection.json",
   "type": "Collection",
   "label": {
-      "{{ $.Site.Language.Lang }}": [
-        "{{ $.Site.Title }}"
+      "{{ site.Language.Lang }}": [
+        "{{ site.Title }}"
       ]
     {{- if hugo.IsMultilingual -}}
-      {{- $translations := where $.Site.Home.AllTranslations ".Lang" "!=" $.Site.Language.Lang -}}
+      {{- $translations := where site.Home.AllTranslations ".Lang" "!=" site.Language.Lang -}}
       {{- range $translations -}}
       ,
         "{{ .Lang }}": [
@@ -56,7 +56,7 @@
         {{- $manifest = path.Base . -}}
       {{- end -}}
       {
-        "id": "{{ printf "%s%s/%s" site.BaseURL (substr $item.Path 1) $manifest }}",
+        "id": "{{ printf "%s%s/%s" site.BaseURL (strings.Substr $item.Path 1) $manifest }}",
         "type": "Manifest",
 
         {{/*

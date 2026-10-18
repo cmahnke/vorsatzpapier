@@ -7,6 +7,7 @@ displayinlist: false
 Die Digitalisate auf dieser Seite können für eigene Zwecke weiterverwendet werden.
 
 The possibilities are endless:
+
 * Backgrounds for websites
 * Wrapping paper
 * Paper for boxes and drawers

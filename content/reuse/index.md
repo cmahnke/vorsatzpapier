@@ -7,6 +7,7 @@ displayinlist: false
 Die Digitalisate auf dieser Seite können für eigene Zwecke weiterverwendet werden.
 
 Die Möglichkeiten sind unbegrenzt:
+
 * Hintergründe für Webseiten
 * Geschenkpapiere
 * Papiere für Kästchen und Schubladen

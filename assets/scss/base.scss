@@ -325,16 +325,6 @@ body.generator .loop-container .entry-container {
 
 #menu-toggle {
     display: none;
-    @media (max-width : 50em) {
-        &:checked + label {}
-
-        &:checked + label + ul {
-            visibility: visible;
-            opacity: 1;
-            max-height: 100rem;
-            display: block;
-        }
-    }
 }
 
 .navigation-list {
@@ -539,7 +529,8 @@ p.small {
 }
 
 @media (max-width: 56.25em) {
-    #menu-toggle:checked+label+ul {
+    #menu-toggle:checked+label+ul,
+    .top-menu[data-menu-open="true"] .navigation-list {
         visibility: visible;
         opacity: 1;
         max-height: 100rem;

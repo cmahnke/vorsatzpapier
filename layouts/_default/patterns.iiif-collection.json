@@ -52,7 +52,7 @@
   },
   "items": [
     {{- range $i, $item := $iiif -}}
-      {{- with or $item.Params.iiif.manifest $item.Params.iiifManifest -}}
+      {{- with $item.Params.iiif.manifest -}}
         {{- $manifest = path.Base . -}}
       {{- end -}}
       {

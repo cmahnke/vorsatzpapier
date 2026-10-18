@@ -110,6 +110,10 @@ copyright = '<a href="https://projektemacher.org/" target="_blank">Projektemache
     target = "assets/js"
 
   [[module.mounts]]
+    source = "assets/ts"
+    target = "assets/ts"
+
+  [[module.mounts]]
     source = "node_modules/tify/dist/"
     target = "static/tify"
 

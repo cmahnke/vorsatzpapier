@@ -4,7 +4,6 @@
   cc = true
   stylesheets = []
   productionIIIFURLPrefix="https://static.projektemacher.org/vorsatzpapier/"
-  disableScale = true
   pdfDownload = true
   description = "Old endpapers and wallpapers"
   wikidata = true

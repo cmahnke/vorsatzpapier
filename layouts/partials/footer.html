@@ -22,7 +22,7 @@
         </div>
     </div>
 
-   {{- .Scratch.Set "footer" `<p style="font-size: xx-small;">Based on Nederburg Hugo Theme by <a target="_blank" rel="noopener" href="https://appernetic.io">Appernetic</a> - A port of Tracks by Compete Themes.</p>` -}}
-   {{- partialCached "footer-content.html" . -}}
+   {{- $footerStr := `<p style="font-size: xx-small;">Based on Nederburg Hugo Theme by <a target="_blank" rel="noopener" href="https://appernetic.io">Appernetic</a> - A port of Tracks by Compete Themes.</p>` -}}
+   {{- partial "footer-content.html" (dict "page" . "footer" $footerStr) -}}
 
 </footer>

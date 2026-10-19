@@ -1,22 +1,19 @@
 @use "sass:color";
+@use "npm-fonts/raleway";
+@use "icons" as *;
+@use "share";
+@use "media-info";
+@use "footer";
+@use "menu" as * with ($font-color-body: #4d4d4d);
+@use "ol-iiif";
+@use "iiif/presentation-tify";
 
 $font-body-font: "Raleway Variable" !default;
 $body-color: #4d4d4d !default;
-$font-color-body: #4d4d4d !default;
 $body-background: #38312f !default;
 $link-color: #42a5f5 !default;
-@import "npm-fonts/raleway";
-@import "style";
-@import "custom";
-@import "icons";
-@import "share";
-@import "media-info";
-@import "footer";
-@import "menu";
 /* @import "ol"; */
-@import "ol-iiif";
 
-@import "iiif/presentation-tify";
 
 .fa-plus::before {
   display: inline-block;

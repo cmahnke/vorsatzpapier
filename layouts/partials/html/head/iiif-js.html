@@ -1,0 +1,64 @@
+{{- $prefix := "" -}}
+{{- $name := "" -}}
+{{- $context := "" -}}
+{{- $isServer := hugo.IsServer -}}
+
+{{- $iiifImageViewerJS := "ts/iiif-image-viewer.ts" -}}
+{{- with site.Params.iiif.imageViewer -}}
+  {{- if ne . "" -}}
+    {{- $iiifImageViewerJS = . -}}
+  {{- end -}}
+{{- end -}}
+
+{{/*
+{{- $iiifPresentationViewerJS := "js/iiif-presentation-viewer.js" -}}
+*/}}
+{{- $iiifPresentationViewerJS := "ts/iiif/tify.ts" -}}
+{{- with site.Params.iiif.presentationViewer -}}
+  {{- if ne . "" -}}
+    {{- $iiifPresentationViewerJS = . -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if in . "context" -}}
+  {{- if .context -}}
+    {{ $context = .context }}
+  {{- end -}}
+{{- end -}}
+
+{{- if .Page.Params.iiifcontext -}}
+    {{- $prefix = .Page.Params.iiifcontext -}}
+{{- else if .Page.Params.iiif.context -}}
+    {{- $prefix = .Page.Params.iiif.context -}}
+{{- else if ne (.Scratch.Get "iiifPrefix") nil -}}
+    {{- $prefix = .Scratch.Get "iiifPrefix" -}}
+{{- else if ne $context "" -}}
+    {{- if ne ($context.Scratch.Get "iiifPrefix") nil -}}
+        {{- $prefix = $context.Scratch.Get "iiifPrefix" -}}
+    {{- end -}}
+{{- end -}}
+
+{{- $defines := dict "process.env.NODE_ENV" `"production"` -}}
+
+{{- if $isServer -}}
+    {{ $defines = dict "process.env.NODE_ENV" `"development"` }}
+{{- end -}}
+
+{{- $minify := false -}}
+{{- $iiifJs := slice -}}
+
+{{/* Site override: 'media/book.html' renders the front/title/cover resources as Image API viewers ('addMap') even on pages with a Presentation API context, so the image viewer is needed for 'itemType: book' as well */}}
+{{- if or (hasPrefix $prefix "http://iiif.io/api/image/") (eq .Page.Params.itemType "book") -}}
+  {{/* esbuild compiles TypeScript sources, but the built output must be published with a .js targetPath */}}
+  {{- $iiifTargetPath := replaceRE "\\.ts$" ".js" $iiifImageViewerJS -}}
+  {{- $iiifOpts := dict "targetPath" $iiifTargetPath "defines" $defines "minify" $minify -}}
+  {{- $iiifJs = $iiifJs | append (resources.Get $iiifImageViewerJS | js.Build $iiifOpts) -}}
+{{- end -}}
+
+{{- if (hasPrefix $prefix "http://iiif.io/api/presentation/") -}}
+  {{- $iiifTargetPath := replaceRE "\\.ts$" ".js" $iiifPresentationViewerJS -}}
+  {{- $iiifOpts := dict "targetPath" $iiifTargetPath "defines" $defines "minify" $minify -}}
+  {{- $iiifJs = $iiifJs | append (resources.Get $iiifPresentationViewerJS | js.Build $iiifOpts) -}}
+{{- end -}}
+
+{{- return $iiifJs -}}

@@ -34,3 +34,7 @@ XXX-*
 assets/scss/flags
 assets/scss/npm-fonts
 pnpm-lock.yaml
+
+/package-lock.json
+
+/npm-shrinkwrap.json

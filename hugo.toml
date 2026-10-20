@@ -121,6 +121,10 @@ copyright = '<a href="https://projektemacher.org/" target="_blank">Projektemache
     source = "node_modules/@projektemacher/lucienne/dist/lucienne-vorsatzpapier.css"
     target = "assets/scss/lucienne/lucienne.css"
 
+  [[module.mounts]]
+    source = "themes/hugo-nederburg-theme/static/css"
+    target = "assets/css"
+
 #[outputs]
 #    page = ["HTML"]
 

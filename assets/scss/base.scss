@@ -4,7 +4,12 @@
 @use "share";
 @use "media-info";
 @use "footer";
-@use "menu" as * with ($font-color-body: #4d4d4d);
+@use "menu" as * with (
+  $font-color-body: #4d4d4d
+);
+@use "theme" with (
+  $font-body-font: "Raleway Variable"
+);
 @use "ol-iiif";
 @use "iiif/presentation-tify";
 
@@ -13,7 +18,8 @@ $body-color: #4d4d4d !default;
 $body-background: #38312f !default;
 $link-color: #42a5f5 !default;
 /* @import "ol"; */
-
+@import "style";
+@import "custom";
 
 .fa-plus::before {
   display: inline-block;

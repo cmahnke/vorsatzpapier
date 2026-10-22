@@ -129,7 +129,10 @@ copyright = '<a href="https://projektemacher.org/" target="_blank">Projektemache
 #    page = ["HTML"]
 
 [imaging]
-    quality = 95
+    [imaging.jpeg]
+        quality = 95
+    [imaging.webp]
+        quality = 95
 
 [mediaTypes]
   [mediaTypes."application/ld+json"]

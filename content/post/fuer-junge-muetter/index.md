@@ -1,16 +1,17 @@
 ---
 title: "Für junge Mütter"
 date: 2021-01-28T07:00:00+02:00
-iiifContext: http://iiif.io/api/image/2/context.json
+params:
+  iiifContext: http://iiif.io/api/image/2/context.json
+  view: endpaper
+  itemType: book
+  itemDescription: 'Dieses Vorsatzpapier stammt aus der Buch "Für junge Mütter ", 5. Auflage, von Dr. med. Fischer, erschienen ca. 1905 bei im Verlag von Wilhelm Möller, Berlin.'
 tags:
 - Book
 - bookEndPaper
-view: endpaper
-itemType: book
 outputs:
   - iiif-manifest
   - html
-itemDescription: 'Dieses Vorsatzpapier stammt aus der Buch "Für junge Mütter ", 5. Auflage, von Dr. med. Fischer, erschienen ca. 1905 bei im Verlag von Wilhelm Möller, Berlin.'
 resources:
 - src: "front.jpg"
   name: front

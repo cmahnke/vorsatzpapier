@@ -1,8 +1,9 @@
 ---
 title: "Tapetenmuster"
 date: 2020-09-15T07:39:09+02:00
-iiifContext: http://iiif.io/api/image/2/context.json
-view: wallpaper
+params:
+  iiifContext: http://iiif.io/api/image/2/context.json
+  view: wallpaper
 outputs:
   - iiif-manifest
   - html

@@ -1,16 +1,17 @@
 ---
 title: "Kassel und Wilhelmshöhe."
 date: 2020-12-21T19:26:53+02:00
-iiifContext: http://iiif.io/api/image/2/context.json
+params:
+  iiifContext: http://iiif.io/api/image/2/context.json
+  view: endpaper
+  itemType: book
+  itemDescription: 'This endpaper is taken from the portfolio "Kassel und Wilhelmshöhe.", published between 1890 and 1910 by Max Siering, Cassel. <a class="worldcat" href="http://www.worldcat.org/oclc/10159187"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - Book
 - bookEndPaper
-view: endpaper
-itemType: book
 outputs:
   - iiif-manifest
   - html
-itemDescription: 'This endpaper is taken from the portfolio "Kassel und Wilhelmshöhe.", published between 1890 and 1910 by Max Siering, Cassel. <a class="worldcat" href="http://www.worldcat.org/oclc/10159187"><span class="screen-reader-text">WorldCat</span></a>'
 resources:
 - src: "front.jpg"
   name: front

@@ -1,13 +1,14 @@
 ---
 title: "Tanzstunden Büchlein"
 date: 2023-12-18T17:13:30+02:00
-iiifContext: http://iiif.io/api/image/2/context.json
-view: endpaper
-itemType: book
+params:
+  iiifContext: http://iiif.io/api/image/2/context.json
+  view: endpaper
+  itemType: book
+  itemDescription: 'This endpaper is from the book "Tanzstunden Büchlein" by Rosemarie Schittenhelm, published 1955 by Franckh''schen Verlagshandlung, Stuttgart. <a class="worldcat" href="http://www.worldcat.org/oclc/73736770"><span class="screen-reader-text">WorldCat</span></a>'
 outputs:
   - iiif-manifest
   - html
-itemDescription: 'This endpaper is from the book "Tanzstunden Büchlein" by Rosemarie Schittenhelm, published 1955 by Franckh''schen Verlagshandlung, Stuttgart. <a class="worldcat" href="http://www.worldcat.org/oclc/73736770"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - bookEndPaper
 - Book

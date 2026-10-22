@@ -1,16 +1,17 @@
 ---
 title: "Die Heilige Insel"
 date: 2020-09-26T07:37:53+02:00
-iiifContext: http://iiif.io/api/image/2/context.json
+params:
+  iiifContext: http://iiif.io/api/image/2/context.json
+  view: endpaper
+  itemType: book
+  itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Die Heilige Insel" von Lely Kempin, 8. Auflage, erschienen 1921 bei Velhagen & Klasing, Bielefeld. <a class="worldcat" href="http://www.worldcat.org/oclc/936421290"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - Book
 - bookEndPaper
-view: endpaper
 outputs:
   - iiif-manifest
   - html
-itemType: book
-itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Die Heilige Insel" von Lely Kempin, 8. Auflage, erschienen 1921 bei Velhagen & Klasing, Bielefeld. <a class="worldcat" href="http://www.worldcat.org/oclc/936421290"><span class="screen-reader-text">WorldCat</span></a>'
 resources:
 - src: "front.jpg"
   name: front

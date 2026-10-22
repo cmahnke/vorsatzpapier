@@ -1,16 +1,17 @@
 ---
 title: "Der Jungfrau Leben im Lichte von Zeit und Ewigkeit"
 date: 2021-01-14T10:37:53+02:00
-iiifContext: http://iiif.io/api/image/2/context.json
+params:
+  iiifContext: http://iiif.io/api/image/2/context.json
+  view: endpaper
+  itemType: book
+  itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Der Jungfrau Leben im Lichte von Zeit und Ewigkeit" von Sophie von Reutern, erschienen 1892 beim Verlag der Vereinsbuchhandlung, Calw und Stuttgart. <a class="worldcat" href="http://www.worldcat.org/oclc/246876126"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - Book
 - bookEndPaper
 outputs:
   - iiif-manifest
   - html
-view: endpaper
-itemType: book
-itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Der Jungfrau Leben im Lichte von Zeit und Ewigkeit" von Sophie von Reutern, erschienen 1892 beim Verlag der Vereinsbuchhandlung, Calw und Stuttgart. <a class="worldcat" href="http://www.worldcat.org/oclc/246876126"><span class="screen-reader-text">WorldCat</span></a>'
 resources:
 - src: "front.jpg"
   name: front

@@ -1,16 +1,17 @@
 ---
 title: "Kultur-Kuriosa - First volume"
 date: 2021-06-22T19:57:53+01:00
-iiifContext: http://iiif.io/api/image/2/context.json
+params:
+  iiifContext: http://iiif.io/api/image/2/context.json
+  view: endpaper
+  itemType: book
+  itemDescription: 'This endpaper is taken from the book "Kultur-Kuriosa", first volume by Max Kemmerich, published 1910 by Albert Langen, Munich. <a class="worldcat" href="http://www.worldcat.org/oclc/923684466"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - Book
 - bookEndPaper
-view: endpaper
-itemType: book
 outputs:
   - iiif-manifest
   - html
-itemDescription: 'This endpaper is taken from the book "Kultur-Kuriosa", first volume by Max Kemmerich, published 1910 by Albert Langen, Munich. <a class="worldcat" href="http://www.worldcat.org/oclc/923684466"><span class="screen-reader-text">WorldCat</span></a>'
 resources:
 - src: "front.jpg"
   name: front

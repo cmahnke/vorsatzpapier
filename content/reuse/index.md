@@ -1,7 +1,8 @@
 ---
 title: "Weiterverwendung"
-metaPage: true
-displayinlist: false
+params:
+  metaPage: true
+  displayinlist: false
 ---
 
 Die Digitalisate auf dieser Seite können für eigene Zwecke weiterverwendet werden.

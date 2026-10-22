@@ -1,17 +1,18 @@
 ---
 title: "Deutsche Kunst und Dekoration August 1921"
 date: 2021-06-01T19:57:53+01:00
-iiifContext: http://iiif.io/api/image/2/context.json
+params:
+  iiifContext: http://iiif.io/api/image/2/context.json
+  itemType: book
+  view: book
+  noPreview: true
+  itemDescription: 'Dieser Artikel stammt aus der Zeitschrift "Deutsche Kunst und Dekoration Illustrierte Monatshefte für moderne Malerei, Plastik, Architektur, Wohnungs-Kunst und künstlerische Frauenarbeiten", 24. Jahrgang, Heft 11, erschienen August 1921 bei der Verlagsanstalt Alexander Koch, Darmstadt. <a class="worldcat" href="http://www.worldcat.org/oclc/442388049"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - Book
 - Wallpaper
-itemType: book
 outputs:
   - iiif-manifest
   - html
-view: book
-noPreview: true
-itemDescription: 'Dieser Artikel stammt aus der Zeitschrift "Deutsche Kunst und Dekoration Illustrierte Monatshefte für moderne Malerei, Plastik, Architektur, Wohnungs-Kunst und künstlerische Frauenarbeiten", 24. Jahrgang, Heft 11, erschienen August 1921 bei der Verlagsanstalt Alexander Koch, Darmstadt. <a class="worldcat" href="http://www.worldcat.org/oclc/442388049"><span class="screen-reader-text">WorldCat</span></a>'
 resources:
 - src: "front.jpg"
   name: front

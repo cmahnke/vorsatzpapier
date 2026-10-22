@@ -1,16 +1,17 @@
 ---
 title: "Almanach 1899"
 date: 2021-05-24T19:57:53+01:00
-iiifContext: http://iiif.io/api/image/2/context.json
+params:
+  iiifContext: http://iiif.io/api/image/2/context.json
+  view: endpaper
+  itemType: book
+  itemDescription: 'This endpaper is from the book calendar "Almanach omnibus illustré", issue for the year 1899, published ca. 1898 at Sceaux, Paris. <a class="worldcat" href="http://www.worldcat.org/oclc/472041475"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - Book
 - bookEndPaper
-view: endpaper
 outputs:
   - iiif-manifest
   - html
-itemType: book
-itemDescription: 'This endpaper is from the book calendar "Almanach omnibus illustré", issue for the year 1899, published ca. 1898 at Sceaux, Paris. <a class="worldcat" href="http://www.worldcat.org/oclc/472041475"><span class="screen-reader-text">WorldCat</span></a>'
 resources:
 - src: "front.jpg"
   name: front

@@ -1,11 +1,12 @@
 ---
 title: "Wallpaper"
 date: 2021-04-26T18:28:42+01:00
-iiifContext: http://iiif.io/api/image/2/context.json
+params:
+  iiifContext: http://iiif.io/api/image/2/context.json
+  view: wallpaper
 outputs:
   - iiif-manifest
   - html
-view: wallpaper
 tags:
 - Wallpaper
 resources:

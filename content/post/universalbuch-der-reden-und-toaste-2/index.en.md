@@ -1,13 +1,14 @@
 ---
 title: "Universalbuch der Reden und Toaste"
 date: 2020-11-29T9:52:28+02:00
-iiifContext: http://iiif.io/api/image/2/context.json
-view: endpaper
-itemType: book
+params:
+  iiifContext: http://iiif.io/api/image/2/context.json
+  view: endpaper
+  itemType: book
+  itemDescription: 'This endpaper is taken from the book "Universalbuch der Reden und Toaste" by Justinus Abel, 9th increased and improved edition, published around 1902 by Levy & Müller, Stuttgart. <a class="worldcat" href="http://www.worldcat.org/oclc/729128580"><span class="screen-reader-text">WorldCat</span></a>'
 outputs:
   - iiif-manifest
   - html
-itemDescription: 'This endpaper is taken from the book "Universalbuch der Reden und Toaste" by Justinus Abel, 9th increased and improved edition, published around 1902 by Levy & Müller, Stuttgart. <a class="worldcat" href="http://www.worldcat.org/oclc/729128580"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - Book
 - bookEndPaper

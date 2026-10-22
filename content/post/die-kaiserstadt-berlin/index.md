@@ -1,16 +1,17 @@
 ---
 title: "Die Kaiserstadt Berlin"
 date: 2020-12-07T07:07:53+02:00
-iiifContext: http://iiif.io/api/image/2/context.json
+params:
+  iiifContext: http://iiif.io/api/image/2/context.json
+  view: endpaper
+  itemType: book
+  itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Die Kaiserstadt Berlin, Charlottenburg und Potsdam", 3. verbesserte Auflage, erschienen ca. 1908 bei E.H. Schroeder, Berlin. <a class="worldcat" href="http://www.worldcat.org/oclc/67823231"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - Book
 - bookEndPaper
-view: endpaper
 outputs:
   - iiif-manifest
   - html
-itemType: book
-itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Die Kaiserstadt Berlin, Charlottenburg und Potsdam", 3. verbesserte Auflage, erschienen ca. 1908 bei E.H. Schroeder, Berlin. <a class="worldcat" href="http://www.worldcat.org/oclc/67823231"><span class="screen-reader-text">WorldCat</span></a>'
 resources:
 - src: "front.jpg"
   name: front

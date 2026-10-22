@@ -1,17 +1,18 @@
 ---
 title: "Die Kunst"
 date: 2020-12-24T07:00:00+02:00
-iiifContext: http://iiif.io/api/image/2/context.json
+params:
+  iiifContext: http://iiif.io/api/image/2/context.json
+  view: endpaper
+  itemType: book
+  itemDescription: 'Dieses Vorsatzpapier stammt aus der gebundenen Zeitschrift "Die Kunst - Monatshefte für freie und angewandte Kunst", 25. Band, 27. Jahrgang, erschienen 1912 bei Bruckmann, München. <a class="worldcat" href="http://www.worldcat.org/oclc/442388049"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - Book
 - bookEndPaper
 - Wallpaper
-view: endpaper
 outputs:
   - iiif-manifest
   - html
-itemType: book
-itemDescription: 'Dieses Vorsatzpapier stammt aus der gebundenen Zeitschrift "Die Kunst - Monatshefte für freie und angewandte Kunst", 25. Band, 27. Jahrgang, erschienen 1912 bei Bruckmann, München. <a class="worldcat" href="http://www.worldcat.org/oclc/442388049"><span class="screen-reader-text">WorldCat</span></a>'
 resources:
 - src: "front.jpg"
   name: front

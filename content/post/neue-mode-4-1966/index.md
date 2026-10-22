@@ -1,14 +1,15 @@
 ---
 title: Neue Mode April 1966
-itemDescription: 'Dieser Artikel stammt aus der Zeitschrift "Neue Mode", 19. Jahrgang, Heft 4, erschienen April 1966 beim Heinrich Bauer Verlag, Hamburg. <a class="worldcat" href="http://www.worldcat.org/oclc/925218360"><span class="screen-reader-text">WorldCat</span></a>'
+params:
+  itemDescription: 'Dieser Artikel stammt aus der Zeitschrift "Neue Mode", 19. Jahrgang, Heft 4, erschienen April 1966 beim Heinrich Bauer Verlag, Hamburg. <a class="worldcat" href="http://www.worldcat.org/oclc/925218360"><span class="screen-reader-text">WorldCat</span></a>'
+  iiifContext: http://iiif.io/api/image/2/context.json
+  itemType: book
+  view: book
+  noPreview: true
 date: 2024-08-28T16:51:27+02:00
-iiifContext: http://iiif.io/api/image/2/context.json
 tags:
 - Book
 - Wallpaper
-itemType: book
-view: book
-noPreview: true
 outputs:
   - iiif-manifest
   - html

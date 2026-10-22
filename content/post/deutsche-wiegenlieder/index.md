@@ -1,13 +1,14 @@
 ---
 title: "Deutsche Wiegenlieder"
 date: 2020-08-05T19:36:07+02:00
-iiifContext: http://iiif.io/api/image/2/context.json
-view: endpaper
-itemType: book
+params:
+  iiifContext: http://iiif.io/api/image/2/context.json
+  view: endpaper
+  itemType: book
+  itemDescription: 'Dieses Vorsatzpapier ist aus dem Buch "Deutsche Wiegenlieder" von Hans Fraungruber, erschienen ca. 1909 im Verlag Gerlach und Wiedling, Wien und Leipzig, entnommen.  <a class="worldcat" href="http://www.worldcat.org/oclc/256761549"><span class="screen-reader-text">WorldCat</span></a>'
 outputs:
   - iiif-manifest
   - html
-itemDescription: 'Dieses Vorsatzpapier ist aus dem Buch "Deutsche Wiegenlieder" von Hans Fraungruber, erschienen ca. 1909 im Verlag Gerlach und Wiedling, Wien und Leipzig, entnommen.  <a class="worldcat" href="http://www.worldcat.org/oclc/256761549"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - Book
 - bookEndPaper

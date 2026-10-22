@@ -1,7 +1,8 @@
 ---
 title: "Über diese Seite"
-metaPage: true
-displayinlist: false
+params:
+  metaPage: true
+  displayinlist: false
 ---
 
 Auch wenn der Titel des Blogs "Vorsatzpapier" ist, ist schon seit der Planungsphase klar, dass es sich nicht darauf beschränken wird. Da aber dort die Inspiration her kommt und "Ornamentales auf Papier" eindeutig zu lang ist, bleibt es bei dem Titel. Daher wird dieses Blog nicht nur Vorsatzpapiere präsentieren sondern verschiedene Beispiele für schmuckvolle gedruckte Muster präsentieren, dies können auch Tapeten oder vergleichbares sein.

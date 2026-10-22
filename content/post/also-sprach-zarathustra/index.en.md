@@ -1,16 +1,17 @@
 ---
 title: "Also sprach Zarathustra"
 date: 2021-03-09T16:22:53+01:00
-iiifContext: http://iiif.io/api/image/2/context.json
+params:
+  iiifContext: http://iiif.io/api/image/2/context.json
+  view: endpaper
+  itemType: book
+  itemDescription: 'This endpaper is taken from the book "Also sprach Zarathustra: ein Buch für Alle und Keinen" by Friedrich Nietzsche, published 1900 by C. G. Naumann, Leipzig. <a class="worldcat" href="http://www.worldcat.org/oclc/864264525"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - Book
 - bookEndPaper
-view: endpaper
 outputs:
   - iiif-manifest
   - html
-itemType: book
-itemDescription: 'This endpaper is taken from the book "Also sprach Zarathustra: ein Buch für Alle und Keinen" by Friedrich Nietzsche, published 1900 by C. G. Naumann, Leipzig. <a class="worldcat" href="http://www.worldcat.org/oclc/864264525"><span class="screen-reader-text">WorldCat</span></a>'
 resources:
 - src: "front.jpg"
   name: front

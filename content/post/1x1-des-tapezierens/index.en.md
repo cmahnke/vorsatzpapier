@@ -1,17 +1,18 @@
 ---
 title: 1x1 des Tapezierens - Versuch's mal selber
 date: 2020-11-08T9:52:28+02:00
-iiifcontext: http://iiif.io/api/presentation/3/context.json
-view: book
-itemType: book
-cc: false
-noPreview: true
-iiif:
-  manifest: ./manifest.json
+params:
+  iiifcontext: http://iiif.io/api/presentation/3/context.json
+  view: book
+  itemType: book
+  noPreview: true
+  iiif:
+    manifest: ./manifest.json
+  itemDescription: 'The title of this book is "1x1 des Tapezierens - Versuch''s mal selber" by Georg Waterstradt, 5th edition bublished 1973 by Verlag für Bauwesen, Berlin. <a class="worldcat" href="http://www.worldcat.org/oclc/73914715"><span class="screen-reader-text">WorldCat</span></a>'
+  cc: false
 outputs:
   - iiif-manifest
   - html
-itemDescription: 'The title of this book is "1x1 des Tapezierens - Versuch''s mal selber" by Georg Waterstradt, 5th edition bublished 1973 by Verlag für Bauwesen, Berlin. <a class="worldcat" href="http://www.worldcat.org/oclc/73914715"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - Book
 resources:

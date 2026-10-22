@@ -1,8 +1,9 @@
 ---
 title: "Eigene Muster erstellen"
 description: "Auf dieser Seite können eigene Muster erstellt werden."
-metaPage: true
-displayinlist: false
+params:
+  metaPage: true
+  displayinlist: false
 layout: generator
 outputs:
   - html

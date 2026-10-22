@@ -1,16 +1,17 @@
 ---
 title: "Der Jungfrau Leben im Lichte von Zeit und Ewigkeit"
 date: 2021-01-14T10:37:53+02:00
-iiifContext: http://iiif.io/api/image/2/context.json
+params:
+  iiifContext: http://iiif.io/api/image/2/context.json
+  view: endpaper
+  itemType: book
+  itemDescription: 'This endpaper is taken from the book "Der Jungfrau Leben im Lichte von Zeit und Ewigkeit" by Sophie von Reutern, published 1892 by Verlag der Vereinsbuchhandlung, Calw and Stuttgart. <a class="worldcat" href="http://www.worldcat.org/oclc/246876126"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - Book
 - bookEndPaper
-view: endpaper
 outputs:
   - iiif-manifest
   - html
-itemType: book
-itemDescription: 'This endpaper is taken from the book "Der Jungfrau Leben im Lichte von Zeit und Ewigkeit" by Sophie von Reutern, published 1892 by Verlag der Vereinsbuchhandlung, Calw and Stuttgart. <a class="worldcat" href="http://www.worldcat.org/oclc/246876126"><span class="screen-reader-text">WorldCat</span></a>'
 resources:
 - src: "front.jpg"
   name: front

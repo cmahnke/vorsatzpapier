@@ -1,16 +1,17 @@
 ---
 title: "Die Heilige Insel"
 date: 2020-09-26T07:37:53+02:00
-iiifContext: http://iiif.io/api/image/2/context.json
+params:
+  iiifContext: http://iiif.io/api/image/2/context.json
+  view: endpaper
+  itemType: book
+  itemDescription: 'This endpaper is taken from the book "Die Heilige Insel" by Lely Kempin, 8th edition, published 1921 by Velhagen & Klasing, Bielefeld. <a class="worldcat" href="http://www.worldcat.org/oclc/936421290"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - Book
 - bookEndPaper
-view: endpaper
 outputs:
   - iiif-manifest
   - html
-itemType: book
-itemDescription: 'This endpaper is taken from the book "Die Heilige Insel" by Lely Kempin, 8th edition, published 1921 by Velhagen & Klasing, Bielefeld. <a class="worldcat" href="http://www.worldcat.org/oclc/936421290"><span class="screen-reader-text">WorldCat</span></a>'
 resources:
 - src: "front.jpg"
   name: front

@@ -1,16 +1,17 @@
 ---
 title: "Hundert Schnurrpfeifereinen"
 date: 2020-12-28T13:04:53+02:00
-iiifContext: http://iiif.io/api/image/2/context.json
+params:
+  iiifContext: http://iiif.io/api/image/2/context.json
+  view: endpaper
+  itemType: book
+  itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Hundert Schnurrpfeifereinen" von Sophus Tromholt, 13. Auflage, erschienen 1906 bei Reclam, Leipzig. <a class="worldcat" href="http://www.worldcat.org/oclc/255740370"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - Book
 - bookEndPaper
-view: endpaper
 outputs:
   - iiif-manifest
   - html
-itemType: book
-itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Hundert Schnurrpfeifereinen" von Sophus Tromholt, 13. Auflage, erschienen 1906 bei Reclam, Leipzig. <a class="worldcat" href="http://www.worldcat.org/oclc/255740370"><span class="screen-reader-text">WorldCat</span></a>'
 resources:
 - src: "front.jpg"
   name: front

@@ -1,13 +1,14 @@
 ---
 title: "Souvenir d'Anvers"
 date: 2020-09-21T18:08:28+02:00
-iiifContext: http://iiif.io/api/image/2/context.json
-view: endpaper
-itemType: book
+params:
+  iiifContext: http://iiif.io/api/image/2/context.json
+  view: endpaper
+  itemType: book
+  itemDescription: 'This endpaper is taken from the book "Souvenir d''Anvers", published around 1900 in Antwerp. <a class="worldcat" href="http://www.worldcat.org/oclc/647827191"><span class="screen-reader-text">WorldCat</span></a>'
 outputs:
   - iiif-manifest
   - html
-itemDescription: 'This endpaper is taken from the book "Souvenir d''Anvers", published around 1900 in Antwerp. <a class="worldcat" href="http://www.worldcat.org/oclc/647827191"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - Book
 - bookEndPaper

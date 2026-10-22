@@ -1,16 +1,17 @@
 ---
 title: "Kochkunst 1906"
 date: 2024-05-09T08:26:53+02:00
-iiifContext: http://iiif.io/api/image/2/context.json
+params:
+  iiifContext: http://iiif.io/api/image/2/context.json
+  view: endpaper
+  itemType: book
+  itemDescription: 'Dieses Vorsatzpapier stammt aus dem Jahrgang 1906 der Zeitschrift "Kochkunst", vom Internationaler Verband der Köche, erschienen 1906 in Frankfurt am Main. <a class="worldcat" href="http://www.worldcat.org/oclc/277227987"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - Book
 - bookEndPaper
-view: endpaper
-itemType: book
 outputs:
   - iiif-manifest
   - html
-itemDescription: 'Dieses Vorsatzpapier stammt aus dem Jahrgang 1906 der Zeitschrift "Kochkunst", vom Internationaler Verband der Köche, erschienen 1906 in Frankfurt am Main. <a class="worldcat" href="http://www.worldcat.org/oclc/277227987"><span class="screen-reader-text">WorldCat</span></a>'
 resources:
 - src: "front.jxl"
   name: front

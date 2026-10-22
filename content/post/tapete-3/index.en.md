@@ -1,8 +1,9 @@
 ---
 title: "Wallpaper"
 date: 2020-11-15T13:23:42+02:00
-iiifContext: http://iiif.io/api/image/2/context.json
-view: wallpaper
+params:
+  iiifContext: http://iiif.io/api/image/2/context.json
+  view: wallpaper
 outputs:
   - iiif-manifest
   - html

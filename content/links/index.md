@@ -1,7 +1,8 @@
 ---
 title: "Links"
-metaPage: true
-displayinlist: false
+params:
+  metaPage: true
+  displayinlist: false
 ---
 
 Auf dieser Seite finden sich einige Links zu verschiedenen (alten) strukturierten Papieren und Wänden. Die jeweiligen Betreiber haben (teilweise) ihr Hobby bzw. vielleicht auch ihre Sammelleidenschaft zu ihrem Beruf gemacht und bieten entsprechende Produkte an.

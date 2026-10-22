@@ -1,16 +1,17 @@
 ---
 title: "Das Füllhorn der Fee"
 date: 2021-06-08T19:57:53+01:00
-iiifContext: http://iiif.io/api/image/2/context.json
+params:
+  iiifContext: http://iiif.io/api/image/2/context.json
+  view: endpaper
+  itemType: book
+  itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Das Füllhorn der Fee" von Jeannot Emil von Grotthuß, 5. Auflage, erschienen ca. 1918 bei Greiner & Pfeiffer, Stuttgart. <a class="worldcat" href="http://www.worldcat.org/oclc/256827328"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - Book
 - bookEndPaper
-view: endpaper
 outputs:
   - iiif-manifest
   - html
-itemType: book
-itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Das Füllhorn der Fee" von Jeannot Emil von Grotthuß, 5. Auflage, erschienen ca. 1918 bei Greiner & Pfeiffer, Stuttgart. <a class="worldcat" href="http://www.worldcat.org/oclc/256827328"><span class="screen-reader-text">WorldCat</span></a>'
 resources:
 - src: "front.jpg"
   name: front

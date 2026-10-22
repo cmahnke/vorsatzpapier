@@ -1,13 +1,14 @@
 ---
 title: "Souvenir d'Anvers"
 date: 2020-09-21T18:08:28+02:00
-iiifContext: http://iiif.io/api/image/2/context.json
-view: endpaper
-itemType: book
+params:
+  iiifContext: http://iiif.io/api/image/2/context.json
+  view: endpaper
+  itemType: book
+  itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Souvenir d''Anvers", erschienen um 1900 in Antwerpen. <a class="worldcat" href="http://www.worldcat.org/oclc/647827191"><span class="screen-reader-text">WorldCat</span></a>'
 outputs:
   - iiif-manifest
   - html
-itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Souvenir d''Anvers", erschienen um 1900 in Antwerpen. <a class="worldcat" href="http://www.worldcat.org/oclc/647827191"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - Book
 - bookEndPaper

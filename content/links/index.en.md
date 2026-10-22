@@ -1,7 +1,8 @@
 ---
 title: "Links"
-metaPage: true
-displayinlist: false
+params:
+  metaPage: true
+  displayinlist: false
 ---
 
 On this page you will find some links to various (old) textured papers and walls. The respective owners have (partly) turned their hobby or perhaps their passion for collecting into their profession and offer suitable products.

@@ -2,16 +2,17 @@
 title: "Das goldene Buch der Gastronomie"
 #date: xxx
 draft: true
-iiifContext: http://iiif.io/api/image/2/context.json
+params:
+  iiifContext: http://iiif.io/api/image/2/context.json
+  view: endpaper
+  itemType: book
+  itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Das goldene Buch der Gastronomie", von Günther Müller, erschienen 1908 im Selbstverlag, Leipzig. <a class="worldcat" href="http://www.worldcat.org/oclc/1390124628"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - Book
 - bookEndPaper
-view: endpaper
 outputs:
   - iiif-manifest
   - html
-itemType: book
-itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Das goldene Buch der Gastronomie", von Günther Müller, erschienen 1908 im Selbstverlag, Leipzig. <a class="worldcat" href="http://www.worldcat.org/oclc/1390124628"><span class="screen-reader-text">WorldCat</span></a>'
 resources:
 - src: "front.jxl"
   name: front

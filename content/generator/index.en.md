@@ -1,8 +1,9 @@
 ---
 title: "Create your own patterns"
 description : "You can create your own patterns on this page."
-metaPage: true
-displayinlist: false
+params:
+  metaPage: true
+  displayinlist: false
 layout: generator
 outputs:
   - html

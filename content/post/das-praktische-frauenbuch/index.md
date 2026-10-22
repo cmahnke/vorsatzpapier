@@ -1,16 +1,17 @@
 ---
 title: "Das praktische Frauenbuch"
 date: 2021-02-04T07:00:00+02:00
-iiifContext: http://iiif.io/api/image/2/context.json
+params:
+  iiifContext: http://iiif.io/api/image/2/context.json
+  view: endpaper
+  itemType: book
+  itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Das praktische Frauenbuch", von Wilhelm Möller, erschienen 1901 im Verlag von Wilhelm Möller, Berlin. <a class="worldcat" href="http://www.worldcat.org/oclc/249946401"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - Book
 - bookEndPaper
-view: endpaper
 outputs:
   - iiif-manifest
   - html
-itemType: book
-itemDescription: 'Dieses Vorsatzpapier stammt aus dem Buch "Das praktische Frauenbuch", von Wilhelm Möller, erschienen 1901 im Verlag von Wilhelm Möller, Berlin. <a class="worldcat" href="http://www.worldcat.org/oclc/249946401"><span class="screen-reader-text">WorldCat</span></a>'
 resources:
 - src: "front.jpg"
   name: front

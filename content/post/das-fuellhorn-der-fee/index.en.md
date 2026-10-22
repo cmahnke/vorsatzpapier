@@ -1,16 +1,17 @@
 ---
 title: "Das Füllhorn der Fee"
 date: 2021-06-08T19:57:53+01:00
-iiifContext: http://iiif.io/api/image/2/context.json
+params:
+  iiifContext: http://iiif.io/api/image/2/context.json
+  view: endpaper
+  itemType: book
+  itemDescription: 'This endpaper is taken from the book "Das Füllhorn der Fee" by Jeannot Emil von Grotthuß, 5th edition, published around 1918 by Greiner & Pfeiffer, Stuttgart. <a class="worldcat" href="http://www.worldcat.org/oclc/256827328"><span class="screen-reader-text">WorldCat</span></a>'
 tags:
 - Book
 - bookEndPaper
-view: endpaper
-itemType: book
 outputs:
   - iiif-manifest
   - html
-itemDescription: 'This endpaper is taken from the book "Das Füllhorn der Fee" by Jeannot Emil von Grotthuß, 5th edition, published around 1918 by Greiner & Pfeiffer, Stuttgart. <a class="worldcat" href="http://www.worldcat.org/oclc/256827328"><span class="screen-reader-text">WorldCat</span></a>'
 resources:
 - src: "front.jpg"
   name: front

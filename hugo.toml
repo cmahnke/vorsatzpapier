@@ -13,6 +13,8 @@ timeout = 300
 enableGitInfo = true
 copyright = '<a href="https://projektemacher.org/" target="_blank">Projektemacher</a>'
 
+enableRobotsTXT = true
+
 [pagination]
   pagerSize = 10
 
@@ -196,3 +198,6 @@ copyright = '<a href="https://projektemacher.org/" target="_blank">Projektemache
 [security]
   [security.http]
     mediaTypes = ['^application/json$', '^application/json;\s?charset=[uU][tT][fF]-8$', '^application/sparql-results\+json;\s?charset=[uU][tT][fF]-8$']
+
+[params.robots]
+  llmsTXT = true

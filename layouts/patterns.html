@@ -37,7 +37,7 @@
           {{/* Preview */}}
           {{/* Format: width x height */}}
           {{- $fit := printf "%dx%d" $defaultWidth $defaultHeight -}}
-          {{- $previewImg := partial "preview/preview-internal.html" (dict "context" . "fit" $fit "postProcess" true) -}}
+          {{- $previewImg := partial "preview/preview-internal.html" (dict "context" . "fit" $fit "postProcess" true "format" "webp") -}}
 
           {{- if $previewImg -}}
       			{{- $style := printf "background-image: url(%s);" $previewImg.RelPermalink -}}

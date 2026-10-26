@@ -6,6 +6,10 @@
 {{- if and (ne .postProcess nil) (eq .postProcess true) -}}
   {{- $postProcess = true -}}
 {{- end -}}
+{{- $format := "" -}}
+{{- if ne .format nil -}}
+  {{- $format = .format -}}
+{{- end -}}
 {{- $fail := true -}}
 {{- if and (ne .fail nil) (eq .fail true) -}}
   {{- $fail = true -}}
@@ -140,6 +144,10 @@
 
   {{- if $postProcess -}}
   {{/* Vorsatzpapier specific post processing */}}
+    {{- $formatSuffix := "" -}}
+    {{- if ne $format "" -}}
+      {{- $formatSuffix = printf " %s" $format -}}
+    {{- end -}}
     {{- if ne (printf "%T" $previewReference) "string" -}}
       {{/* Format: width x height */}}
       {{- $resize := false -}}
@@ -165,10 +173,10 @@
         {{- warnf "[partials/preview/preview-internal.html] Can't find image %s" $imgLocation -}}
       {{- else -}}
         {{ $crop2x := printf "%dx%d" (div $previewImg.Width 2) $cropHeight }}
-        {{- $previewImg = $previewImg.Fill (printf "%s %s" $crop2x "center") -}}
-        {{- $previewImg = $previewImg.Fill (printf "%s %s" $crop "center") -}}
+        {{- $previewImg = $previewImg.Fill (printf "%s %s%s" $crop2x "center" $formatSuffix) -}}
+        {{- $previewImg = $previewImg.Fill (printf "%s %s%s" $crop "center" $formatSuffix) -}}
         {{- if eq $resize true -}}
-          {{- $previewImg = $previewImg.Fill (printf "%s %s" (printf "%dx%d" $defaultWidth $defaultHeight ) "center") -}}
+          {{- $previewImg = $previewImg.Fill (printf "%s %s%s" (printf "%dx%d" $defaultWidth $defaultHeight ) "center" $formatSuffix) -}}
         {{- end -}}
       {{- end -}}
     {{- end -}}
@@ -176,7 +184,7 @@
     {{- if isset $params "rotate" -}}
       {{- $rotate = printf " r%d" (add $params.rotate 180) -}}
     {{- end -}}
-    {{- $imgOptions := (printf "%s %s %s" $fit $rotate "center") -}}
+    {{- $imgOptions := (printf "%s %s %s%s" $fit $rotate "center" $formatSuffix) -}}
     {{- $previewImg = $previewImg.Fit $imgOptions -}}
   {{- end -}}
 

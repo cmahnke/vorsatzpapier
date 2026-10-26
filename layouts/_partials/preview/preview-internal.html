@@ -144,6 +144,10 @@
 
   {{- if $postProcess -}}
   {{/* Vorsatzpapier specific post processing */}}
+    {{- if and (ne $previewImg nil) (ne $previewImg "") (ge $previewImg.Width 6144) -}}
+      {{- warnf "[partials/preview/preview-internal.html] Image %s (%dx%d) too large for WebP, falling back to default format" $imgLocation $previewImg.Width $previewImg.Height -}}
+      {{- $format = "" -}}
+    {{- end -}}
     {{- $formatSuffix := "" -}}
     {{- if ne $format "" -}}
       {{- $formatSuffix = printf " %s" $format -}}

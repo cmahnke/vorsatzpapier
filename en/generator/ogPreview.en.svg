@@ -1,0 +1,40 @@
+<ns0:svg xmlns:ns0="http://www.w3.org/2000/svg" xmlns:ns1="http://www.inkscape.org/namespaces/inkscape" xmlns:ns2="http://www.w3.org/1999/xlink" width="1200" height="630" viewBox="0 0 1200 630" version="1.1" id="svg8" ns1:version="1.0.2 (e86c8708, 2021-01-15)">
+    <ns0:defs id="defs2">
+        <ns0:rect id="textbox-heading" x="0" y="125" width="1200" height="120" />
+        <ns0:rect id="textbox" x="0" y="525" width="1200" height="100" />
+        <ns0:pattern id="bg-pattern" patternUnits="userSpaceOnUse" width="100" height="100">
+            <ns0:image href="../../static/images/raben.jpg" x="0" y="0" width="100" height="100" />
+        </ns0:pattern>
+        <ns0:style id="style1570">
+            @font-face {
+              font-family: 'Raleway Thin';
+              font-style: normal;
+              font-weight: 400;
+              src: local('Raleway Thin'),
+                   url('../../themes/projektemacher-base/static/fonts/raleway-v18-latin-ext_latin-regular.woff') format('woff'),
+                   url('../../themes/projektemacher-base/static/fonts/raleway-v18-latin-ext_latin-regular.ttf') format('truetype');
+            }
+            /* raleway-700 - latin-ext_latin */
+            @font-face {
+              font-family: 'Raleway Thin';
+              font-style: normal;
+              font-weight: 700;
+              src: local('Raleway Thin'),
+                   url('../../themes/projektemacher-base/static/fonts/raleway-v18-latin-ext_latin-700.woff') format('woff'),
+                   url('../../themes/projektemacher-base/static/fonts/raleway-v18-latin-ext_latin-700.ttf') format('truetype');
+            }
+        </ns0:style>
+        <ns0:filter style="color-interpolation-filters:sRGB;" ns1:label="Drop Shadow" id="filter4459" y="-0.35" x="-0.35" height="1.8" width="1.8">
+          <ns0:feFlood flood-opacity="0.95" flood-color="rgb(255,255,255)" result="flood" id="feFlood4449" />
+          <ns0:feComposite in="flood" in2="SourceGraphic" operator="in" result="composite1" id="feComposite4451" />
+          <ns0:feGaussianBlur in="composite1" stdDeviation="10" result="blur" id="feGaussianBlur4453" />
+          <ns0:feOffset dx="0" dy="0" result="offset" id="feOffset4455" />
+          <ns0:feComposite in="SourceGraphic" in2="offset" operator="over" result="composite2" id="feComposite4457" />
+        </ns0:filter>
+    </ns0:defs>
+
+    <ns0:image id="logo" style="filter:url(#filter4459)" ns2:href="../../themes/projektemacher-base/static/images/cm.svg" preserveAspectRatio="xMidYMid meet" width="97.251564" height="100" x="1100" y="530" />
+    
+    <ns0:text id="heading-container" xml:space="preserve" style="filter:url(#filter4459);shape-inside:url(#textbox-heading);font-style:normal;font-weight:700;font-size:100px;line-height:1.25;font-family:'Raleway Thin';text-align:center;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;text-align:center;">Vorsatzpapier</ns0:text>
+    <ns0:text id="text-container" xml:space="preserve" style="filter:url(#filter4459);shape-inside:url(#textbox);font-style:normal;font-weight:normal;font-size:80px;line-height:1.25;font-family:'Raleway Thin';text-align:center;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;text-align:center;">Create your own patterns</ns0:text>
+</ns0:svg>
